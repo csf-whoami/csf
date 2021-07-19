@@ -1,0 +1,47 @@
+ribbon:
+    ReadTimeout: 20000
+    ConnectTimeout: 20000
+
+zuul:
+    ignoredServices: '*'
+    host:
+        connect-timeout-millis: 20000
+        socket-timeout-millis: 20000
+    routes:
+        auth-service:
+            path: /uaa/** #path that will be intercepted
+            url: auth-service #which url the request will be mapped to
+            stripPrefix: false #if zuul should replace the "/uaa/" segment
+            sensitiveHeaders:
+
+        account-service:
+            path: /accounts/**
+            serviceId: account-service
+            stripPrefix: false
+            sensitiveHeaders:
+
+        ios-service:
+            path: /ios/**
+            serviceId: ios-service
+            stripPrefix: false
+            sensitiveHeaders:
+
+        cdn-service:
+            path: /cdn/**
+            serviceId: cdn-service
+            stripPrefix: false
+            sensitiveHeaders:
+
+        common-service:
+            path: /common/**
+            serviceId: common-service
+            stripPrefix: false
+            sensitiveHeaders:
+
+        data-service:
+            path: /data/**
+            serviceId: data-service
+            stripPrefix: false
+            sensitiveHeaders:
+server:
+    port: ${HOME_SERVICES_HOST:8080}

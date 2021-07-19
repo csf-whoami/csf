@@ -1,0 +1,8 @@
+server:
+    servlet:
+        context-path: /cdn
+    port: ${CDN_PORT:8084}
+
+feign:
+    hystrix:
+        enabled: true

@@ -1,0 +1,64 @@
+allprojects {
+    group = 'com.csf'
+    version '1.0.0'
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+buildscript {
+    ext {
+        springBootVersion = '2.4.8'
+        springManagementVersion = '1.0.11.RELEASE'
+        lombokVersion = '1.18.4'
+        springCloudVersion = 'Hoxton.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:${springManagementVersion}")
+    }
+}
+
+configure(subprojects.findAll {it.name != 'csf-base'}) {
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    def defaultEncoding = 'UTF-8'
+    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+    compileJava.dependsOn(processResources)
+
+    springBoot {
+        buildInfo()
+    }
+
+    dependencies{
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    }
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}
+
+project(':csf-security') {
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-web')
+        compile('org.springframework.boot:spring-boot-devtools')
+    }
+}

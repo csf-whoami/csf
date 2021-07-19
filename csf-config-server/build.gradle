@@ -1,0 +1,6 @@
+apply plugin: 'war'
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.cloud:spring-cloud-config-server'
+}

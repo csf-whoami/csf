@@ -1,0 +1,17 @@
+security:
+    oauth2:
+        client:
+            clientId: ${AUTH_CLIENT_ID:whoami-client}
+            clientSecret: ${AUTH_CLIENT_SECRET:whoami-secret}
+            accessTokenUri: http://${REGISTER_HOST:localhost}:${AUTH_PORT:8081}/uaa/oauth/token
+            grant-type: password
+            scope: read
+
+server:
+    servlet:
+        context-path: /whoami
+    port: ${ACCOUNT_PORT:8082}
+
+feign:
+    hystrix:
+        enabled: true

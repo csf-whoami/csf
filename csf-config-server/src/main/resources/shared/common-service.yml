@@ -1,0 +1,8 @@
+server:
+    servlet:
+        context-path: /common
+    port: ${COMMON_PORT:8085}
+
+feign:
+    hystrix:
+        enabled: true
