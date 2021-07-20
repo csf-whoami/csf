@@ -103,7 +103,7 @@ public final class StringUtils {
 	 * @param lng the lng
 	 * @return string
 	 */
-	public static String convertFromLongToString(Long lng) {
+	public static String fromLong(Long lng) {
 		return String.valueOf(lng);
 	}
 
@@ -114,10 +114,10 @@ public final class StringUtils {
 	 * @return string [ ]
 	 * @throws Exception the exception
 	 */
-	public static String[] convertFromLongToString(Long[] arrLong) throws Exception {
+	public static String[] fromLongToString(Long[] arrLong) throws Exception {
 		String[] arrResult = new String[arrLong.length];
 		for (int i = 0; i < arrLong.length; i++) {
-			arrResult[i] = convertFromLongToString(arrLong[i]);
+			arrResult[i] = fromLong(arrLong[i]);
 		}
 		return arrResult;
 	}
@@ -494,7 +494,7 @@ public final class StringUtils {
 	 * @param input the input
 	 * @return long
 	 */
-	public static Long stringToLongOrNull(String input) {
+	public static Long toLongOrNull(String input) {
 		try {
 			return Long.valueOf(input.trim());
 		} catch (Exception e) {
@@ -508,7 +508,7 @@ public final class StringUtils {
 	 * @param input the input
 	 * @return integer
 	 */
-	public static Integer stringToIntegerOrNull(String input) {
+	public static Integer toIntegerOrNull(String input) {
 		try {
 			return Integer.valueOf(input.trim());
 		} catch (Exception e) {
@@ -522,7 +522,7 @@ public final class StringUtils {
 	 * @param input the input
 	 * @return float
 	 */
-	public static Float stringToFloatOrNull(String input) {
+	public static Float toFloatOrNull(String input) {
 		try {
 			return Float.valueOf(input.trim());
 		} catch (Exception e) {
@@ -713,7 +713,7 @@ public final class StringUtils {
 			StringBuilder idConditions = new StringBuilder("");
 			Long staffId;
 			for (String id : ids) {
-				staffId = StringUtils.stringToLongOrNull(id);
+				staffId = StringUtils.toLongOrNull(id);
 				if (null != staffId)
 					idsNotNull.add(id);
 			}
@@ -928,7 +928,7 @@ public final class StringUtils {
 	 * @return String with new pattern.
 	 */
 	public static String changeDatePattern(String dateInput, String sourcePattern, String targetPattern) {
-		return convertDateToStringFormatPattern(DateTimeUtils.stringToDateOrNull(dateInput, sourcePattern),
+		return convertDateToStringFormatPattern(DateTimeUtils.toDateOrNull(dateInput, sourcePattern),
 				targetPattern);
 	}
 
@@ -948,4 +948,11 @@ public final class StringUtils {
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(nfdNormalizedString).replaceAll("");
 	}
+
+	public static String fromInteger(Integer value) {
+        if (value == null) {
+            return null;
+        }
+        return String.valueOf(value);
+    }
 }

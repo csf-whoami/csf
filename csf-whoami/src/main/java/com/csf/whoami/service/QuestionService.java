@@ -1,0 +1,20 @@
+package com.csf.whoami.service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.csf.whoami.database.dto.QuestionInfo;
+import com.csf.whoami.database.dto.QuestionManagementInfo;
+
+public interface QuestionService {
+
+    Page<QuestionManagementInfo> fetchQuestionsByChannel(Long channelId, Pageable pageable);
+
+    QuestionInfo questionInfo(Long group, Long channel);
+
+    Long registerOrUpdateDatas(QuestionInfo data);
+
+    QuestionInfo findById(Long id);
+
+//    QuestionInfo findAll();
+}

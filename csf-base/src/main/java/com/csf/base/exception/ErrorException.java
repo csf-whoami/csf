@@ -25,7 +25,10 @@ public enum ErrorException {
 	CANT_CREATE_GROUP("C0018", "Can not create group."),
 	CANT_MAKE_EXAM("C0019", "Can not make examination."),
 	PERMISSION_DENIED("CMS_0023", "User is not have permission."),
-	PARAMETER_INVALID("CMS_0003", "Parameter invalid");
+	PARAMETER_INVALID("CMS_0003", "Parameter invalid"),
+	DATA_INVALID("CMS_0004", "Input data invalid."),
+    CANT_INSERT_OPTIONS("CMS_0005", "Can not insert question options"),
+    DATA_NOT_FOUND("C0002", "Data not found."),;
 
 	private String code;
 	private String message;

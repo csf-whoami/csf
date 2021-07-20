@@ -53,7 +53,7 @@ public class DateTimeUtils {
 	 * @param pattern
 	 * @return String
 	 */
-	public static String convertDateToString(Date date, String pattern) {
+	public static String toString(Date date, String pattern) {
 		try {
 			if (date == null) {
 				return "";
@@ -116,7 +116,7 @@ public class DateTimeUtils {
 	 * @param pattern
 	 * @return
 	 */
-	public static Date stringToDateOrNull(String date, String pattern) {
+	public static Date toDateOrNull(String date, String pattern) {
 		try {
 			return stringToTime(date, pattern);
 		} catch (Exception e) {
