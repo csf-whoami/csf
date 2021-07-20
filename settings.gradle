@@ -14,13 +14,17 @@ pluginManagement {
 rootProject.name = 'csf'
 
 include 'csf-base'
+project(":csf-base").projectDir = file("../whoami/csf-base")
+
 include 'csf-config-server'
 include 'csf-zuul'
 include 'csf-eureka'
 
 include 'csf-security'
+project(":csf-security").projectDir = file("../security")
 //include 'csf-data'
 //include 'csf-cdn'
 
 // Demo project - waiting.
 include 'csf-whoami'
+project(":csf-whoami").projectDir = file("../whoami/csf-whoami")
