@@ -1,4 +1,4 @@
 rootProject.name = 'csf-security'
 
-include ":csf-base"
-project(":csf-base").projectDir = file("../csf-base")
+include 'csf-base'
+project(":csf-base").projectDir = file("../whoami/csf-base")
