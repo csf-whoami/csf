@@ -7,7 +7,7 @@
  * - View invite detail.
  * - Accept / Reject invite.
  */
-package com.csf.whoami.business;
+package com.csf.whoami.api;
 
 import javax.websocket.server.PathParam;
 

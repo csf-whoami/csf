@@ -1,4 +1,4 @@
-package com.csf.whoami.business;
+package com.csf.whoami.api;
 
 import java.io.File;
 import java.io.IOException;

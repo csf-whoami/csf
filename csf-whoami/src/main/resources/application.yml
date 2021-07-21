@@ -1,0 +1,168 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
+    username: homeo
+    password: Pax96dQ2UtNa
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+#      naming:
+#        physical-strategy: com.csf.whoami.config.RealNamingStrategyImpl
+    properties:
+      hibernate:
+#        physical_naming_strategy: com.csf.whoami.config.RealNamingStrategyImpl
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
+
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**/**
+## MULTIPART (MultipartProperties)
+  # Enable multipart uploads
+  servlet:
+    multipart:
+      enabled: true
+
+      # Threshold after which files are written to disk.
+      file-size-threshold: 2KB
+      # Max Request Size
+      max-request-size: 50MB
+      # Max file size.
+      max-file-size: 30MB
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/views/
+    check-template-location: true
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+  messages:
+    basename: ApplicationMessage
+################################################ BEGIN FILE STORAGE SETTING ################################################
+  # All files uploaded through the REST API will be stored in this directory
+  image:
+    upload-dir: classpath:/templates/image/
+    display-path: http://localhost:8080/img/
+################################################ END FILE STORAGE SETTING ################################################
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    port: 587
+    username: csf.whoami@gmail.com
+    password: abfjsjvgmvcybgtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    template:
+      template: classpath:/templates/
+      suffix: .html
+    protocol: smtp
+    test-connection: false
+    link-cms: https://csf-whoami.edu.vn/
+################################################ END SEND EMAIL CONFIG ################################################
+
+server:
+  port: ${W_PORT:8888}
+  local-url: http://localhost:${W_PORT:8888}
+  #ssl:
+  #  key-store: classpath:mykey.p12
+  #  key-store-password: password
+  #  key-store-type: PKCS12
+  #  key-alias: key-tomcat
+
+ # log server tomcat
+  tomcat:
+    accesslog:
+      enabled: true
+      suffix: .log
+      prefix: tomcat_log
+      file-date-format: .yyyy-MM-dd
+      directory: 
+      pattern: common
+    basedir: ./logs/tomcat
+
+    # Optional: in case of your proxy running in a network different from Spring Boot application's network.
+    # server.tomcat.internal-proxies=90\.91\.92\.93
+    # Bonus: let's not force user to re-authorize too often by setting a session cookie validity to one day.
+    use-forward-headers: true
+    servlet:
+        session:
+            timeout: 120s
+        cookie:
+            max-age: 1d
+
+app:
+  data-dir: .
+
+jwt:
+  secret: Y3Nm
+  access-token:
+    expiration: 60000
+  refresh-token:
+    expiration: 120000
+  header: Authorization
+  authority-key: scope
+  token-prefix: Bearer
+
+databasekey: d2hvYW1p
+
+security:
+  jwt:
+    token:
+      secret-key: csf
+      expire-length: 3600000
+
+logging:
+  level:
+    root: INFO
+  #path file log
+#  path: ./logs
+  #file name
+  file: ${W_LOG_NAME:whoami}
+
+swagger:
+  path:
+    mapping: /api
+    host: ${W_SWAGGER_HOST:localhost}
+    base: ${W_SWAGGER_VERSION:/v1}
+
+################################################ BEGIN CRONE JOB CONFIG ################################################
+crone:
+  schedule:
+    time-start: 0 0 0 * * *
+media:
+  upload:
+    storage: /Users/mba0179/Desktop/video/
+################################################ END CRONE JOB CONFIG ################################################
+
+################################################ BEGIN GOOGLE CONFIG ################################################
+google:
+  mail-services:
+    service_account_email: ${W_GMAIL_APP_EMAIL:"whoami@csf-whoami-247515.iam.gserviceaccount.com"}
+    application_name: ${W_GMAIL_APP_NAME:Csf-whoami}
+    folder_id: ${W_GMAIL_APP_FOLDER:"1EgRGKPKPoPv1ic6OA-EL4kerOx5j7JxJ"}
+    service_account_key: ${W_GMAIL_SERVICE_KEY_FILE:"Csf-whoami.p12"}
+  drive-services:
+    address: ${W_GDRIVE_EMAIL="csf.whoami@gmail.com"}
+    type: user
+    role: writer
+
+# View healthheclk.
+info:
+  app:
+    name: WhoAmI
+    description: Whoami project
+    version: 1.0.0
+################################################ END GOOGLE CONFIG ################################################

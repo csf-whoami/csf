@@ -6,7 +6,7 @@
  * - Invite friend.
  * - Share quiz.
  */
-package com.csf.whoami.business;
+package com.csf.whoami.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.csf.whoami.business;
+package com.csf.whoami.api;
 
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
