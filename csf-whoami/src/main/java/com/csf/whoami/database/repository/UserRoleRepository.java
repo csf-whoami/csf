@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.model.TbUserRole;
+import com.csf.whoami.database.models.TbUserRole;
 
 @Repository
 public interface UserRoleRepository extends JpaRepository<TbUserRole, Long> {

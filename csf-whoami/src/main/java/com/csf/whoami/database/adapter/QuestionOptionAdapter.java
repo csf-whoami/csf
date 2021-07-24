@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.AnswerOption;
-import com.csf.whoami.database.model.TbQuestionOption;
+import com.csf.whoami.database.models.TbQuestionOption;
 
 public class QuestionOptionAdapter {
 

@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.csf.whoami.database.dto.TypeInfo;
-import com.csf.whoami.database.model.TbType;
+import com.csf.whoami.database.models.TbType;
 
 @Repository
 public interface TypeRepository extends JpaRepository<TbType, String> {

@@ -4,7 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.csf.whoami.database.model.UploadFile;
+import com.csf.whoami.database.models.UploadFile;
 
 public interface FileRepository extends JpaRepository<UploadFile, Integer> {
 

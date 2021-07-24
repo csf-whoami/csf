@@ -6,4 +6,6 @@ import com.csf.whoami.database.dto.MenuDomain;
 
 public interface MenuService {
 	public List<MenuDomain> getMenus();
+
+	public Long registerMenu(MenuDomain menu);
 }

@@ -4,7 +4,7 @@ import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.response.AccountInfo;
 import com.csf.whoami.database.dto.response.UserInfo;
-import com.csf.whoami.database.model.TbAccount;
+import com.csf.whoami.database.models.TbAccount;
 
 public class AccountAdapter {
     private AccountAdapter() {};

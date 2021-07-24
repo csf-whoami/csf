@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.whoami.database.dto.QuestionInfo;
 import com.csf.whoami.database.dto.QuestionManagementInfo;
-import com.csf.whoami.database.model.TbQuestion;
+import com.csf.whoami.database.models.TbQuestion;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {

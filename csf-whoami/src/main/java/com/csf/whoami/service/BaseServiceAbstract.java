@@ -9,7 +9,7 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.csf.whoami.database.model.BaseEntity;
+import com.csf.whoami.database.models.BaseEntity;
 
 import lombok.extern.slf4j.Slf4j;
 

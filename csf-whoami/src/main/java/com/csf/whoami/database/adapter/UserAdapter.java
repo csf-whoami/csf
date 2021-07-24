@@ -8,8 +8,8 @@ import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.RoleInfo;
 import com.csf.whoami.database.dto.response.UserInfo;
-import com.csf.whoami.database.model.TbAccount;
-import com.csf.whoami.database.model.TbUser;
+import com.csf.whoami.database.models.TbAccount;
+import com.csf.whoami.database.models.TbUser;
 
 public class UserAdapter {
 

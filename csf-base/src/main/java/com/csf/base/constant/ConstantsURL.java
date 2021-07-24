@@ -76,4 +76,7 @@ public class ConstantsURL {
 	public static final String URI_ADMIN_MENU = null;
 
 	public static final String START_PATH = null;
+
+	public static final String API_MENU = "/mnu";
+	public static final String ME_PATH = "me";
 }

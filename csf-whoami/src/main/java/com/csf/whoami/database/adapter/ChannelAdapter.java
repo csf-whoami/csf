@@ -4,7 +4,7 @@ import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.YesNo;
 import com.csf.whoami.database.dto.response.ChannelInfo;
-import com.csf.whoami.database.model.TbChannel;
+import com.csf.whoami.database.models.TbChannel;
 
 public class ChannelAdapter {
 

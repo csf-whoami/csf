@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.model.TbAccount;
+import com.csf.whoami.database.models.TbAccount;
 
 @Repository
 public interface AccountRepository extends JpaRepository<TbAccount, Long> {

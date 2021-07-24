@@ -2,7 +2,7 @@ package com.csf.whoami.database.adapter;
 
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.RoleInfo;
-import com.csf.whoami.database.model.TbRole;
+import com.csf.whoami.database.models.TbRole;
 
 public class RoleAdapter {
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.csf.whoami.database.model.TbQuizQuestion;
+import com.csf.whoami.database.models.TbQuizQuestion;
 
 /**
  * @author tuan

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.whoami.database.dto.SearchVO;
 import com.csf.whoami.database.dto.response.ChannelInfo;
-import com.csf.whoami.database.model.TbChannel;
+import com.csf.whoami.database.models.TbChannel;
 
 @Repository
 public interface ChannelRepository extends JpaRepository<TbChannel, Long> {

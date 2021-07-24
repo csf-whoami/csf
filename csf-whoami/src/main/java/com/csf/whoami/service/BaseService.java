@@ -3,7 +3,7 @@ package com.csf.whoami.service;
 import java.io.Serializable;
 import java.util.List;
 
-import com.csf.whoami.database.model.BaseEntity;
+import com.csf.whoami.database.models.BaseEntity;
 
 public interface BaseService<E extends BaseEntity, K extends Serializable> {
 

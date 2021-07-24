@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.csf.whoami.database.adapter.RoleAdapter;
 import com.csf.whoami.database.dto.RoleInfo;
-import com.csf.whoami.database.model.TbRole;
+import com.csf.whoami.database.models.TbRole;
 import com.csf.whoami.database.repository.RoleRepository;
 import com.csf.whoami.service.RoleService;
 

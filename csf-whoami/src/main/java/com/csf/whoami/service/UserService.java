@@ -9,8 +9,8 @@ import com.csf.whoami.database.dto.AccountDTO;
 import com.csf.whoami.database.dto.SearchVO;
 import com.csf.whoami.database.dto.response.AuthenticationInfo;
 import com.csf.whoami.database.dto.response.UserInfo;
+import com.csf.whoami.database.models.TbAccount;
 import com.csf.whoami.database.dto.response.AccountInfo;
-import com.csf.whoami.database.model.TbAccount;
 
 public interface UserService {
 

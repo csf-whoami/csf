@@ -3,7 +3,8 @@ spring:
     url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
     username: homeo
     password: Pax96dQ2UtNa
-    driver-class-name: org.postgresql.Driver
+    driverClassName: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
   jpa:
     show-sql: true
     hibernate:

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.whoami.database.dto.SearchVO;
 import com.csf.whoami.database.dto.response.GroupInfo;
-import com.csf.whoami.database.model.TbGroup;
+import com.csf.whoami.database.models.TbGroup;
 
 @Repository
 public interface GroupRepository extends JpaRepository<TbGroup, Long> {

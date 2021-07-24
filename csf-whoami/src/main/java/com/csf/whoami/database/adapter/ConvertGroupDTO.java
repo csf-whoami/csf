@@ -3,7 +3,7 @@ package com.csf.whoami.database.adapter;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.RequestSearchGroup;
 import com.csf.whoami.database.dto.response.GroupInfo;
-import com.csf.whoami.database.model.TbGroup;
+import com.csf.whoami.database.models.TbGroup;
 
 public class ConvertGroupDTO {
 

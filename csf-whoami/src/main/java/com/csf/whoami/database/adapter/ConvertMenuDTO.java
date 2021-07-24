@@ -2,7 +2,7 @@ package com.csf.whoami.database.adapter;
 
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.dto.MenuDomain;
-import com.csf.whoami.database.model.TbMenu;
+import com.csf.whoami.database.models.TbMenu;
 import com.csf.whoami.database.view.MenuView;
 
 public class ConvertMenuDTO {

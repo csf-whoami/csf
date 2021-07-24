@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.whoami.database.dto.SearchVO;
 import com.csf.whoami.database.dto.response.UserInfo;
-import com.csf.whoami.database.model.TbUser;
+import com.csf.whoami.database.models.TbUser;
 
 @Repository
 public interface UserRepository extends JpaRepository<TbUser, Long> {
