@@ -17,10 +17,10 @@ package com.csf.whoami.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,15 +37,16 @@ import com.csf.whoami.service.GroupService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.RequiredArgsConstructor;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/groups")
 @Api
+@RequiredArgsConstructor
 public class GroupsController {
 
-	@Autowired
-	private GroupService groupsService;
+	private final GroupService groupsService;
 
 	@ApiOperation(value = "Phương thức tìm kiếm Group trong hệ thống.")
 	@PostMapping(value = "/find-group", consumes = MediaType.APPLICATION_JSON_VALUE)
