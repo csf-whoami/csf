@@ -17,7 +17,7 @@ public class SwaggerConfig {
 //    @Bean
 //    public Docket swagger() {
 //        return new Docket(DocumentationType.SWAGGER_2)
-//                .ignoredParameterTypes(Authentication.class)
+//                .ignoredParameterTypes(AuthenticationInfo.class)
 //                .globalOperationParameters(singletonList(initParam("Authorization")))
 //                .select()
 //                .apis(RequestHandlerSelectors.any())
