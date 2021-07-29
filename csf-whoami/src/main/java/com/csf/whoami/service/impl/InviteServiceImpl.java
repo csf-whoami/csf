@@ -8,12 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.csf.base.constant.ConstantsDatabase;
 import com.csf.base.constant.ConstantsDateFormat;
+import com.csf.base.domain.InviteGroupDetailDomain;
+import com.csf.base.domain.InviteGroupDomain;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.DateTimeUtils;
-import com.csf.whoami.database.dto.InviteGroupDetailDomain;
-import com.csf.whoami.database.dto.InviteGroupDomain;
 import com.csf.whoami.database.models.TbAccount;
 import com.csf.whoami.database.models.TbGroup;
 import com.csf.whoami.database.models.TbInvites;

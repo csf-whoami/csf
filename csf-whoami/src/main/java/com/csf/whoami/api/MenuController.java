@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csf.base.constant.ConstantsURL;
+import com.csf.base.domain.MenuDomain;
 import com.csf.base.domain.ResponseDataAPI;
-import com.csf.whoami.database.dto.MenuDomain;
 import com.csf.whoami.service.MenuService;
 
 import io.swagger.annotations.Api;

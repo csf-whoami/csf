@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.csf.base.domain.Comment;
 import com.csf.whoami.database.CommentGenerator;
-import com.csf.whoami.database.dto.Comment;
 
 @Repository
 public class CommentRepositoryExt implements CommentRepository {

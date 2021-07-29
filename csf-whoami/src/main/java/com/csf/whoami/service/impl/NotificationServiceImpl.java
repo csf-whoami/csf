@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.csf.whoami.database.dto.ChannelQuizDomain;
+import com.csf.base.domain.ChannelQuizDomain;
 import com.csf.whoami.database.models.TbUser;
 import com.csf.whoami.service.GroupService;
 import com.csf.whoami.service.NotificationService;

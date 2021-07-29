@@ -2,7 +2,7 @@ package com.csf.whoami.database.repository;
 
 import java.util.List;
 
-import com.csf.whoami.database.dto.Comment;
+import com.csf.base.domain.Comment;
 
 public interface CommentRepository {
 	List<Comment> findAll();

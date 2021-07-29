@@ -3,8 +3,8 @@
  */
 package com.csf.whoami.service;
 
-import com.csf.whoami.database.dto.InviteGroupDetailDomain;
-import com.csf.whoami.database.dto.InviteGroupDomain;
+import com.csf.base.domain.InviteGroupDetailDomain;
+import com.csf.base.domain.InviteGroupDomain;
 
 /**
  * @author mba0051

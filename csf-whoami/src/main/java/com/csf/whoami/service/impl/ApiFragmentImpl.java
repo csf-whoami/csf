@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.csf.whoami.database.dto.mainpage.MenuChannelInfo;
+import com.csf.base.domain.mainpage.MenuChannelInfo;
 import com.csf.whoami.service.ApiFragment;
 import com.csf.whoami.service.TemplateService;
 

@@ -9,6 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.ChannelInfo;
+import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
@@ -16,10 +20,6 @@ import com.csf.base.utilities.ObjectUtil;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.adapter.ConvertGroupDTO;
 import com.csf.whoami.database.adapter.GroupAdapter;
-import com.csf.whoami.database.dto.RequestSearchGroup;
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.ChannelInfo;
-import com.csf.whoami.database.dto.response.GroupInfo;
 import com.csf.whoami.database.models.TbAccount;
 import com.csf.whoami.database.models.TbGroup;
 import com.csf.whoami.database.models.TbPinCode;
@@ -229,7 +229,7 @@ public class GroupServiceImpl implements GroupService {
 
         Page<ChannelInfo> channels = channelRepository.findAllByGroupId(group.getId(), PageRequest.of(0, 20));
         GroupInfo info = ConvertGroupDTO.dbToDomain(group);
-        info.setChannels(channels);
+//        info.setChannels(channels);
         return info;
     }
 

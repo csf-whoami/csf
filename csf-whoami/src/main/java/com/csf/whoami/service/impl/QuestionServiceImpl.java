@@ -10,15 +10,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.csf.base.domain.AnswerOption;
+import com.csf.base.domain.QuestionInfo;
+import com.csf.base.domain.QuestionManagementInfo;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.adapter.QuestionAdapter;
 import com.csf.whoami.database.adapter.QuestionOptionAdapter;
-import com.csf.whoami.database.dto.AnswerOption;
-import com.csf.whoami.database.dto.QuestionInfo;
-import com.csf.whoami.database.dto.QuestionManagementInfo;
 import com.csf.whoami.database.models.TbChannel;
 import com.csf.whoami.database.models.TbChannelQuestion;
 import com.csf.whoami.database.models.TbGroup;

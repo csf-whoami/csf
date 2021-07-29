@@ -1,8 +1,8 @@
 package com.csf.whoami.database.adapter;
 
+import com.csf.base.domain.QuestionInfo;
+import com.csf.base.domain.YesNo;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.QuestionInfo;
-import com.csf.whoami.database.dto.YesNo;
 import com.csf.whoami.database.models.TbQuestion;
 
 public class QuestionAdapter {

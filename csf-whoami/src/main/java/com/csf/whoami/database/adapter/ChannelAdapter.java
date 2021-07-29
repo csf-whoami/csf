@@ -1,9 +1,9 @@
 package com.csf.whoami.database.adapter;
 
+import com.csf.base.domain.YesNo;
+import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.YesNo;
-import com.csf.whoami.database.dto.response.ChannelInfo;
 import com.csf.whoami.database.models.TbChannel;
 
 public class ChannelAdapter {

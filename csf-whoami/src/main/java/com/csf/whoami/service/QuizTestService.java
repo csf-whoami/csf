@@ -3,9 +3,9 @@
  */
 package com.csf.whoami.service;
 
-import com.csf.whoami.database.dto.quiz.QuizAnswersDomain;
-import com.csf.whoami.database.dto.quiz.QuizRequestDomain;
-import com.csf.whoami.database.dto.quiz.ResultResponseDomain;
+import com.csf.base.domain.quiz.QuizAnswersDomain;
+import com.csf.base.domain.quiz.QuizRequestDomain;
+import com.csf.base.domain.quiz.ResultResponseDomain;
 
 public interface QuizTestService {
 

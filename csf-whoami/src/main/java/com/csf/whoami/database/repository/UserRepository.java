@@ -9,14 +9,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.UserInfo;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.UserInfo;
 import com.csf.whoami.database.models.TbUser;
 
 @Repository
 public interface UserRepository extends JpaRepository<TbUser, Long> {
 
-    @Query(value = "SELECT new com.csf.whoami.database.dto.response.UserInfo(acc.id, acc.username, user.email, acc.createdAt, acc.activedAt, role.id, role.name) "
+    @Query(value = "SELECT new com.csf.base.domain.response.UserInfo(acc.id, acc.username, user.email, acc.createdAt, acc.activedAt, role.id, role.name) "
             + " FROM TbAccount acc "
             + " INNER JOIN TbUser user ON user.id = acc.userId "
             + " INNER JOIN TbUserRole userRole ON acc.id = userRole.userId "

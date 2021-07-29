@@ -12,7 +12,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Where;
 
-import com.csf.whoami.database.dto.YesNo;
+import com.csf.base.domain.YesNo;
 
 import lombok.Getter;
 import lombok.Setter;

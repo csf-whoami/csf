@@ -3,8 +3,8 @@ package com.csf.whoami.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.csf.whoami.database.dto.QuestionInfo;
-import com.csf.whoami.database.dto.QuestionManagementInfo;
+import com.csf.base.domain.QuestionInfo;
+import com.csf.base.domain.QuestionManagementInfo;
 
 public interface QuestionService {
 

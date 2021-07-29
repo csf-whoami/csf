@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.csf.whoami.database.dto.TypeInfo;
+import com.csf.base.domain.TypeInfo;
 
 public interface TypeService {
 

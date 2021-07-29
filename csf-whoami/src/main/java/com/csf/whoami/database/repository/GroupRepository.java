@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.GroupInfo;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.GroupInfo;
 import com.csf.whoami.database.models.TbGroup;
 
 @Repository
@@ -42,7 +42,7 @@ public interface GroupRepository extends JpaRepository<TbGroup, Long> {
 
 //    TbGroup findByIdAndParentGroup(String groupId, String parentGroup);
 
-    @Query(value = "SELECT new com.csf.whoami.database.dto.response.GroupInfo(tbgroup.id, tbgroup.groupName, tbgroup.groupType, "
+    @Query(value = "SELECT new com.csf.base.domain.response.GroupInfo(tbgroup.id, tbgroup.groupName, tbgroup.groupType, "
     		+ "                                                               tbgroup.isPrivate, tbgroup.isPublish, tbgroup.isLock, tbgroup.createdAt)" +
             " FROM TbGroup tbgroup" +
             " WHERE (:#{#search.keyword} IS NULL OR tbgroup.groupName LIKE %:#{#search.keyword}%" +

@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.dto.QuestionInfo;
-import com.csf.whoami.database.dto.QuestionManagementInfo;
+import com.csf.base.domain.QuestionInfo;
+import com.csf.base.domain.QuestionManagementInfo;
 import com.csf.whoami.database.models.TbQuestion;
 
 @Repository
@@ -29,7 +29,7 @@ public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {
 //            + "where (questionGroup.group.id = :groupId AND RAND() < 16 * 3/30000) LIMIT :questNumber", nativeQuery = true)
 //    List<TbQuestion> getQuestionsByGroupId(@Param("questNumber") Integer questionNumber, @Param("groupId") String groupId);
 
-    @Query(value = "SELECT new com.csf.whoami.database.dto.QuestionManagementInfo(question.id, type.typeName, question.createdAt) "
+    @Query(value = "SELECT new com.csf.base.domain.QuestionManagementInfo(question.id, type.typeName, question.createdAt) "
             + " FROM TbQuestion question "
             + " INNER JOIN TbQuestionType questionType ON questionType.questionId = question.id "
             + " INNER JOIN TbType type ON type.id = questionType.typeId "
@@ -41,7 +41,7 @@ public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {
 //    private String id;
 //    private String questionType;
 //    private String createdAt;
-    @Query(value = "SELECT new com.csf.whoami.database.dto.QuestionInfo(question.id, questionType.typeId, type.typeName,"
+    @Query(value = "SELECT new com.csf.base.domain.QuestionInfo(question.id, questionType.typeId, type.typeName,"
             + " tbgroup.id, tbgroup.groupName,"
             + " channel.id, channel.channelName,"
             + " question.content, question.createdAt) "

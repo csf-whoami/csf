@@ -1,7 +1,7 @@
 package com.csf.whoami.database.adapter;
 
+import com.csf.base.domain.RoleInfo;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.RoleInfo;
 import com.csf.whoami.database.models.TbRole;
 
 public class RoleAdapter {

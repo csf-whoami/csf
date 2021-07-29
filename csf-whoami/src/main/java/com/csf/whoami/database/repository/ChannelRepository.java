@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.ChannelInfo;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.ChannelInfo;
 import com.csf.whoami.database.models.TbChannel;
 
 @Repository
@@ -19,7 +19,7 @@ public interface ChannelRepository extends JpaRepository<TbChannel, Long> {
      * @param id
      * @return
      */
-    @Query(value = "SELECT new com.csf.whoami.database.dto.response.ChannelInfo(channel.id, channel.channelName, channel.isLock, channel.createdAt)" +
+    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.channelName, channel.isLock, channel.createdAt)" +
             " FROM TbChannel channel" +
             " WHERE channel.groupId = :groupId")
     Page<ChannelInfo> findAllByGroupId(@Param("groupId") Long id, Pageable pageable);
@@ -31,7 +31,7 @@ public interface ChannelRepository extends JpaRepository<TbChannel, Long> {
      * @param pageable
      * @return
      */
-    @Query(value = "SELECT new com.csf.whoami.database.dto.response.ChannelInfo(channel.id, channel.channelName, channelUrl, channel.isLock, channel.createdAt)" +
+    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.channelName, channelUrl, channel.isLock, channel.createdAt)" +
             " FROM TbChannel channel" +
             " WHERE channel.groupId = :groupId"
             + " AND (:#{#search.keyword} IS NULL)")

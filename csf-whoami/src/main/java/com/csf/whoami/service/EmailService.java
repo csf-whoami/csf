@@ -2,7 +2,7 @@ package com.csf.whoami.service;
 
 import java.util.Map;
 
-import com.csf.whoami.database.dto.RequestSearchGroup;
+import com.csf.base.domain.RequestSearchGroup;
 
 public interface EmailService {
     /**

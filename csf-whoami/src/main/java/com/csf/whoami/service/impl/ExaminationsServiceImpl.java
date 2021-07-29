@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.csf.base.constant.ConstantsDateFormat;
+import com.csf.base.domain.quiz.QuizResponseDomain;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.DateTimeUtils;
-import com.csf.whoami.database.dto.quiz.QuizResponseDomain;
 import com.csf.whoami.database.models.TbQuizQuestion;
 import com.csf.whoami.database.models.TbQuizTest;
 import com.csf.whoami.database.models.TbUserQuizTest;

@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.csf.whoami.database.dto.AccountDTO;
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.AuthenticationInfo;
-import com.csf.whoami.database.dto.response.UserInfo;
 import com.csf.whoami.database.models.TbAccount;
-import com.csf.whoami.database.dto.response.AccountInfo;
+import com.csf.base.domain.AccountDTO;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.AccountInfo;
+import com.csf.base.domain.response.AuthenticationInfo;
+import com.csf.base.domain.response.UserInfo;
 
 public interface UserService {
 

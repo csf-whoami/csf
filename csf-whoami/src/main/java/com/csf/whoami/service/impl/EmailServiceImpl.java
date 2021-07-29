@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.csf.whoami.database.dto.RequestSearchGroup;
+import com.csf.base.domain.RequestSearchGroup;
 import com.csf.whoami.service.EmailService;
 import com.csf.whoami.service.TemplateService;
 

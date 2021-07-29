@@ -2,7 +2,7 @@ package com.csf.whoami.database.view;
 
 import java.util.Date;
 
-import com.csf.whoami.database.dto.YesNo;
+import com.csf.base.domain.YesNo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

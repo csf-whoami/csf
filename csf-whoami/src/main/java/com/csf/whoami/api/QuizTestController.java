@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csf.whoami.database.dto.quiz.QuizAnswersDomain;
-import com.csf.whoami.database.dto.quiz.QuizRequestDomain;
-import com.csf.whoami.database.dto.quiz.ResultResponseDomain;
+import com.csf.base.domain.quiz.QuizAnswersDomain;
+import com.csf.base.domain.quiz.QuizRequestDomain;
+import com.csf.base.domain.quiz.ResultResponseDomain;
 import com.csf.whoami.service.QuizTestService;
 
 import io.swagger.annotations.Api;

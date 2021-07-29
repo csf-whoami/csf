@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.csf.whoami.database.dto.RequestSearchGroup;
-import com.csf.whoami.database.dto.SearchVO;
-import com.csf.whoami.database.dto.response.GroupInfo;
+import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.response.GroupInfo;
 
 public interface GroupService {
 

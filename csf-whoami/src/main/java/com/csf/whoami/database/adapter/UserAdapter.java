@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.util.CollectionUtils;
 
+import com.csf.base.domain.RoleInfo;
+import com.csf.base.domain.response.UserInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.RoleInfo;
-import com.csf.whoami.database.dto.response.UserInfo;
 import com.csf.whoami.database.models.TbAccount;
 import com.csf.whoami.database.models.TbUser;
 

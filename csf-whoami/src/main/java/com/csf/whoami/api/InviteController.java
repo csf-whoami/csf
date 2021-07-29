@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csf.whoami.database.dto.InviteGroupDetailDomain;
-import com.csf.whoami.database.dto.InviteGroupDomain;
+import com.csf.base.domain.InviteGroupDetailDomain;
+import com.csf.base.domain.InviteGroupDomain;
 import com.csf.whoami.service.InviteService;
 
 import io.swagger.annotations.Api;

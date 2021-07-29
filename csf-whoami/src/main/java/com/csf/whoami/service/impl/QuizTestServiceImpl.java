@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.csf.base.domain.quiz.AnswerRequestDomain;
+import com.csf.base.domain.quiz.QuizAnswersDomain;
+import com.csf.base.domain.quiz.QuizRequestDomain;
+import com.csf.base.domain.quiz.ResultResponseDomain;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.quiz.AnswerRequestDomain;
-import com.csf.whoami.database.dto.quiz.QuizAnswersDomain;
-import com.csf.whoami.database.dto.quiz.QuizRequestDomain;
-import com.csf.whoami.database.dto.quiz.ResultResponseDomain;
 import com.csf.whoami.database.models.TbQuestion;
 import com.csf.whoami.database.models.TbQuizQuestion;
 import com.csf.whoami.database.models.TbQuizTest;

@@ -1,9 +1,9 @@
 package com.csf.whoami.database.adapter;
 
+import com.csf.base.domain.response.AccountInfo;
+import com.csf.base.domain.response.UserInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.dto.response.AccountInfo;
-import com.csf.whoami.database.dto.response.UserInfo;
 import com.csf.whoami.database.models.TbAccount;
 
 public class AccountAdapter {

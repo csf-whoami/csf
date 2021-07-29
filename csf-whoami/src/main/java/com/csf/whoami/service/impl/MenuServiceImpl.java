@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.domain.MenuDomain;
 import com.csf.whoami.database.adapter.ConvertMenuDTO;
 import com.csf.whoami.database.adapter.MenuAdapter;
-import com.csf.whoami.database.dto.MenuDomain;
 import com.csf.whoami.database.mappers.MenuMapper;
 import com.csf.whoami.database.models.TbMenu;
 import com.csf.whoami.database.repository.MenuRepository;

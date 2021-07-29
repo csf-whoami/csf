@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import com.csf.whoami.database.dto.TypeInfo;
+import com.csf.base.domain.TypeInfo;
 import com.csf.whoami.database.repository.TypeRepository;
 import com.csf.whoami.service.TypeService;
 

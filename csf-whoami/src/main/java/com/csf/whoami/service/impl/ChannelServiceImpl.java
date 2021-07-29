@@ -5,11 +5,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.whoami.database.adapter.ChannelAdapter;
-import com.csf.whoami.database.dto.response.ChannelInfo;
 import com.csf.whoami.database.models.TbChannel;
 import com.csf.whoami.database.repository.ChannelRepository;
 import com.csf.whoami.service.ChannelService;

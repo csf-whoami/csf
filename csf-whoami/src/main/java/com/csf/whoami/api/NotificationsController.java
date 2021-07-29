@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csf.whoami.database.dto.ChannelQuizDomain;
+import com.csf.base.domain.ChannelQuizDomain;
 import com.csf.whoami.service.NotificationService;
 
 import io.swagger.annotations.Api;

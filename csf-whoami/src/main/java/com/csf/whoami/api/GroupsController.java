@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csf.whoami.database.dto.response.GroupInfo;
+import com.csf.base.domain.response.GroupInfo;
 import com.csf.whoami.service.GroupService;
 
 import io.swagger.annotations.Api;

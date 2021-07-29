@@ -3,7 +3,7 @@
  */
 package com.csf.whoami.database.adapter;
 
-import com.csf.whoami.database.dto.response.GroupInfo;
+import com.csf.base.domain.response.GroupInfo;
 import com.csf.whoami.database.models.TbGroup;
 
 public class GroupAdapter {
