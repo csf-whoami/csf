@@ -9,13 +9,20 @@ allprojects {
         mavenCentral()
         jcenter()
     }
+
+    dependencies{
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+        // Swagger 2.
+        compile "io.springfox:springfox-swagger2:2.9.2"
+        compile "io.springfox:springfox-swagger-ui:2.9.2"
+    }
 }
 
 buildscript {
     ext {
         springBootVersion = '2.4.8'
         springManagementVersion = '1.0.11.RELEASE'
-        lombokVersion = '1.18.4'
         springCloudVersion = 'Hoxton.RELEASE'
     }
     repositories {
@@ -45,9 +52,7 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
 
     dependencies{
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.springframework.boot:spring-boot-configuration-processor"
-        compileOnly "org.projectlombok:lombok:${lombokVersion}"
     }
     dependencyManagement {
         imports {

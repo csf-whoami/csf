@@ -15,16 +15,18 @@ import com.csf.base.domain.ResponseDataAPI;
 import com.csf.whoami.service.MenuService;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping(ConstantsURL.API_MENU)
 @RequiredArgsConstructor
-@Api
+@Api(tags = "1. Menu functions")
 public class MenuController {
 
     private final MenuService menuService;
 
+    @ApiOperation(value = "1. Fetch menus by user")
     @GetMapping(ConstantsURL.ME_PATH)
     public ResponseEntity<ResponseDataAPI> fetchUserMenu() {
 
@@ -34,6 +36,7 @@ public class MenuController {
                 .build());
     }
 
+    @ApiOperation(value = "2. Register menu")
     @PostMapping(ConstantsURL.ME_PATH)
     public ResponseEntity<ResponseDataAPI> registerMenu(@RequestBody MenuDomain menu) {
         Long menuId = menuService.registerMenu(menu);

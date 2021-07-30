@@ -26,6 +26,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuDomain> getMenus() {
+//        AuthenticationInfo user = AuthenticationUtil.getUser();
         List<MenuView> menus = menuMapper.fetchMenuByCondition();
         return menus.stream().map(mnu -> ConvertMenuDTO.viewToVo(mnu)).collect(Collectors.toList());
     }
