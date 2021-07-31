@@ -18,7 +18,7 @@ public class MenuDomain {
     @ApiModelProperty(value = "Ngôn ngữ", position = 4)
     private String locale                = null;
     @ApiModelProperty(value = "Menu con", position = 5)
-    private Long parentMenu              = null;
+    private String parentMenu            = null;
     @ApiModelProperty(value = "Có phải là menu nhiều cấp hay không", position = 6)
     private boolean root                 = false;
 }

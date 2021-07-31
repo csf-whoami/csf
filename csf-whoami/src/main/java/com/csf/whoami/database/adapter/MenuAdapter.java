@@ -16,7 +16,7 @@ public class MenuAdapter {
 		domain.setMenuName(entity.getMenuName());
 		domain.setLinkScreen(entity.getLinkScreen());
 		domain.setLocale(entity.getLocale());
-		domain.setParentMenu(entity.getParentMenu());
+		domain.setParentMenu(StringUtils.fromLong(entity.getParentMenu()));
 		domain.setRoot(entity.getParentMenu() != null);
 		return domain;
 	}
@@ -30,7 +30,7 @@ public class MenuAdapter {
 		entity.setMenuName(domain.getMenuName());
 		entity.setLinkScreen(domain.getLinkScreen());
 		entity.setLocale(domain.getLocale());
-		entity.setParentMenu(domain.getParentMenu());
+		entity.setParentMenu(StringUtils.toLongOrNull(domain.getParentMenu()));
 		return entity;
 	}
 }
