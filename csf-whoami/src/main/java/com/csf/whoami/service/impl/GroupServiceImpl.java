@@ -20,6 +20,7 @@ import com.csf.base.utilities.ObjectUtil;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.database.adapter.ConvertGroupDTO;
 import com.csf.whoami.database.adapter.GroupAdapter;
+import com.csf.whoami.database.mappers.GroupMapper;
 import com.csf.whoami.database.models.TbAccount;
 import com.csf.whoami.database.models.TbGroup;
 import com.csf.whoami.database.models.TbPinCode;
@@ -29,6 +30,7 @@ import com.csf.whoami.database.repository.ChannelRepository;
 import com.csf.whoami.database.repository.GroupRepository;
 import com.csf.whoami.database.repository.PinCodeRepository;
 import com.csf.whoami.database.repository.UserGroupRepository;
+import com.csf.whoami.database.view.GroupView;
 import com.csf.whoami.service.EmailService;
 import com.csf.whoami.service.GroupService;
 
@@ -44,21 +46,22 @@ public class GroupServiceImpl implements GroupService {
     private final ChannelRepository channelRepository;
     private final EmailService emailService;
     private final PinCodeRepository pinCodeRepository;
+    private final GroupMapper groupMapper;
 
     @Override
-    public List<GroupInfo> findAllByUser(String userId) {
-        List<TbGroup> entities = groupRepository.findAllByUser(userId);
+    public List<GroupInfo> findAllByUser(Long userId) {
+        List<GroupView> entities = groupMapper.findAllByUser(userId);
         List<GroupInfo> groups = new ArrayList<GroupInfo>();
-        for (TbGroup item : entities) {
-            groups.add(GroupAdapter.modelToDomain(item));
+        for (GroupView item : entities) {
+            groups.add(GroupAdapter.viewToDomain(item));
         }
         return groups;
     }
 
     @Override
     public GroupInfo getGroupByGroupUrl(String groupUrl) {
-        TbGroup group = groupRepository.findByGroupUrl(groupUrl);
-        return GroupAdapter.modelToDomain(group);
+    	GroupView group = groupMapper.findByGroupUrl(groupUrl);
+        return GroupAdapter.viewToDomain(group);
     }
 
     @Override
@@ -75,10 +78,10 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupInfo> getGroupsByUsername(String username) {
-        List<TbGroup> entities = groupRepository.findAllByUsername(username);
+        List<GroupView> entities = groupMapper.findAllByUsername(username);
         List<GroupInfo> groups = new ArrayList<GroupInfo>();
-        for (TbGroup item : entities) {
-            groups.add(GroupAdapter.modelToDomain(item));
+        for (GroupView item : entities) {
+            groups.add(GroupAdapter.viewToDomain(item));
         }
         return groups;
     }

@@ -5,8 +5,20 @@ package com.csf.whoami.database.adapter;
 
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.whoami.database.models.TbGroup;
+import com.csf.whoami.database.view.GroupView;
 
 public class GroupAdapter {
+
+    public static GroupInfo viewToDomain(GroupView view) {
+        if (view == null) {
+            return null;
+        }
+        GroupInfo domain = new GroupInfo();
+        domain.setId(String.valueOf(view.getId()));
+        domain.setGroupName(view.getGroupName());
+        domain.setGroupType(view.getGroupType());
+        return domain;
+    }
 
     public static GroupInfo modelToDomain(TbGroup entity) {
         if (entity == null) {
@@ -18,7 +30,7 @@ public class GroupAdapter {
         domain.setGroupType(entity.getGroupType());
         return domain;
     }
-    
+
     public static TbGroup domainToModel(GroupInfo domain) {
         if (domain == null) {
             return null;

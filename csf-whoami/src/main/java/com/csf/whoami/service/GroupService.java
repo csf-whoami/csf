@@ -11,7 +11,7 @@ import com.csf.base.domain.response.GroupInfo;
 
 public interface GroupService {
 
-    List<GroupInfo> findAllByUser(String userId);
+    List<GroupInfo> findAllByUser(Long userId);
 
     GroupInfo getGroupByGroupUrl(String groupUrl);
 

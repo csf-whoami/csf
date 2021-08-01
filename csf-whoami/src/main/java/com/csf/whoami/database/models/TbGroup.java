@@ -25,6 +25,9 @@ public class TbGroup extends BaseEntity {
     @Column(name = "GROUP_TYPE")
     private String groupType;
 
+    @Column(name = "GROUP_OWNER")
+    private Long groupOwner;
+
     @Column(name = "IS_PUBLISH")
     private String isPublish;
 
