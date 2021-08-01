@@ -67,8 +67,8 @@ public class GroupServiceImpl implements GroupService {
         entity = groupRepository.save(entity);
         if (entity == null) {
             throw new CustomException(ErrorException.CANT_CREATE_GROUP.getMessage(),
-            		ErrorException.CANT_CREATE_GROUP.getCode(),
-            		HttpStatus.BAD_REQUEST);
+                    ErrorException.CANT_CREATE_GROUP.getCode(),
+                    HttpStatus.BAD_REQUEST);
         }
         return entity.getId();
     }

@@ -25,7 +25,6 @@ public class BaseAdapter {
             U obj = clazz.newInstance();
             Field[] fields = inputObj.getClass().getDeclaredFields();
             for(Field item : fields) {
-                System.out.println("Type of item name: " + item.getType());
                 Object value = runGetter(item, inputObj);
 
                 Field fieldName = null;
@@ -39,7 +38,7 @@ public class BaseAdapter {
                 if (fieldName != null) {
                     // Set value to properties.
                     Object type = convertType(value, item, fieldName);
-                    runSetter(fieldName, obj, value);
+                    runSetter(fieldName, obj, type);
                 } else {
                     Field[] destinationFields = obj.getClass().getDeclaredFields();
                     for(Field desItem : destinationFields) {
@@ -49,7 +48,6 @@ public class BaseAdapter {
                             propertiesName = desItem.getName();
                         }
                         if (!StringUtils.isNullOrEmpty(propertiesName) && item.getName().equals(propertiesName)) {
-                            System.out.println("Type of desItem name: " + desItem.getType());
                             runSetter(desItem, obj, value);
                         }
                     }
@@ -81,6 +79,7 @@ public class BaseAdapter {
                 || float.class.isAssignableFrom(value.getClass()) || value instanceof Float
                 || double.class.isAssignableFrom(value.getClass()) || value instanceof Double) {
             midleConvert = String.valueOf(value);
+//            return midleConvert;
         } else if (value instanceof Date) {
             // Convert date.
         }

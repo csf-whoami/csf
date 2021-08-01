@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,11 +27,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.csf.base.domain.response.AuthenticationInfo;
 import com.csf.base.domain.response.GroupInfo;
+import com.csf.base.exception.CustomException;
+import com.csf.base.exception.ErrorException;
+import com.csf.base.exception.HttpStatus;
+import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.service.GroupService;
+import com.csf.whoami.utilities.AuthenticationUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,15 +46,20 @@ import lombok.RequiredArgsConstructor;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/groups")
-@Api
+@Api(tags = "3. Group functions")
 @RequiredArgsConstructor
 public class GroupsController {
 
 	private final GroupService groupsService;
 
-	@ApiOperation(value = "Phương thức tìm kiếm Group trong hệ thống.")
+	@ApiOperation(value = "1. Phương thức tìm kiếm Group trong hệ thống.")
 	@PostMapping(value = "/find-group", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public GroupInfo findGroup(@RequestBody String groupUrl) {
+		AuthenticationInfo user = AuthenticationUtil.getUser();
+		Long userId = StringUtils.toLongOrNull(user.getUserId());
+		if (userId == null) {
+			throw new CustomException(ErrorException.INVALID_USER.getMessage(), ErrorException.INVALID_USER.getCode(), HttpStatus.BAD_GATEWAY);
+		}
 		return groupsService.getGroupByGroupUrl(groupUrl);
 	}
 
@@ -86,7 +95,7 @@ public class GroupsController {
 
 	@ApiOperation(value = "Phương thức lấy thông tin của người dùng.")
 	@GetMapping("/findByUser/{username}")
-	@ResponseStatus(HttpStatus.OK)
+//	@ResponseStatus(HttpStatus.OK)
 //	@Secured({ "ROLE_ADMIN" })
 	public List<GroupInfo> findGroupsByUsername(@RequestParam("username") String username,
 			@ApiParam(hidden = true) Authentication auth) {
@@ -106,7 +115,7 @@ public class GroupsController {
 
 	@ApiOperation(value = "Phương thức thêm người dùng vào trong nhóm.")
 	@PostMapping("/{groupid}/{userid}")
-	@ResponseStatus(HttpStatus.OK)
+//	@ResponseStatus(HttpStatus.OK)
 //	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	public boolean addUserToGroups(@RequestParam("groupid") String groupId,
 			@RequestParam("userid") String userId, @ApiParam(hidden = true) Authentication auth) throws Exception {
@@ -118,7 +127,7 @@ public class GroupsController {
 
 	@ApiOperation(value = "Phương thức cập nhật thông tin cho Group.")
 	@PutMapping("/")
-	@ResponseStatus(HttpStatus.OK)
+//	@ResponseStatus(HttpStatus.OK)
 //	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	public GroupInfo updateGroupInfo(@PathVariable("groupid") String groupId,
 			@RequestBody GroupInfo domain, @ApiParam(hidden = true) Authentication auth) throws Exception {

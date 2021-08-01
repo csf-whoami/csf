@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter @Setter
 public class AuthenticationInfo {
 
+	private String userId;
     private String loginName;
     private String token;
     private List<RoleInfo> roles;
