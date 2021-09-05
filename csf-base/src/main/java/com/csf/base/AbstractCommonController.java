@@ -24,14 +24,6 @@ import com.csf.base.core.common.StrUtils;
 import com.csf.base.core.paging.PageQuery;
 import com.csf.base.core.util.UnpCollectionUtils;
 
-/**
- * CRUD콘트롤러를 위한 추상화컨트롤러이다.
- * 키값이되는 programId로 서비스를 찾는다. 게시판의 경우 bbsId가 될수 있음.
- * 찾은 서비스는 실제구현서비스이며 컨트롤러의 패스버라이어블 targetMethod로
- * 동적으로 메소드를 찾아 실행한다.
- * @author KHD
- *
- */
 public abstract class AbstractCommonController {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());

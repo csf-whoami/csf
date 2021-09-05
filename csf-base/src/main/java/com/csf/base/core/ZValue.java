@@ -323,22 +323,6 @@ public class ZValue extends ListOrderedMap implements java.io.Serializable {
 	}
 
 	public static void main(String[] args) throws Exception {
-		/*
-		 * ZValue zvl1 = new ZValue(); zvl1.put("k1", "v11"); zvl1.put("k2",
-		 * "v12"); zvl1.put("k3", "v12");
-		 *
-		 * ZValue zvl2 = new ZValue(); zvl2.put("k1", "v21"); zvl2.put("k2",
-		 * "v22"); zvl2.put("k3", "v22");
-		 *
-		 * ZValue zvl3 = new ZValue(); zvl3.put("k1", "v31"); zvl3.put("k2",
-		 * "v32"); zvl3.put("k3", "v32");
-		 *
-		 * ArrayList list = new ArrayList(); list.add(zvl1); list.add(zvl2);
-		 * list.add(zvl3);
-		 *
-		 * String jsonV = ZValue.getArrayJSONValue(list);
-		 * System.out.println(jsonV);
-		 */
 
 		ZValue zvl1 = new ZValue();
 		zvl1.put("k1", "v11");

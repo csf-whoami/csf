@@ -1,18 +1,17 @@
 package com.csf.whoami.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.core.ZValue;
 import com.csf.base.domain.MenuDomain;
-import com.csf.whoami.database.adapter.ConvertMenuDTO;
 import com.csf.whoami.database.adapter.MenuAdapter;
 import com.csf.whoami.database.mappers.MenuMapper;
 import com.csf.whoami.database.models.TbMenu;
 import com.csf.whoami.database.repository.MenuRepository;
-import com.csf.whoami.database.view.MenuView;
 import com.csf.whoami.service.MenuService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,8 +25,15 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuDomain> getMenus() {
-        List<MenuView> menus = menuMapper.fetchMenuByCondition();
-        return menus.stream().map(mnu -> ConvertMenuDTO.viewToVo(mnu)).collect(Collectors.toList());
+        List<ZValue> menus = menuMapper.fetchMenuByCondition();
+//        return menus.stream().map(mnu -> ConvertMenuDTO.viewToVo(mnu)).collect(Collectors.toList());
+        for(ZValue item : menus) {
+        	System.out.println("data: " + item);
+        	System.out.println("ID: " + item.getLong("id"));
+        	System.out.println("Menu name: " + item.getString("menuName"));
+        	System.out.println("Link screen: " + item.getString("linkScreen"));
+        }
+        return new ArrayList<>();
     }
 
     @Transactional
