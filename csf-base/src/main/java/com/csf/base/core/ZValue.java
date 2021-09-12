@@ -12,7 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ZValue extends ListOrderedMap implements java.io.Serializable {
-	private static final long serialVersionUID = 5849794470754667710L;
+
+	private static final long serialVersionUID = 2206001979803073944L;
 
 	protected Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -126,14 +127,14 @@ public class ZValue extends ListOrderedMap implements java.io.Serializable {
 	public List<String> getList(String s) {
 		Object obj = super.get(s);
 		if(obj == null) {
-			ArrayList<String> al = new ArrayList<String>();
+			ArrayList<String> al = new ArrayList<>();
 			putObject(s, al);
 			return al;
 		}
 		if(obj instanceof List){
 			return (List<String>)obj;
 		}
-		List<String> al = new ArrayList<String>();
+		List<String> al = new ArrayList<>();
 		try {
 			Class<?> class1 = obj.getClass();
 			if (obj != null) {
@@ -161,7 +162,7 @@ public class ZValue extends ListOrderedMap implements java.io.Serializable {
 
 	@SuppressWarnings("unchecked")
 	public List<String> getStartWithList(String s){
-		List<String> al = new ArrayList<String>();
+		List<String> al = new ArrayList<>();
 		Iterator<String> it = keySet().iterator();
 		while(it.hasNext()){
 			String key = it.next();
@@ -189,18 +190,16 @@ public class ZValue extends ListOrderedMap implements java.io.Serializable {
 			else
 				as[i] = "";
 		}
-
 		super.put(s, as);
 	}
 
-    @SuppressWarnings("rawtypes")
+	@SuppressWarnings("rawtypes")
 	public void putAllObject(Map map) {
-        for (Iterator it = map.entrySet().iterator(); it.hasNext();) {
-            Map.Entry entry = (Map.Entry) it.next();
-            putObject(entry.getKey(), entry.getValue());
-        }
-    }
-
+		for (Iterator it = map.entrySet().iterator(); it.hasNext();) {
+			Map.Entry entry = (Map.Entry) it.next();
+			putObject(entry.getKey(), entry.getValue());
+		}
+	}
 
 	protected static String removeComma(String s) {
 		if (s == null)
@@ -321,15 +320,4 @@ public class ZValue extends ListOrderedMap implements java.io.Serializable {
 			return null;
 		}
 	}
-
-	public static void main(String[] args) throws Exception {
-
-		ZValue zvl1 = new ZValue();
-		zvl1.put("k1", "v11");
-		zvl1.put("k2", "v12");
-		zvl1.put("k3", "v12");
-		zvl1.put("arr", new String[] { "1", "2", "3" });
-
-	}
-
 }
