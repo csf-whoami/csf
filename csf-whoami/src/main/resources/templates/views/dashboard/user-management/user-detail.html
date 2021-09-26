@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="ko"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/default">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <th:block layout:fragment="content">
+        <!-- Begin 일반 게시물 -->
+        <div class="app-body post-list">
+            <main class="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                              <form th:action="@{/me/users/detail}" th:object="${datas}" method="POST">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <th:block th:utext="Title"></th:block>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="pt-3 overscroll-mobile ">
+                                            <!-- Begin info -->
+                                            <table class="table custom-table table-bordered w-250">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="font-weight-bold">isActive<span class="red-point">*</span></td>
+                                                        <td colspan="3">
+                                                            <div class="content-button d-flex align-items-center">
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{usable}" id="usable-radio1" name="usable-check" 
+                                                                                                             value="Y" class="custom-control-input"
+                                                                                                             th:checked="${ datas.usable == null || datas.usable == '' || 'N' != datas.usable }">
+                                                                    <label class="custom-control-label" for="usable-radio1">used</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{usable}" id="usable-radio2" name="usable-check"
+                                                                                                             value="N" class="custom-control-input"
+                                                                                                             th:checked="${ 'N' == datas.usable }">
+                                                                    <label class="custom-control-label" for="usable-radio2">unused</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">User name<span class="red-point">*</span></td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <input type="text" name="username" class="form-control" id="publisherName" 
+                                                                                   th:value="${datas == null ? '' : datas.username}"
+                                                                                   th:field="*{username}"
+                                                                                   placeholder="Please input username">
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Role</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <select class="form-control" th:field="*{roleId}">
+                                                                    <option value="0">Please select Role</option>
+                                                                    <option th:each="role : ${datas.roles}"
+                                                                            th:text="${role.roleName}" 
+                                                                            th:value="${role.roleId}"
+                                                                            th:selected="${datas != null && datas.roleId != null 
+                                                                                                            && #strings.equals(datas.roleId, #strings.toString(role.roleId))}"></option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Email</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <input type="text" name="email" class="form-control"
+                                                                                   th:value="${datas == null ? '' : datas.email}"
+                                                                                   th:field="*{email}"
+                                                                                   placeholder="Please input email.">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Full name<span class="red-point">*</span></td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <input type="text" name="fullname" class="form-control" 
+                                                                                   th:value="${datas == null ? '' : datas.fullName}"
+                                                                                   th:field="*{fullName}" 
+                                                                                   placeholder="Please input full name.">
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Phone</td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <input type="text" name="phone" class="form-control" 
+                                                                                   th:value="${datas == null ? '' : datas.phone}"
+                                                                                   th:field="*{phone}" 
+                                                                                   placeholder="Please input phone.">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Address</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <input type="text" name="address" class="form-control"
+                                                                                   th:value="${datas == null ? '' : datas.address}"
+                                                                                   th:field="*{address}"
+                                                                                   placeholder="Please input address.">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Register start date</td>
+                                                        <td>
+                                                            <div class="align-items-center">
+                                                                <div class="wrap-end-date d-flex align-items-center">
+                                                                    <input id="startDate" name="contractStartedAt" class="form-control datepicker" size="36" autocomplete="off" 
+                                                                                          placeholder="Please input date"
+                                                                                          th:value="${datas == null ? '' : datas.startedAt}"
+                                                                                          th:field="*{startedAt}">
+                                                                    <em class="fa fa-calendar ml-2"></em>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Register end date</td>
+                                                        <td>
+                                                            <div class="align-items-center">
+                                                                <div class="wrap-end-date d-flex align-items-center">
+                                                                    <input id="endDate" name="contractFinishedAt" class="form-control datepicker" size="36" autocomplete="off" 
+                                                                                        placeholder="Please input date"
+                                                                                        th:value="${datas == null ? '' : datas.finishedAt}"
+                                                                                        th:field="*{finishedAt}">
+                                                                    <em class="fa fa-calendar ml-2"></em>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- End info -->
+                                        </div>
+                                    </div>
+                                    <div class="card-header border-top">Personal information</div>
+                                    <div class="card-body">
+                                        <div class="table-detail-info pt-3 overscroll-mobile ">
+                                            <!-- Begin info -->
+                                            <table class="table custom-table table-bordered w-250">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Avatar<span class="red-point">*</span></td>
+                                                        <td colspan="3">
+                                                            <div class="text-left uploadImage">
+                                                                <div class="input-group">
+                                                                    <div class="custom-file text-left banner-thumbnail">
+                                                                        <input type="file" class="custom-file-input" id="uploadThumbnailImage" name="filename" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                                                        <label class="custom-file-label banner" for="uploadThumbnailImage">Please select image</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Keyword<span class="red-point">*</span></td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <input type="text" id="keyword" class="form-control" placeholder="Please input keyword">
+                                                                <div class="input-group-append">
+                                                                    <button class="input-group-text" type="button" th:onclick="|insertKeyword()|" id="addKeyWords">Enroll</button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="display:none;">
+                                                        <td colspan="4" class="custom-tag register">
+                                                            <div class="tag-wrap mt-2" id="listTagKeyWord">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Description</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <textarea placeholder="Input description" id="description" class="form-control" rows="5" cols="12"></textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- End info -->
+                                        </div>
+                                    </div>
+                                    <div class="group-btn-bottom text-right mb-3">
+                                        <th:block th:if="${datas == null || #strings.isEmpty(datas.id)}">
+                                            <button class="btn btn-primary" type="submit">button.register</button>
+                                        </th:block>
+                                        <th:block th:if="${datas != null && !#strings.isEmpty(datas.id)}">
+                                            <button class="btn btn-primary" type="submit">button.modify</button>
+                                        </th:block>
+                                        <button class="btn btn-secondary" type="button" th:onclick="|window.location.href='@{/me/users/management}'|">button.cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- Import javaScript. -->
+        <!-- <div th:include="fragments/modal/oneButtonModal :: oneModal"></div> -->
+        <script type="text/javascript" th:src="@{/pageJs/modal.js}"></script>
+        <script type="text/javascript" th:src="@{/lib/jquery/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/plugin/vendor.min.js}"></script>
+        <script type="text/javascript" th:src="@{/pageJs/paging.js}"></script>
+        <script type="text/javascript" th:src="@{/pageJs/user-mng.js}"></script>
+        <!-- END import javaScript. -->
+    </th:block>
+</html>

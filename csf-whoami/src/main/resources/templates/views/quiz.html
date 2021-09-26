@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/quiz/quiz.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/quiz/quiz-new.css}">
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/quiz/chief-app.css}"> -->
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/quiz/css}"> -->
+
+<body class="app flex-row align-items-center">
+
+    <div id="root">
+        <div class="app__Root-sc-1pn0tbg-0 ikTUMA BaseStylesRoot-sc-1e3800-0 kAPuDf">
+            <div class="Split-sc-3xe4fi-0 eIavbN" height="full" orientation="vertical">
+                <div class="SplitItem-sc-3xe4fi-1 gUIYuV">
+                    <div>
+                        <div class="BaseStylesRoot-sc-1e3800-0 kAPuDf">
+                            <header>
+                                <div class="form-header__HeaderWrapper-sc-51s4gn-0 dfhGCR">
+                                    <div class="Container-sc-14tr3x4-0 eCSTUJ">
+                                        <div class="form-header__HeaderSections-sc-51s4gn-1 gqnzkC">
+                                            <div class="form-header__LeftSection-sc-51s4gn-2 eNGRBb">
+                                                <div class="Split-sc-3xe4fi-0 eHAhWt"
+                                                    orientation="horizontal">
+                                                    <div class="SplitItem-sc-3xe4fi-1 fxAKpt" width="64px">
+                                                        <div class="Align-sc-1shbtnq-0 kQtUoA" width="100%"
+                                                            height="100%">
+                                                            <a class="Link-sc-1bfji0h-0 hrVEJo" href="#" color="rgb(63, 141, 139)">
+                                                                <div class="LogoRoot-z2yz42-0 dzvAIR">
+                                                                    <span class="SVGInline">
+                                                                        <svg class="SVGInline-svg" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                                                                            <g fill="none" fill-rule="evenodd">
+                                                                                <path class="typeform--logo__fill" fill-rule="nonzero" d="M12.555 14.018V12.11h10.779v1.907h-4.315v10.93h-2.15v-10.93z"></path>
+                                                                                <path d="M19.266 35.497c4.542-.096 7.401-2.99 10.648-6.474s5.613-6.218 5.586-10.946c-.028-4.727-2.26-9.177-5.723-12.692C26.314 1.871 22.677.39 18.182.506 13.687.623 10.837 2.908 7.301 5.97 3.764 9.031.519 11.107.501 15.814c-.02 4.707 2.953 9.754 6.706 13.69 3.753 3.937 7.518 6.09 12.06 5.993h-.001z" class="typeform--logo__stroke" stroke-width=".5"></path>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </span>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SplitItem-sc-3xe4fi-1 hfkWMY">
+                                                        <div class="Container-sc-14tr3x4-0 blcpZK" height="32px"
+                                                            width="1px"></div>
+                                                    </div>
+                                                    <div class="SplitItem-sc-3xe4fi-1 gUIYuV">
+                                                        <div class="Distribute-oruih0-0 hPVUGI"
+                                                            orientation="horizontal">
+                                                            <a class="Link-sc-1bfji0h-0 bEIdLe" color="#898989"
+                                                                href="./GbLA88"><div
+                                                                    class="TooltipRoot-sc-132zjtq-2 ctqUEg">
+                                                                    <div class="TooltipBox-sc-132zjtq-1 fdfWWU"
+                                                                        width="auto">
+                                                                        <div class="TooltipArrow-sc-1beijho-0 dOoXpl"></div>
+                                                                        <div class="TooltipContent-sc-132zjtq-0 fUKwSU">My
+                                                                            workspace</div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="workspace-button__Wrapper-sc-15y85dz-0 jVkXVV">
+                                                                        <span class="Text-wqps8m-0 dkUcjm" font-family="sans">My
+                                                                            workspace</span>
+                                                                    </div>
+                                                                </div></a><span class="Text-wqps8m-0 kDpvud" color="#898989"
+                                                                font-family="sans">/</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="SplitItem-sc-3xe4fi-1 hqqccI" width="remaining">
+                                                        <div
+                                                            class="form-header__FormTitleWrapper-sc-51s4gn-5 jMoNVz">
+                                                            <div class="InlineEditorRoot-sc-3cr9on-0 gnQTzw">
+                                                                <div class="Value-sc-3cr9on-1 fInGjM" value="Quiz test">Quiz test<span class="EmptyCharacter-sc-3cr9on-4 bdfDOC">&nbsp;</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="PopoverRoot-sc-1vzvfd2-0 eNbGaT"
+                                                                content="[object Object]">
+                                                                <div class="Trigger-sc-1vzvfd2-1 jBPXLW">
+                                                                    <div
+                                                                        class="form-status__LockIconWrapper-sc-1t3t426-2 KJeli">
+                                                                        <div
+                                                                            class="form-status__StatusTag-sc-1t3t426-1 dQMgOq">Private</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ContentWrapper-sc-1vzvfd2-2 kUpinb">
+                                                                    <div></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-header__CenterSection-sc-51s4gn-3 kiuzmU">
+                                                <div class="Align-sc-1shbtnq-0 kQtUoA" width="100%"
+                                                    height="100%">
+                                                    <ul class="TabListRoot-n8xd2n-0 dHRRTB" role="tablist">
+                                                        <li class="TabRoot-n8xd2n-1 lBDRN" kind="line"
+                                                            role="presentation" data-qa="form-tab-create"
+                                                            value="create"><a class="TabAnchor-n8xd2n-3 dYbnkI"
+                                                            aria-controls="main" aria-selected="true"
+                                                            href="./create"
+                                                            id="form-tab-create" role="tab">Create</a></li>
+                                                        <li class="TabRoot-n8xd2n-1 kwtDVe" kind="line"
+                                                            role="presentation" data-qa="form-tab-integrate"
+                                                            value="configure"><a
+                                                            class="TabAnchor-n8xd2n-3 dYbnkI" aria-controls="main"
+                                                            aria-selected="false"
+                                                            href="./configure/"
+                                                            id="form-tab-integrate" role="tab" tabindex="-1">Review</a></li>
+                                                        <li class="TabRoot-n8xd2n-1 kwtDVe" kind="line"
+                                                            role="presentation" data-qa="form-tab-share"
+                                                            value="share"><a class="TabAnchor-n8xd2n-3 dYbnkI"
+                                                            aria-controls="main" aria-selected="false"
+                                                            href="./share"
+                                                            id="form-tab-share" role="tab" tabindex="-1">Test</a></li>
+                                                        <li class="TabRoot-n8xd2n-1 kwtDVe" kind="line"
+                                                            role="presentation" data-qa="form-tab-results"
+                                                            value="results"><a class="TabAnchor-n8xd2n-3 dYbnkI"
+                                                            aria-controls="main" aria-selected="false"
+                                                            href="./results"
+                                                            id="form-tab-results" role="tab" tabindex="-1">Results</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="form-header__RightSection-sc-51s4gn-4 dSAydj">
+                                                <div class="Align-sc-1shbtnq-0 eFXxtu" width="100%"
+                                                    height="100%">
+                                                    <div class="Distribute-oruih0-0 RRidE"
+                                                        orientation="horizontal">
+                                                        <div class="Split-sc-3xe4fi-0 eHAhWt"
+                                                            orientation="horizontal">
+                                                            <div class="SplitItem-sc-3xe4fi-1 gUIYuV">
+                                                                <div class="Distribute-oruih0-0 bpHbXx"
+                                                                    orientation="horizontal">
+                                                                    <div class="PopoverRoot-sc-1vzvfd2-0 eNbGaT"
+                                                                        content="[object Object]">
+                                                                        <div class="Trigger-sc-1vzvfd2-1 jBPXLW">
+                                                                            <a class="Link-sc-1bfji0h-0 ecpPgs" color="#898989"><span
+                                                                                data-qa="header-saving">Saved</span></a>
+                                                                        </div>
+                                                                        <div class="ContentWrapper-sc-1vzvfd2-2 kUpinb">
+                                                                            <div></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <button class="ButtonRoot-sc-1dguzy0-0 exKUrx"
+                                                                        data-qa="view-draft-btn">
+                                                                        <div class="Distribute-oruih0-0 hZoDMF"
+                                                                            orientation="horizontal">
+                                                                            <div
+                                                                                class="IconRoot-tvakxr-0 ghLhET Align-sc-1shbtnq-0 jSseXd"
+                                                                                height="auto" width="auto" color="#262627">
+                                                                                <span class="SVGInline"><svg
+                                                                                        class="SVGInline-svg" width="16" height="11"
+                                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path
+                                                                                            d="M9.532 5.895c0 .825-.672 1.493-1.502 1.493S6.528 6.72 6.528 5.895c0-.824.673-1.492 1.502-1.492.83 0 1.502.668 1.502 1.492z"></path>
+                                                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                            d="M3.004 2.483A8.82 8.82 0 0 0 0 5.985a9.1 9.1 0 0 0 2.904 3.383 8.884 8.884 0 0 0 10.746-.386A8.783 8.783 0 0 0 16 5.985a8.843 8.843 0 0 0-3.184-3.592 9.053 9.053 0 0 0-9.812.09zm3.06.567a3.52 3.52 0 0 1 4.424.433 3.472 3.472 0 0 1 .436 4.397A3.5 3.5 0 0 1 9.35 9.163a3.525 3.525 0 0 1-3.819-.755 3.462 3.462 0 0 1-.76-3.795A3.487 3.487 0 0 1 6.063 3.05z"></path></svg></span>
+                                                                            </div>
+                                                                            <span class="Text-wqps8m-0 gNQquP" font-family="sans">Preview
+                                                                            </span>
+                                                                        </div>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="SplitItem-sc-3xe4fi-1 grCRWF">
+                                                                <div class="Container-sc-14tr3x4-0 blcpZK" height="32px"
+                                                                    width="1px"></div>
+                                                            </div>
+                                                            <div class="SplitItem-sc-3xe4fi-1 gUIYuV">
+                                                                <div class="Spacer-cjod5i-0 khhlQC">
+                                                                    <a class="Link-sc-1bfji0h-0 hrVEJo"
+                                                                        data-qa="header-upgrade-to-pro"
+                                                                        color="rgb(63, 141, 139)"><button
+                                                                            class="ButtonRoot-sc-1dguzy0-0 dnQcEc">
+                                                                            <div class="Distribute-oruih0-0 hZoDMF"
+                                                                                orientation="horizontal">
+                                                                                <span class="Text-wqps8m-0 gNQquP"
+                                                                                    font-family="sans">Upgrade to PRO</span>
+                                                                            </div>
+                                                                        </button></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="SplitItem-sc-3xe4fi-1 gUIYuV">
+                                                                <div class="account-dropdown__Root-sc-1eei6rg-0 kpprAU">
+                                                                    <div class="PopoverRoot-sc-1vzvfd2-0 eNbGaT"
+                                                                        content="[object Object]" width="none">
+                                                                        <div class="Trigger-sc-1vzvfd2-1 jBPXLW">
+                                                                            <div
+                                                                                class="account-dropdown__AccountDropdownBtn-sc-1eei6rg-1 eoxUQQ"
+                                                                                data-qa="header-account-dropdown">
+                                                                                <div class="Distribute-oruih0-0 bPImXl"
+                                                                                    orientation="horizontal">
+                                                                                    <div class="PictureWrapper-sc-15cvr7j-0 fuXfKb">
+                                                                                        <span
+                                                                                            class="AvatarText-sc-15cvr7j-1 bEEEVt Text-wqps8m-0 fjBRZp"
+                                                                                            font-weight="medium" font-family="sans">Tn</span><img
+                                                                                            alt="Gravatar for thanhngapham196@gmail.com"
+                                                                                            src="./Create _ Trivia Quiz (copy) _ Typeform_files/94bcb787b0f45355823aadb7fbf5e1f9.png"
+                                                                                            srcset="//www.gravatar.com/avatar/94bcb787b0f45355823aadb7fbf5e1f9?d=blank&amp;r=g&amp;s=100 2x"
+                                                                                            height="50" width="50"
+                                                                                            class="react-gravatar Picture-sc-15cvr7j-2 hJGLaD">
+                                                                                        <svg class="ShapeWrapper-sc-15cvr7j-3 cqCYBg"
+                                                                                            fill="#f09f97" height="32" width="32">
+                                                                                            <mask height="32" id="a"
+                                                                                                maskUnits="userSpaceOnUse" width="32" x="0"
+                                                                                                y="0">
+                                                                                            <circle cx="16" cy="16" fill="#ffffff" r="16"></circle></mask>
+                                                                                            <g fill="inherit" mask="url(#a)">
+                                                                                            <g>
+                                                                                            <path
+                                                                                                d="M39.237 33.084c-3.606 8.068-22.908 6.738-30.975 3.131-8.067-3.606 3.272-3.645 6.879-11.712 3.606-8.067 7.952-16.162 16.02-12.555 8.067 3.606 11.683 13.07 8.076 21.136z"></path>
+                                                                                            <path clip-rule="evenodd"
+                                                                                                d="M-2.883 18.72c-1.415-.532-2.799-1.65-4.165-3.45l.797-.605c1.296 1.708 2.539 2.675 3.72 3.118 1.168.439 2.326.383 3.5-.05 2.4-.884 4.81-3.313 7.277-6.208.733-.86 1.47-1.76 2.208-2.662 1.707-2.085 3.423-4.181 5.124-5.827 2.42-2.34 5.018-3.98 7.726-3.187l-.281.96c-2.124-.622-4.337.614-6.75 2.946-1.658 1.604-3.312 3.625-4.999 5.686-.748.914-1.502 1.836-2.267 2.733-2.448 2.872-5.013 5.51-7.692 6.497-1.364.503-2.771.584-4.198.048z"
+                                                                                                fill-rule="evenodd"></path></g></g></svg>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="IconRoot-tvakxr-0 gpzNiS Align-sc-1shbtnq-0 jSseXd"
+                                                                                        height="auto" width="auto"
+                                                                                        data-qa="desktop-menu-down-icon" color="#898989">
+                                                                                        <span class="SVGInline"><svg
+                                                                                                class="SVGInline-svg" width="12" height="7"
+                                                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                                                    d="M6.00008 3.58581L3.12139 0.707124C2.34035 -0.0739251 1.07402 -0.0739234 0.292969 0.707125L6.00008 6.41423L11.7072 0.707125C10.9261 -0.0739234 9.6598 -0.0739234 8.87876 0.707125L6.00008 3.58581Z"></path></svg></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="ContentWrapper-sc-1vzvfd2-2 iPhDdx">
+                                                                            <div class="AnimateRoot-sc-8m2keq-0 cOBWBU">
+                                                                                <div></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div></div>
+                                    <div class="AnimateRoot-sc-8m2keq-0 eDPEWi">
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+                <div class="SplitItem-sc-3xe4fi-1 fPmOVa" height="remaining">
+                    <div class="layouts__Body-v1luab-0 faTfWp">
+                        <th:block th:replace="/template/quizMenu"></th:block>
+                        <th:block th:replace="/template/quizContent"></th:block>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/lib/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/pageJs/quiz/quiz.js}"></script>
+
+</body>
+</html>

@@ -49,34 +49,34 @@ public class AnnotationIntrospector {
     /**
      * @param args
      */
-    public static void main(String[] args) {
-        AnnotationIntrospector ai = new AnnotationIntrospector();
-        Annotation[] annotations;
-//        Class<DestinationClass> userClass = DestinationClass.class;
-//        String methodDoStuff = "doStuff";
-        String fieldId = "id";
-//        String fieldAddress = "address";
-
-        // Find class annotations
-//        annotations = ai.findClassAnnotation(DestinationClass.class);
-//        System.out.println("Annotation on class '" + userClass.getName() + "' are:");
+//    public static void main(String[] args) {
+//        AnnotationIntrospector ai = new AnnotationIntrospector();
+//        Annotation[] annotations;
+////        Class<DestinationClass> userClass = DestinationClass.class;
+////        String methodDoStuff = "doStuff";
+//        String fieldId = "id";
+////        String fieldAddress = "address";
+//
+//        // Find class annotations
+////        annotations = ai.findClassAnnotation(DestinationClass.class);
+////        System.out.println("Annotation on class '" + userClass.getName() + "' are:");
+////        showAnnotations(annotations);
+//
+//        // Find method annotations
+////        annotations = ai.findMethodAnnotation(DestinationClass.class, methodDoStuff);
+////        System.out.println("Annotation on method '" + methodDoStuff + "' are:");
+////        showAnnotations(annotations);
+//
+//        // Find field annotations
+//        annotations = ai.findFieldAnnotation(DestinationClass.class, fieldId);
+//        System.out.println("Annotation on field '" + fieldId + "' are:");
 //        showAnnotations(annotations);
-
-        // Find method annotations
-//        annotations = ai.findMethodAnnotation(DestinationClass.class, methodDoStuff);
-//        System.out.println("Annotation on method '" + methodDoStuff + "' are:");
-//        showAnnotations(annotations);
-
-        // Find field annotations
-        annotations = ai.findFieldAnnotation(DestinationClass.class, fieldId);
-        System.out.println("Annotation on field '" + fieldId + "' are:");
-        showAnnotations(annotations);
-
-//        annotations = ai.findFieldAnnotation(DestinationClass.class, fieldAddress);
-//        System.out.println("Annotation on field '" + fieldAddress + "' are:");
-//        showAnnotations(annotations);
-
-    }
+//
+////        annotations = ai.findFieldAnnotation(DestinationClass.class, fieldAddress);
+////        System.out.println("Annotation on field '" + fieldAddress + "' are:");
+////        showAnnotations(annotations);
+//
+//    }
 
     public static void showAnnotations(Annotation[] ann) {
         if (ann == null)

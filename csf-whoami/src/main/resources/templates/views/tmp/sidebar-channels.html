@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head></head>
+    <body>
+        <ul class="channels_list">
+            <li class="channels_item" th:each="data : ${channelDatas}">
+                <button class="channels_button" th:id="${'channel-' + data.id}">
+                    <span>[[${data.name}]]</span>
+                </button>
+            </li>
+        </ul>
+    </body>
+</html>

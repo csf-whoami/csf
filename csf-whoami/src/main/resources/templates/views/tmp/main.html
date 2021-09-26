@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="en"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/default"
+    class="" style="--column-bg:#4d394b; --active-item:#4c9689; --hover-item:#3e313c; --text-color:#ffffff; --active-presence:#38978d; --mention-badge:#eb4d5c; --menu-bg-hover:#3e313c; --active-item-text:#ffffff;">
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" class="INLINE_PEN_STYLESHEET_ID" type="text/css" th:href="@{/css/main.css}">
+    <!-- <link rel="stylesheet" class="INLINE_PEN_STYLESHEET_ID" type="text/css" th:href="@{/css/bootstrap.min.css}"> -->
+
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-d8236034cc3508e70b0763f2575a8bb5850f9aea541206ce56704c013047d712.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+
+    <th:block layout:fragment="content">
+        <main class="main">
+            <div class="slack">
+                <nav class="teams">
+                    <ul class="teams_list">
+                        <li class="teams_item" th:each="data, index : ${groups}">
+                            <button th:id="${'item-' + data.id}"
+                                    th:class="${data.active == 'true' ? 'teams_button teams_button--active' : 'teams_button'}">[[${data.name}]]</button>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="sidebar">
+                    <button class="team-menu">
+                        <div class="team-menu_info">
+                            <h1 class="team-menu_name">Dumbledore's Army</h1>
+                            <div class="team-menu_status">
+                                <span class="team-menu_username">ramenhog</span>
+                            </div>
+                        </div>
+                        <span class="team-menu_alarm ion-ios-bell-outline"></span>
+                    </button>
+                    <div class="threads">
+                        <span class="ion-chatbubble-working threads_icon"></span> All
+                        Threads
+                    </div>
+                    <div class="channels">
+                        <h2 class="channels_heading">
+                            <span>Channels <span class="channels_number">(16)</span>
+                            </span>
+                            <button class="ion-ios-plus-outline channels_add"></button>
+                        </h2>
+                        <ul class="channels_list">
+                            <li class="channels_item" th:each="data, index : ${channels}">
+                                <button class="channels_button" th:id="${'channel-' + data.id}">
+                                    <span>[[${data.name}]]</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <th:block th:if="${not #lists.isEmpty(directMessages)}">
+                        <div class="dm">
+                            <h2 class="dm_heading">
+                                <span>Direct messages <span class="dm_number">(29)</span>
+                                </span>
+                                <button class="ion-ios-plus-outline dm_add"></button>
+                            </h2>
+                            <ul class="dm_list">
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--slackbot">
+                                        <span>slackbot</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--online">
+                                        <span>Harry Potter</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button">
+                                        <span>Hermoine Granger</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--online dm_button--active">
+                                        <span>Ron Weasley</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--online">
+                                        <span>Neville Longbottom</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button">
+                                        <span>Ginny Weasley</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--online">
+                                        <span>Luna Lovegood</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button">
+                                        <span>Cho Chang</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button">
+                                        <span>Seamus Finnigan</span>
+                                    </button>
+                                </li>
+                                <li class="dm_item">
+                                    <button class="dm_button dm_button--online">
+                                        <span>Lavender Brown</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </th:block>
+                </div>
+                <div class="main">
+                    <header class="main_header">
+                        <h1 class="main_h1">Your preferences for Dumbledore's Army</h1>
+                        <button class="ion-android-close"></button>
+                    </header>
+                    <div class="main_content fixed-top">
+                        <div class="container">
+                            <img src="/w3images/bandmember.jpg" alt="Avatar">
+                            <p>Hello. How are you today?</p>
+                            <span class="time-right">11:00</span>
+                        </div>
+                    </div>
+                    <div class="bottom-content">
+                        <div class="input-wrapper">
+                            <input type="text" placeholder="Input text here" />
+                        </div>
+                        <button type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script type="text/javascript" th:src="@{/pageJs/modal.js}"></script>
+        <script type="text/javascript" th:src="@{/lib/jquery/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/pageJs/main-mng.js}"></script>
+    </th:block>
+</html>

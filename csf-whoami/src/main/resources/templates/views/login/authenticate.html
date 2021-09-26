@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <body class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body form-login">
+                                <form id="loginForm" method="POST" th:action="@{/login/authenticate/__${group}__}" th:object="${datas}">
+                                    <h1 class="text-center">Login</h1>
+                                    <div class="input-group mb-3">
+                                        <label class="col-form-label">Email</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-user"></i>
+                                            </span>
+                                        </div>
+                                        <input class="form-control" type="text" name="username" id="username" placeholder="Please input email">
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <label class="col-form-label">Password</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="icon-lock"></i>
+                                            </span>
+                                        </div>
+                                        <input class="form-control" type="password" name="password" id="password" placeholder="Please input password">
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary px-4" data-toggle="modal" type="submit">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="idEmpty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog modal-primary" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="header-title">
+                            <h4 class="modal-title">[[#{login.note}]]</h4>
+                        </div>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>[[#{error.EL001}]]</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" data-dismiss="modal">[[#{login.confirm}]]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="passwordEmpty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog modal-primary" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="header-title">
+                            <h4 class="modal-title">[[#{login.note}]]</h4>
+                        </div>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>[[#{error.EL002}]]</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" data-dismiss="modal">[[#{login.confirm}]]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loginError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+            style="display: none;">
+            <div class="modal-dialog modal-primary" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="header-title">
+                            <h4 class="modal-title">[[#{login.note}]]</h4>
+                        </div>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>[[#{error.EL003}]]</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="button" data-dismiss="modal">[[#{login.confirm}]]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" th:src="@{/pageJs/login/login.js}"></script>
+    </body>
+</html>

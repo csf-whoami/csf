@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <body class="app flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body form-login">
+                                <form method="POST" th:action="@{/login/groups/confirm}" th:object="${group}">
+                                    <h1 class="text-center mb-3">Group Status</h1>
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" type="text" name="email" id="email" placeholder="input email.">
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary px-4" type="submit">Confirm</button>
+                                        </div>
+                                    </div>
+                                    <input hidden="hidden" name="id" th:value="${id}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
