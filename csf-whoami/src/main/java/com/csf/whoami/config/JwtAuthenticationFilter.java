@@ -28,75 +28,81 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 	@Autowired
-    private TokenProvider tokenProvider;
+	private TokenProvider tokenProvider;
 
-    /**
-     * @param req
-     * @param res
-     * @param chain
-     * @throws IOException
-     * @throws ServletException
-     * @description filter internal
-     */
-    @Override
-    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
-            throws IOException, ServletException {
-    	if (req.getServletPath().length() > 1) {
-    		String admRegex = "^\\/\\w{3}\\/.*$";
-    		Pattern checkRegex = Pattern.compile(admRegex);
-            Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
-            if (regexMatcher.matches()) {
-		    	Map<String, String> urlParams = fetchRequest(req);
-		    	if (urlParams == null) {
-		    		SecurityContextHolder.clearContext();
-		            ResponseDataAPI errorResponse = ResponseDataAPI.build();
-		            errorResponse.setSuccess(false);
-		            errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
-		            res.setStatus(HttpStatus.BAD_REQUEST.value());
-		            res.setContentType("application/json");
-		            res.getWriter().write(convertObjectToJson(errorResponse));
-		            return;
-		    	}
-            }
-    	}
+	@Override
+	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
+			throws IOException, ServletException {
 
-        String token = tokenProvider.resolveToken(req);
-        try {
-            if (token != null && tokenProvider.validateToken(token)) {
-                Authentication auth = tokenProvider.getAuthentication(token);
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            }
-        } catch (CustomException ex) {
-            SecurityContextHolder.clearContext();
-            ResponseDataAPI errorResponse = ResponseDataAPI.build();
-            errorResponse.setSuccess(false);
-            errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", ex.getMessage())));
-            res.setStatus(ex.getHttpStatus().value());
-            res.setContentType("application/json");
-            res.getWriter().write(convertObjectToJson(errorResponse));
-            return;
-        }
+		chain.doFilter(new SecurityFilterRequestWrapper(req), res);
 
-        chain.doFilter(req, res);
-    }
+		if (req.getServletPath().length() > 1) {
+			String admRegex = "^\\/\\w{3}\\/.*$";
+			Pattern checkRegex = Pattern.compile(admRegex);
+			Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
+			if (regexMatcher.matches()) {
+				Map<String, String> urlParams = fetchRequest(req);
+				if (urlParams == null) {
+					SecurityContextHolder.clearContext();
+					ResponseDataAPI errorResponse = ResponseDataAPI.build();
+					errorResponse.setSuccess(false);
+					errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
+					res.setStatus(HttpStatus.BAD_REQUEST.value());
+					res.setContentType("application/json");
+					res.getWriter().write(convertObjectToJson(errorResponse));
+					return;
+				}
+			}
+		}
 
-    private Map<String, String> fetchRequest(HttpServletRequest request) {
+		String token = tokenProvider.resolveToken(req);
+		try {
+			if (token != null && tokenProvider.validateToken(token)) {
+				Authentication auth = tokenProvider.getAuthentication(token);
+				SecurityContextHolder.getContext().setAuthentication(auth);
+			}
+		} catch (CustomException ex) {
+			SecurityContextHolder.clearContext();
+			ResponseDataAPI errorResponse = ResponseDataAPI.build();
+			errorResponse.setSuccess(false);
+			errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", ex.getMessage())));
+			res.setStatus(ex.getHttpStatus().value());
+			res.setContentType("application/json");
+			res.getWriter().write(convertObjectToJson(errorResponse));
+			return;
+		}
+
+		chain.doFilter(req, res);
+	}
+
+	private Map<String, String> fetchRequest(HttpServletRequest request) {
 		String urlPath = request.getServletPath();
 		String sysId = urlPath.substring(1, 4);
-		EProgramType type = EProgramType.valueOf(sysId.toUpperCase());
 		Map<String, String> requestParams = new HashMap<>();
 
-		switch (type) {
-		case ADMIN:
+		if("adm".equals(sysId)) {
 			return fetchAdmRequest(request);
-		case API:
-			return fetchApiRequest(request);
-		case WEB:
-			return fetchWebRequest(request);
-		default:
-			requestParams = null;
-			break;
 		}
+		if("api".equals(sysId)) {
+			return fetchApiRequest(request);
+		}
+		if("web".equals(sysId)) {
+			return fetchWebRequest(request);
+		}
+
+//		EProgramType type = EProgramType.valueOf(sysId.toUpperCase());
+//		switch (type) {
+//		case ADMIN:
+//			return fetchAdmRequest(request);
+//		case API:
+//			return fetchApiRequest(request);
+//		case WEB:
+//			return fetchWebRequest(request);
+//		default:
+//			requestParams = null;
+//			break;
+//		}
+
 		return requestParams;
 	}
 
@@ -111,49 +117,65 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	}
 
 	private Map<String, String> fetchAdmRequest(HttpServletRequest request) {
+
 		String urlPath = request.getServletPath();
-		String admRegex = "^\\/\\w{3}\\/(\\w+)\\/(\\w)\\/(\\w+)\\/(\\w{4})\\/(\\w+)\\/(\\w[\\w|-]+).html$";
-		Pattern checkRegex = Pattern.compile(admRegex);
-        Matcher regexMatcher = checkRegex.matcher(urlPath);
-        if (regexMatcher.matches() && regexMatcher.find()) {
-        	System.out.println("group(1): " + regexMatcher.group(1));
-        	System.out.println("group(2): " + regexMatcher.group(2));
-        	System.out.println("group(3): " + regexMatcher.group(3));
-        	System.out.println("group(4): " + regexMatcher.group(4));
-        	System.out.println("group(5): " + regexMatcher.group(5));
-        	System.out.println("group(6): " + regexMatcher.group(6));
-        }
+		String pattern = "^\\/(\\w{3})\\/(\\w{3})\\/(\\w)\\/(\\w+)\\/(\\w{4})\\/(\\w+)\\/(\\w[\\w|-]+).html.*$";
+
+		// Create a Pattern object
+		Pattern r = Pattern.compile(pattern);
+
+		// Now create matcher object.
+		Matcher m = r.matcher(urlPath);
+		if (m.find()) {
+			String type = m.group(1);
+			String pkg = m.group(2);
+			String appId = m.group(3);
+			String roleNm = m.group(4);
+			String cacheKey = m.group(5);
+			String programId = m.group(6);
+			String method = m.group(7);
+
+			// TODO: Show Detail
+			System.out.println("type: " + type);
+			System.out.println("pkg: " + pkg);
+			System.out.println("appId: " + appId);
+			System.out.println("roleNm: " + roleNm);
+			System.out.println("cacheKey: " + cacheKey);
+			System.out.println("programId: " + programId);
+			System.out.println("method: " + method);
+		}
+
+//		^\/\w{3}\/(\w+)\/(\w)\/(\w+)\/(\w{4})\/(\w+)\/(\w[\w|-]+).html$
+//		String urlPath = request.getServletPath();
+//		String admRegex = "\\/(\\w{3})\\/(\\w{3})\\/(\\w).*";
+//		Pattern checkRegex = Pattern.compile(admRegex);
+//		Matcher regexMatcher = checkRegex.matcher(urlPath);
+//		System.out.println("Match:" + regexMatcher.matches());
+//		System.out.println("find: " + regexMatcher.find());
+//		if (regexMatcher.matches() && regexMatcher.find()) {
+//			System.out.println("group(1): " + regexMatcher.group(1));
+//			System.out.println("group(2): " + regexMatcher.group(2));
+//			System.out.println("group(3): " + regexMatcher.group(3));
+//			System.out.println("group(4): " + regexMatcher.group(4));
+//			System.out.println("group(5): " + regexMatcher.group(5));
+//			System.out.println("group(6): " + regexMatcher.group(6));
+//		}
+
 		return null;
 	}
 
-	private String getFullURL(HttpServletRequest request) {
-    	System.out.println("getContextPath(): " + request.getContextPath());
-    	System.out.println("getRequestURL(): " + request.getRequestURL());
-    	System.out.println("getServletPath(): " + request.getServletPath());
-    	System.out.println("getPathInfo(): " + request.getPathInfo());
-    	
-        StringBuilder requestURL = new StringBuilder(request.getRequestURL().toString());
-        String queryString = request.getQueryString();
-
-        if (queryString == null) {
-            return requestURL.toString();
-        } else {
-            return requestURL.append('?').append(queryString).toString();
-        }
-    }
-
-    /**
-     * @author Tuan
-     * @param object
-     * @return String
-     * @throws JsonProcessingException
-     * @description convert object to Json
-     */
-    public String convertObjectToJson(Object object) throws JsonProcessingException {
-        if (object == null) {
-            return null;
-        }
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(object);
-    }
+	/**
+	 * @author Tuan
+	 * @param object
+	 * @return String
+	 * @throws JsonProcessingException
+	 * @description convert object to Json
+	 */
+	public String convertObjectToJson(Object object) throws JsonProcessingException {
+		if (object == null) {
+			return null;
+		}
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(object);
+	}
 }
