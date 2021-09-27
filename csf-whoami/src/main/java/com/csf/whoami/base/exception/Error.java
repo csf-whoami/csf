@@ -1,8 +1,15 @@
 package com.csf.whoami.base.exception;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
+
 /**
  * The enum Error.
  */
+@RequiredArgsConstructor
+@Getter
+@Accessors(fluent = true)
 public enum Error {
 
     INVALID_VALUE_FORMAT("C0001", "Invalid format"),
@@ -31,44 +38,7 @@ public enum Error {
     USER_IS_LOCK("S0020", "Your account has been temporarily locked.");
 
     private String code;
-
     private String message;
-
-    /**
-     * Gets code.
-     *
-     * @return the code
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Sets code.
-     *
-     * @param code the code
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    /**
-     * Gets message.
-     *
-     * @return the message
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Sets message.
-     *
-     * @param message the message
-     */
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     Error(String code, String message) {
         this.code = code;
