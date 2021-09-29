@@ -18,8 +18,10 @@ import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.base.service.CommonService;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+@RequiredArgsConstructor
 public abstract class AbsMasterController {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
