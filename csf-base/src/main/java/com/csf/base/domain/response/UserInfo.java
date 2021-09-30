@@ -55,10 +55,10 @@ public class UserInfo {
         this.id = StringUtils.fromLong(id);
         this.fullName = fullName;
         this.email = email;
-        this.createDate = DateTimeUtils.toString(createdAt, DateTimeUtils.YYYYMMDD);
+        this.createDate = DateTimeUtils.convertDateToString(createdAt, DateTimeUtils.YYYYMMDD);
         this.roleId = StringUtils.fromLong(roleId);
         this.roleName = roleName;
-        this.activedAt = DateTimeUtils.toString(activedAt, DateTimeUtils.YYYYMMDD);
+        this.activedAt = DateTimeUtils.convertDateToString(activedAt, DateTimeUtils.YYYYMMDD);
         this.usable = activedAt == null ? "N" : "Y";
     }
 }

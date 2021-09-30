@@ -41,7 +41,7 @@ public class ChannelInfo implements BaseInfo {
     public ChannelInfo(Long channelId, String channelName, YesNo lockStatus, Date createDate) {
         this.id = String.valueOf(channelId);
         this.channelName = channelName;
-        this.createDate = DateTimeUtils.toString(createDate, DateTimeUtils.YYYYMMDD);
+        this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
         this.lockStatus = lockStatus.toString();
     }
 
@@ -50,6 +50,6 @@ public class ChannelInfo implements BaseInfo {
         this.channelName = channelName;
         this.channelUrl = channelUrl;
         this.lockStatus = lockStatus.toString();
-        this.createDate = DateTimeUtils.toString(createDate, DateTimeUtils.YYYYMMDD);
+        this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
     }
 }

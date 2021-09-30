@@ -35,7 +35,6 @@ import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.service.GroupService;
-import com.csf.whoami.utilities.AuthenticationUtil;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -51,29 +50,29 @@ public class GroupsController {
 
     private final GroupService groupsService;
 
-    @ApiOperation(value = "1. Phương thức tìm kiếm Group trong hệ thống.")
-    @PostMapping(value = "/find-group", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public GroupInfo findGroup(@RequestBody String groupUrl) {
-        AuthenticationInfo user = AuthenticationUtil.getUser();
-        Long userId = StringUtils.toLongOrNull(user.getUserId());
-        if (userId == null) {
-            throw new CustomException(ErrorException.INVALID_USER.getMessage(), ErrorException.INVALID_USER.getCode(), HttpStatus.BAD_GATEWAY);
-        }
-        return groupsService.getGroupByGroupUrl(groupUrl);
-    }
+//    @ApiOperation(value = "1. Phương thức tìm kiếm Group trong hệ thống.")
+//    @PostMapping(value = "/find-group", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public GroupInfo findGroup(@RequestBody String groupUrl) {
+//        AuthenticationInfo user = AuthenticationUtil.getUser();
+//        Long userId = StringUtils.toLongOrNull(user.getUserId());
+//        if (userId == null) {
+//            throw new CustomException(ErrorException.INVALID_USER.getMessage(), ErrorException.INVALID_USER.getCode(), HttpStatus.BAD_GATEWAY);
+//        }
+//        return groupsService.getGroupByGroupUrl(groupUrl);
+//    }
 
-    @ApiOperation(value = "2. Phương thức lấy danh sách tất cả các group của người dùng.")
-    @GetMapping("/list")
-//    @Secured({ "ROLE_USER" })
-    public List<GroupInfo> findUserGroups(@ApiParam(hidden = true) Authentication auth) {
-        AuthenticationInfo user = AuthenticationUtil.getUser();
-        Long userId = StringUtils.toLongOrNull(user.getUserId());
-        if (userId == null) {
-            throw new CustomException(ErrorException.INVALID_USER.getMessage(), ErrorException.INVALID_USER.getCode(), HttpStatus.BAD_GATEWAY);
-        }
-        List<GroupInfo> groups = groupsService.findAllByUser(userId);
-        return groups;
-    }
+//    @ApiOperation(value = "2. Phương thức lấy danh sách tất cả các group của người dùng.")
+//    @GetMapping("/list")
+////    @Secured({ "ROLE_USER" })
+//    public List<GroupInfo> findUserGroups(@ApiParam(hidden = true) Authentication auth) {
+//        AuthenticationInfo user = AuthenticationUtil.getUser();
+//        Long userId = StringUtils.toLongOrNull(user.getUserId());
+//        if (userId == null) {
+//            throw new CustomException(ErrorException.INVALID_USER.getMessage(), ErrorException.INVALID_USER.getCode(), HttpStatus.BAD_GATEWAY);
+//        }
+//        List<GroupInfo> groups = groupsService.findAllByUser(userId);
+//        return groups;
+//    }
 
     @ApiOperation(value = "Phương thức tạo mới group.")
     @PostMapping("/add-group")

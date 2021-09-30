@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.csf.whoami.base.constant.ConstantsURL;
+import com.csf.base.constant.ConstantsURL;
 import com.csf.whoami.service.ApiFragment;
 
 import lombok.RequiredArgsConstructor;

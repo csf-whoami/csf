@@ -19,12 +19,12 @@ import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.database.models.TbQuestion;
-import com.csf.whoami.database.models.TbQuizQuestion;
-import com.csf.whoami.database.models.TbQuizTest;
-import com.csf.whoami.database.repository.QuestionRepository;
-import com.csf.whoami.database.repository.QuizQuestionRepository;
-import com.csf.whoami.database.repository.QuizTestRepository;
+import com.csf.database.models.TbQuestion;
+import com.csf.database.models.TbQuizQuestion;
+import com.csf.database.models.TbQuizTest;
+import com.csf.database.repository.QuestionRepository;
+import com.csf.database.repository.QuizQuestionRepository;
+import com.csf.database.repository.QuizTestRepository;
 import com.csf.whoami.service.QuizTestService;
 
 @Service

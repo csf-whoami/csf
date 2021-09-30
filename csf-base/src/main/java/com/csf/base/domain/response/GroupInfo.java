@@ -50,6 +50,6 @@ public class GroupInfo implements BaseInfo {
         this.isPrivate = isPrivate;
         this.isPublish = isPublish;
         this.isLock = isLock;
-        this.createDate = DateTimeUtils.toString(createDate, DateTimeUtils.YYYYMMDD);
+        this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
     }
 }

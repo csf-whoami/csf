@@ -14,14 +14,14 @@ import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.DateTimeUtils;
-import com.csf.whoami.database.models.TbAccount;
-import com.csf.whoami.database.models.TbGroup;
-import com.csf.whoami.database.models.TbInvites;
-import com.csf.whoami.database.models.TbNotifications;
-import com.csf.whoami.database.repository.AccountRepository;
-import com.csf.whoami.database.repository.GroupRepository;
-import com.csf.whoami.database.repository.InvitesRepository;
-import com.csf.whoami.database.repository.NotificationsRepository;
+import com.csf.database.models.TbAccount;
+import com.csf.database.models.TbGroup;
+import com.csf.database.models.TbInvites;
+import com.csf.database.models.TbNotifications;
+import com.csf.database.repository.AccountRepository;
+import com.csf.database.repository.GroupRepository;
+import com.csf.database.repository.InvitesRepository;
+import com.csf.database.repository.NotificationsRepository;
 import com.csf.whoami.service.InviteService;
 
 @Service
@@ -95,7 +95,7 @@ public class InviteServiceImpl implements InviteService {
 //		invite.setOwnerId(AuthenticationUtils.getCurrentUserId());
 		invite.setInvitedId(beInvitedId);
 		invite.setDetailId(detailId);
-		invite.setExpireDate(DateTimeUtils.toDateOrNull(expireDate, ConstantsDateFormat.yyyyMMdd));
+		invite.setExpireDate(DateTimeUtils.convertStringToDateOrNull(expireDate, ConstantsDateFormat.yyyyMMdd));
 		invite.setMessage("Welcome to Group");
 		invite.setCondition(joinType); // Add direct to group.
 //		invite = invitesRepository.save(invite);

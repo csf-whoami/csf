@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.csf.base.domain.RoleInfo;
-import com.csf.whoami.database.adapter.RoleAdapter;
-import com.csf.whoami.database.models.TbRole;
-import com.csf.whoami.database.repository.RoleRepository;
+import com.csf.database.adapter.RoleAdapter;
+import com.csf.database.models.TbRole;
+import com.csf.database.repository.RoleRepository;
 import com.csf.whoami.service.RoleService;
 
 import lombok.RequiredArgsConstructor;

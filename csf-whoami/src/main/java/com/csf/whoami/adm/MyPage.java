@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.csf.base.constant.ConstantsParam;
+import com.csf.base.constant.ConstantsURL;
 import com.csf.base.domain.MenuDomain;
-import com.csf.whoami.base.constant.ConstantsParam;
-import com.csf.whoami.base.constant.ConstantsURL;
 import com.csf.whoami.service.MenuService;
 
 import lombok.RequiredArgsConstructor;

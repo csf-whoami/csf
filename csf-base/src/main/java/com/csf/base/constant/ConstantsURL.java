@@ -70,13 +70,4 @@ public class ConstantsURL {
 
     /** Page URL. */
     public static final String PAGE_START = "index";
-
-	public static final String DASHBOARD_PATH = null;
-
-	public static final String URI_ADMIN_MENU = null;
-
-	public static final String START_PATH = null;
-
-	public static final String API_MENU = "/mnu";
-	public static final String ME_PATH = "me";
 }

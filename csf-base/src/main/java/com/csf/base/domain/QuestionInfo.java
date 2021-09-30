@@ -35,6 +35,6 @@ public class QuestionInfo extends QuestionManagementInfo implements BaseInfo {
         this.channelId = StringUtils.fromLong(channelId);
         this.channelName = channelName;
         this.content = content;
-        this.createdAt = DateTimeUtils.toString(createdAt, DateTimeUtils.YYYYMMDDhhmmss);
+        this.createdAt = DateTimeUtils.convertDateToString(createdAt, DateTimeUtils.YYYYMMDDhhmmss);
     }
 }

@@ -28,7 +28,8 @@ public enum ErrorException {
 	PARAMETER_INVALID("CMS_0003", "Parameter invalid"),
 	DATA_INVALID("CMS_0004", "Input data invalid."),
     CANT_INSERT_OPTIONS("CMS_0005", "Can not insert question options"),
-    DATA_NOT_FOUND("C0002", "Data not found."),;
+    DATA_NOT_FOUND("C0002", "Data not found."),
+	JWT_EXPIRED("C0003", "Expired or invalid JWT token");
 
 	private String code;
 	private String message;

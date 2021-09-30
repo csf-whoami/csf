@@ -36,9 +36,9 @@ public class ConstantsDatabase {
      */
     public enum QuestionTypeConstant {
 
-        SELECT_TYPE(CommonConstants.SelectOption), PICTURE_CHOICE(CommonConstants.PictureChoiceType),
-        SINGLE_TEXT(CommonConstants.TextType), MULTILINE_TEXT(CommonConstants.MultiLineTextType),
-        YES_NO(CommonConstants.YesNoType), UPLOAD(CommonConstants.UploadType);
+        SELECT_TYPE(ConstantsCommon.SelectOption), PICTURE_CHOICE(ConstantsCommon.PictureChoiceType),
+        SINGLE_TEXT(ConstantsCommon.TextType), MULTILINE_TEXT(ConstantsCommon.MultiLineTextType),
+        YES_NO(ConstantsCommon.YesNoType), UPLOAD(ConstantsCommon.UploadType);
 
         String value;
 

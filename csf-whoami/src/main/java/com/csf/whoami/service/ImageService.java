@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.csf.base.utilities.UploadFileUtils;
-import com.csf.whoami.database.models.UploadFile;
-import com.csf.whoami.database.repository.FileRepository;
+import com.csf.database.models.UploadFile;
+import com.csf.database.repository.FileRepository;
 
 import lombok.RequiredArgsConstructor;
 

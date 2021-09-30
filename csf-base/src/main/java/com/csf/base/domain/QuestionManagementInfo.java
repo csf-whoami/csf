@@ -23,6 +23,6 @@ public class QuestionManagementInfo implements BaseInfo {
     public QuestionManagementInfo(Long id, String questionType, Date createdAt) {
         this.id = StringUtils.fromLong(id);
         this.questionType = questionType;
-        this.createdAt = DateTimeUtils.toString(createdAt, DateTimeUtils.YYYYMMDDhhmmss);
+        this.createdAt = DateTimeUtils.convertDateToString(createdAt, DateTimeUtils.YYYYMMDDhhmmss);
     }
 }

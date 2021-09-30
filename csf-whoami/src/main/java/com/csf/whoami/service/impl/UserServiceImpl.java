@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,24 +17,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.constant.ConstantsSystem;
 import com.csf.base.domain.AccountDTO;
 import com.csf.base.domain.RoleInfo;
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.response.AccountInfo;
 import com.csf.base.domain.response.AuthenticationInfo;
 import com.csf.base.domain.response.UserInfo;
-import com.csf.whoami.base.constant.ConstantsSystem;
-import com.csf.whoami.base.exception.CustomException;
-import com.csf.whoami.base.exception.ErrorCode;
-import com.csf.whoami.base.util.StringUtils;
-import com.csf.whoami.database.adapter.AccountAdapter;
-import com.csf.whoami.database.adapter.UserAdapter;
-import com.csf.whoami.database.models.TbAccount;
-import com.csf.whoami.database.models.TbUser;
-import com.csf.whoami.database.models.TbUserRole;
-import com.csf.whoami.database.repository.AccountRepository;
-import com.csf.whoami.database.repository.UserRepository;
-import com.csf.whoami.database.repository.UserRoleRepository;
+import com.csf.base.exception.CustomException;
+import com.csf.base.exception.ErrorCode;
+import com.csf.base.exception.HttpStatus;
+import com.csf.base.utilities.StringUtils;
+import com.csf.database.adapter.AccountAdapter;
+import com.csf.database.adapter.UserAdapter;
+import com.csf.database.models.TbAccount;
+import com.csf.database.models.TbUser;
+import com.csf.database.models.TbUserRole;
+import com.csf.database.repository.AccountRepository;
+import com.csf.database.repository.UserRepository;
+import com.csf.database.repository.UserRoleRepository;
 import com.csf.whoami.service.RoleService;
 import com.csf.whoami.service.UserService;
 
@@ -62,13 +62,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         // Check exist account.
         TbAccount existUser = accountRepository.findByUsername(user.getUsername());
         if (existUser != null) {
-            throw new CustomException(ErrorCode.EXIST_LOGIN_ID.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.EXIST_LOGIN_ID.getMessage(),
+            		ErrorCode.EXIST_LOGIN_ID.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
 
         // Check exist role.
         Long role = roleService.getRoleByName(ConstantsSystem.DEFAULT_ROLE);
         if (role == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
 
         // Save User
@@ -225,7 +229,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         // Check role.
         RoleInfo role = roleService.getRoleById(StringUtils.toLongOrNull(userinfo.getRoleId()));
         if (role == null) {
-            throw new CustomException(ErrorCode.CANT_FOUND_USER_ROLE.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.CANT_FOUND_USER_ROLE.getMessage(),
+            		ErrorCode.CANT_FOUND_USER_ROLE.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
 
         Long accountId = StringUtils.toLongOrNull(userinfo.getId());
@@ -259,13 +265,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private Long registerAccount(UserInfo userinfo) {
         TbUser user = UserAdapter.userInfoToModel(userinfo);
         if (user == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         user = userRepository.save(user);
 
         TbAccount account = AccountAdapter.userInfoToEntity(userinfo);
         if (account == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         account.setUserId(user.getId());
         account = accountRepository.save(account);
@@ -290,7 +300,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private TbAccount getAccount(Long accountId) {
         TbAccount account = accountRepository.findById(accountId).orElse(null);
         if (account == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         return account;
     }
@@ -304,13 +316,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private List<TbAccount> getAccounts(List<Long> ids) {
         for(Long id : ids) {
             if (id == null) {
-                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+                		ErrorCode.DATA_NOT_FOUND.getCode(),
+                		HttpStatus.BAD_REQUEST);
             }
         }
 
         List<TbAccount> accounts = accountRepository.findAllByIds(ids);
         if (accounts.size() != ids.size()) {
-            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
+            		ErrorCode.DATA_INVALID.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         return accounts;
     }
@@ -323,11 +339,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      */
     private TbUser getUser(Long userId) {
         if (userId == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         TbUser user = userRepository.findById(userId).orElse(null);
         if (user == null) {
-            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+            		ErrorCode.DATA_NOT_FOUND.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         return user;
     }
@@ -340,13 +360,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private List<TbUser> getUsers(List<Long> ids) {
         for(Long id : ids) {
             if (id == null) {
-                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+                		ErrorCode.DATA_NOT_FOUND.getCode(),
+                		HttpStatus.BAD_REQUEST);
             }
         }
 
         List<TbUser> users = userRepository.findAllByIds(ids);
         if (users.size() != ids.size()) {
-            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
+            		ErrorCode.DATA_INVALID.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         return users;
     }
@@ -354,13 +378,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private List<TbUserRole> getUserRoles(List<Long> ids) {
         for(Long id : ids) {
             if (id == null) {
-                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
+                throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
+                		ErrorCode.DATA_NOT_FOUND.getCode(),
+                		HttpStatus.BAD_REQUEST);
             }
         }
 
         List<TbUserRole> userRoles = userRoleRepository.findAllByIds(ids);
         if (userRoles.size() != ids.size()) {
-            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
+            		ErrorCode.DATA_INVALID.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         return userRoles;
     }
@@ -370,7 +398,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public List<Long> deleteUsers(List<String> ids) {
         List<Long> accountIds = ids.stream().map(item -> StringUtils.toLongOrNull(item)).collect(Collectors.toList());
         if (accountIds.size() != ids.size()) {
-            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(), HttpStatus.BAD_REQUEST);
+            throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
+            		ErrorCode.DATA_INVALID.getCode(),
+            		HttpStatus.BAD_REQUEST);
         }
         List<TbAccount> accounts = getAccounts(accountIds);
         for(TbAccount acc : accounts) {

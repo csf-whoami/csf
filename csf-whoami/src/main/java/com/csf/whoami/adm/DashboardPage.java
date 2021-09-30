@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csf.base.constant.ConstantsParam;
 import com.csf.base.constant.ConstantsString;
 import com.csf.base.domain.SearchVO;
-import com.csf.base.exception.CustomException;
+import com.csf.base.utilities.RequestUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.base.exception.ErrorCode;
-import com.csf.whoami.base.util.RequestUtils;
 
 public abstract class DashboardPage<T> {
 

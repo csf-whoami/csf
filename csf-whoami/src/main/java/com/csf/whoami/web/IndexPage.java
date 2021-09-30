@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.csf.base.constant.ConstantsURL;
 import com.csf.base.domain.mainpage.DirectMessageInfo;
 import com.csf.base.domain.mainpage.MenuChannelInfo;
 import com.csf.base.domain.mainpage.MenuGroupInfo;
-import com.csf.whoami.base.constant.ConstantsURL;
 
 import lombok.RequiredArgsConstructor;
 

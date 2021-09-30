@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.csf.base.core.ZValue;
 import com.csf.base.domain.MenuDomain;
-import com.csf.whoami.database.adapter.MenuAdapter;
-import com.csf.whoami.database.mappers.MenuMapper;
-import com.csf.whoami.database.models.TbMenu;
-import com.csf.whoami.database.repository.MenuRepository;
+import com.csf.database.adapter.MenuAdapter;
+import com.csf.database.mappers.MenuMapper;
+import com.csf.database.models.TbMenu;
+import com.csf.database.repository.MenuRepository;
 import com.csf.whoami.service.MenuService;
 
 import lombok.RequiredArgsConstructor;
