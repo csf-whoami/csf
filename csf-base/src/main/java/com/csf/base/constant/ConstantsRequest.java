@@ -10,8 +10,14 @@ public class ConstantsRequest {
 	public static final String PACKAGE_ID = "pakageId";
 	public static final String PROGRAM_ID = "programId";
 	public static final String TARGET_METHOD = "targetMethod";
-
+	public static final String TARGET_NAME = "targetName";
+	public static final String MULTIPART_FILE_MAP = "multipartFileMap";
 	public static final String ATCH_FILE_ID = "atchFileId";
 	public static final String RESULT_LIST = "resultList";
 	public static final String RESULT = "result";
+	public static final String REQUEST_URI = "requestURI";
+
+	// For model attr.
+	public static final String CONTEXT_PATH = "contextPath";
+	public static final String PARAM_VO = "paramVO";
 }

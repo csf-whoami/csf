@@ -1,4 +1,4 @@
-package com.csf.base;
+package com.csf.whoami.adm;
 
 import java.util.Map;
 
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,20 +15,26 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.csf.base.BaseController;
+import com.csf.base.ParameterContext;
+import com.csf.base.WebFactory;
+import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 import com.csf.base.service.CommonService;
 
+@Controller
+@RequestMapping("/{siteId}/{compId}/{appId}/{pakageId}/{programId}")
 public class MasterController extends BaseController {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	private final UrlPathHelper urlPathHelper = new UrlPathHelper();
 
-	@RequestMapping("/{targetMethod}")
+	@RequestMapping("/{targetMethod}.html")
 	public ModelAndView invoke(HttpServletRequest request, HttpServletResponse response, ModelMap model,
-								@PathVariable("targetMethod") String targetMethod) throws Exception {
+								@PathVariable(ConstantsRequest.TARGET_METHOD) String targetMethod) throws Exception {
 		ZValue paramVO = WebFactory.getAttributes(request);
-		ModelAndView mv =null;
-		model.addAttribute("contextPath",request.getContextPath());
+		ModelAndView mv = null;
+		model.addAttribute(ConstantsRequest.CONTEXT_PATH,request.getContextPath());
 		mv = super.invoke(paramVO, request, response, model);
 		return mv;
 	}
@@ -58,7 +65,7 @@ public class MasterController extends BaseController {
 		if( uriTemplateVars != null ){
 			param.putAll(uriTemplateVars);
 		}
-		model.addAttribute("paramVO", param);
+		model.addAttribute(ConstantsRequest.PARAM_VO, param);
 
 		//사용자정보
 //		MemberVO memberVO = (MemberVO)UnpUserDetailsHelper.getAuthenticatedUser();
@@ -69,15 +76,11 @@ public class MasterController extends BaseController {
 
 	@Override
 	protected String getProgramId(ParameterContext paramCtx){
-		return paramCtx.getParam().getString(CommonService.PROGRAM_ID);
+		return paramCtx.getParam().getString(ConstantsRequest.PROGRAM_ID);
 	}
 
 	@Override
 	protected String getTargetMethod(ParameterContext paramCtx) {
-		return paramCtx.getParam().getString("targetMethod");
+		return paramCtx.getParam().getString(ConstantsRequest.TARGET_METHOD);
 	}
-
-//	public ISqlDAO<ZValue> getSqlDAO() {
-//		return sqlDAO;
-//	}
 }

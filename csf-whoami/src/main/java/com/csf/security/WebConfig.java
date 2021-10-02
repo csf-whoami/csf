@@ -39,20 +39,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(false).maxAge(3600);
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//
-//        registry.addResourceHandler("/resources/**")
-//                .addResourceLocations("classpath:/resources/static/");
-//
-//        registry.addResourceHandler(
-//                "/static/sitemap.xml"
-//                )
-//                .addResourceLocations(
-//                        "classpath:/sitemap.xml"
-//                );
-//    }
-
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(new PageableHandlerMethodArgumentResolver());
