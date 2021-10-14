@@ -1,3 +1,15 @@
+# Setting for Oracle
+#spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+#spring.datasource.url=jdbc:oracle:thin:@localhost:1521/xe
+#spring.datasource.username=SYSTEM
+#spring.datasource.password=oracle
+
+# VO location
+mybatis:
+  type-aliases-package: com.csf.database.vo
+# xml location
+  mapper-locations: classpath:templates/csf/mappers/**/*.xml
+
 spring:
   datasource:
     url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
