@@ -1,6 +1,8 @@
-package com.csf.base;
+package com.csf.base.mvr;
 
 import org.springframework.web.servlet.ModelAndView;
+
+import com.csf.base.ParameterContext;
 
 public interface ModelAndViewResolver {
 

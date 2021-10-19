@@ -15,9 +15,9 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UrlPathHelper;
 
-import com.csf.base.BaseController;
 import com.csf.base.ParameterContext;
 import com.csf.base.WebFactory;
+import com.csf.base.common.BaseController;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 import com.csf.base.service.CommonService;

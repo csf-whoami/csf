@@ -7,7 +7,6 @@ import java.util.List;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +27,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.csf.base.utilities.RequestUtils;
 import com.fasterxml.jackson.databind.JsonMappingException;
-
-import javassist.NotFoundException;
 
 @ControllerAdvice
 @RestController

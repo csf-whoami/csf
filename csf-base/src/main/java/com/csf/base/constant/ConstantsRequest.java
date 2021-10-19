@@ -20,4 +20,7 @@ public class ConstantsRequest {
 	// For model attr.
 	public static final String CONTEXT_PATH = "contextPath";
 	public static final String PARAM_VO = "paramVO";
+
+	public static final String VIEW_TYPE = "viewType";
+	public static final String SUFFIX = ".html";
 }
