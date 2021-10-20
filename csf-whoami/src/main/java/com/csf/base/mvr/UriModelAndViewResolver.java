@@ -210,14 +210,12 @@ public class UriModelAndViewResolver implements ModelAndViewResolver {
 
     protected String getTemplatePage(ParameterContext paramCtx) {
         String siteId = getSiteId(paramCtx);
-        String programId = getProgramId(paramCtx);
-        return new StringBuilder().append(siteId).append("/main/").append(programId).append("/index").toString();
+        return new StringBuilder().append(siteId).append("/main/").append(siteId).append("Index").toString();
     }
 
     protected String getBodyTemplatePage(ParameterContext paramCtx) {
         String siteId = getSiteId(paramCtx);
-        String programId = getProgramId(paramCtx);
-        String result = new StringBuilder().append(siteId).append("/main/").append(programId).append("/bodyIndex").toString();
+        String result = new StringBuilder().append(siteId).append("/main/").append(siteId).append("BodyIndex").toString();
         return result;
     }
 
@@ -293,11 +291,5 @@ public class UriModelAndViewResolver implements ModelAndViewResolver {
         ZValue param = paramCtx.getParam();
         String siteId = param.getString(CommonService.SITE_ID);
         return siteId;
-    }
-
-    private String getProgramId(ParameterContext paramCtx) {
-        ZValue param = paramCtx.getParam();
-        String programId = param.getString(ConstantsRequest.PROGRAM_ID);
-        return programId;
     }
 }

@@ -24,6 +24,7 @@ public class DefaultCrudService extends AbstractCrudService {
 //		}
 //		paramCtx.setPageInfo(pageInfo);
 //		listHandler.invoke(paramCtx);
+		System.out.println("Go to list page.");
 	}
 
 	protected void doInsert(ParameterContext paramCtx, String insertQueryId) throws Exception {
@@ -42,6 +43,7 @@ public class DefaultCrudService extends AbstractCrudService {
 //		paramCtx.setPkValue(pkValue);
 //		ModelMap model = paramCtx.getModel();
 //		MVUtils.setResultProperty(model, SUCCESS, messageSource.getMessage("success.common.insert", null, Locale.getDefault()));
+		System.out.println("Go to doInsert page.");
 	}
 
 	protected void doView(ParameterContext paramCtx, String viewQueryId) throws Exception {
@@ -51,5 +53,6 @@ public class DefaultCrudService extends AbstractCrudService {
 //		ZValue result = sqlDao.findOne(viewQueryId, param);
 //		model.addAttribute(RESULT, result);
 //		getFiles(paramCtx);
+		System.out.println("Go to doView page.");
 	}
 }
