@@ -28,24 +28,24 @@ public class UrlPathFilter extends OncePerRequestFilter {
 			throws IOException, ServletException {
 
 		chain.doFilter(new SecurityFilterRequestWrapper(req), res);
-
-		if (req.getServletPath().length() > 1) {
-			String admRegex = "^\\/\\w{3}\\/.*$";
-			Pattern checkRegex = Pattern.compile(admRegex);
-			Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
-			if (regexMatcher.matches()) {
-				ZValue urlParams = fetchRequest(req);
-				if (urlParams == null) {
-					SecurityContextHolder.clearContext();
-					ResponseDataAPI errorResponse = ResponseDataAPI.build();
-					errorResponse.setSuccess(false);
-					errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
-					res.setStatus(HttpStatus.BAD_REQUEST.value());
-					res.setContentType("application/json");
-					res.getWriter().write(convertObjectToJson(errorResponse));
-				}
-			}
-		}
+//
+//		if (req.getServletPath().length() > 1) {
+//			String admRegex = "^\\/\\w{3}\\/.*$";
+//			Pattern checkRegex = Pattern.compile(admRegex);
+//			Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
+//			if (regexMatcher.matches()) {
+//				ZValue urlParams = fetchRequest(req);
+//				if (urlParams == null) {
+//					SecurityContextHolder.clearContext();
+//					ResponseDataAPI errorResponse = ResponseDataAPI.build();
+//					errorResponse.setSuccess(false);
+//					errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
+//					res.setStatus(HttpStatus.BAD_REQUEST.value());
+//					res.setContentType("application/json");
+//					res.getWriter().write(convertObjectToJson(errorResponse));
+//				}
+//			}
+//		}
 	}
 
 	private ZValue fetchRequest(HttpServletRequest request) {
