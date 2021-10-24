@@ -1,4 +1,4 @@
-package com.csf.whoami.service.impl;
+package com.csf.whoami.adm.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,20 +9,19 @@ import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
+import com.csf.base.service.DefaultCrudService;
 import com.csf.database.adapter.ChannelAdapter;
 import com.csf.database.models.TbChannel;
 import com.csf.database.repository.ChannelRepository;
-import com.csf.whoami.service.ChannelService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ChannelServiceImpl implements ChannelService {
+public class ChannelService extends DefaultCrudService {
 
     private final ChannelRepository channelRepository;
 
-    @Override
     public Page<ChannelInfo> channelList(Long groupId, Pageable pageable) {
         if (groupId == null) {
             return Page.empty();
@@ -30,14 +29,12 @@ public class ChannelServiceImpl implements ChannelService {
         return channelRepository.findAllByGroupId(groupId, pageable);
     }
 
-    @Override
     public ChannelInfo getChannelDetail(Long id) {
         TbChannel channel = channelRepository.findById(id).orElse(null);
         return ChannelAdapter.modelToDomain(channel);
     }
 
     @Transactional
-    @Override
     public ChannelInfo registerOrUpdate(ChannelInfo domain) {
         TbChannel entity = ChannelAdapter.domainToModel(domain);
         entity = channelRepository.save(entity);

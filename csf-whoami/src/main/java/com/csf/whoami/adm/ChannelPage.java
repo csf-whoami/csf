@@ -17,7 +17,7 @@ import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.utilities.RequestUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.whoami.service.ChannelService;
+import com.csf.whoami.adm.service.ChannelService;
 import com.csf.whoami.service.GroupService;
 
 import lombok.RequiredArgsConstructor;

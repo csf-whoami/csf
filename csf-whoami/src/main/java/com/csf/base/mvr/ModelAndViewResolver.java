@@ -31,6 +31,7 @@ public interface ModelAndViewResolver {
 	public static final String STREAM_WINDOW_MODE = "streamWindowMode";
 
 	public static final String INCLUDE_PAGE = "includePage";
+	public static final String VIEW_PAGE = "viewPage";
 	public static final String INCLUDE_DEFAULT_PAGE = "/cts/cmmn/ready.jsp";
 	public static final String CONTENTS_PREVEW_PARAM = "cntntsCn";
 	public static final String JSP_PAGE = "jspPage";

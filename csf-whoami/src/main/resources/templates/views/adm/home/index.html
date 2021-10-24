@@ -1,0 +1,49 @@
+<th:block th:fragment="homeIndex" xmlns:th="http://www.thymeleaf.org">
+    <!--Row-->
+    <div class="row row-sm">
+        <div class="col-sm-12 col-lg-12 col-xl-8">
+            <!--Row-->
+            <div class="row row-sm  mt-lg-4">
+                <div class="col-sm-12 col-lg-12 col-xl-12">
+                    <div class="card bg-primary custom-card card-box">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="offset-xl-3 offset-sm-6 col-xl-8 col-sm-6 col-12 img-bg ">
+                                    <h4 class="d-flex  mb-3">
+                                        <span class="font-weight-bold text-white ">Sonia Taylor!</span>
+                                    </h4>
+                                    <p class="tx-white-7 mb-1">You have two projects to finish, you had completed <b class="text-warning">57%</b> from your montly level,
+                                    Keep going to your level
+                                </div>
+                                <img th:src="@{/img/pngs/work3.png}" alt="user-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Row -->
+        </div><!-- col end -->
+        <div class="col-sm-12 col-lg-12 col-xl-4 mt-xl-4">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="row row-sm">
+                        <div class="col-6">
+                            <div class="card-item-title">
+                                <label class="main-content-label tx-13 font-weight-bold mb-2">Project Launch</label>
+                                <span class="d-block tx-12 mb-0 text-muted">the project is going to launch</span>
+                            </div>
+                            <p class="mb-0 tx-24 mt-2"><b class="text-primary">145 days</b></p>
+                            <a href="#" class="text-muted">12 Monday, Oct 2020 </a>
+                        </div>
+                        <div class="col-6">
+                            <img th:src="@{/img/pngs/work.png}" alt="image" class="best-emp">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- col end -->
+    </div><!-- Row end -->
+
+    <!-- Internal Dashboard js-->
+    <script th:src="@{/js/index.js}"></script>
+</th:block>

@@ -23,4 +23,6 @@ public class ConstantsRequest {
 
 	public static final String VIEW_TYPE = "viewType";
 	public static final String SUFFIX = ".html";
+	public static final String HOME_PAGE = "index";
+	public static final String VIEW_PAGE = "viewPage";
 }

@@ -117,13 +117,12 @@ public class UriModelAndViewResolver implements ModelAndViewResolver {
 
         includePage = getIncludePage(paramCtx);
         //사용자 정의 RequestURI매칭 jsp뷰가 정의되어있는 includePageMap이 없는경우
-        if ( includePage == null ) {
+        if (includePage == null ) {
             //기본 페이지뷰
             //ex) /portal/siteMng/list.do -> /portal/siteMng/popup.do
-            String viewName = userRequestToViewNameTranslator.getViewName(request);
+//            String viewName = userRequestToViewNameTranslator.getViewName(request);
+            String viewName = getViewPage(paramCtx);
             model.addAttribute(INCLUDE_PAGE, translateViewName(viewName));
-            log.debug(INCLUDE_PAGE + " : " + translateViewName(viewName));
-            // TODO: ViewType
 //            String modelViewType = model.get("viewType")==null ? null : model.get("viewType").toString(); //모델에 담는 viewType 처리
 
             if( "BODY".equals(request.getParameter(ConstantsRequest.VIEW_TYPE)) ){
@@ -161,15 +160,26 @@ public class UriModelAndViewResolver implements ModelAndViewResolver {
         }
         else {
             mv = new ModelAndView(includePage);
+            mv.addObject(ConstantsRequest.VIEW_PAGE, getViewPage(paramCtx));
         }
         return mv;
     }
 
-    protected String translateViewName(String viewName){
-        viewName = StringUtils.replace(viewName, "forInsert", "reg");
-        viewName = StringUtils.replace(viewName, "forUpdate", "reg");
-        return viewName;
+    protected String getViewPage(ParameterContext paramCtx) {
+        ZValue param = paramCtx.getParam();
+        String siteId = param.getString(ConstantsRequest.SITE_ID);
+        String programId = param.getString(ConstantsRequest.PROGRAM_ID);
+        String targetMethod = param.getString(ConstantsRequest.TARGET_METHOD);
+        if(StringUtils.hasLength(targetMethod) && "list".equalsIgnoreCase(targetMethod.trim())) {
+            targetMethod = ConstantsRequest.HOME_PAGE;
+        }
+        return new StringBuilder().append("/").append(siteId).append("/").append(programId).append("/").append(targetMethod).toString();
+    }
 
+    protected String translateViewName(String viewName){
+        viewName = StringUtils.replace(viewName, "forInsert", "register");
+        viewName = StringUtils.replace(viewName, "forUpdate", "register");
+        return viewName;
     }
 
     protected ModelAndView getMessageModelAndView(ParameterContext paramCtx) throws Exception

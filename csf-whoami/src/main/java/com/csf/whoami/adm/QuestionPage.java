@@ -25,7 +25,7 @@ import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.utilities.RequestUtils;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.type.EnumGroupType;
-import com.csf.whoami.service.ChannelService;
+import com.csf.whoami.adm.service.ChannelService;
 import com.csf.whoami.service.GroupService;
 import com.csf.whoami.service.QuestionService;
 import com.csf.whoami.service.TypeService;

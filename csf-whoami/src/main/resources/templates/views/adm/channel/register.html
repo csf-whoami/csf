@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org" lang="ko"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/default">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <th:block layout:fragment="content">
+        <!-- Begin 일반 게시물 -->
+        <div class="app-body post-list">
+            <main class="main">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                              <form th:action="@{/me/channels/detail}" th:object="${datas}" method="POST">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <th:block th:utext="Title"></th:block>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="pt-3 overscroll-mobile ">
+                                            <!-- Begin info -->
+                                            <table class="table custom-table table-bordered w-250">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Channel name</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <input type="text" name="groupname" class="form-control" id="groupName" 
+                                                                                   placeholder="Please input channel name"
+                                                                                   th:value="${datas == null ? '' : datas.channelName}">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Channel URL</td>
+                                                        <td colspan="3">
+                                                            <div class="input-channel">
+                                                                <input type="text" name="channelUrl" class="form-control"
+                                                                                   placeholder="Please input url"
+                                                                                   th:value="${datas == null ? '' : datas.channelUrl}">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Private</td>
+                                                        <td>
+                                                            <div class="content-button d-flex align-items-center">
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{privateStatus}" id="private-radio1" name="private-check" 
+                                                                                                             value="Y" class="custom-control-input"
+                                                                                                             th:checked="${#strings.toString(datas.privateStatus) != 'N'}">
+                                                                    <label class="custom-control-label" for="private-radio1">private</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{privateStatus}" id="private-radio2" name="private-check"
+                                                                                                             value="N" class="custom-control-input"
+                                                                                                             th:checked="${datas != null && datas.privateStatus == 'N'}">
+                                                                    <label class="custom-control-label" for="private-radio2">public</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="font-weight-bold">Publish status</td>
+                                                        <td>
+                                                            <div class="content-button d-flex align-items-center">
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{closedStatus}" id="closed-radio1" name="closed-check" 
+                                                                                                             value="Y" class="custom-control-input"
+                                                                                                             th:checked="${datas == null || datas.closedStatus != 'N'}">
+                                                                    <label class="custom-control-label" for="closed-radio1">Closed</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{closedStatus}" id="closed-radio2" name="closed-check"
+                                                                                                             value="N" class="custom-control-input"
+                                                                                                             th:checked="${datas != null && datas.privateStatus == 'N'}">
+                                                                    <label class="custom-control-label" for="closed-radio2">Open</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Lock status</td>
+                                                        <td>
+                                                            <div class="content-button d-flex align-items-center">
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{lockStatus}" id="lock-radio1" name="lock-check" 
+                                                                                                             value="Y" class="custom-control-input"
+                                                                                                             th:checked="${datas == null || datas.lockStatus != 'N'}">
+                                                                    <label class="custom-control-label" for="lock-radio1">Locked</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" th:field="*{lockStatus}" id="lock-radio2" name="lock-check"
+                                                                                                             value="N" class="custom-control-input"
+                                                                                                             th:checked="${datas != null && datas.lockStatus == 'N'}">
+                                                                    <label class="custom-control-label" for="lock-radio2">Open</label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Avatar</td>
+                                                        <td colspan="3">
+                                                            <div class="text-left uploadImage">
+                                                                <div class="input-group">
+                                                                    <div class="custom-file text-left banner-thumbnail">
+                                                                        <input type="file" class="custom-file-input" id="uploadThumbnailImage" name="filename" accept="image/jpg, image/jpeg, image/png, image/gif">
+                                                                        <label class="custom-file-label banner" for="uploadThumbnailImage">Please select image</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Keyword</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <input type="text" id="keyword" class="form-control" placeholder="Please input keyword">
+                                                                <div class="input-group-append">
+                                                                    <button class="input-group-text" type="button" th:onclick="|insertKeyword()|" id="addKeyWords">Enroll</button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="display:none;">
+                                                        <td colspan="4" class="custom-tag register">
+                                                            <div class="tag-wrap mt-2" id="listTagKeyWord">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-bold">Description</td>
+                                                        <td colspan="3">
+                                                            <div class="input-group">
+                                                                <textarea placeholder="Input description" id="description" class="form-control" rows="5" cols="12">[[${datas.channelDescription}]]</textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- End info -->
+                                        </div>
+                                    </div>
+                                    <div class="group-btn-bottom text-right mb-3">
+                                        <th:block th:if="${datas == null || #strings.isEmpty(datas.id)}">
+                                            <button class="btn btn-primary" type="submit">button.register</button>
+                                        </th:block>
+                                        <th:block th:if="${datas != null && !#strings.isEmpty(datas.id)}">
+                                            <button class="btn btn-primary" type="submit">button.modify</button>
+                                        </th:block>
+                                        <button class="btn btn-secondary" type="button" th:onclick="|window.location.href='@{/me/channels/management}'|">button.cancel</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- Import javaScript. -->
+        <!-- <div th:include="fragments/modal/oneButtonModal :: oneModal"></div> -->
+        <script type="text/javascript" th:src="@{/pageJs/modal.js}"></script>
+        <script type="text/javascript" th:src="@{/lib/jquery/jquery.min.js}"></script>
+        <script type="text/javascript" th:src="@{/plugin/vendor.min.js}"></script>
+        <script th:inline="text" th:src="@{/pageJs/user-mng.js}"></script>
+        <!-- END import javaScript. -->
+    </th:block>
+</html>

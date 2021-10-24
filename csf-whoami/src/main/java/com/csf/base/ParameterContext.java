@@ -27,6 +27,7 @@ public class ParameterContext {
 //	private UsersVO usersVO;
 //	private CacheVO cacheVO;
 	private String targetMethod;
+	private String viewPage;
 //	private ISqlDAO<ZValue> sqlDAO;
 	private String upFileTp = "";
 }

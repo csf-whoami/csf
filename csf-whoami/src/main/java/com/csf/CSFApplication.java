@@ -31,6 +31,8 @@ public class CSFApplication {
 	public ModelAndViewResolver defaultModelAndViewResolver() {
 		DefaultModelAndViewResolver modelAndViewResolver = new DefaultModelAndViewResolver();
 		Map<String, String> includePageMap = new HashMap<>();
+		includePageMap.put("/adm/*/list.html*", "/adm/test/[bbsAttrbCd]/list.html");
+		includePageMap.put("*/adm/*/list.html*", "/adm/test/[bbsAttrbCd]/list2.html");
 		includePageMap.put("/*/bos/bbs/*/list.do*", "/bos/bbs/[bbsAttrbCd]/List.jsp");
 		includePageMap.put("/*/bos/bbs/*/view.do*", "/bos/bbs/[bbsAttrbCd]/Read.jsp");
 		includePageMap.put("/*/bos/bbs/*/replyView.do*", "/bos/bbs/[bbsAttrbCd]/ReplyRead.jsp");
