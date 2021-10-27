@@ -1,4 +1,4 @@
-package com.csf.base.service;
+package com.csf.base.service.common;
 
 import com.csf.base.CommonListener;
 

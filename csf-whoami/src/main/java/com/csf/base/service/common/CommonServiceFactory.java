@@ -1,8 +1,7 @@
-package com.csf.base.common;
+package com.csf.base.service.common;
 
 import com.csf.base.ParameterContext;
 import com.csf.base.mvr.ModelAndViewResolver;
-import com.csf.base.service.CommonService;
 
 public interface CommonServiceFactory {
 

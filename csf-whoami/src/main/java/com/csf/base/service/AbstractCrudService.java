@@ -1,6 +1,7 @@
 package com.csf.base.service;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,34 +9,40 @@ import org.springframework.context.MessageSource;
 import org.springframework.ui.ModelMap;
 
 import com.csf.base.ParameterContext;
+import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
+import com.csf.base.dao.ISqlDAO;
+import com.csf.base.handler.ListHandler;
+import com.csf.base.paging.IPageInfo;
+import com.csf.base.service.common.CommonServiceSupport;
+import com.csf.base.service.file.IFileMngService;
+import com.csf.base.utilities.StringUtils;
+import com.csf.base.vo.QueryIdVO;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public abstract class AbstractCrudService implements CrudService {
+public abstract class AbstractCrudService extends CommonServiceSupport implements CrudService {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-//	protected IFileMngService fileMngService;
+	protected IFileMngService fileMngService;
 
 	protected String listQueryId;
 	protected String countQueryId;
 	protected String viewQueryId;
 	protected String excelQueryId;
-//	protected ListHandler listHandler;
+	protected ListHandler listHandler;
 //	protected IExcelUploadService<ZValue> excelUploadService;
 
-//	protected IPageInfo pageInfo;
+	protected IPageInfo pageInfo;
 
     protected MessageSource messageSource;
 
     protected final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
 
-	public AbstractCrudService(){
-
-	}
+	public AbstractCrudService(){}
 	/**
 	 * 페이징이 포함된 일반 게시글의 목록 실제 목록은 ListHandler가 담당한다.
 	 * ListHandler로 목록이 아닌 뷰,등록화면에서도 페이징을 가져올수 있다.
@@ -43,20 +50,20 @@ public abstract class AbstractCrudService implements CrudService {
 	@Override
 	public void list(ParameterContext paramCtx) throws Exception {
 		System.out.println("Go to List method.");
-//		if( paramCtx.getQueryIdVO() == null ){
-//			QueryIdVO qvo = new QueryIdVO();
-//			qvo.setListQueryId(listQueryId);
-//			qvo.setCountQueryId(countQueryId);
-//			paramCtx.setQueryIdVO(qvo);
-//		}
-//		paramCtx.setPageQueryData(getPageQueryData());
-//		if( paramCtx.getPageQuery() == null ){
-//			paramCtx.setPageQuery(pageQuery);
-//		}
-//		if( paramCtx.getPageInfo() == null ){
-//			paramCtx.setPageInfo(pageInfo);
-//		}
-//		listHandler.invoke(paramCtx);
+		if(paramCtx.getQueryIdVO() == null ){
+			QueryIdVO qvo = new QueryIdVO();
+			qvo.setListQueryId(listQueryId);
+			qvo.setCountQueryId(countQueryId);
+			paramCtx.setQueryIdVO(qvo);
+		}
+		paramCtx.setPageQueryData(getPageQueryData());
+		if( paramCtx.getPageQuery() == null ){
+			paramCtx.setPageQuery(pageQuery);
+		}
+		if( paramCtx.getPageInfo() == null ){
+			paramCtx.setPageInfo(pageInfo);
+		}
+		listHandler.invoke(paramCtx);
 	}
 
 	@Override
@@ -64,31 +71,30 @@ public abstract class AbstractCrudService implements CrudService {
 		ZValue param = paramCtx.getParam();
 		ModelMap model = paramCtx.getModel();
 
-//		ISqlDAO<ZValue> sqlDao = null;
-//		if (paramCtx.getSqlDAO() != null) sqlDao = paramCtx.getSqlDAO();
-//		else sqlDao = this.sqlDao;
-//		ZValue result = sqlDao.findOne(viewQueryId, param);
-//		model.addAttribute(RESULT, result);
-//
-//		getFiles(paramCtx);
+		ISqlDAO<ZValue> sqlDao = null;
+		if (paramCtx.getSqlDAO() != null) sqlDao = paramCtx.getSqlDAO();
+		else sqlDao = this.sqlDao;
+		ZValue result = sqlDao.findOne(viewQueryId, param);
+		model.addAttribute(ConstantsRequest.RESULT, result);
+
+		getFiles(paramCtx);
 
 	}
 
-//	protected void getFiles(ParameterContext paramCtx) throws Exception {
-//		ModelMap model = paramCtx.getModel();
-//		ZValue result = (ZValue)model.get(RESULT);
-//		String atchFileId = "";
-//		if (result != null) atchFileId = result.getString(ATCH_FILE_ID);
-//		if( StringUtils.hasText(atchFileId) )
-//		{
-//			List<ZValue> fileList = fileMngService.getFiles(atchFileId);
-//			model.addAttribute("fileList", fileList);
-//			model.addAttribute("fileListCnt", fileList.size());
-//			if (fileList.size() == 1) {
-//				model.addAttribute("fileVO", fileList.get(0));
-//			}
-//		}
-//	}
+	protected void getFiles(ParameterContext paramCtx) throws Exception {
+		ModelMap model = paramCtx.getModel();
+		ZValue result = (ZValue)model.get(ConstantsRequest.RESULT);
+		String atchFileId = "";
+		if (result != null) atchFileId = result.getString(ConstantsRequest.ATCH_FILE_ID);
+		if(StringUtils.hasText(atchFileId)) {
+			List<ZValue> fileList = fileMngService.getFiles(atchFileId);
+			model.addAttribute("fileList", fileList);
+			model.addAttribute("fileListCnt", fileList.size());
+			if (fileList.size() == 1) {
+				model.addAttribute("fileVO", fileList.get(0));
+			}
+		}
+	}
 
 	@Override
 	public void forInsert(ParameterContext paramCtx) throws Exception {

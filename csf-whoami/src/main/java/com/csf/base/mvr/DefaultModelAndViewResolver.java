@@ -1,4 +1,4 @@
-package com.csf.base.common;
+package com.csf.base.mvr;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,6 @@ import org.springframework.ui.ModelMap;
 
 import com.csf.base.ParameterContext;
 import com.csf.base.core.ZValue;
-import com.csf.base.mvr.UriModelAndViewResolver;
 import com.csf.base.utilities.StringUtils;
 
 public class DefaultModelAndViewResolver extends UriModelAndViewResolver {

@@ -20,7 +20,7 @@ import com.csf.base.WebFactory;
 import com.csf.base.common.BaseController;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
-import com.csf.base.service.CommonService;
+import com.csf.base.service.common.CommonService;
 
 @Controller
 @RequestMapping("/{siteId}/{compId}/{appId}/{pakageId}/{programId}")

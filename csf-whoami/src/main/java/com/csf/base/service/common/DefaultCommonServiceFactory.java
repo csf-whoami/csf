@@ -1,4 +1,4 @@
-package com.csf.base.common;
+package com.csf.base.service.common;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -15,7 +15,6 @@ import com.csf.base.ParameterContext;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 import com.csf.base.mvr.ModelAndViewResolver;
-import com.csf.base.service.CommonService;
 
 import lombok.Getter;
 import lombok.Setter;

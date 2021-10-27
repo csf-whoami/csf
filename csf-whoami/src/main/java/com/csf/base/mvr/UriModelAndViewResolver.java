@@ -21,8 +21,8 @@ import org.springframework.web.util.UrlPathHelper;
 import com.csf.base.ParameterContext;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
-import com.csf.base.service.CommonService;
 import com.csf.base.service.CrudService;
+import com.csf.base.service.common.CommonService;
 import com.csf.utilities.HttpUtil;
 
 public class UriModelAndViewResolver implements ModelAndViewResolver {

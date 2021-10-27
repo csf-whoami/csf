@@ -9,6 +9,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.csf.base.core.ZValue;
+import com.csf.base.dao.ISqlDAO;
+import com.csf.base.paging.IPageInfo;
+import com.csf.base.paging.PageQuery;
+import com.csf.base.vo.QueryIdVO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,10 +28,13 @@ public class ParameterContext {
 	private Object pkValue;
 	private String userIp;
 	private String pageQueryData;
+	private PageQuery pageQuery;
 //	private UsersVO usersVO;
 //	private CacheVO cacheVO;
 	private String targetMethod;
 	private String viewPage;
-//	private ISqlDAO<ZValue> sqlDAO;
+	private ISqlDAO<ZValue> sqlDAO;
 	private String upFileTp = "";
+	private QueryIdVO queryIdVO;
+	private IPageInfo pageInfo;
 }

@@ -13,7 +13,7 @@ public class DefaultCrudService extends AbstractCrudService {
 	private String pageQueryData;
 
 	protected void doList(ParameterContext paramCtx, String listQueryId, String countQueryId) throws Exception {
-//		paramCtx.setSqlDAO(sqlDao);
+		paramCtx.setSqlDAO(sqlDao);
 //		QueryIdVO qvo = new QueryIdVO();
 //		qvo.setListQueryId(listQueryId);
 //		qvo.setCountQueryId(countQueryId);

@@ -7,10 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.csf.base.common.CommonServiceFactory;
-import com.csf.base.common.DefaultCommonServiceFactory;
-import com.csf.base.common.DefaultModelAndViewResolver;
+import com.csf.base.mvr.DefaultModelAndViewResolver;
 import com.csf.base.mvr.ModelAndViewResolver;
+import com.csf.base.service.common.CommonServiceFactory;
+import com.csf.base.service.common.DefaultCommonServiceFactory;
 
 @SpringBootApplication
 public class CSFApplication {
