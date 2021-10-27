@@ -49,7 +49,14 @@ public enum ErrorCode {
     PERMISSION_DENIED("CMS_0023", "User is not have permission."),
     PARAMETER_INVALID("CMS_0003", "Parameter invalid."),
     DATA_INVALID("CMS_0004", "Input data invalid."),
-    CANT_INSERT_OPTIONS("CMS_0005", "Can not insert question options");
+    CANT_INSERT_OPTIONS("CMS_0005", "Can not insert question options"),
+    ILLEGAL_ARGUMENT("CMM001", "IllegalArgumentException"),
+    ILLEGAL_STATE("CMM002", "IllegalStateException"),
+    UN_SUPPORTED_FILE("CMM003", "UnSupportedFileException"),
+    IO("CMM004", "IOException"),
+    OTHER("CMM005", "IOException")
+
+    ;
 
     private String code;
     private String message;

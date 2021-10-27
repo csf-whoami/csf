@@ -3,6 +3,7 @@ package com.csf.base.handler;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
 import com.csf.base.ParameterContext;
@@ -12,10 +13,15 @@ import com.csf.base.paging.PaginationInfo;
 import com.csf.base.service.file.IFileMngService;
 import com.csf.base.vo.QueryIdVO;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public abstract class ListHandler implements Handler {
 
+	@Autowired
 	protected ISqlDAO<ZValue> sqlDao;
-
+	@Autowired
 	protected IFileMngService fileMngService;
 
 	@Override
@@ -34,15 +40,15 @@ public abstract class ListHandler implements Handler {
 		List<ZValue> resultList = getResultList(paramCtx);
 		model.addAttribute("resultList", resultList);
 
-		Map<String, List<ZValue>> fileMap = getFileMap(param, resultList);
-		model.addAttribute("fileMap", fileMap);
+//		Map<String, List<ZValue>> fileMap = getFileMap(param, resultList);
+//		model.addAttribute("fileMap", fileMap);
 
-		fileMngService.setFirstProperties(resultList, fileMap);
+//		fileMngService.setFirstProperties(resultList, fileMap);
 
-		String pageNav = getPageNavigateString(paramCtx);
-		model.addAttribute("pageNav", pageNav);
+//		String pageNav = getPageNavigateString(paramCtx);
+//		model.addAttribute("pageNav", pageNav);
 
-    	return CONTINUE;
+		return CONTINUE;
 	}
 
 	public abstract Map<String, List<ZValue>> getFileMap(ZValue param, List<ZValue> resultList) throws Exception;
@@ -74,12 +80,4 @@ public abstract class ListHandler implements Handler {
 	}
 
 	protected abstract String getPageNavigateString(ParameterContext paramCtx) throws Exception;
-
-	public ISqlDAO<ZValue> getSqlDao() {
-		return sqlDao;
-	}
-
-	public void setSqlDao(ISqlDAO<ZValue> sqlDao) {
-		this.sqlDao = sqlDao;
-	}
 }

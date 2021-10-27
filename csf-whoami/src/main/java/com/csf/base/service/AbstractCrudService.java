@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.ui.ModelMap;
 
@@ -33,6 +34,7 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 	protected String countQueryId;
 	protected String viewQueryId;
 	protected String excelQueryId;
+	@Autowired
 	protected ListHandler listHandler;
 //	protected IExcelUploadService<ZValue> excelUploadService;
 

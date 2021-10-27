@@ -22,4 +22,16 @@ public interface ISqlDAO<T> {
 	public long count(String queryId, T param) throws Exception;
 
 	public String selectString(String queryId, T param) throws Exception;
+
+	public int deleteOne(String queryId, T param) throws Exception;
+
+	public Object save(String queryId, T param) throws Exception;
+
+	public int delete(String queryId, Object parameterObject);
+
+	public int update(String queryId, Object parameterObject);
+
+	public int modify(String queryId, T param) throws Exception;
+
+	public <ID> int deleteById(String queryId, ID id) throws Exception;
 }

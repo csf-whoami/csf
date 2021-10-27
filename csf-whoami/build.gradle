@@ -32,5 +32,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 
-    //implementation 'commons-lang:commons-lang'
+    // https://mvnrepository.com/artifact/net.coobird/thumbnailator
+    implementation 'net.coobird:thumbnailator:0.4.14'
+
+    // Change asap because end of 2009
+    // https://mvnrepository.com/artifact/org.apache.sanselan/sanselan
+    implementation 'org.apache.sanselan:sanselan:0.97-incubator'
 }
