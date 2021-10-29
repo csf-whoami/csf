@@ -5,6 +5,8 @@ import com.csf.base.service.common.CommonService;
 
 public interface CrudService extends CommonService {
 
+	public void index(ParameterContext paramCtx) throws Exception;
+
 	public void list(ParameterContext paramCtx) throws Exception;
 
 	public void view(ParameterContext paramCtx) throws Exception;

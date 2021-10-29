@@ -51,7 +51,6 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 	 */
 	@Override
 	public void list(ParameterContext paramCtx) throws Exception {
-		System.out.println("Go to List method.");
 		if(paramCtx.getQueryIdVO() == null ){
 			QueryIdVO qvo = new QueryIdVO();
 			qvo.setListQueryId(listQueryId);
@@ -234,5 +233,10 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 //		param.putObject("allowFileExt", allowFileExt);
 //		param.putObject("limitFileSize", limitSize);
 //		param.putObject("limitFileSizeFormat", FileUtil.readableFileSize(limitSize));
+	}
+
+	@Override
+	public void index(ParameterContext paramCtx) throws Exception {
+		
 	}
 }

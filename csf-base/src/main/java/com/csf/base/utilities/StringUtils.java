@@ -1665,34 +1665,41 @@ public class StringUtils {
     }
 
     /**
-	 * Check that the given String is neither {@code null} nor of length 0.
-	 * Note: Will return {@code true} for a String that purely consists of whitespace.
-	 * @param str the String to check (may be {@code null})
-	 * @return {@code true} if the String is not null and has length
-	 * @see #hasLength(CharSequence)
-	 */
-	public static boolean hasLength(String str) {
-		return hasLength((CharSequence) str);
-	}
+     * Check that the given String is neither {@code null} nor of length 0.
+     * Note: Will return {@code true} for a String that purely consists of whitespace.
+     * @param str the String to check (may be {@code null})
+     * @return {@code true} if the String is not null and has length
+     * @see #hasLength(CharSequence)
+     */
+    public static boolean hasLength(String str) {
+        return hasLength((CharSequence) str);
+    }
 
-	public static boolean hasLength(CharSequence str) {
-		return (str != null && str.length() > 0);
-	}
+    public static boolean hasLength(CharSequence str) {
+        return (str != null && str.length() > 0);
+    }
 
-	public static boolean hasText(String str) {
-		return hasText((CharSequence) str);
-	}
+    public static boolean hasText(String str) {
+        return hasText((CharSequence) str);
+    }
 
-	public static boolean hasText(CharSequence str) {
-		if (!hasLength(str)) {
-			return false;
-		}
-		int strLen = str.length();
-		for (int i = 0; i < strLen; i++) {
-			if (!Character.isWhitespace(str.charAt(i))) {
-				return true;
-			}
-		}
-		return false;
-	}
+    public static boolean hasText(CharSequence str) {
+        if (!hasLength(str)) {
+            return false;
+        }
+        int strLen = str.length();
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String toName(String input) {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append(input.substring(0,1).toUpperCase());
+        strBuilder.append(input.substring(1));
+        return strBuilder.toString();
+    }
 }
