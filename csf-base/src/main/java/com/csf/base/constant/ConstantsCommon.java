@@ -20,4 +20,10 @@ public class ConstantsCommon {
 
     public static final String JOIN = "&";
     public static final String EQUAL = "=";
+
+    public static final String TRUE = "true";
+	public static final String FALSE = "false";
+
+	public static final String FLAG_OFF = "0";
+	public static final String FLAG_ON = "1";
 }

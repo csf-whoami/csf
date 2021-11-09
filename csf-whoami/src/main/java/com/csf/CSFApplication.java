@@ -33,13 +33,13 @@ public class CSFApplication {
 		Map<String, String> includePageMap = new HashMap<>();
 		includePageMap.put("/adm/*/list.html*", "/adm/test/[bbsAttrbCd]/list.html");
 		includePageMap.put("*/adm/*/list.html*", "/adm/test/[bbsAttrbCd]/list2.html");
-		includePageMap.put("/*/bos/bbs/*/list.do*", "/bos/bbs/[bbsAttrbCd]/List.jsp");
-		includePageMap.put("/*/bos/bbs/*/view.do*", "/bos/bbs/[bbsAttrbCd]/Read.jsp");
-		includePageMap.put("/*/bos/bbs/*/replyView.do*", "/bos/bbs/[bbsAttrbCd]/ReplyRead.jsp");
-		includePageMap.put("/*/bos/bbs/*/forInsert.do*", "/bos/bbs/[bbsAttrbCd]/Reg.jsp");
-		includePageMap.put("/*/bos/bbs/*/forInsertRe.do*", "/bos/bbs/[bbsAttrbCd]/RegRe.jsp");
-		includePageMap.put("/*/bos/bbs/*/forUpdate.do*", "/bos/bbs/[bbsAttrbCd]/Reg.jsp");
-		includePageMap.put("/*/bos/bbs/*/forUpdateRe.do*", "/bos/bbs/[bbsAttrbCd]/RegRe.jsp");
+//		includePageMap.put("/*/bos/bbs/*/list.do*", "/bos/bbs/[bbsAttrbCd]/List.jsp");
+//		includePageMap.put("/*/bos/bbs/*/view.do*", "/bos/bbs/[bbsAttrbCd]/Read.jsp");
+//		includePageMap.put("/*/bos/bbs/*/replyView.do*", "/bos/bbs/[bbsAttrbCd]/ReplyRead.jsp");
+//		includePageMap.put("/*/bos/bbs/*/forInsert.do*", "/bos/bbs/[bbsAttrbCd]/Reg.jsp");
+//		includePageMap.put("/*/bos/bbs/*/forInsertRe.do*", "/bos/bbs/[bbsAttrbCd]/RegRe.jsp");
+//		includePageMap.put("/*/bos/bbs/*/forUpdate.do*", "/bos/bbs/[bbsAttrbCd]/Reg.jsp");
+//		includePageMap.put("/*/bos/bbs/*/forUpdateRe.do*", "/bos/bbs/[bbsAttrbCd]/RegRe.jsp");
 		modelAndViewResolver.setIncludePageMap(includePageMap);
 		return modelAndViewResolver;
 	}
