@@ -28,7 +28,7 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	protected IFileMngService fileMngService;
+//	protected IFileMngService fileMngService;
 
 	protected String listQueryId;
 	protected String countQueryId;
@@ -88,12 +88,12 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 		String atchFileId = "";
 		if (result != null) atchFileId = result.getString(ConstantsRequest.ATCH_FILE_ID);
 		if(StringUtils.hasText(atchFileId)) {
-			List<ZValue> fileList = fileMngService.getFiles(atchFileId);
-			model.addAttribute("fileList", fileList);
-			model.addAttribute("fileListCnt", fileList.size());
-			if (fileList.size() == 1) {
-				model.addAttribute("fileVO", fileList.get(0));
-			}
+//			List<ZValue> fileList = fileMngService.getFiles(atchFileId);
+//			model.addAttribute("fileList", fileList);
+//			model.addAttribute("fileListCnt", fileList.size());
+//			if (fileList.size() == 1) {
+//				model.addAttribute("fileVO", fileList.get(0));
+//			}
 		}
 	}
 

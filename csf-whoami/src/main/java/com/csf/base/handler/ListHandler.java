@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
 import com.csf.base.ParameterContext;
-import com.csf.base.constant.CommonConstants;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 import com.csf.base.dao.ISqlDAO;
 import com.csf.base.paging.PaginationInfo;
-import com.csf.base.service.file.IFileMngService;
 import com.csf.base.utilities.StringUtils;
 import com.csf.base.vo.QueryIdVO;
 
@@ -24,8 +22,8 @@ public abstract class ListHandler implements Handler {
 
 	@Autowired
 	protected ISqlDAO<ZValue> sqlDao;
-	@Autowired
-	protected IFileMngService fileMngService;
+//	@Autowired
+//	protected IFileMngService fileMngService;
 
 	@Override
 	public boolean invoke(ParameterContext paramCtx) throws Exception {
@@ -66,15 +64,16 @@ public abstract class ListHandler implements Handler {
 			String compId = paramCtx.getParam().getString(ConstantsRequest.COMP_ID).toUpperCase();
 			String programId = paramCtx.getParam().getString(ConstantsRequest.PROGRAM_ID);
 			String methodId = paramCtx.getParam().getString(ConstantsRequest.TARGET_METHOD);
-			listQueryId = compId + CommonConstants.DOT + StringUtils.toName(programId) + StringUtils.toName(methodId);
+			listQueryId = compId + StringUtils.toName(programId) + StringUtils.toName(methodId);
 		}
+		// Change DAO to mapper.
 		ISqlDAO<ZValue> vSqlDao = paramCtx.getSqlDAO();
+		System.out.println("listQueryId call: " + listQueryId);
 		if (paramCtx.getSqlDAO() != null) {
 			return vSqlDao.findAll(listQueryId, paramCtx.getParam());
 		} else {
 			return sqlDao.findAll(listQueryId, paramCtx.getParam());
 		}
-
 	}
 
 	protected long getListCount(ParameterContext paramCtx) throws Exception{

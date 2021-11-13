@@ -1,6 +1,6 @@
 package com.csf.database.adapter;
 
-import com.csf.base.domain.MenuDomain;
+import com.csf.base.domain.MenuVO;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.models.TbMenu;
 import com.csf.database.view.MenuView;
@@ -9,13 +9,13 @@ public class ConvertMenuDTO {
 
 	private ConvertMenuDTO() {}
 
-	public static MenuDomain dbToDomain(TbMenu entity) {
+	public static MenuVO dbToDomain(TbMenu entity) {
 
 		if (entity == null) {
 			return null;
 		}
 
-		MenuDomain domain = new MenuDomain();
+		MenuVO domain = new MenuVO();
 		domain.setId(StringUtils.fromLong(entity.getId()));
 		domain.setMenuName(entity.getMenuName());
 		domain.setLinkScreen(entity.getLinkScreen());
@@ -23,11 +23,11 @@ public class ConvertMenuDTO {
 		return domain;
 	}
 
-	public static MenuDomain viewToVo(MenuView view) {
+	public static MenuVO viewToVo(MenuView view) {
         if (view == null) {
             return null;
         }
-        MenuDomain vo = new MenuDomain();
+        MenuVO vo = new MenuVO();
         vo.setId(StringUtils.fromLong(view.getId()));
         vo.setMenuName(view.getName());
         vo.setLinkScreen(view.getLinkScreen());

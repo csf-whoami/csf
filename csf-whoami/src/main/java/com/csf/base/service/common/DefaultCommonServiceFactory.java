@@ -42,7 +42,7 @@ public class DefaultCommonServiceFactory implements CommonServiceFactory, Applic
 		//targetName이 없는경우 programId + Service
 		//ex) programId가 siteMng일경우 서비스명은 siteInfoService
 		if ( targetName == null ) {
-			targetName = programId + "Service";
+			targetName = programId + ConstantsRequest.SERVICE_NM;
 		}
 		param.putObject(ConstantsRequest.TARGET_NAME, targetName);
 

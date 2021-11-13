@@ -11,7 +11,7 @@ import com.csf.database.providers.GroupProvider;
 import com.csf.database.view.GroupView;
 
 @Mapper
-public interface GroupMapper {
+public interface GroupMapper extends BaseMapper {
 
 	@SelectProvider(type = GroupProvider.class, method = "findGroupsByUser")
 	@Results({

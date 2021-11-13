@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.csf.database.vo.TmpMemberVO;
 
 @Mapper
-public interface TmpMemberMapper {
+public interface TmpMemberMapper extends BaseMapper {
 	List<TmpMemberVO> selectAll();
 
 	TmpMemberVO selectById(int id);

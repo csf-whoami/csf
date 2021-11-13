@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csf.base.core.ZValue;
-import com.csf.base.domain.MenuDomain;
+import com.csf.base.domain.MenuVO;
 import com.csf.database.adapter.MenuAdapter;
 import com.csf.database.mappers.MenuMapper;
 import com.csf.database.models.TbMenu;
@@ -24,7 +24,7 @@ public class MenuServiceImpl implements MenuService {
     private final MenuRepository menuRepository;
 
     @Override
-    public List<MenuDomain> getMenus() {
+    public List<MenuVO> getMenus() {
         List<ZValue> menus = menuMapper.fetchMenuByCondition();
 //        return menus.stream().map(mnu -> ConvertMenuDTO.viewToVo(mnu)).collect(Collectors.toList());
         for(ZValue item : menus) {
@@ -38,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Transactional
     @Override
-    public Long registerMenu(MenuDomain menu) {
+    public Long registerMenu(MenuVO menu) {
         TbMenu entity = MenuAdapter.domainToDb(menu);
         if (entity != null) {
             return menuRepository.save(entity).getId();

@@ -1702,4 +1702,11 @@ public class StringUtils {
         strBuilder.append(input.substring(1));
         return strBuilder.toString();
     }
+
+    public static String toFirstLower(String input) {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append(input.substring(0,1).toLowerCase());
+        strBuilder.append(input.substring(1));
+        return strBuilder.toString();
+    }
 }

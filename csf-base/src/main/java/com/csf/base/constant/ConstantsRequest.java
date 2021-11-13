@@ -25,4 +25,13 @@ public class ConstantsRequest {
 	public static final String SUFFIX = ".html";
 	public static final String HOME_PAGE = "index";
 	public static final String VIEW_PAGE = "viewPage";
+
+	// Constant file name.
+	public static final String SERVICE_NM = "Service";
+	public static final String REPOSITORY_NM = "Repository";
+	public static final String MAPPER_NM = "Mapper";
+
+	// Common method.
+	public static final String IGNORE_WRD = "base";
+	public static final String SQL_FIND_ALL = "findAll";
 }

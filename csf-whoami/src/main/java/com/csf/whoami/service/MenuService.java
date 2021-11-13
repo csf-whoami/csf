@@ -2,10 +2,10 @@ package com.csf.whoami.service;
 
 import java.util.List;
 
-import com.csf.base.domain.MenuDomain;
+import com.csf.base.domain.MenuVO;
 
 public interface MenuService {
-	public List<MenuDomain> getMenus();
+	public List<MenuVO> getMenus();
 
-	public Long registerMenu(MenuDomain menu);
+	public Long registerMenu(MenuVO menu);
 }

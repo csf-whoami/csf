@@ -9,7 +9,9 @@ import com.csf.base.core.ZValue;
 import com.csf.database.providers.MenuProvider;
 
 @Mapper
-public interface MenuMapper {
+public interface MenuMapper extends BaseMapper {
+
+	List<ZValue> CSFMenuList(ZValue param);
 
 	@SelectProvider(type = MenuProvider.class, method = "fetchMenus")
 	List<ZValue> fetchMenuByCondition();

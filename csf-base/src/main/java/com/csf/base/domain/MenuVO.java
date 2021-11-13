@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Setter @Getter
 @ApiModel(description = "Model menu")
-public class MenuDomain {
+public class MenuVO {
 
     @ApiModelProperty(value = "ID", position = 1)
     private String id                    = null;

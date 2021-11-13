@@ -3,6 +3,8 @@ package com.csf.base.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.csf.base.ParameterContext;
+
 public interface ISqlDAO<T> {
 
 	public List<T> findAll(String queryId) throws Exception;

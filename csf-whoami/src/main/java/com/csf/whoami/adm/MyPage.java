@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csf.base.constant.ConstantsParam;
 import com.csf.base.constant.ConstantsURL;
-import com.csf.base.domain.MenuDomain;
+import com.csf.base.domain.MenuVO;
 import com.csf.whoami.service.MenuService;
 
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class MyPage {
 
     @GetMapping(value = ConstantsURL.URI_DASHBOARD_MENU)
     public ModelAndView menus(ModelAndView model) {
-        List<MenuDomain> listMenu = menuService.getMenus();
+        List<MenuVO> listMenu = menuService.getMenus();
         model.addObject(ConstantsParam.DATAS, listMenu);
         model.setViewName(ConstantsURL.PAGE_MENU);
         return model;
