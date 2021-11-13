@@ -7,7 +7,8 @@ public class ConstantsURL {
     public static final String MESSAGE_PATH         = "ApplicationMessage";
 
     public static final String HOME                 = "/";
-    public static final String DASHBOARD_HOME       = "me";
+    public static final String ADM_SITE             = "adm";
+
 
     /** URL maun group. */
     public static final String MAIN                 = "main";
@@ -28,6 +29,8 @@ public class ConstantsURL {
     public static final String PAGE_GROUP_INFO      = "login/group-info";
     public static final String PAGE_AUTHENTICATE    = "login/authenticate";
 
+    public static final String DASHBOARD_HOME       = "me";
+    public static final String DASHBOARD_PAGE       = ADM_SITE + "/index";
     /** Dashboard menu page URL */
     public static final String URI_DASHBOARD_MENU   = "/menu";
     public static final String URI_DASHBOARD_START  = "/start";

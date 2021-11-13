@@ -34,6 +34,12 @@ public class IndexPage {
         return model;
     }
 
+    /**
+     * Main page. Require member login.
+     * 
+     * @param model
+     * @return
+     */
     @GetMapping(value = ConstantsURL.MAIN)
     public ModelAndView gotoMainPage(ModelAndView model) {
         List<MenuGroupInfo> groups = dummyMenuGroups();

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <th:block th:replace="/layout/head :: headFragment"></th:block>
+    <style>
+        #main {
+            height: 97vh;
+            display: flex;
+        }
+
+        #left {
+            float: left;
+            width: 300px;
+            height: 100%;
+        }
+
+        #right {
+            width: calc(100% - 250px);
+            height: 100%;
+        }
+
+        frame {
+            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+    </style>
+    <body class="main-body leftmenu">
+        <div class="page">
+
+            <!-- Main Header-->
+            <th:block th:replace="/layout/mainHeader :: mainHeader"></th:block>
+            <!-- End Main Header-->
+
+            <!-- Main Content-->
+            <div class="main-content pt-0">
+                <!-- Page Header -->
+                <th:block th:replace="/layout/pageHeader"></th:block>
+                <!-- End Page Header -->
+                <div id="main">
+                    <div id="left">
+                        <iframe id="navi" name="navi" width="100%" height="100%" th:src="@{/adm/csf/w/member/menu/list.html?pageNm=main}"></iframe>
+                    </div>
+                    <div id="right">
+                        <iframe id="floor" name="floor" width="100%" height="100%" th:src="@{/adm/csf/w/member/home/index.html}"></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- End Main Content-->
+
+            <!-- Main Footer-->
+            <th:block th:replace="/layout/footer"></th:block>
+            <!--End Footer-->
+        </div>
+        <!-- End Page -->
+
+        <!-- Back-to-top -->
+        <a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
+
+        <!-- Sticky js -->
+        <script th:src="@{/js/sticky.js}"></script>
+
+        <!-- Custom js -->
+        <script th:src="@{/js/custom.js}"></script>
+    </body>
+</html>

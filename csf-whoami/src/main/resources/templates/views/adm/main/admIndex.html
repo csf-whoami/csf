@@ -1,53 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
-	<th:block th:replace="/layout/head :: headFragment"></th:block>
-
-	<body class="main-body leftmenu">
-
-		<!-- Page -->
-		<div class="page">
-			<!-- Sidemenu -->
-			<th:block th:replace="/layout/mainMenu"></th:block>
-			<!-- End Sidemenu -->
-
-			<!-- Main Header-->
-			<th:block th:replace="/layout/mainHeader :: mainHeader"></th:block>
-			<!-- End Main Header-->
-
-			<!-- Main Content-->
-			<div class="main-content side-content pt-0">
-				<div class="container-fluid">
-					<div class="inner-body">
-
-						<!-- Page Header -->
-						<th:block th:replace="/layout/pageHeader"></th:block>
-						<!-- End Page Header -->
-
-						<!-- Create Pattern in here. -->
-						<!-- <th:block th:replace="@{includePage} :: ${pageNm}"></th:block> -->
-						<th:block th:replace="@{__${includePage}__}"></th:block>
-					</div>
-				</div>
-			</div>
-			<!-- End Main Content-->
-
-			<!-- Main Footer-->
-			<th:block th:replace="/layout/footer"></th:block>
-			<!--End Footer-->
-
-			<!-- Sidebar -->
-			<th:block th:replace="/layout/sidebar"></th:block>
-			<!-- End Sidebar -->
-		</div>
-		<!-- End Page -->
-
-		<!-- Back-to-top -->
-		<a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
-
-		<!-- Sticky js -->
-		<script th:src="@{/js/sticky.js}"></script>
-
-		<!-- Custom js -->
-		<script th:src="@{/js/custom.js}"></script>
-	</body>
+    <th:block th:replace="/layout/head :: headFragment"></th:block>
+    <body class="main-body">
+        <!-- Main Content-->
+        <div class="main-content side-content pt-0">
+            <div class="container-fluid">
+                <div class="inner-body">
+                    <!-- Create Pattern in here. -->
+                    <!-- <th:block th:replace="@{includePage} :: ${pageNm}"></th:block> -->
+                    <th:block th:replace="@{__${includePage}__}"></th:block>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

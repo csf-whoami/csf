@@ -1,0 +1,110 @@
+<th:block th:fragment="menu" xmlns:th="http://www.thymeleaf.org">
+    <!-- Sidemenu -->
+    <th:block th:if="${pageNm == 'main'}">
+        <ul class="nav">
+            <li class="nav-header"><span class="nav-label">Dashboard</span></li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html"><span class="shape1"></span><span class="shape2"></span><em class="ti-home sidemenu-icon"></em><span class="sidemenu-label">Dashboard</span></a>
+            </li>
+            <!-- <li class="nav-header"><span class="nav-label">Channel Management</span></li> -->
+            <li class="nav-item">
+                <a class="nav-link with-sub" href="#">
+                    <span class="shape1"></span>
+                    <span class="shape2"></span>
+                    <em class="ti-receipt sidemenu-icon"></em>
+                    <span class="sidemenu-label">Channel & Group information</span>
+                    <span class="badge badge-info side-badge">6</span>
+                </a>
+                <ul class="nav-sub">
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" th:href="@{../groups/list.html}">Groups management</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" th:href="@{../channels/list.html}">Channel management</a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class="nav-header"><span class="nav-label">Progress Management</span></li> -->
+            <li class="nav-item">
+                <a class="nav-link with-sub" href="#"><span class="shape1"></span><span class="shape2"></span><i class="ti-bar-chart-alt sidemenu-icon"></i><span class="sidemenu-label">Charts</span><span class="badge badge-danger side-badge">5</span></a>
+                <ul class="nav-sub">
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="chart-morris.html">Morris Charts</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="chart-flot.html">Flot Charts</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="chart-chartjs.html">ChartJS</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="chart-spark-peity.html">Sparkline &amp; Peity</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="chart-echart.html">Echart</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link with-sub" href="#"><span class="shape1"></span><span class="shape2"></span><em class="ti-lock sidemenu-icon"></em><span class="sidemenu-label">Custom Pages</span><em class="angle fe fe-chevron-right"></em></a>
+                <ul class="nav-sub">
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="signin.html">Sign In</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="signup.html">Sign Up</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="forgot.html">Forgot Password</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="reset.html">Reset Password</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="lockscreen.html">Lockscreen</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="underconstruction.html">UnderConstruction</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="404.html">404 Error</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="500.html">500 Error</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link with-sub" href="#"><span class="shape1"></span><span class="shape2"></span><em class="ti-menu sidemenu-icon"></em><span class="sidemenu-label">Submenu</span><i class="angle fe fe-chevron-right"></i></a>
+                <ul class="nav-sub">
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link" href="#">Submenu-01</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link with-sub" href="#"><span class="sidemenu-label">Submenu-02</span><em class="angle fe fe-chevron-right"></em></a>
+                        <ul class="nav-sub">
+                            <li class="nav-sub-item">
+                                <a class="nav-sub-link" href="#">Level-01</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a class="nav-sub-link with-sub" href="#"><span class="sidemenu-label">level-02</span><em class="angle fe fe-chevron-right"></em></a>
+                                <ul class="nav-sub">
+                                    <li class="nav-sub-item">
+                                        <a class="nav-sub-link" href="#">Submenu-01</a>
+                                    </li>
+                                    <li class="nav-sub-item">
+                                        <a class="nav-sub-link" href="#">Submenu-02</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </th:block>
+    <th:block th:unless="${pageNm == 'main'}">
+        // Display content.
+    </th:block>
+    <!-- End Sidemenu -->
+</th:block>

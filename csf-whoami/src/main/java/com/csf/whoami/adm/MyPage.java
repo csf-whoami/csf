@@ -23,7 +23,7 @@ public class MyPage {
 
     @GetMapping
     public ModelAndView index(ModelAndView model) {
-        model.setViewName("dashboard/index");
+        model.setViewName(ConstantsURL.DASHBOARD_PAGE);
         return model;
     }
 
