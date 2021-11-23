@@ -67,8 +67,8 @@ public abstract class ListHandler implements Handler {
 			listQueryId = compId + StringUtils.toName(programId) + StringUtils.toName(methodId);
 		}
 		// Change DAO to mapper.
-		ISqlDAO<ZValue> vSqlDao = paramCtx.getSqlDAO();
 		System.out.println("listQueryId call: " + listQueryId);
+		ISqlDAO<ZValue> vSqlDao = paramCtx.getSqlDAO();
 		if (paramCtx.getSqlDAO() != null) {
 			return vSqlDao.findAll(listQueryId, paramCtx.getParam());
 		} else {

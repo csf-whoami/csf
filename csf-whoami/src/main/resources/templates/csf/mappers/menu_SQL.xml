@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.csf.database.mappers.MenuMapper">
-	<select id="CSFMenuList" resultType="MenuVO">
+	<select id="CSFMenuList" resultType="ZValue">
 		SELECT *
 		FROM W_TB_MENU
 	</select>

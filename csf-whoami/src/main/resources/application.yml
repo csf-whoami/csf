@@ -6,7 +6,7 @@
 
 # VO location
 mybatis:
-  type-aliases-package: com.csf.database.vo, com.csf.base.domain
+  type-aliases-package: com.csf.database.vo, com.csf.base.core
 # xml location
   mapper-locations: classpath:templates/csf/mappers/**/*.xml
 

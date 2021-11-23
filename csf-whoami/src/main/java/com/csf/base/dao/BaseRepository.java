@@ -1,6 +1,7 @@
 package com.csf.base.dao;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -173,7 +174,7 @@ public class BaseRepository<T> implements ISqlDAO<T>, ApplicationContextAware {
 				}
 			}
 		}
-		return null;
+		return new ArrayList<>();
 	}
 
 	private String getDefaultSqlNm(String currentMethod, String serviceClass) {
