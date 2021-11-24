@@ -2,8 +2,6 @@
 
     <!-- Internal DataTables css-->
     <link rel="stylesheet" type="text/css" th:href="@{/plugins/datatable/dataTables.bootstrap4.min.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/plugins/datatable/responsivebootstrap4.min.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/plugins/datatable/fileexport/buttons.bootstrap4.min.css}" />
 
     <!-- Sidemenu -->
     <th:block th:if="${pageNm == 'main'}">
@@ -35,21 +33,28 @@
         </ul>
         <script th:inline="text">
             function selectMenu(link) {
-                console.log("link: ", link);
                 parent.document.getElementById('floor').src = link;
             }
         </script>
         <!-- End Sidemenu -->
     </th:block>
     <th:block th:unless="${pageNm == 'main'}">
+
+    <div><br/></div>
         <!-- Row -->
         <div class="row row-sm">
             <div class="col-lg-12">
                 <div class="card custom-card overflow-hidden">
                     <div class="card-body">
                         <div>
-                            <h6 class="main-content-label mb-1">Menu collection screen</h6>
+                            <h6 class="main-content-label mb-1">Export content</h6>
                             <p class="text-muted card-sub-title">Exporting data from a table can often be a key part of a complex application. The Buttons extension for DataTables provides three plug-ins that provide overlapping functionality for data export:</p>
+                        </div>
+                        <div class="btn btn-list">
+                            <button class="btn ripple btn-primary btn-with-icon"><i class="fe fe-airplay"></i>Copy to clipboard</button>
+                            <button class="btn ripple btn-secondary btn-with-icon"><i class="fe fe-briefcase"></i> Export Excel</button>
+                            <button class="btn ripple btn-success btn-with-icon"><i class="fe fe-folder"></i> Export PDF</button>
+                            <button class="btn ripple btn-success btn-with-icon"><i class="fe fe-folder"></i> Invisible column</button>
                         </div>
                         <div class="table-responsive">
                             <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100" >
@@ -72,63 +77,23 @@
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
                                     </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-                                        <td>$170,750</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cedric Kelly</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <td>22</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brielle Williamson</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <td>61</td>
-                                        <td>2012/12/02</td>
-                                        <td>$372,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Herrod Chandler</td>
-                                        <td>Sales Assistant</td>
-                                        <td>San Francisco</td>
-                                        <td>59</td>
-                                        <td>2012/08/06</td>
-                                        <td>$137,500</td>
-                                    </tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="row row-sm">
+                            <ul class="pagination pagination-circled">
+                                <li class="page-item"><a class="page-link" href="#"><i class="icon ion-ios-arrow-back"></i></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#"><i class="icon ion-ios-arrow-forward"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Row -->
-                        
     </th:block>
     <!-- End Sidemenu -->
 </th:block>
