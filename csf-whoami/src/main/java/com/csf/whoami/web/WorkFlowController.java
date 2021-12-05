@@ -5,11 +5,14 @@ package com.csf.whoami.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.csf.base.constant.ConstantsURL;
+import com.csf.base.domain.AccountDTO;
 
 /**
  * @author mac
@@ -33,6 +36,13 @@ public class WorkFlowController {
 
     @GetMapping(value = "group-not-found.html")
     public ModelAndView gotoGroupNotExist(ModelAndView model) {
+        model.setViewName(ConstantsURL.W_GROUP_NOT_FOUND);
+        return model;
+    }
+
+    @PostMapping(value = "login.html")
+    public ModelAndView login(@ModelAttribute("formData") AccountDTO search, ModelAndView model) {
+    	
         model.setViewName(ConstantsURL.W_GROUP_NOT_FOUND);
         return model;
     }

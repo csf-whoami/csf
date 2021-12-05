@@ -17,16 +17,33 @@
         <link th:href="@{/css/colors/default.css}" rel="stylesheet">
     </head>
     <body class="main-body">
-        <!-- Main Header-->
-        <div class="main-header side-header sticky vh-100">
-            <div class="container-fluid">
-                <div class="main-header-center">
-                    <div class="input-group row justify-content-center align-self-center">
-                        <label>Group info.</label>
+        <!-- Row -->
+        <div class="row row-sm">
+            <div class="col-lg-6 col-md-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div>
+                            <h6 class="main-content-label mb-1">Login</h6>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Enter Your Email" type="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Enter Your Password" type="password" name="password">
+                            </div>
+                            <div class="form-group">
+                                <label class="ckbox">
+                                    <input type="checkbox"><span class="tx-13">Remember me</span>
+                                </label>
+                            </div>
+                            <button class="btn ripple btn-main-primary" id="submitBtn">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End Row -->
         <!-- End Main Header-->
         <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
         <script th:inline="text" th:src="@{/js/w/web/work-flow.js}"></script>

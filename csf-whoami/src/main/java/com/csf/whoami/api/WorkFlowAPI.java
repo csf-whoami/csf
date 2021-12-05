@@ -3,17 +3,19 @@
  */
 package com.csf.whoami.api;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.csf.base.domain.AccountDTO;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.exception.CustomError;
-import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
-import com.csf.base.exception.HttpStatus;
 import com.csf.base.exception.ResponseDataAPI;
 import com.csf.whoami.service.GroupService;
 
@@ -46,5 +48,14 @@ public class WorkFlowAPI {
         return ResponseEntity.ok(ResponseDataAPI.builder()
               .data(group)
               .build());
+    }
+
+    @ApiOperation(value = "2. Phương thức đăng nhập vào trong hệ thống.")
+    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ResponseDataAPI> login(@RequestBody AccountDTO userInfo){
+
+        return ResponseEntity.ok(ResponseDataAPI.builder()
+                .data(null)
+                .build());
     }
 }
