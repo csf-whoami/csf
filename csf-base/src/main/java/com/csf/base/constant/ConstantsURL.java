@@ -73,6 +73,8 @@ public class ConstantsURL {
 
     /** Workflow page. */
     public static final String W_CHECK_LOGIN        = "w/workflow/check-group";
+    public static final String W_GROUP_NOT_FOUND    = "w/workflow/group-not-found";
+    public static final String W_GROUP_FOUND        = "w/workflow/group-info";
 
     /** Page URL. */
     public static final String PAGE_START = "index";
