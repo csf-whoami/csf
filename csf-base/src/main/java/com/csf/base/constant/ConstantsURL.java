@@ -71,6 +71,9 @@ public class ConstantsURL {
     public static final String URI_SIGNUP           = "/signup";
     public static final String URI_MAIL_CONFIRM     = "/confirm-group";
 
+    /** Workflow page. */
+    public static final String W_CHECK_LOGIN        = "w/workflow/check-group";
+
     /** Page URL. */
     public static final String PAGE_START = "index";
 }

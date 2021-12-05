@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>CSF - Check group name.</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+        <!-- Bootstrap css-->
+        <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+
+        <!-- Icons css-->
+        <link th:href="@{/plugins/web-fonts/icons.css}" rel="stylesheet"/>
+        <link th:href="@{/plugins/web-fonts/font-awesome/font-awesome.min.css}" rel="stylesheet">
+        <link th:href="@{/plugins/web-fonts/plugin.css}" rel="stylesheet"/>
+        <!-- Style css-->
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+        <link th:href="@{/css/colors/default.css}" rel="stylesheet">
+    </head>
+    <body class="main-body">
+        <!-- Main Header-->
+        <div class="main-header side-header sticky vh-100">
+            <div class="container-fluid">
+                <div class="main-header-center">
+                    <div class="input-group row justify-content-center align-self-center">
+                        <div class="input-group-btn search-panel">
+                            <select class="form-control select2-no-search" name="groupType">
+                                <option label="All categories"></option>
+                                <option value="IT Projects">Company name</option>
+                                <option value="Business Case">Group name</option>
+                                <option value="Microsoft Project">Content</option>
+                            </select>
+                        </div>
+                        <input name="groupName" type="search" class="form-control rounded-0" placeholder="Search for anything...">
+                        <button class="btn search-btn" id="searchGroup"><em class="fe fe-search"></em></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Main Header-->
+        <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
+        <script th:inline="text" th:src="@{/js/w/web/work-flow.js}"></script>
+    </body>
+</html>
