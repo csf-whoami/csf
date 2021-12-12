@@ -72,9 +72,11 @@ public class ConstantsURL {
     public static final String URI_MAIL_CONFIRM     = "/confirm-group";
 
     /** Workflow page. */
-    public static final String W_CHECK_LOGIN        = "w/workflow/check-group";
-    public static final String W_GROUP_NOT_FOUND    = "w/workflow/group-not-found";
-    public static final String W_GROUP_FOUND        = "w/workflow/group-info";
+    public static final String W_WORKFLOW           = "w/workflow";
+    public static final String W_CHECK_LOGIN        = W_WORKFLOW + "/check-group";
+    public static final String W_GROUP_NOT_FOUND    = W_WORKFLOW + "/group-not-found";
+    public static final String W_GROUP_FOUND        = W_WORKFLOW + "/group-info";
+    public static final String W_GROUP_MAIL_CONFIRM = W_WORKFLOW + URI_MAIL_CONFIRM;
 
     /** Page URL. */
     public static final String PAGE_START = "index";

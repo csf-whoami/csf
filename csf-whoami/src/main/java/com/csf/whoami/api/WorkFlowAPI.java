@@ -23,22 +23,18 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 
-/**
- * @author mac
- *
- */
 @Api
 @RestController
 @RequestMapping(value = "/w/api/v1/workflow")
 @RequiredArgsConstructor
 public class WorkFlowAPI {
 
-    private final GroupService groupsService;
+    private final GroupService groupService;
 
     @ApiOperation(value = "1. Phương thức tìm kiếm Group trong hệ thống.")
     @GetMapping(value = "/findGroup")
     public ResponseEntity<ResponseDataAPI> findGroup(@RequestParam(name = "type") String groupType, @RequestParam(name = "name") String groupName){
-        GroupInfo group = groupsService.getGroupByGroupUrl(groupName);
+        GroupInfo group = groupService.getGroupByGroupUrl(groupName);
         if(group == null) {
             CustomError error = new CustomError(null, ErrorException.DATA_NOT_FOUND.getCode(), ErrorException.DATA_NOT_FOUND.getMessage());
             return ResponseEntity.ok(ResponseDataAPI.builder()
@@ -56,6 +52,14 @@ public class WorkFlowAPI {
 
         return ResponseEntity.ok(ResponseDataAPI.builder()
                 .data(null)
+                .build());
+    }
+
+    @PostMapping(value = "/registerGroup")
+    public ResponseEntity<ResponseDataAPI> registerGroup(@RequestBody GroupInfo groupInfo) {
+        Long groupId = groupService.registerGroup(groupInfo);
+        return ResponseEntity.ok(ResponseDataAPI.builder()
+                .data(groupId)
                 .build());
     }
 }

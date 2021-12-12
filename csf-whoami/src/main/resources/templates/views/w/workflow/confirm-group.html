@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
-        <title>CSF - Check group name.</title>
+        <title>CSF - Confirm group info by Email.</title>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
@@ -19,40 +19,33 @@
     <body class="main-body">
         <!-- Main Header-->
         <div class="main-content side-content pt-100">
-            <div class="container-fluid">
-                <div class="main-header-center">
-                    <div class="input-group row justify-content-center align-self-center">
-                        <label>Group not found.</label>
-                        <div>
-                            <input type="text" name="groupType" id="groupType" readonly="readonly">
-                        </div>
-                        <div>
-                            <input type="text" name="groupName" id="groupName" readonly="readonly">
+            <form method="post" th:action="@{./email-confirm.html}" th:object="${formData}">
+                <div class="container-fluid">
+                    <div class="main-header-center">
+                        <div class="input-group row justify-content-center align-self-center">
+                            <label>Email confirm</label>
+                            <div>
+                                <input type="text" name="email" id="email">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div><label>Are you want to create this group?</label></div>
-                    <div class="btn btn-list">
-                        <button class="btn ripple btn-success disabled" id="create-group">Create</button>
-                        <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
+                    <div class="card">
+                        <div class="btn btn-list">
+                            <button class="btn ripple btn-success disabled" id="send-mail">Send mail</button>
+                            <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
+                        </div>
                     </div>
+                    <input hidden="hidden" name="groupId" th:id="groupId">
                 </div>
-            </div>
+            </form>
         </div>
         <!-- End Main Header-->
         <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
-        <script th:inline="text" th:src="@{/js/w/web/work-flow.js}"></script>
         <script th:inline="javascript">
             $(document).ready(function () {
                 let params = new window.URLSearchParams(window.location.search);
-                let type = params.get('type')
-                let typeDecode = decodeParam(type);
-                $("#groupType").val(typeDecode);
-
-                let name = params.get('name');
-                let nameDecode = decodeParam(name);
-                $("#groupName").val(nameDecode);
+                let idVal = params.get('id')
+                $("#groupId").val(idVal);
             });
         </script>
     </body>

@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csf.base.constant.ConstantsURL;
 import com.csf.base.domain.AccountDTO;
+import com.csf.base.domain.request.ConfirmGroupInfo;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * @author mac
@@ -20,6 +23,7 @@ import com.csf.base.domain.AccountDTO;
  */
 @Controller
 @RequestMapping(value = "/w")
+@RequiredArgsConstructor
 public class WorkFlowController {
 
     @GetMapping(value = "workflow.html")
@@ -42,8 +46,20 @@ public class WorkFlowController {
 
     @PostMapping(value = "login.html")
     public ModelAndView login(@ModelAttribute("formData") AccountDTO search, ModelAndView model) {
-    	
         model.setViewName(ConstantsURL.W_GROUP_NOT_FOUND);
+        return model;
+    }
+
+    @GetMapping(value = "validate-group.html")
+    public ModelAndView gotoValidateGroup(ModelAndView model) {
+        model.setViewName(ConstantsURL.W_GROUP_MAIL_CONFIRM);
+        return model;
+    }
+
+    @PostMapping(value = "email-confirm.html")
+    public ModelAndView sendEmailAndConfirm(@ModelAttribute("formData") ConfirmGroupInfo groupInfo, ModelAndView model) {
+    	System.out.println("Group email: " + groupInfo.getEmail());
+//        model.setViewName(ConstantsURL.W_GROUP_NOT_FOUND);
         return model;
     }
 }

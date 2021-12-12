@@ -10,6 +10,7 @@ import lombok.Setter;
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class ConfirmGroupInfo {
 
+	private String groupId;
 	private String groupURL;
 	private String email;
 }
