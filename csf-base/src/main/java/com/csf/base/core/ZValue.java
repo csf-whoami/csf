@@ -1,5 +1,6 @@
 package com.csf.base.core;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +12,7 @@ import org.apache.commons.collections.map.ListOrderedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ZValue extends ListOrderedMap implements java.io.Serializable {
+public class ZValue extends ListOrderedMap implements Serializable {
 
 	private static final long serialVersionUID = 2206001979803073944L;
 

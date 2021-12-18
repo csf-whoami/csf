@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.csf.base.common.Repository;
+//import com.csf.base.common.Repository;
 import com.csf.base.constant.ConstantsCommon;
 import com.csf.base.utilities.StringUtils;
 
@@ -37,36 +37,36 @@ public class AttributeRequestAspect {
 		}
 		request.setAttribute("isDevEnv", isDevEnv);
 	
-		request.setAttribute("confHeader", Repository.getConfig("config.menu.position"));
+//		request.setAttribute("confHeader", Repository.getConfig("config.menu.position"));
 
 		request.setAttribute("contextPath", request.getContextPath());
 
 		String httpcontext = request.getRequestURL().toString();
 		httpcontext = httpcontext.substring(0,(httpcontext.indexOf(request.getContextPath())+request.getContextPath().length()));
-		String protocol = Repository.getConfig("config.protocol");
-		if (protocol != null && !protocol.equals("")) {
-			httpcontext = protocol + httpcontext.substring(httpcontext.indexOf(":"));
-		}
+//		String protocol = Repository.getConfig("config.protocol");
+//		if (protocol != null && !protocol.equals("")) {
+//			httpcontext = protocol + httpcontext.substring(httpcontext.indexOf(":"));
+//		}
 		
-		String applySSL = Repository.getConfig("config.ht.activex.applyssl");
-		String serverPort = String.valueOf(request.getServerPort()); //"80"
-		if (httpcontext.toLowerCase().startsWith("https")) {
-			applySSL = ConstantsCommon.TRUE;
-			serverPort = "443";
-		}
+//		String applySSL = Repository.getConfig("config.ht.activex.applyssl");
+//		String serverPort = String.valueOf(request.getServerPort()); //"80"
+//		if (httpcontext.toLowerCase().startsWith("https")) {
+//			applySSL = ConstantsCommon.TRUE;
+//			serverPort = "443";
+//		}
 		request.setAttribute("serverName", request.getServerName());
-		request.setAttribute("serverPort", serverPort);
-		request.setAttribute("applySSL", applySSL);
+//		request.setAttribute("serverPort", serverPort);
+//		request.setAttribute("applySSL", applySSL);
 
-		request.setAttribute("classid", Repository.getConfig("config.ht.activex.classid"));
+//		request.setAttribute("classid", Repository.getConfig("config.ht.activex.classid"));
 		//CODEBASE���擾
-		String codebase = Repository.getConfig("config.ht.activex.codebase");
-		if (codebase != null && !codebase.equals("")) {
-			if (!codebase.toLowerCase().startsWith("http")) {//���΃p�X�Ȃ�
-				codebase = httpcontext + codebase;
-			}
-		}
-		request.setAttribute("codebase", codebase);
+//		String codebase = Repository.getConfig("config.ht.activex.codebase");
+//		if (codebase != null && !codebase.equals("")) {
+//			if (!codebase.toLowerCase().startsWith("http")) {//���΃p�X�Ȃ�
+//				codebase = httpcontext + codebase;
+//			}
+//		}
+//		request.setAttribute("codebase", codebase);
 		setButsuriSokoCode2Cookie(request, response);
 	}
 

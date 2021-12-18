@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class DefaultListHandler extends ListHandler {
-
 	@Override
 	protected PaginationInfo getPaginationInfo(ZValue param) {
 		setPageSize(param);

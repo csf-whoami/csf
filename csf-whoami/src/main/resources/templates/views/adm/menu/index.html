@@ -23,7 +23,7 @@
                    <th:block th:if="${resultList != null && !resultList.empty}">
                         <th:block th:each="menu : ${resultList}">
                             <li class="nav-sub-item">
-                                <a class="nav-sub-link" th:href="|#javascript:;|" th:onclick="|javascript:selectMenu('__${menu.linkScreen}__')|">[[${menu.menuName}]]</a>
+                                <a class="nav-sub-link" th:href="|#javascript:;|" th:onclick="|javascript:selectMenu('__${menu.linkScreen}__')|">${menu.menuName}</a>
                             </li>
                         </th:block>
                     </th:block>

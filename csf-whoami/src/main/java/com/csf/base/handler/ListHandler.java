@@ -9,7 +9,7 @@ import org.springframework.ui.ModelMap;
 import com.csf.base.ParameterContext;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
-import com.csf.base.dao.ISqlDAO;
+import com.csf.base.dao.BaseRepository;
 import com.csf.base.paging.PaginationInfo;
 import com.csf.base.utilities.StringUtils;
 import com.csf.base.vo.QueryIdVO;
@@ -20,8 +20,10 @@ import lombok.Setter;
 @Getter @Setter
 public abstract class ListHandler implements Handler {
 
+	// Common Repository.
 	@Autowired
-	protected ISqlDAO<ZValue> sqlDao;
+	private BaseRepository sqlDao;
+
 //	@Autowired
 //	protected IFileMngService fileMngService;
 
@@ -58,6 +60,13 @@ public abstract class ListHandler implements Handler {
 
 	protected abstract void setPagingParam(PaginationInfo paginationInfo, ZValue param) throws Exception;
 
+	/**
+	 * Get list result.
+	 * 
+	 * @param paramCtx
+	 * @return
+	 * @throws Exception
+	 */
 	protected List<ZValue> getResultList(ParameterContext paramCtx) throws Exception{
 		String listQueryId = paramCtx.getQueryIdVO().getListQueryId();
 		if(StringUtils.isNullOrEmpty(listQueryId)) {
@@ -67,8 +76,7 @@ public abstract class ListHandler implements Handler {
 			listQueryId = compId + StringUtils.toName(programId) + StringUtils.toName(methodId);
 		}
 		// Change DAO to mapper.
-		System.out.println("listQueryId call: " + listQueryId);
-		ISqlDAO<ZValue> vSqlDao = paramCtx.getSqlDAO();
+		BaseRepository vSqlDao = paramCtx.getSqlDAO();
 		if (paramCtx.getSqlDAO() != null) {
 			return vSqlDao.findAll(listQueryId, paramCtx.getParam());
 		} else {
@@ -76,13 +84,19 @@ public abstract class ListHandler implements Handler {
 		}
 	}
 
+	/**
+	 * Get total record in List page.
+	 * 
+	 * @param paramCtx
+	 * @return
+	 * @throws Exception
+	 */
 	protected long getListCount(ParameterContext paramCtx) throws Exception{
 		QueryIdVO qv = paramCtx.getQueryIdVO();
-		ISqlDAO<ZValue> vSqlDao = paramCtx.getSqlDAO();
+		BaseRepository vSqlDao = paramCtx.getSqlDAO();
 		if (paramCtx.getSqlDAO() != null) {
 			return vSqlDao.count(qv.getCountQueryId(), paramCtx.getParam());
-		}
-		else {
+		} else {
 			return sqlDao.count(qv.getCountQueryId(), paramCtx.getParam());
 		}
 	}

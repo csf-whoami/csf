@@ -1,8 +1,7 @@
 package com.csf.base.service.common;
 
 import com.csf.base.CommonListener;
-import com.csf.base.core.ZValue;
-import com.csf.base.dao.ISqlDAO;
+import com.csf.base.dao.BaseRepository;
 import com.csf.base.paging.PageQuery;
 
 import lombok.Getter;
@@ -15,7 +14,7 @@ public class CommonServiceSupport {
 	private String pageQueryData;
 	protected PageQuery pageQuery;
 
-	protected ISqlDAO<ZValue> sqlDao;
+	protected BaseRepository sqlDao;
 
 	public <S> S getSqlDao(Class<S> clazz) {
 		try {

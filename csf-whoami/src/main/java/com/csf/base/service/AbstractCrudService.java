@@ -1,7 +1,6 @@
 package com.csf.base.service;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +11,10 @@ import org.springframework.ui.ModelMap;
 import com.csf.base.ParameterContext;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
-import com.csf.base.dao.ISqlDAO;
+import com.csf.base.dao.BaseRepository;
 import com.csf.base.handler.ListHandler;
 import com.csf.base.paging.IPageInfo;
 import com.csf.base.service.common.CommonServiceSupport;
-import com.csf.base.service.file.IFileMngService;
 import com.csf.base.utilities.StringUtils;
 import com.csf.base.vo.QueryIdVO;
 
@@ -72,9 +70,12 @@ public abstract class AbstractCrudService extends CommonServiceSupport implement
 		ZValue param = paramCtx.getParam();
 		ModelMap model = paramCtx.getModel();
 
-		ISqlDAO<ZValue> sqlDao = null;
-		if (paramCtx.getSqlDAO() != null) sqlDao = paramCtx.getSqlDAO();
-		else sqlDao = this.sqlDao;
+		BaseRepository sqlDao = null;
+		if (paramCtx.getSqlDAO() != null) {
+			sqlDao = paramCtx.getSqlDAO();
+		}else {
+			sqlDao = this.sqlDao;
+		}
 		ZValue result = sqlDao.findOne(viewQueryId, param);
 		model.addAttribute(ConstantsRequest.RESULT, result);
 

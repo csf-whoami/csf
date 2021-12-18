@@ -9,7 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.csf.base.core.ZValue;
-import com.csf.base.dao.ISqlDAO;
+import com.csf.base.dao.BaseRepository;
 import com.csf.base.paging.IPageInfo;
 import com.csf.base.paging.PageQuery;
 import com.csf.base.vo.QueryIdVO;
@@ -33,7 +33,7 @@ public class ParameterContext {
 //	private CacheVO cacheVO;
 	private String targetMethod;
 	private String viewPage;
-	private ISqlDAO<ZValue> sqlDAO;
+	private BaseRepository sqlDAO;
 	private String upFileTp = "";
 	private QueryIdVO queryIdVO;
 	private IPageInfo pageInfo;
