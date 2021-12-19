@@ -65,8 +65,8 @@ public class WorkFlowController {
     @PostMapping(value = "email-confirm.html")
     public ModelAndView sendEmailAndConfirm(@ModelAttribute("formData") ConfirmGroupInfo groupInfo, ModelAndView model) {
     	System.out.println("Group email: " + groupInfo.getEmail());
-    	boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
-    	System.out.println("Send email: " + sendEmailStatus);
+//    	boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
+//    	System.out.println("Send email: " + sendEmailStatus);
         return model;
     }
 }
