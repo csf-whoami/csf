@@ -9,12 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.csf.base.dao.CommonRepository;
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.database.models.TbGroup;
 
 @Repository
-public interface GroupRepository extends JpaRepository<TbGroup, Long> {
+public interface GroupRepository extends JpaRepository<TbGroup, Long>, CommonRepository {
 
     TbGroup findByGroupUrl(String groupUrl);
 

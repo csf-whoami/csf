@@ -8,7 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
+import com.csf.base.core.ZValue;
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.ChannelInfo;
@@ -60,8 +62,15 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupInfo getGroupByGroupUrl(String groupUrl) {
-    	GroupView group = groupMapper.findByGroupUrl(groupUrl);
-        return GroupAdapter.viewToDomain(group);
+    	ZValue param = new ZValue();
+    	param.put("groupUrl", groupUrl);
+    	List<ZValue> group = groupMapper.findByGroupUrl(param);
+//        
+    	if(CollectionUtils.isEmpty(group) || group.size() > 1) {
+    		return null;
+    	}
+//    	return GroupAdapter.viewToDomain(group.get(0));
+    	return new GroupInfo();
     }
 
     @Override
