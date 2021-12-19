@@ -40,7 +40,7 @@ public class IndexPage {
      * @param model
      * @return
      */
-    @GetMapping(value = ConstantsURL.MAIN)
+    @GetMapping(value = ConstantsURL.W_MAIN)
     public ModelAndView gotoMainPage(ModelAndView model) {
         List<MenuGroupInfo> groups = dummyMenuGroups();
         model.addObject("groups", groups);

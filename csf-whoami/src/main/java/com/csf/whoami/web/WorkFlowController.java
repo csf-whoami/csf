@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WorkFlowController {
 
-	private final GroupService groupService;
+    private final GroupService groupService;
 
     @GetMapping(value = "workflow.html")
     public ModelAndView gotoCheckLogin(ModelAndView model) {
@@ -55,18 +55,36 @@ public class WorkFlowController {
 
     @PostMapping(value = "validate-group.html")
     public ModelAndView gotoValidateGroup(ModelAndView model, @ModelAttribute("formData") ConfirmGroupInfo groupInfo) {
-    	Long tempId = groupService.registerTempGroup(groupInfo);
-    	System.out.println("Group ID:" + tempId);
-    	model.addObject("groupId", tempId);
+        Long tempId = groupService.registerTempGroup(groupInfo);
+        System.out.println("Group ID:" + tempId);
+        model.addObject("groupId", tempId);
         model.setViewName(ConstantsURL.W_GROUP_MAIL_CONFIRM);
         return model;
     }
 
     @PostMapping(value = "email-confirm.html")
     public ModelAndView sendEmailAndConfirm(@ModelAttribute("formData") ConfirmGroupInfo groupInfo, ModelAndView model) {
-    	System.out.println("Group email: " + groupInfo.getEmail());
-//    	boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
-//    	System.out.println("Send email: " + sendEmailStatus);
+        boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
+        System.out.println("Send email: " + sendEmailStatus);
+        model.setViewName(ConstantsURL.REDIRECT + "pincode-confirm/" + groupInfo.getGroupId() + ".html");
+        return model;
+    }
+
+    @GetMapping(value = "pincode-confirm/{id}.html")
+    public ModelAndView confirmPinCode(ModelAndView model, @PathVariable("id") String groupId) {
+        model.addObject("groupId", groupId);
+        model.setViewName(ConstantsURL.W_PIN_CONFIRM);
+        return model;
+    }
+
+    @PostMapping(value = "pincode-confirm.html")
+    public ModelAndView checkPinCode(ModelAndView model, @ModelAttribute("formData") ConfirmGroupInfo groupInfo) {
+        boolean validPIN = groupService.checkPinCode(groupInfo);
+        if(!validPIN) {
+            model.setViewName(ConstantsURL.W_PIN_CONFIRM);
+        } else {
+            model.setViewName(ConstantsURL.REDIRECT + ConstantsURL.MAIN);
+        }
         return model;
     }
 }

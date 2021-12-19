@@ -58,4 +58,6 @@ public interface GroupService {
      * @return
      */
     boolean sendEmailConfirm(ConfirmGroupInfo groupRequest);
+
+    boolean checkPinCode(ConfirmGroupInfo groupInfo);
 }

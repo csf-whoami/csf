@@ -62,15 +62,15 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupInfo getGroupByGroupUrl(String groupUrl) {
-    	ZValue param = new ZValue();
-    	param.put("groupUrl", groupUrl);
-    	List<ZValue> group = groupMapper.findByGroupUrl(param);
-//        
-    	if(CollectionUtils.isEmpty(group) || group.size() > 1) {
-    		return null;
-    	}
-//    	return GroupAdapter.viewToDomain(group.get(0));
-    	return new GroupInfo();
+        ZValue param = new ZValue();
+        param.put("groupUrl", groupUrl);
+        List<ZValue> group = groupMapper.findByGroupUrl(param);
+
+        if(CollectionUtils.isEmpty(group) || group.size() > 1) {
+            return null;
+        }
+//        return GroupAdapter.viewToDomain(group.get(0));
+        return new GroupInfo();
     }
 
     @Override
@@ -292,5 +292,10 @@ public class GroupServiceImpl implements GroupService {
         pinCode.setGroupType("GROUP");
         pinCode.setPinCode("123456"); // random value 6 number.
         return pinCode;
+    }
+
+    @Override
+    public boolean checkPinCode(ConfirmGroupInfo groupInfo) {
+        return true;
     }
 }

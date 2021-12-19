@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>CSF - Confirm group info by Email.</title>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+        <!-- Bootstrap css-->
+        <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+
+        <!-- Icons css-->
+        <link th:href="@{/plugins/web-fonts/icons.css}" rel="stylesheet"/>
+        <link th:href="@{/plugins/web-fonts/font-awesome/font-awesome.min.css}" rel="stylesheet">
+        <link th:href="@{/plugins/web-fonts/plugin.css}" rel="stylesheet"/>
+        <!-- Style css-->
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+        <link th:href="@{/css/colors/default.css}" rel="stylesheet">
+    </head>
+    <body class="main-body">
+        <!-- Main Header-->
+        <div class="main-content side-content pt-100">
+            <form method="post" th:action="@{../pincode-confirm.html}" th:object="${formData}">
+                <div class="container-fluid">
+                    <div class="main-header-center">
+                        <div class="input-group row justify-content-center align-self-center">
+                            <label>Pincode confirm</label>
+                            <div>
+                                <input type="text" name="pinCode" id="pinCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="btn btn-list">
+                            <button class="btn ripple btn-success disabled" id="pinconde">Confirm</button>
+                            <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
+                        </div>
+                    </div>
+                    <input hidden="hidden" name="groupId" th:id="groupId" th:value="${groupId}">
+                </div>
+            </form>
+        </div>
+        <!-- End Main Header-->
+        <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
+        <!-- <script th:inline="javascript">
+            $(document).ready(function () {
+                let params = new window.URLSearchParams(window.location.search);
+                let idVal = params.get('id')
+                $("#groupId").val(idVal);
+            });
+        </script> -->
+    </body>
+</html>

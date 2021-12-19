@@ -13,4 +13,5 @@ public class ConfirmGroupInfo {
 	private String groupId;
 	private String groupURL;
 	private String email;
+	private String pinCode;
 }

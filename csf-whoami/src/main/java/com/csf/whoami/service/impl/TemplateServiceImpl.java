@@ -42,7 +42,7 @@ public class TemplateServiceImpl implements TemplateService {
 
     private static final String CONTENT_TYPE_TEXT_HTML = "text/html;charset=\"utf-8\"";
     private static final String MAIL_TEMPLATE_BASE_NAME = "mail/MailMessages";
-    private static final String MAIL_TEMPLATE_PREFIX = "/templates/template/";
+    private static final String MAIL_TEMPLATE_PREFIX = "/templates/html/";
     private static final String MAIL_TEMPLATE_SUFFIX = ".html";
     private static final String UTF_8 = "UTF-8";
 
@@ -163,7 +163,8 @@ public class TemplateServiceImpl implements TemplateService {
             message.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress(emailAddress)});
             message.setFrom(new InternetAddress(email));
             message.setSubject(title);
-            message.setContent(getContent(tempFile, params == null ? new HashMap<>() : params), CONTENT_TYPE_TEXT_HTML);
+            String content = getContent(tempFile, params == null ? new HashMap<>() : params);
+            message.setContent(content, CONTENT_TYPE_TEXT_HTML);
             Transport.send(message);
         } catch (MessagingException e) {
             e.printStackTrace();

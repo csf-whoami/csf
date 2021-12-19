@@ -12,7 +12,9 @@ public class ConstantsURL {
 
     /** URL maun group. */
     public static final String MAIN                 = "main";
-    public static final String PAGE_MAIN            = "main";
+    public static final String W_MAIN               = "w/main";
+    public static final String PAGE_MAIN            = "w/main";
+    public static final String REDIRECT             = "redirect:";
 
     /** URL login flow. */
     public static final String LOGIN                = "login";
@@ -77,6 +79,7 @@ public class ConstantsURL {
     public static final String W_GROUP_NOT_FOUND    = W_WORKFLOW + "/group-not-found";
     public static final String W_GROUP_FOUND        = W_WORKFLOW + "/group-info";
     public static final String W_GROUP_MAIL_CONFIRM = W_WORKFLOW + URI_MAIL_CONFIRM;
+    public static final String W_PIN_CONFIRM        = W_WORKFLOW + "/pincode-confirm";
 
     /** Page URL. */
     public static final String PAGE_START = "index";
