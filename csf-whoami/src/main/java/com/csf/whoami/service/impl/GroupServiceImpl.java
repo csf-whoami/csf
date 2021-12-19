@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.csf.base.domain.RequestSearchGroup;
 import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.exception.CustomException;
@@ -250,7 +250,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Long registerTempGroup(RequestSearchGroup groupRequest) {
+    public Long registerTempGroup(ConfirmGroupInfo groupRequest) {
         TbGroup group = ConvertGroupDTO.tempDomainToDb(groupRequest);
         TbGroup result = groupRepository.save(group);
         return result.getId();
@@ -258,8 +258,8 @@ public class GroupServiceImpl implements GroupService {
 
     @Transactional
     @Override
-    public boolean sendEmailConfirm(RequestSearchGroup groupInfo) {
-        Long id = StringUtils.toLongOrNull(groupInfo.getId());
+    public boolean sendEmailConfirm(ConfirmGroupInfo groupInfo) {
+        Long id = StringUtils.toLongOrNull(groupInfo.getGroupId());
         if (id == null) {
             return false;
         }

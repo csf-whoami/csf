@@ -1,6 +1,6 @@
 package com.csf.database.adapter;
 
-import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.models.TbGroup;
@@ -43,7 +43,7 @@ public class ConvertGroupDTO {
      * @param domain
      * @return
      */
-    public static TbGroup tempDomainToDb(RequestSearchGroup domain) {
+    public static TbGroup tempDomainToDb(ConfirmGroupInfo domain) {
         if (domain == null) {
             return null;
         }

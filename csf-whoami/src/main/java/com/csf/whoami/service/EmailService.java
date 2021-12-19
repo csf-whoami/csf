@@ -2,7 +2,7 @@ package com.csf.whoami.service;
 
 import java.util.Map;
 
-import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 
 public interface EmailService {
     /**
@@ -11,7 +11,7 @@ public interface EmailService {
      * @param info
      * @return
      */
-    boolean sendEmailConfirmGroup(RequestSearchGroup info, String pincode);
+    boolean sendEmailConfirmGroup(ConfirmGroupInfo info, String pincode);
 
     /**
      * Send email notice to User.

@@ -19,26 +19,28 @@
     <body class="main-body">
         <!-- Main Header-->
         <div class="main-content side-content pt-100">
-            <div class="container-fluid">
-                <div class="main-header-center">
-                    <div class="input-group row justify-content-center align-self-center">
-                        <label>Group not found.</label>
-                        <div>
-                            <input type="text" name="groupType" id="groupType" readonly="readonly">
+            <form method="post" th:action="@{./validate-group.html}" th:object="${formData}">
+                <div class="container-fluid">
+                    <div class="main-header-center">
+                        <div class="input-group row justify-content-center align-self-center">
+                            <label>Group not found.</label>
+                            <div>
+                                <input type="text" name="groupType" id="groupType" readonly="readonly">
+                            </div>
+                            <div>
+                                <input type="text" name="groupURL" id="groupName" readonly="readonly">
+                            </div>
                         </div>
-                        <div>
-                            <input type="text" name="groupName" id="groupName" readonly="readonly">
+                    </div>
+                    <div class="card">
+                        <div><label>Are you want to create this group?</label></div>
+                        <div class="btn btn-list">
+                            <button class="btn ripple btn-success disabled">Create</button>
+                            <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div><label>Are you want to create this group?</label></div>
-                    <div class="btn btn-list">
-                        <button class="btn ripple btn-success disabled" id="create-group">Create</button>
-                        <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
         <!-- End Main Header-->
         <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>

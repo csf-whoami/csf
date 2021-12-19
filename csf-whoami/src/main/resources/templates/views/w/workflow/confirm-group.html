@@ -35,18 +35,18 @@
                             <button class="btn ripple btn-secondary disabled" id="cancelBtn">Cancel</button>
                         </div>
                     </div>
-                    <input hidden="hidden" name="groupId" th:id="groupId">
+                    <input hidden="hidden" name="groupId" th:id="groupId" th:value="${groupId}">
                 </div>
             </form>
         </div>
         <!-- End Main Header-->
         <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
-        <script th:inline="javascript">
+        <!-- <script th:inline="javascript">
             $(document).ready(function () {
                 let params = new window.URLSearchParams(window.location.search);
                 let idVal = params.get('id')
                 $("#groupId").val(idVal);
             });
-        </script>
+        </script> -->
     </body>
 </html>

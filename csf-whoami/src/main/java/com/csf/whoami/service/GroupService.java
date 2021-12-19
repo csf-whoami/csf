@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.csf.base.domain.RequestSearchGroup;
 import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.GroupInfo;
 
 public interface GroupService {
@@ -33,7 +33,7 @@ public interface GroupService {
 
     Long registerGroup(GroupInfo groupDetail);
 
-    Long registerTempGroup(RequestSearchGroup groupRequest);
+    Long registerTempGroup(ConfirmGroupInfo groupRequest);
 
     /**
      * List user's groups.
@@ -57,5 +57,5 @@ public interface GroupService {
      * @param groupRequest
      * @return
      */
-    boolean sendEmailConfirm(RequestSearchGroup groupRequest);
+    boolean sendEmailConfirm(ConfirmGroupInfo groupRequest);
 }

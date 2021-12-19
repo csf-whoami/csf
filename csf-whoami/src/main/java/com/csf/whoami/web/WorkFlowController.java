@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.csf.base.constant.ConstantsURL;
 import com.csf.base.domain.AccountDTO;
 import com.csf.base.domain.request.ConfirmGroupInfo;
+import com.csf.whoami.service.GroupService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +26,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = "/w")
 @RequiredArgsConstructor
 public class WorkFlowController {
+
+	private final GroupService groupService;
 
     @GetMapping(value = "workflow.html")
     public ModelAndView gotoCheckLogin(ModelAndView model) {
@@ -50,8 +53,11 @@ public class WorkFlowController {
         return model;
     }
 
-    @GetMapping(value = "validate-group.html")
-    public ModelAndView gotoValidateGroup(ModelAndView model) {
+    @PostMapping(value = "validate-group.html")
+    public ModelAndView gotoValidateGroup(ModelAndView model, @ModelAttribute("formData") ConfirmGroupInfo groupInfo) {
+    	Long tempId = groupService.registerTempGroup(groupInfo);
+    	System.out.println("Group ID:" + tempId);
+    	model.addObject("groupId", tempId);
         model.setViewName(ConstantsURL.W_GROUP_MAIL_CONFIRM);
         return model;
     }
@@ -59,7 +65,8 @@ public class WorkFlowController {
     @PostMapping(value = "email-confirm.html")
     public ModelAndView sendEmailAndConfirm(@ModelAttribute("formData") ConfirmGroupInfo groupInfo, ModelAndView model) {
     	System.out.println("Group email: " + groupInfo.getEmail());
-//        model.setViewName(ConstantsURL.W_GROUP_NOT_FOUND);
+    	boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
+    	System.out.println("Send email: " + sendEmailStatus);
         return model;
     }
 }

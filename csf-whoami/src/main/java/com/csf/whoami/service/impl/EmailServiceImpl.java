@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.whoami.service.EmailService;
 import com.csf.whoami.service.TemplateService;
 
@@ -18,7 +18,7 @@ public class EmailServiceImpl implements EmailService {
     private final TemplateService templateService;
 
     @Override
-    public boolean sendEmailConfirmGroup(RequestSearchGroup info, String pincode) {
+    public boolean sendEmailConfirmGroup(ConfirmGroupInfo info, String pincode) {
         Map<String, Object> params = new HashMap<>();
         params.put("url", info.getGroupURL());
         params.put("pin", pincode);

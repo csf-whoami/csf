@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.csf.base.dao;
 
 import java.util.List;

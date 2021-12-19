@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.csf.base.constant.ConstantsParam;
 import com.csf.base.constant.ConstantsURL;
-import com.csf.base.domain.RequestSearchGroup;
+import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.AccountInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.exception.CustomException;
@@ -37,7 +37,7 @@ public class LoginController {
 
     @GetMapping(value = ConstantsURL.SEARCH_GROUP)
     public ModelAndView gotoSearchGroupPage(ModelAndView model) {
-        model.addObject(ConstantsParam.PARAM_GROUP, new RequestSearchGroup());
+        model.addObject(ConstantsParam.PARAM_GROUP, new ConfirmGroupInfo());
         model.setViewName(ConstantsURL.PAGE_SEARCH_GROUP);
         return model;
     }
@@ -50,7 +50,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = ConstantsURL.SEARCH_GROUP)
-    public ModelAndView searchGroup(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) RequestSearchGroup groupRequest, ModelAndView model) {
+    public ModelAndView searchGroup(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) ConfirmGroupInfo groupRequest, ModelAndView model) {
 
         Map<String, String> errors = new HashMap<>();
         // Check business logic.
@@ -83,7 +83,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = ConstantsURL.REGISTER_GROUP)
-    public ModelAndView registerTempGroup(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) RequestSearchGroup groupRequest, ModelAndView model) {
+    public ModelAndView registerTempGroup(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) ConfirmGroupInfo groupRequest, ModelAndView model) {
         Long id = groupService.registerTempGroup(groupRequest);
         Map<String, String> errors = new HashMap<>();
         if (id == null) {
@@ -97,7 +97,7 @@ public class LoginController {
     }
 
     @PostMapping(value = ConstantsURL.CONFIRM_EMAIL)
-    public ModelAndView confirmEmail(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) RequestSearchGroup groupRequest, ModelAndView model) {
+    public ModelAndView confirmEmail(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) ConfirmGroupInfo groupRequest, ModelAndView model) {
         boolean sendEmailStatus = groupService.sendEmailConfirm(groupRequest);
         if (sendEmailStatus == false) {
             model.addObject(ConstantsParam.ERRORS, "Send email fail.");
