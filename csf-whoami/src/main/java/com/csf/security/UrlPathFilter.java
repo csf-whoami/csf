@@ -79,6 +79,32 @@ public class UrlPathFilter extends OncePerRequestFilter {
 	}
 
 	private ZValue fetchWebRequest(HttpServletRequest request) {
+		ZValue requestParam = new ZValue();
+		String urlPath = request.getServletPath();
+		String pattern = "^\\/(\\w{3})\\/(\\w{3})\\/(\\w)\\/(\\w+)\\/(\\w+)\\/(\\w[\\w|-]+).html.*$";
+
+		// Create a Pattern object
+		Pattern r = Pattern.compile(pattern);
+
+		// Now create matcher object.
+		Matcher m = r.matcher(urlPath);
+		if (m.find()) {
+			String siteId = m.group(1);
+			String compId = m.group(2);
+			String appId = m.group(3);
+			String pakageId = m.group(4);
+			String programId = m.group(5);
+			String targetMethod = m.group(6);
+
+			requestParam.put(ConstantsRequest.SITE_ID, siteId);
+			requestParam.put(ConstantsRequest.COMP_ID, compId);
+			requestParam.put(ConstantsRequest.APP_ID, appId);
+			requestParam.put(ConstantsRequest.PACKAGE_ID, pakageId);
+			requestParam.put(ConstantsRequest.PROGRAM_ID, programId);
+			requestParam.put(ConstantsRequest.TARGET_METHOD, targetMethod);
+			return requestParam;
+		}
+
 		return null;
 	}
 

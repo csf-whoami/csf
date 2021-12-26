@@ -12,11 +12,12 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
-    username: homeo
+    url: jdbc:mysql://db4free.net:3306/whoami?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    username: csfhomeo
     password: Pax96dQ2UtNa
-    driverClassName: org.postgresql.Driver
-    jdbc-url: jdbc:postgresql://whoami-dev.c4ge0kahqrwo.ap-northeast-2.rds.amazonaws.com:4429/whoami
+    driverClassName: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://db4free.net:3306/whoami
   jpa:
     show-sql: true
     hibernate:
@@ -26,8 +27,8 @@ spring:
     properties:
       hibernate:
 #        physical_naming_strategy: com.csf.whoami.config.RealNamingStrategyImpl
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        default_schema: public
+        dialect: org.hibernate.dialect.MySQLDialect
+        #default_schema: public
 #        jdbc:
 #          lob:
 #            non_contextual_creation: true
