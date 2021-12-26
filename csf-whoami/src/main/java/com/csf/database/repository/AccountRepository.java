@@ -34,9 +34,8 @@ public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
      * @return
      */
     @Query(value = "SELECT acc "
-            + " FROM TbAccount acc "
+            + " FROM AccountEntity acc "
             + " WHERE acc.id IN (:ids)"
             + " ORDER BY acc.createdAt ")
     List<AccountEntity> findAllByIds(@Param("ids") List<Long> ids);
 }
-

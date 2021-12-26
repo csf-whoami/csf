@@ -17,8 +17,8 @@ import com.csf.database.models.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query(value = "SELECT new com.csf.base.domain.response.UserInfo(acc.id, acc.username, user.email, acc.createdAt, acc.activedAt, role.id, role.name) "
-            + " FROM TbAccount acc "
-            + " INNER JOIN TbUser user ON user.id = acc.userId "
+            + " FROM AccountEntity acc "
+            + " INNER JOIN UserEntity user ON user.id = acc.userId "
             + " INNER JOIN TbUserRole userRole ON acc.id = userRole.userId "
             + " INNER JOIN TbRole role ON role.id = userRole.roleId "
             + " WHERE (:#{#search.keyword} IS NULL OR user.email LIKE %:#{#search.keyword}%"
@@ -31,7 +31,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Page<UserInfo> findAllByCondition(@Param("search") SearchVO search, Pageable pageable);
 
     @Query(value = "SELECT tbu "
-            + " FROM TbUser tbu "
+            + " FROM UserEntity tbu "
             + " WHERE tbu.id IN (:ids)"
             + " ORDER BY tbu.createdAt ")
     List<UserEntity> findAllByIds(@Param("ids") List<Long> ids);

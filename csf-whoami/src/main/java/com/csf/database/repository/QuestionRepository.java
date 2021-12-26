@@ -33,7 +33,7 @@ public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {
             + " FROM TbQuestion question "
             + " INNER JOIN TbQuestionType questionType ON questionType.questionId = question.id "
             + " INNER JOIN TbType type ON type.id = questionType.typeId "
-            + " INNER JOIN TbChannelQuestion channelQuestion ON channelQuestion.questionId = question.id"
+            + " INNER JOIN ChannelQuestionEntity channelQuestion ON channelQuestion.questionId = question.id"
             + " WHERE channelQuestion.channelId = :channel"
             + " AND type.groupName = 'QUESTION'")
     Page<QuestionManagementInfo> findAllByChannelId(@Param("channel") Long channelId, Pageable pageable);
@@ -48,9 +48,9 @@ public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {
             + " FROM TbQuestion question "
             + " INNER JOIN TbQuestionType questionType ON questionType.questionId = question.id "
             + " INNER JOIN TbType type ON type.id = questionType.typeId "
-            + " INNER JOIN TbChannelQuestion channelQuestion ON channelQuestion.questionId = question.id"
-            + " INNER JOIN TbChannel channel ON channel.id = channelQuestion.channelId"
-            + " INNER JOIN TbGroup tbgroup ON tbgroup.id = channel.groupId"
+            + " INNER JOIN ChannelQuestionEntity channelQuestion ON channelQuestion.questionId = question.id"
+            + " INNER JOIN ChannelEntity channel ON channel.id = channelQuestion.channelId"
+            + " INNER JOIN GroupEntity tbgroup ON tbgroup.id = channel.groupId"
             + " WHERE question.id = :id"
             + " AND question.deletedAt IS NULL"
             + " AND questionType.deletedAt IS NULL"

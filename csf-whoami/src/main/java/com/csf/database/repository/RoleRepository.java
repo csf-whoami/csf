@@ -16,7 +16,7 @@ public interface RoleRepository extends JpaRepository<TbRole, Long> {
     @Query(value = "SELECT role"
             + " FROM TbRole role"
             + " INNER JOIN TbUserRole userRole ON role.id = userRole.roleId"
-            + " INNER JOIN TbAccount user ON user.id = userRole.userId"
+            + " INNER JOIN AccountEntity user ON user.id = userRole.userId"
             + " ORDER BY role.createdAt")
     List<TbRole> findAllByUserId(@Param("userId")Long id);
 }

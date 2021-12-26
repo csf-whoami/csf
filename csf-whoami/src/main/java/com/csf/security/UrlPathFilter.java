@@ -28,24 +28,24 @@ public class UrlPathFilter extends OncePerRequestFilter {
 			throws IOException, ServletException {
 
 		chain.doFilter(new SecurityFilterRequestWrapper(req), res);
-//
-//		if (req.getServletPath().length() > 1) {
-//			String admRegex = "^\\/\\w{3}\\/.*$";
-//			Pattern checkRegex = Pattern.compile(admRegex);
-//			Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
-//			if (regexMatcher.matches()) {
-//				ZValue urlParams = fetchRequest(req);
-//				if (urlParams == null) {
-//					SecurityContextHolder.clearContext();
-//					ResponseDataAPI errorResponse = ResponseDataAPI.build();
-//					errorResponse.setSuccess(false);
-//					errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
-//					res.setStatus(HttpStatus.BAD_REQUEST.value());
-//					res.setContentType("application/json");
-//					res.getWriter().write(convertObjectToJson(errorResponse));
-//				}
-//			}
-//		}
+
+		if (req.getServletPath().length() > 1) {
+			String admRegex = "^\\/\\w{3}\\/.*$";
+			Pattern checkRegex = Pattern.compile(admRegex);
+			Matcher regexMatcher = checkRegex.matcher(req.getServletPath());
+			if (regexMatcher.matches()) {
+				ZValue urlParams = fetchRequest(req);
+				if (urlParams == null) {
+					SecurityContextHolder.clearContext();
+					ResponseDataAPI errorResponse = ResponseDataAPI.build();
+					errorResponse.setSuccess(false);
+					errorResponse.setError(Collections.singletonList(new CustomError(null, "S002", "Error happen")));
+					res.setStatus(HttpStatus.BAD_REQUEST.value());
+					res.setContentType("application/json");
+					res.getWriter().write(convertObjectToJson(errorResponse));
+				}
+			}
+		}
 	}
 
 	private ZValue fetchRequest(HttpServletRequest request) {
@@ -78,10 +78,16 @@ public class UrlPathFilter extends OncePerRequestFilter {
 		return null;
 	}
 
+	/**
+	 * /web/w/guest/12345/list.html
+	 * 
+	 * @param request
+	 * @return
+	 */
 	private ZValue fetchWebRequest(HttpServletRequest request) {
 		ZValue requestParam = new ZValue();
 		String urlPath = request.getServletPath();
-		String pattern = "^\\/(\\w{3})\\/(\\w{3})\\/(\\w)\\/(\\w+)\\/(\\w+)\\/(\\w[\\w|-]+).html.*$";
+		String pattern = "^\\/(\\w{3})\\/(\\w)\\/(\\w+)(\\/\\w)?\\/(\\w[\\w|-]+).html.*$";
 
 		// Create a Pattern object
 		Pattern r = Pattern.compile(pattern);
@@ -90,14 +96,12 @@ public class UrlPathFilter extends OncePerRequestFilter {
 		Matcher m = r.matcher(urlPath);
 		if (m.find()) {
 			String siteId = m.group(1);
-			String compId = m.group(2);
-			String appId = m.group(3);
-			String pakageId = m.group(4);
-			String programId = m.group(5);
-			String targetMethod = m.group(6);
+			String appId = m.group(2);
+			String pakageId = m.group(3);
+			String programId = m.group(4);
+			String targetMethod = m.group(5);
 
 			requestParam.put(ConstantsRequest.SITE_ID, siteId);
-			requestParam.put(ConstantsRequest.COMP_ID, compId);
 			requestParam.put(ConstantsRequest.APP_ID, appId);
 			requestParam.put(ConstantsRequest.PACKAGE_ID, pakageId);
 			requestParam.put(ConstantsRequest.PROGRAM_ID, programId);
@@ -112,8 +116,13 @@ public class UrlPathFilter extends OncePerRequestFilter {
 		return null;
 	}
 
+	/**
+	 * /adm/csf/w/member/menu/list.html
+	 * 
+	 * @param request
+	 * @return
+	 */
 	private ZValue fetchAdmRequest(HttpServletRequest request) {
-
 		ZValue requestParam = new ZValue();
 		String urlPath = request.getServletPath();
 		String pattern = "^\\/(\\w{3})\\/(\\w{3})\\/(\\w)\\/(\\w+)\\/(\\w+)\\/(\\w[\\w|-]+).html.*$";

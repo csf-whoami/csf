@@ -45,7 +45,7 @@ public interface GroupRepository extends JpaRepository<GroupEntity, Long>, Commo
 
     @Query(value = "SELECT new com.csf.base.domain.response.GroupInfo(tbgroup.id, tbgroup.groupName, tbgroup.groupType, "
     		+ "                                                               tbgroup.isPrivate, tbgroup.isPublish, tbgroup.isLock, tbgroup.createdAt)" +
-            " FROM TbGroup tbgroup" +
+            " FROM GroupEntity tbgroup" +
             " WHERE (:#{#search.keyword} IS NULL OR tbgroup.groupName LIKE %:#{#search.keyword}%" +
             "                                     OR tbgroup.groupUrl LIKE %:#{#search.keyword}%" +
             "                                     OR tbgroup.groupType LIKE %:#{#search.keyword}%)")
