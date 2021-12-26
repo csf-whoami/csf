@@ -17,7 +17,9 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbMenu extends BaseEntity {
+public class MenuEntity extends BaseEntity {
+
+    private static final long serialVersionUID = 848359309948808139L;
 
     @Column(name="MENU_NAME")
     private String menuName              = null;

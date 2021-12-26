@@ -13,7 +13,9 @@ import lombok.Setter;
 @Table(name = "W_TB_CHANNEL_QUESTION")
 @Where(clause = "DELETED_AT IS NULL")
 @Getter @Setter
-public class TbChannelQuestion extends BaseEntity {
+public class ChannelQuestionEntity extends BaseEntity {
+
+    private static final long serialVersionUID = -2094573897126648328L;
 
     @Column(name = "CHANNEL_ID")
     private Long channelId;

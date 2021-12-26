@@ -30,8 +30,8 @@ import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.adapter.AccountAdapter;
 import com.csf.database.adapter.UserAdapter;
-import com.csf.database.models.TbAccount;
-import com.csf.database.models.TbUser;
+import com.csf.database.models.AccountEntity;
+import com.csf.database.models.UserEntity;
 import com.csf.database.models.TbUserRole;
 import com.csf.database.repository.AccountRepository;
 import com.csf.database.repository.UserRepository;
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Transactional
     public AccountInfo signUp(AccountDTO user) {
         // Check exist account.
-        TbAccount existUser = accountRepository.findByUsername(user.getUsername());
+        AccountEntity existUser = accountRepository.findByUsername(user.getUsername());
         if (existUser != null) {
             throw new CustomException(ErrorCode.EXIST_LOGIN_ID.getMessage(),
             		ErrorCode.EXIST_LOGIN_ID.getCode(),
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         // Save User
-        TbUser us = new TbUser();
+        UserEntity us = new UserEntity();
         us = userRepository.save(us);
 
         TbUserRole userRole = new TbUserRole();
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         userRoleRepository.save(userRole);
 
         // Save account.
-        TbAccount objSave  = new TbAccount();
+        AccountEntity objSave  = new AccountEntity();
         objSave.setUsername(user.getUsername());
         objSave.setPassword(bcryptEncoder.encode(user.getPassword()));
         objSave.setUserId(us.getId());
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @description get all user
      */
     @Override
-    public List<TbAccount> getAllUser() {
+    public List<AccountEntity> getAllUser() {
         return accountRepository.findAll();
     }
 
@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      */
     @Override
     public boolean delete(Long id) {
-        Optional<TbAccount> optinal = accountRepository.findById(id);
+        Optional<AccountEntity> optinal = accountRepository.findById(id);
         if(!optinal.isPresent()) {
             return false;
         }
@@ -125,8 +125,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @description get User by Id
      */
     @Override
-    public TbAccount getAccountById(Long id) {
-        Optional<TbAccount> optional = accountRepository.findById(id);
+    public AccountEntity getAccountById(Long id) {
+        Optional<AccountEntity> optional = accountRepository.findById(id);
         if(!optional.isPresent()) {
             return null;
         }
@@ -140,7 +140,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      */
     @Override
     public AccountInfo getUserByUsername(String username) {
-        TbAccount account = accountRepository.findByUsername(username);
+        AccountEntity account = accountRepository.findByUsername(username);
         return AccountAdapter.entityToDomain(account);
     }
 
@@ -152,7 +152,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        TbAccount user = accountRepository.findByUsername(username);
+        AccountEntity user = accountRepository.findByUsername(username);
         if(user == null) {
             throw new UsernameNotFoundException("Invalid username or password");
         }
@@ -168,7 +168,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @return Set<SimpleGrantedAuthority>
      * @description get authority
      */
-    private Set<SimpleGrantedAuthority> getAuthority(TbAccount user) {
+    private Set<SimpleGrantedAuthority> getAuthority(AccountEntity user) {
         Set<SimpleGrantedAuthority> list_authorities = new HashSet<>();
         List<RoleInfo> roleNames = roleService.getUserRole(user.getId());
         for (RoleInfo role: roleNames) {
@@ -195,7 +195,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public AuthenticationInfo getAuthenticationInfo(String username) {
 
         AuthenticationInfo info = new AuthenticationInfo();
-        TbAccount account = accountRepository.findByUsername(username);
+        AccountEntity account = accountRepository.findByUsername(username);
         if (account == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getCode(), ErrorCode.DATA_NOT_FOUND.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -216,8 +216,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public UserInfo getUserInfo(Long id) {
 
-        TbAccount account = getAccount(id);
-        TbUser user = getUser(account.getUserId());
+        AccountEntity account = getAccount(id);
+        UserEntity user = getUser(account.getUserId());
         List<RoleInfo> roleInfo = roleService.getUserRole(account.getId());
 
         return UserAdapter.toDto(account, user, roleInfo);
@@ -263,7 +263,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @return
      */
     private Long registerAccount(UserInfo userinfo) {
-        TbUser user = UserAdapter.userInfoToModel(userinfo);
+        UserEntity user = UserAdapter.userInfoToModel(userinfo);
         if (user == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
             		ErrorCode.DATA_NOT_FOUND.getCode(),
@@ -271,7 +271,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         user = userRepository.save(user);
 
-        TbAccount account = AccountAdapter.userInfoToEntity(userinfo);
+        AccountEntity account = AccountAdapter.userInfoToEntity(userinfo);
         if (account == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
             		ErrorCode.DATA_NOT_FOUND.getCode(),
@@ -297,8 +297,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @param accountId
      * @return
      */
-    private TbAccount getAccount(Long accountId) {
-        TbAccount account = accountRepository.findById(accountId).orElse(null);
+    private AccountEntity getAccount(Long accountId) {
+        AccountEntity account = accountRepository.findById(accountId).orElse(null);
         if (account == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
             		ErrorCode.DATA_NOT_FOUND.getCode(),
@@ -313,7 +313,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @param ids
      * @return
      */
-    private List<TbAccount> getAccounts(List<Long> ids) {
+    private List<AccountEntity> getAccounts(List<Long> ids) {
         for(Long id : ids) {
             if (id == null) {
                 throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
@@ -322,7 +322,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             }
         }
 
-        List<TbAccount> accounts = accountRepository.findAllByIds(ids);
+        List<AccountEntity> accounts = accountRepository.findAllByIds(ids);
         if (accounts.size() != ids.size()) {
             throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
             		ErrorCode.DATA_INVALID.getCode(),
@@ -337,13 +337,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @param userId
      * @return
      */
-    private TbUser getUser(Long userId) {
+    private UserEntity getUser(Long userId) {
         if (userId == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
             		ErrorCode.DATA_NOT_FOUND.getCode(),
             		HttpStatus.BAD_REQUEST);
         }
-        TbUser user = userRepository.findById(userId).orElse(null);
+        UserEntity user = userRepository.findById(userId).orElse(null);
         if (user == null) {
             throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
             		ErrorCode.DATA_NOT_FOUND.getCode(),
@@ -357,7 +357,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * @param ids
      * @return
      */
-    private List<TbUser> getUsers(List<Long> ids) {
+    private List<UserEntity> getUsers(List<Long> ids) {
         for(Long id : ids) {
             if (id == null) {
                 throw new CustomException(ErrorCode.DATA_NOT_FOUND.getMessage(),
@@ -366,7 +366,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             }
         }
 
-        List<TbUser> users = userRepository.findAllByIds(ids);
+        List<UserEntity> users = userRepository.findAllByIds(ids);
         if (users.size() != ids.size()) {
             throw new CustomException(ErrorCode.DATA_INVALID.getMessage(),
             		ErrorCode.DATA_INVALID.getCode(),
@@ -402,14 +402,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             		ErrorCode.DATA_INVALID.getCode(),
             		HttpStatus.BAD_REQUEST);
         }
-        List<TbAccount> accounts = getAccounts(accountIds);
-        for(TbAccount acc : accounts) {
+        List<AccountEntity> accounts = getAccounts(accountIds);
+        for(AccountEntity acc : accounts) {
             acc.setDeletedAt(new Date());
         }
 
-        List<Long> userIds = accounts.stream().map(TbAccount::getUserId).collect(Collectors.toList());
-        List<TbUser> users = getUsers(userIds);
-        for(TbUser user : users) {
+        List<Long> userIds = accounts.stream().map(AccountEntity::getUserId).collect(Collectors.toList());
+        List<UserEntity> users = getUsers(userIds);
+        for(UserEntity user : users) {
             user.setDeletedAt(new Date());
         }
 

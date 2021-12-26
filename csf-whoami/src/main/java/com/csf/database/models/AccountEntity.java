@@ -23,7 +23,10 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbAccount extends BaseEntity {
+public class AccountEntity extends BaseEntity {
+
+
+    private static final long serialVersionUID = -9124663861846934365L;
 
     @Column(name = "LOGIN_ID")
     private String username;

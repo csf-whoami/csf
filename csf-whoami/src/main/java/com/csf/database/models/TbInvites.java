@@ -32,7 +32,7 @@ public class TbInvites extends BaseEntity {
     @JoinColumn(name = "OWNER", insertable = false, updatable = false)
 //    @OneToOne(optional = true)
 //    @JoinColumn(name = "OWNER", foreignKey = @ForeignKey(name = "FK_S01DT_USER_H13"))
-    private TbAccount owner;
+    private AccountEntity owner;
 
     @Column(name = "BE_INVITED")
     private String invitedId;

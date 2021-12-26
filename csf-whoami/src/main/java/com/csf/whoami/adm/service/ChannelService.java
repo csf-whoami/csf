@@ -11,7 +11,7 @@ import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.service.DefaultCrudService;
 import com.csf.database.adapter.ChannelAdapter;
-import com.csf.database.models.TbChannel;
+import com.csf.database.models.ChannelEntity;
 import com.csf.database.repository.ChannelRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -30,13 +30,13 @@ public class ChannelService extends DefaultCrudService {
     }
 
     public ChannelInfo getChannelDetail(Long id) {
-        TbChannel channel = channelRepository.findById(id).orElse(null);
+        ChannelEntity channel = channelRepository.findById(id).orElse(null);
         return ChannelAdapter.modelToDomain(channel);
     }
 
     @Transactional
     public ChannelInfo registerOrUpdate(ChannelInfo domain) {
-        TbChannel entity = ChannelAdapter.domainToModel(domain);
+        ChannelEntity entity = ChannelAdapter.domainToModel(domain);
         entity = channelRepository.save(entity);
         if (entity == null) {
             throw new CustomException(ErrorException.CANT_CREATE_GROUP.getMessage(),

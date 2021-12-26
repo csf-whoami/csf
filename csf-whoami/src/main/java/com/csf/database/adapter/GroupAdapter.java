@@ -4,7 +4,7 @@
 package com.csf.database.adapter;
 
 import com.csf.base.domain.response.GroupInfo;
-import com.csf.database.models.TbGroup;
+import com.csf.database.models.GroupEntity;
 import com.csf.database.view.GroupView;
 
 public class GroupAdapter {
@@ -20,7 +20,7 @@ public class GroupAdapter {
         return domain;
     }
 
-    public static GroupInfo modelToDomain(TbGroup entity) {
+    public static GroupInfo modelToDomain(GroupEntity entity) {
         if (entity == null) {
             return null;
         }
@@ -31,18 +31,18 @@ public class GroupAdapter {
         return domain;
     }
 
-    public static TbGroup domainToModel(GroupInfo domain) {
+    public static GroupEntity domainToModel(GroupInfo domain) {
         if (domain == null) {
             return null;
         }
-        TbGroup entity = initialEntity();
+        GroupEntity entity = initialEntity();
         entity.setGroupName(domain.getGroupName());
         entity.setGroupType(domain.getGroupType());
         return entity;
     }
 
-    private static TbGroup initialEntity() {
-        TbGroup entity = new TbGroup();
+    private static GroupEntity initialEntity() {
+        GroupEntity entity = new GroupEntity();
         return entity;
     }
 }

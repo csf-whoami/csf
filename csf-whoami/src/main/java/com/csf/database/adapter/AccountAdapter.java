@@ -4,12 +4,12 @@ import com.csf.base.domain.response.AccountInfo;
 import com.csf.base.domain.response.UserInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbAccount;
+import com.csf.database.models.AccountEntity;
 
 public class AccountAdapter {
     private AccountAdapter() {};
 
-    public static AccountInfo entityToDomain(TbAccount entity) {
+    public static AccountInfo entityToDomain(AccountEntity entity) {
         if (entity == null) {
             return null;
         }
@@ -19,21 +19,21 @@ public class AccountAdapter {
         return domain;
     }
 
-    public static TbAccount domainToEntity(AccountInfo domain) {
+    public static AccountEntity domainToEntity(AccountInfo domain) {
         if (domain == null) {
             return null;
         }
-        TbAccount entity = new TbAccount();
+        AccountEntity entity = new AccountEntity();
         entity.setId(domain.getUserId());
         entity.setUsername(domain.getUsername());
         return entity;
     }
 
-    public static TbAccount userInfoToEntity(UserInfo info) {
+    public static AccountEntity userInfoToEntity(UserInfo info) {
         if (info == null) {
             return null;
         }
-        TbAccount account = new TbAccount();
+        AccountEntity account = new AccountEntity();
         account.setId(StringUtils.toLongOrNull(info.getId()));
         account.setUsername(info.getUsername());
         account.setStartedAt(DateTimeUtils.convertStringToDateOrNull(info.getStartedAt(), DateTimeUtils.YYYYMMDD));

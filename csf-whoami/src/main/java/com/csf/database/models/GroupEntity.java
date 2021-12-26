@@ -17,7 +17,9 @@ import lombok.Setter;
 @Table(name = "W_TB_GROUP")
 @Where(clause = "DELETED_AT IS NULL")
 @Getter @Setter
-public class TbGroup extends BaseEntity {
+public class GroupEntity extends BaseEntity {
+
+    private static final long serialVersionUID = -5184620167960702589L;
 
     @Column(name = "GROUP_NAME")
     private String groupName;

@@ -4,13 +4,13 @@ import com.csf.base.domain.YesNo;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbChannel;
+import com.csf.database.models.ChannelEntity;
 
 public class ChannelAdapter {
 
     private ChannelAdapter() {}
 
-    public static ChannelInfo modelToDomain(TbChannel entity) {
+    public static ChannelInfo modelToDomain(ChannelEntity entity) {
         if (entity == null) {
             return null;
         }
@@ -24,11 +24,11 @@ public class ChannelAdapter {
         return domain;
     }
     
-    public static TbChannel domainToModel(ChannelInfo domain) {
+    public static ChannelEntity domainToModel(ChannelInfo domain) {
         if (domain == null) {
             return null;
         }
-        TbChannel entity = initialEntity();
+        ChannelEntity entity = initialEntity();
         entity.setId(StringUtils.toLongOrNull(domain.getId()));
         entity.setChannelName(domain.getChannelName());
         entity.setChannelUrl(domain.getChannelUrl());
@@ -40,8 +40,8 @@ public class ChannelAdapter {
         return entity;
     }
 
-    private static TbChannel initialEntity() {
-        TbChannel entity = new TbChannel();
+    private static ChannelEntity initialEntity() {
+        ChannelEntity entity = new ChannelEntity();
         return entity;
     }
 }

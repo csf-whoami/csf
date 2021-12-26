@@ -3,11 +3,11 @@ package com.csf.database.adapter;
 import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbGroup;
+import com.csf.database.models.GroupEntity;
 
 public class ConvertGroupDTO {
 
-    public static GroupInfo dbToDomain(TbGroup entity) {
+    public static GroupInfo dbToDomain(GroupEntity entity) {
         if (entity == null) {
             return null;
         }
@@ -19,11 +19,11 @@ public class ConvertGroupDTO {
         return domain;
     }
 
-    public static TbGroup domainToDb(GroupInfo domain) {
+    public static GroupEntity domainToDb(GroupInfo domain) {
         if (domain == null) {
             return null;
         }
-        TbGroup entity = new TbGroup();
+        GroupEntity entity = new GroupEntity();
         entity.setId(StringUtils.toLongOrNull(domain.getId()));
 
         entity.setGroupName(domain.getGroupName());
@@ -43,11 +43,11 @@ public class ConvertGroupDTO {
      * @param domain
      * @return
      */
-    public static TbGroup tempDomainToDb(ConfirmGroupInfo domain) {
+    public static GroupEntity tempDomainToDb(ConfirmGroupInfo domain) {
         if (domain == null) {
             return null;
         }
-        TbGroup entity = new TbGroup();
+        GroupEntity entity = new GroupEntity();
         entity.setGroupUrl(domain.getGroupURL());
         return entity;
     }

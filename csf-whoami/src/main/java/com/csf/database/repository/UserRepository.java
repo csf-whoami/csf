@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.response.UserInfo;
-import com.csf.database.models.TbUser;
+import com.csf.database.models.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<TbUser, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query(value = "SELECT new com.csf.base.domain.response.UserInfo(acc.id, acc.username, user.email, acc.createdAt, acc.activedAt, role.id, role.name) "
             + " FROM TbAccount acc "
@@ -34,5 +34,5 @@ public interface UserRepository extends JpaRepository<TbUser, Long> {
             + " FROM TbUser tbu "
             + " WHERE tbu.id IN (:ids)"
             + " ORDER BY tbu.createdAt ")
-    List<TbUser> findAllByIds(@Param("ids") List<Long> ids);
+    List<UserEntity> findAllByIds(@Param("ids") List<Long> ids);
 }

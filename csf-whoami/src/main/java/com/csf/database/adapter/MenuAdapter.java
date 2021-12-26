@@ -2,12 +2,12 @@ package com.csf.database.adapter;
 
 import com.csf.base.domain.MenuVO;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbMenu;
+import com.csf.database.models.MenuEntity;
 
 public class MenuAdapter {
 
 	private MenuAdapter() {}
-	public static MenuVO dbToDomain(TbMenu entity) {
+	public static MenuVO dbToDomain(MenuEntity entity) {
 		if (entity == null) {
 			return null;
 		}
@@ -21,11 +21,11 @@ public class MenuAdapter {
 		return domain;
 	}
 
-	public static TbMenu domainToDb(MenuVO domain) {
+	public static MenuEntity domainToDb(MenuVO domain) {
 		if (domain == null) {
 			return null;
 		}
-		TbMenu entity = new TbMenu();
+		MenuEntity entity = new MenuEntity();
 		entity.setId(StringUtils.toLongOrNull(domain.getId()));
 		entity.setMenuName(domain.getMenuName());
 		entity.setLinkScreen(domain.getLinkScreen());

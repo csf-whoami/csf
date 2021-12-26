@@ -23,9 +23,9 @@ import com.csf.base.utilities.StringUtils;
 import com.csf.database.adapter.ConvertGroupDTO;
 import com.csf.database.adapter.GroupAdapter;
 import com.csf.database.mappers.GroupMapper;
-import com.csf.database.models.TbAccount;
-import com.csf.database.models.TbGroup;
-import com.csf.database.models.TbPinCode;
+import com.csf.database.models.AccountEntity;
+import com.csf.database.models.GroupEntity;
+import com.csf.database.models.PinCodeEntity;
 import com.csf.database.models.TbUserGroup;
 import com.csf.database.repository.AccountRepository;
 import com.csf.database.repository.ChannelRepository;
@@ -75,7 +75,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Long registerOrUpdate(GroupInfo domain) {
-        TbGroup entity = GroupAdapter.domainToModel(domain);
+        GroupEntity entity = GroupAdapter.domainToModel(domain);
         entity = groupRepository.save(entity);
         if (entity == null) {
             throw new CustomException(ErrorException.CANT_CREATE_GROUP.getMessage(),
@@ -98,7 +98,7 @@ public class GroupServiceImpl implements GroupService {
     @Transactional
     @Override
     public GroupInfo updateGroupInformation(GroupInfo domain, String userId) throws Exception {
-        TbGroup group = groupRepository.findById(Long.parseLong(domain.getId())).orElse(null);
+        GroupEntity group = groupRepository.findById(Long.parseLong(domain.getId())).orElse(null);
         if (group == null) {
             throw new Exception("Can not found group to update.");
         }
@@ -121,7 +121,7 @@ public class GroupServiceImpl implements GroupService {
     @Transactional
     @Override
     public void addMemberToGroup(String groupId, String userAdded, String ownerUser) throws Exception {
-        TbGroup entity = groupRepository.findById(Long.parseLong(groupId)).orElse(null);
+        GroupEntity entity = groupRepository.findById(Long.parseLong(groupId)).orElse(null);
         if (entity == null) {
             throw new Exception("Can not found group to update.");
         }
@@ -131,7 +131,7 @@ public class GroupServiceImpl implements GroupService {
 //        }
 
         // Get user member
-        TbAccount user = userRepository.findById(Long.parseLong(userAdded)).orElse(null);
+        AccountEntity user = userRepository.findById(Long.parseLong(userAdded)).orElse(null);
         if (user == null) {
             throw new Exception("Can not found User.");
         }
@@ -153,7 +153,7 @@ public class GroupServiceImpl implements GroupService {
     public GroupInfo getChannelByGroup(String groupId, String userId) throws Exception {
         TbUserGroup checkUserGroup = userGroupRepository.findAllByUserIdAndGroupId(userId, groupId);
         if (checkUserGroup == null) {
-            TbGroup group = groupRepository.findById(Long.parseLong(groupId)).orElse(null);
+            GroupEntity group = groupRepository.findById(Long.parseLong(groupId)).orElse(null);
             if (group == null) {
                 throw new Exception("Group is not exist.");
             }
@@ -193,7 +193,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     public GroupInfo addTempGroup(GroupInfo domain) throws Exception {
-        TbGroup isExist = groupRepository.findByGroupUrlAndGroupType(domain.getGroupUrl(), domain.getGroupType());
+        GroupEntity isExist = groupRepository.findByGroupUrlAndGroupType(domain.getGroupUrl(), domain.getGroupType());
         if (isExist != null) {
             throw new Exception("Exist group");
         }
@@ -234,7 +234,7 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     public GroupInfo groupDetail(Long id) {
-        TbGroup group = groupRepository.findById(id).orElse(null);
+        GroupEntity group = groupRepository.findById(id).orElse(null);
         if (group == null) {
             return null;
         }
@@ -253,15 +253,15 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     public Long registerGroup(GroupInfo groupDetail) {
-        TbGroup group = ConvertGroupDTO.domainToDb(groupDetail);
-        TbGroup result = groupRepository.save(group);
+        GroupEntity group = ConvertGroupDTO.domainToDb(groupDetail);
+        GroupEntity result = groupRepository.save(group);
         return result.getId();
     }
 
     @Override
     public Long registerTempGroup(ConfirmGroupInfo groupRequest) {
-        TbGroup group = ConvertGroupDTO.tempDomainToDb(groupRequest);
-        TbGroup result = groupRepository.save(group);
+        GroupEntity group = ConvertGroupDTO.tempDomainToDb(groupRequest);
+        GroupEntity result = groupRepository.save(group);
         return result.getId();
     }
 
@@ -272,12 +272,12 @@ public class GroupServiceImpl implements GroupService {
         if (id == null) {
             return false;
         }
-        TbGroup group = groupRepository.findById(id).orElse(null);
+        GroupEntity group = groupRepository.findById(id).orElse(null);
         if (group == null) {
             return false;
         }
         /// Generate Pincode
-        TbPinCode pinCode = generatePinCode();
+        PinCodeEntity pinCode = generatePinCode();
         pinCode = pinCodeRepository.save(pinCode);
         return emailService.sendEmailConfirmGroup(groupInfo, pinCode.getPinCode());
     }
@@ -287,8 +287,8 @@ public class GroupServiceImpl implements GroupService {
      * 
      * @return
      */
-    private TbPinCode generatePinCode() {
-        TbPinCode pinCode = new TbPinCode();
+    private PinCodeEntity generatePinCode() {
+        PinCodeEntity pinCode = new PinCodeEntity();
         pinCode.setGroupType("GROUP");
         pinCode.setPinCode("123456"); // random value 6 number.
         return pinCode;

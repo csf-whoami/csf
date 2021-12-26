@@ -14,8 +14,8 @@ import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.DateTimeUtils;
-import com.csf.database.models.TbAccount;
-import com.csf.database.models.TbGroup;
+import com.csf.database.models.AccountEntity;
+import com.csf.database.models.GroupEntity;
 import com.csf.database.models.TbInvites;
 import com.csf.database.models.TbNotifications;
 import com.csf.database.repository.AccountRepository;
@@ -115,7 +115,7 @@ public class InviteServiceImpl implements InviteService {
 	private void validateInviteGroup(InviteGroupDomain domain) {
 
 		commonValidate(domain);
-		TbGroup group = groupRepository.findById(Long.parseLong(domain.getGroupId())).orElse(null);
+		GroupEntity group = groupRepository.findById(Long.parseLong(domain.getGroupId())).orElse(null);
 		if (group == null) {
 			throw new CustomException(ErrorException.INVALID_GROUP.getMessage(),
 					ErrorException.INVALID_GROUP.getCode(),
@@ -147,7 +147,7 @@ public class InviteServiceImpl implements InviteService {
 		}
 
 		// Check exist user
-		TbAccount user = oauth2UserRepository.findById(Long.parseLong(domain.getUserId())).orElse(null);
+		AccountEntity user = oauth2UserRepository.findById(Long.parseLong(domain.getUserId())).orElse(null);
 		if (user == null) {
 			throw new CustomException(ErrorException.INVALID_USER.getMessage(),
 					ErrorException.INVALID_USER.getCode(),
@@ -176,7 +176,7 @@ public class InviteServiceImpl implements InviteService {
 					HttpStatus.BAD_REQUEST);
 		}
 
-		TbGroup group = groupRepository.findById(Long.parseLong(invite.getDetailId())).orElse(null);
+		GroupEntity group = groupRepository.findById(Long.parseLong(invite.getDetailId())).orElse(null);
 		if (group == null) {
 			throw new CustomException(ErrorException.INVALID_GROUP.getMessage(),
 					ErrorException.INVALID_GROUP.getCode(),

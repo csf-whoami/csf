@@ -10,17 +10,17 @@ import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.response.AccountInfo;
 import com.csf.base.domain.response.AuthenticationInfo;
 import com.csf.base.domain.response.UserInfo;
-import com.csf.database.models.TbAccount;
+import com.csf.database.models.AccountEntity;
 
 public interface UserService {
 
     AccountInfo signUp(AccountDTO user);
 
-    List<TbAccount> getAllUser();
+    List<AccountEntity> getAllUser();
 
     boolean delete(Long id);
 
-    TbAccount getAccountById(Long id);
+    AccountEntity getAccountById(Long id);
 
     AccountInfo getUserByUsername(String username);
 

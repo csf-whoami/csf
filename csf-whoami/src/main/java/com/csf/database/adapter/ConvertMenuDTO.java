@@ -2,14 +2,14 @@ package com.csf.database.adapter;
 
 import com.csf.base.domain.MenuVO;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbMenu;
+import com.csf.database.models.MenuEntity;
 import com.csf.database.view.MenuView;
 
 public class ConvertMenuDTO {
 
 	private ConvertMenuDTO() {}
 
-	public static MenuVO dbToDomain(TbMenu entity) {
+	public static MenuVO dbToDomain(MenuEntity entity) {
 
 		if (entity == null) {
 			return null;

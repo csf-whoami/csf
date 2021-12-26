@@ -21,9 +21,11 @@ import lombok.Setter;
 @Table(name = "W_TB_PIN_CODE")
 @Where(clause = "DELETED_AT IS NULL")
 @Getter @Setter
-public class TbPinCode extends BaseEntity {
+public class PinCodeEntity extends BaseEntity {
 
-	@Column(name = "GROUP_TYPE")
+    private static final long serialVersionUID = -5366594102937921580L;
+
+    @Column(name = "GROUP_TYPE")
     private String groupType;
 
     @Column(name = "CONTENT_ID")

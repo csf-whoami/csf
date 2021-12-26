@@ -25,9 +25,9 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract public class BaseEntity implements Serializable {
 
-	private static final long serialVersionUID = 5239770149129805050L;
+    private static final long serialVersionUID = 5239770149129805050L;
 
-	@Id
+    @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

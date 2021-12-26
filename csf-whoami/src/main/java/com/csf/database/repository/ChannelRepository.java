@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.response.ChannelInfo;
-import com.csf.database.models.TbChannel;
+import com.csf.database.models.ChannelEntity;
 
 @Repository
-public interface ChannelRepository extends JpaRepository<TbChannel, Long> {
+public interface ChannelRepository extends JpaRepository<ChannelEntity, Long> {
 
     /**
      * Get channels in Group.

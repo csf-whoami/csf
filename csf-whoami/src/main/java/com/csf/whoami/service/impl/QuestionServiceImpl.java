@@ -19,9 +19,9 @@ import com.csf.base.exception.HttpStatus;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.adapter.QuestionAdapter;
 import com.csf.database.adapter.QuestionOptionAdapter;
-import com.csf.database.models.TbChannel;
-import com.csf.database.models.TbChannelQuestion;
-import com.csf.database.models.TbGroup;
+import com.csf.database.models.ChannelEntity;
+import com.csf.database.models.ChannelQuestionEntity;
+import com.csf.database.models.GroupEntity;
 import com.csf.database.models.TbQuestion;
 import com.csf.database.models.TbQuestionOption;
 import com.csf.database.models.TbQuestionType;
@@ -57,8 +57,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionInfo questionInfo(Long group, Long channel) {
         QuestionInfo info = new QuestionInfo();
-        TbGroup groupInfo = groupRepository.findById(group).orElse(null);
-        TbChannel channelInfo = channelRepository.findById(channel).orElse(null);
+        GroupEntity groupInfo = groupRepository.findById(group).orElse(null);
+        ChannelEntity channelInfo = channelRepository.findById(channel).orElse(null);
 
         if (groupInfo == null || channelInfo == null) {
             throw new CustomException(ErrorException.DATA_NOT_FOUND.getMessage(),
@@ -125,7 +125,7 @@ public class QuestionServiceImpl implements QuestionService {
         TbQuestion question = QuestionAdapter.domainToModel(data);
         question = questionRepository.save(question);
 
-        TbChannelQuestion channelQuestion = new TbChannelQuestion();
+        ChannelQuestionEntity channelQuestion = new ChannelQuestionEntity();
         channelQuestion.setChannelId(StringUtils.toLongOrNull(data.getChannelId()));
         channelQuestion.setQuestionId(question.getId());
         channelQuestionRepository.save(channelQuestion);

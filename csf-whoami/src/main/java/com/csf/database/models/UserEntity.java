@@ -18,7 +18,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TbUser extends BaseEntity {
+public class UserEntity extends BaseEntity {
+
+    private static final long serialVersionUID = 5939621114505756670L;
 
     @Column(name = "FULL_NAME")
     private String fullName;

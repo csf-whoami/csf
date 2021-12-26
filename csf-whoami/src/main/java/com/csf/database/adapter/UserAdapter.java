@@ -8,14 +8,14 @@ import com.csf.base.domain.RoleInfo;
 import com.csf.base.domain.response.UserInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbAccount;
-import com.csf.database.models.TbUser;
+import com.csf.database.models.AccountEntity;
+import com.csf.database.models.UserEntity;
 
 public class UserAdapter {
 
     private UserAdapter() { }
 
-    public static UserInfo modelToDto(TbUser model) {
+    public static UserInfo modelToDto(UserEntity model) {
         if (model == null) {
             return null;
         }
@@ -29,11 +29,11 @@ public class UserAdapter {
 
         return info;
     }
-    public static TbUser userInfoToModel(UserInfo info) {
+    public static UserEntity userInfoToModel(UserInfo info) {
         if (info == null) {
             return null;
         }
-        TbUser user = new TbUser();
+        UserEntity user = new UserEntity();
         user.setId(StringUtils.toLongOrNull(info.getUserId()));
         user.setFullName(info.getFullName());
         user.setPhone(info.getPhone());
@@ -44,7 +44,7 @@ public class UserAdapter {
         return user;
     }
 
-    public static UserInfo toDto(TbAccount account, TbUser user, List<RoleInfo> roleInfo) {
+    public static UserInfo toDto(AccountEntity account, UserEntity user, List<RoleInfo> roleInfo) {
         if (account == null && user == null && (roleInfo == null || CollectionUtils.isEmpty(roleInfo))) {
             return null;
         }

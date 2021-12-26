@@ -10,7 +10,7 @@ import com.csf.base.core.ZValue;
 import com.csf.base.domain.MenuVO;
 import com.csf.database.adapter.MenuAdapter;
 import com.csf.database.mappers.MenuMapper;
-import com.csf.database.models.TbMenu;
+import com.csf.database.models.MenuEntity;
 import com.csf.database.repository.MenuRepository;
 import com.csf.whoami.service.MenuService;
 
@@ -39,7 +39,7 @@ public class MenuServiceImpl implements MenuService {
     @Transactional
     @Override
     public Long registerMenu(MenuVO menu) {
-        TbMenu entity = MenuAdapter.domainToDb(menu);
+        MenuEntity entity = MenuAdapter.domainToDb(menu);
         if (entity != null) {
             return menuRepository.save(entity).getId();
         }

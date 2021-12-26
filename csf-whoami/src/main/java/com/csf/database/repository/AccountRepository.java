@@ -7,17 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.database.models.TbAccount;
+import com.csf.database.models.AccountEntity;
 
 @Repository
-public interface AccountRepository extends JpaRepository<TbAccount, Long> {
+public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
     
     /**
      * @param username
      * @return User
      * @description find User by username
      */
-    TbAccount findByUsername(String username);
+    AccountEntity findByUsername(String username);
     
     /**
      * @param username
@@ -37,6 +37,6 @@ public interface AccountRepository extends JpaRepository<TbAccount, Long> {
             + " FROM TbAccount acc "
             + " WHERE acc.id IN (:ids)"
             + " ORDER BY acc.createdAt ")
-    List<TbAccount> findAllByIds(@Param("ids") List<Long> ids);
+    List<AccountEntity> findAllByIds(@Param("ids") List<Long> ids);
 }
 
