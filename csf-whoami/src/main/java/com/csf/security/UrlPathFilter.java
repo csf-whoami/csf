@@ -18,6 +18,7 @@ import com.csf.base.core.ZValue;
 import com.csf.base.exception.CustomError;
 import com.csf.base.exception.HttpStatus;
 import com.csf.base.exception.ResponseDataAPI;
+import com.csf.base.utilities.StringUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -79,7 +80,7 @@ public class UrlPathFilter extends OncePerRequestFilter {
 	}
 
 	/**
-	 * /web/w/guest/12345/list.html
+	 * /web/w/guest/quiz/12345/list.html
 	 * 
 	 * @param request
 	 * @return
@@ -87,7 +88,7 @@ public class UrlPathFilter extends OncePerRequestFilter {
 	private ZValue fetchWebRequest(HttpServletRequest request) {
 		ZValue requestParam = new ZValue();
 		String urlPath = request.getServletPath();
-		String pattern = "^\\/(\\w{3})\\/(\\w)\\/(\\w+)(\\/\\w)?\\/(\\w[\\w|-]+).html.*$";
+		String pattern = "^\\/(\\w{3})\\/(\\w)\\/(\\w+)\\/(\\w+)(\\/\\w+)?\\/(\\w[\\w|-]+).html.*$";
 
 		// Create a Pattern object
 		Pattern r = Pattern.compile(pattern);
@@ -97,14 +98,20 @@ public class UrlPathFilter extends OncePerRequestFilter {
 		if (m.find()) {
 			String siteId = m.group(1);
 			String appId = m.group(2);
+			// Role.
 			String pakageId = m.group(3);
+			// Id
 			String programId = m.group(4);
-			String targetMethod = m.group(5);
+			String id = m.group(5);
+			String targetMethod = m.group(6);
 
 			requestParam.put(ConstantsRequest.SITE_ID, siteId);
 			requestParam.put(ConstantsRequest.APP_ID, appId);
 			requestParam.put(ConstantsRequest.PACKAGE_ID, pakageId);
 			requestParam.put(ConstantsRequest.PROGRAM_ID, programId);
+			if(!StringUtils.isNullOrEmpty(id)) {
+				requestParam.put(ConstantsRequest.ID, id.replace("/", ""));
+			}
 			requestParam.put(ConstantsRequest.TARGET_METHOD, targetMethod);
 			return requestParam;
 		}

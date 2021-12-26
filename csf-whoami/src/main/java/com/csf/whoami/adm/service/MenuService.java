@@ -5,10 +5,10 @@ import org.springframework.ui.ModelMap;
 
 import com.csf.base.ParameterContext;
 import com.csf.base.core.ZValue;
-import com.csf.base.service.DefaultCrudService;
+import com.csf.base.service.impl.AdmMasterService;
 
 @Service
-public class MenuService extends DefaultCrudService {
+public class MenuService extends AdmMasterService {
 
 	@Override
 	public void list(ParameterContext paramCtx) throws Exception {

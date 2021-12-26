@@ -1,4 +1,4 @@
-package com.csf.base.service;
+package com.csf.base.service.impl;
 
 import com.csf.base.CommonListener;
 import com.csf.base.ParameterContext;
@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class DefaultCrudService extends AbstractCrudService {
+public class AdmMasterService extends AbstractMasterService {
 
 	private CommonListener listener;
 	private String pageQueryData;

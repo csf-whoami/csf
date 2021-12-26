@@ -9,7 +9,7 @@ import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.exception.CustomException;
 import com.csf.base.exception.ErrorException;
 import com.csf.base.exception.HttpStatus;
-import com.csf.base.service.DefaultCrudService;
+import com.csf.base.service.impl.AdmMasterService;
 import com.csf.database.adapter.ChannelAdapter;
 import com.csf.database.models.ChannelEntity;
 import com.csf.database.repository.ChannelRepository;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ChannelService extends DefaultCrudService {
+public class ChannelService extends AdmMasterService {
 
     private final ChannelRepository channelRepository;
 

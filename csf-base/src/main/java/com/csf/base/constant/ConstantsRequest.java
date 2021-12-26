@@ -9,6 +9,7 @@ public class ConstantsRequest {
 	public static final String APP_ID = "appId";
 	public static final String PACKAGE_ID = "pakageId";
 	public static final String PROGRAM_ID = "programId";
+	public static final String ID = "id";
 	public static final String TARGET_METHOD = "targetMethod";
 	public static final String TARGET_NAME = "targetName";
 	public static final String MULTIPART_FILE_MAP = "multipartFileMap";

@@ -3,7 +3,7 @@ package com.csf.base.service;
 import com.csf.base.ParameterContext;
 import com.csf.base.service.common.CommonService;
 
-public interface CrudService extends CommonService {
+public interface MasterService extends CommonService {
 
 	public void index(ParameterContext paramCtx) throws Exception;
 
