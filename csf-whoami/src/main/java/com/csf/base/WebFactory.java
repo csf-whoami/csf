@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerMapping;
 
 import com.csf.base.core.ZValue;
 
@@ -26,9 +28,15 @@ public class WebFactory {
 			String[] values = request.getParameterValues(key);
 			if(values!=null){
 				zvl.putObject(key, (values.length > 1) ? values:values[0] );
-				//배열로 넘어온 경우 파라미터 뒤에 "Arr"를 붙혀 제공
-				if (values.length > 1){zvl.putObject(key+"Arr", values);}
+				if (values.length > 1) {
+					zvl.putObject(key + "Arr", values);
+				}
 			}
+		}
+		// Setting parameter
+		Map<?, ?> pathVariables = (Map<?, ?>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
+		for (Object key : pathVariables.keySet()) {
+			zvl.put(key, pathVariables.get(key));
 		}
 		return zvl;
 	}
