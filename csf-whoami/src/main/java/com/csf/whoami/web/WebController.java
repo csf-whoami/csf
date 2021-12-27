@@ -19,7 +19,7 @@ import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 
 @Controller
-@RequestMapping("/{siteId}/{appId}/{pakageId}/{programId}")
+@RequestMapping("/web/{compId}/{roleNm}/{programId}")
 public class WebController extends BaseController {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
@@ -28,6 +28,17 @@ public class WebController extends BaseController {
 
 	@RequestMapping("/{targetMethod}.html")
 	public ModelAndView invoke(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+								@PathVariable(ConstantsRequest.TARGET_METHOD) String targetMethod) throws Exception {
+		ZValue paramVO = WebFactory.getAttributes(request);
+		ModelAndView mv = null;
+		model.addAttribute(ConstantsRequest.CONTEXT_PATH,request.getContextPath());
+		mv = super.invoke(paramVO, request, response, model);
+		return mv;
+	}
+
+	@RequestMapping("/{id}/{targetMethod}.html")
+	public ModelAndView invokeWithId(HttpServletRequest request, HttpServletResponse response, ModelMap model,
+								@PathVariable(ConstantsRequest.ID) String id,
 								@PathVariable(ConstantsRequest.TARGET_METHOD) String targetMethod) throws Exception {
 		ZValue paramVO = WebFactory.getAttributes(request);
 		ModelAndView mv = null;

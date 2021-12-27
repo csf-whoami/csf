@@ -23,7 +23,7 @@ import com.csf.base.core.ZValue;
 import com.csf.base.service.common.CommonService;
 
 @Controller
-@RequestMapping("/{siteId}/{compId}/{appId}/{pakageId}/{programId}")
+@RequestMapping("/adm/{compId}/{appId}/{pakageId}/{programId}")
 public class MasterController extends BaseController {
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
