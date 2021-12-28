@@ -21,11 +21,18 @@ public class AbstractWebService extends CommonServiceSupport implements WebServi
     protected IPageInfo pageInfo;
     protected MessageSource messageSource;
 
+    /**
+     * Lấy thông tin câu hỏi và hiển thị ra cho người dùng.
+     */
     @Override
     public void index(ParameterContext paramCtx) {
         // TODO Auto-generated method stub
     	System.out.println("This class: " + this.getClass() + " - method : index");
     }
+
+    /**
+     * Thực hiện test và trả về kết quả cho người dùng.
+     */
     @Override
     public void execute(ParameterContext paramCtx) {
         // TODO Auto-generated method stub
