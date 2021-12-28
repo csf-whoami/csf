@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerMapping;
 
+import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 
 public class WebFactory {
@@ -37,6 +40,13 @@ public class WebFactory {
 		Map<?, ?> pathVariables = (Map<?, ?>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
 		for (Object key : pathVariables.keySet()) {
 			zvl.put(key, pathVariables.get(key));
+		}
+		String admRegex = "^\\/\\w{3}\\/.*$";
+		Pattern checkRegex = Pattern.compile(admRegex);
+		Matcher regexMatcher = checkRegex.matcher(request.getServletPath());
+		if (regexMatcher.matches()) {
+			String urlPath = request.getServletPath();
+			zvl.put(ConstantsRequest.SITE_ID, urlPath.substring(1, 4));
 		}
 		return zvl;
 	}
