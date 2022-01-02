@@ -90,7 +90,6 @@ $("#create-group").click(function() {
     processData: false,
     data: JSON.stringify(formData),
     success : function(data) {
-      console.log("data: ", data);
       if(data){
         location.href = validGroup + data.data;
       }

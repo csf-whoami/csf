@@ -25,10 +25,10 @@ import com.csf.database.models.TbQuizTest;
 import com.csf.database.repository.QuestionRepository;
 import com.csf.database.repository.QuizQuestionRepository;
 import com.csf.database.repository.QuizTestRepository;
-import com.csf.whoami.service.QuizTestService;
+import com.csf.whoami.service.QuizService;
 
 @Service
-public class QuizTestServiceImpl implements QuizTestService {
+public class QuizServiceImpl implements QuizService {
 
     @Autowired
     private QuestionRepository questionRepository;

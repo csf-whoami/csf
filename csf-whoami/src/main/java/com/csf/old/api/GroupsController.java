@@ -12,7 +12,7 @@
  * - Kick user out group.
  * - Out group.
  */
-package com.csf.whoami.api;
+package com.csf.old.api;
 
 import java.util.List;
 

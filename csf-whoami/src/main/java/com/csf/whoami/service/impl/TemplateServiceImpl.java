@@ -1,5 +1,6 @@
 package com.csf.whoami.service.impl;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -54,10 +55,15 @@ public class TemplateServiceImpl implements TemplateService {
 	@Override
 	public String tempQuestion(String questionType) {
 //		templateService.getContent("sidebar-channels", params)
-		Map<String, Object> params = new HashMap<>();
-		params.put("quizType", questionType);
-		String htmpContent = getContent("quizFinalContent", params);
-		return exportHtmlBody(htmpContent);
+		// decode.
+		String quizType = new String(Base64.getDecoder().decode(questionType));
+		if(quizType != null && quizType.length() > 0) {
+			Map<String, Object> params = new HashMap<>();
+			params.put("quizType", quizType);
+			String htmpContent = getContent("quizFinalContent", params);
+			return exportHtmlBody(htmpContent);
+		}
+		return null;
 	}
 
 	@Override
@@ -122,7 +128,7 @@ public class TemplateServiceImpl implements TemplateService {
      * @param htmlContent
      * @return
      */
-    public String exportHtmlBody(String htmlContent) {
+    private String exportHtmlBody(String htmlContent) {
         String startTag = "<body>";
         String endTag = "</body>";
         if (htmlContent != null && htmlContent.length() > 0) {

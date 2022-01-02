@@ -5,7 +5,7 @@
  * - Delete notifications.
  * - Get unread notifications.
  */
-package com.csf.whoami.api;
+package com.csf.old.api;
 
 import java.util.ArrayList;
 import java.util.List;

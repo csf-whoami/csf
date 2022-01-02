@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.csf.whoami.api;
+package com.csf.old.api;
 
 import javax.websocket.server.PathParam;
 

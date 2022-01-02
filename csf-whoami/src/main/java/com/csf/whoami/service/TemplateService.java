@@ -9,6 +9,6 @@ public interface TemplateService {
 	String tempQuizContent(String questionType);
 	String tempQuizPreview(String questionType, Long questionId);
 	String getContent(String string, Map<String, Object> params);
-	String exportHtmlBody(String htmlContent);
+//	String exportHtmlBody(String htmlContent);
 	boolean sendMail(String email, String string, String string2, Map<String, Object> params);
 }

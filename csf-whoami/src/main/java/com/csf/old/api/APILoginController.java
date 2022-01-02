@@ -1,4 +1,4 @@
-package com.csf.whoami.api;
+package com.csf.old.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

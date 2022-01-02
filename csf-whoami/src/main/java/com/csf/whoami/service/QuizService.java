@@ -7,7 +7,7 @@ import com.csf.base.domain.quiz.QuizAnswersDomain;
 import com.csf.base.domain.quiz.QuizRequestDomain;
 import com.csf.base.domain.quiz.ResultResponseDomain;
 
-public interface QuizTestService {
+public interface QuizService {
 
 	/**
 	 * Generate random quiztest with number question and time particular.
