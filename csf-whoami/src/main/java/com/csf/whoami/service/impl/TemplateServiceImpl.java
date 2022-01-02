@@ -24,6 +24,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import com.csf.base.domain.response.QuestionTemplate;
+import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.service.TemplateService;
 
 @Service
@@ -53,15 +55,18 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
 	@Override
-	public String tempQuestion(String questionType) {
+	public QuestionTemplate tempQuestion(String questionType) {
 //		templateService.getContent("sidebar-channels", params)
 		// decode.
 		String quizType = new String(Base64.getDecoder().decode(questionType));
-		if(quizType != null && quizType.length() > 0) {
+		if(!StringUtils.isNullOrEmpty(quizType)) {
 			Map<String, Object> params = new HashMap<>();
 			params.put("quizType", quizType);
 			String htmpContent = getContent("quizFinalContent", params);
-			return exportHtmlBody(htmpContent);
+			QuestionTemplate questionTmp = new QuestionTemplate();
+			questionTmp.setTempContent(exportHtmlBody(htmpContent));
+			// TODO: Settings
+			return questionTmp;
 		}
 		return null;
 	}

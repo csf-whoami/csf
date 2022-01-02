@@ -9,6 +9,7 @@
 package com.csf.whoami.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.csf.base.domain.quiz.QuizAnswersDomain;
 import com.csf.base.domain.quiz.QuizRequestDomain;
 import com.csf.base.domain.quiz.ResultResponseDomain;
+import com.csf.base.domain.response.QuestionTemplate;
+import com.csf.base.exception.ResponseDataAPI;
 import com.csf.whoami.service.QuizService;
 import com.csf.whoami.service.TemplateService;
 
@@ -63,7 +66,10 @@ public class QuizController {
 	}
 
 	@GetMapping("/quizTmp")
-	public String getTempQuestion(@RequestParam(value = "questionType") String questionType) {
-		return templateService.tempQuestion(questionType);
+	public ResponseEntity<ResponseDataAPI> getTempQuestion(@RequestParam(value = "questionType") String questionType) {
+		QuestionTemplate questionTmp = templateService.tempQuestion(questionType);
+		return ResponseEntity.ok(ResponseDataAPI.builder()
+	              .data(questionTmp)
+	              .build());
 	}
 }

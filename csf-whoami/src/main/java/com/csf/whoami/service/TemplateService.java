@@ -2,9 +2,11 @@ package com.csf.whoami.service;
 
 import java.util.Map;
 
+import com.csf.base.domain.response.QuestionTemplate;
+
 public interface TemplateService {
 
-	String tempQuestion(String questionType);
+	QuestionTemplate tempQuestion(String questionType);
 	String tempQuestionDetail(Long questionId);
 	String tempQuizContent(String questionType);
 	String tempQuizPreview(String questionType, Long questionId);

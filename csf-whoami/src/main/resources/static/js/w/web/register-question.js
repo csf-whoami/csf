@@ -8,7 +8,10 @@ $('#question-type').on('change', function() {
 		url : getQuizTemplateAPI + questionType,
 		type : "GET",
 		success : function(data) {
-			console.log("data: ", data);
+			if(data.data){
+				$("div.quiz-content").html(data.data.temp_content);
+				setRequired(questionType);
+			}
 		},
 		error : function(xhr) {
 			// modal.openOneModalMessage("Not success");
@@ -16,3 +19,7 @@ $('#question-type').on('change', function() {
 		}
 	});
 });
+
+function setRequired(questionType){
+	
+}
