@@ -7,7 +7,106 @@
     <body class="main-body leftmenu">
         <!-- Page -->
         <div class="page">
-            <!-- Sidemenu -->
+
+            <!-- Main Header-->
+            <div class="main-header side-header sticky">
+                <div class="container-fluid">
+                    <div class="main-header-left">
+                        <a class="main-header-menu-icon" href="#" id="mainSidebarToggle"><span></span></a>
+                    </div>
+                    <div class="main-header-center">
+                        <div class="float-left"><label>Question type</label></div>
+                        <div class="float-left">
+                            <select class="form-control" id="question-type">
+                                <option value="Text select">Text select</option>
+                                <option value="Picture choice">Picture choice</option>
+                                <option value="Input number">Input number</option>
+                                <option value="Statement">Statement</option>
+                                <option value="Drag & drop text">Drag & drop text</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="main-header-right">
+                        <div class="dropdown main-header-notification">
+                            <a class="nav-link icon" href="">
+                                <i class="fe fe-bell header-icons"></i>
+                                <span class="badge badge-danger nav-link-badge">4</span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="header-navheading">
+                                    <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
+                                </div>
+                                <div class="main-notification-list">
+                                    <div class="media new">
+                                        <div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/5.jpg"></div>
+                                        <div class="media-body">
+                                            <p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="main-img-user"><img alt="avatar" src="../../assets/img/users/2.jpg"></div>
+                                        <div class="media-body">
+                                            <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13 02:56am</span>
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/3.jpg"></div>
+                                        <div class="media-body">
+                                            <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <a href="#">View All Notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-header-notification">
+                            <a class="nav-link icon" href="chat.html">
+                                <i class="fe fe-message-square header-icons"></i>
+                                <span class="badge badge-success nav-link-badge">6</span>
+                            </a>
+                        </div>
+                        <div class="dropdown main-profile-menu">
+                            <a class="d-flex" href="">
+                                <span class="main-img-user" ><img alt="avatar" src="../../assets/img/users/1.jpg"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="header-navheading">
+                                    <h6 class="main-notification-title">Sonia Taylor</h6>
+                                    <p class="main-notification-text">Web Designer</p>
+                                </div>
+                                <a class="dropdown-item border-top" href="profile.html">
+                                    <i class="fe fe-user"></i> My Profile
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-edit"></i> Edit Profile
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-settings"></i> Account Settings
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-settings"></i> Support
+                                </a>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fe fe-compass"></i> Activity
+                                </a>
+                                <a class="dropdown-item" href="signin.html">
+                                    <i class="fe fe-power"></i> Sign Out
+                                </a>
+                            </div>
+                        </div>
+                        <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- End Main Header-->
+
+            <div class="row">
+                <!-- Sidemenu -->
             <div class="main-sidebar-sticky side-menu col-md-2 overflow-auto">
                 <div class="main-sidebar-body">
                     <ul class="nav quiz-init">
@@ -178,27 +277,27 @@
                                 <div class="col-md-2"><span class="custom-switch-description">Step</span></div>
                                 <div class="col-md-10 mg-t-5 mg-md-t-0">
                                     <div class="box-body">
-										<div class="br-wrapper br-theme-bars-pill">
-											<select id="example-pill" name="rating" autocomplete="off"
-												style="display: none;"><option
-													value="-- no rating selected --"></option>
-												<option value="A">1</option>
-												<option value="B">2</option>
-												<option value="C">3</option>
-												<option value="D">4</option>
-												<option value="E">5</option>
-												<option value="F">6</option>
-											</select>
-											<div class="br-widget">
-												<a href="#" data-rating-value="A" data-rating-text="A" class="br-selected">1</a>
-												<a href="#" data-rating-value="B" data-rating-text="B" class="br-selected">2</a>
-												<a href="#" data-rating-value="C" data-rating-text="C" class="br-selected br-current">3</a>
-												<a href="#" data-rating-value="D" data-rating-text="D" class="">4</a>
-												<a href="#" data-rating-value="E" data-rating-text="E" class="">5</a>
-												<a href="#" data-rating-value="F" data-rating-text="F" class="">6</a>
-											</div>
-										</div>
-									</div>
+                                        <div class="br-wrapper br-theme-bars-pill">
+                                            <select id="example-pill" name="rating" autocomplete="off"
+                                                style="display: none;"><option
+                                                    value="-- no rating selected --"></option>
+                                                <option value="A">1</option>
+                                                <option value="B">2</option>
+                                                <option value="C">3</option>
+                                                <option value="D">4</option>
+                                                <option value="E">5</option>
+                                                <option value="F">6</option>
+                                            </select>
+                                            <div class="br-widget">
+                                                <a href="#" data-rating-value="A" data-rating-text="A" class="br-selected">1</a>
+                                                <a href="#" data-rating-value="B" data-rating-text="B" class="br-selected">2</a>
+                                                <a href="#" data-rating-value="C" data-rating-text="C" class="br-selected br-current">3</a>
+                                                <a href="#" data-rating-value="D" data-rating-text="D" class="">4</a>
+                                                <a href="#" data-rating-value="E" data-rating-text="E" class="">5</a>
+                                                <a href="#" data-rating-value="F" data-rating-text="F" class="">6</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </li>
@@ -214,110 +313,14 @@
                     </ul>
                 </div>
             </div>
-            <!-- End Sidemenu -->
-
-            <!-- Main Header-->
-            <div class="main-header side-header sticky">
-                <div class="container-fluid">
-                    <div class="main-header-left">
-                        <a class="main-header-menu-icon" href="#" id="mainSidebarToggle"><span></span></a>
-                    </div>
-                    <div class="main-header-center">
-                        <div class="float-left"><label>Question type</label></div>
-                        <div class="float-left">
-                            <select class="form-control" id="question-type">
-                                <option value="Text select">Text select</option>
-                                <option value="Picture choice">Picture choice</option>
-                                <option value="Input number">Input number</option>
-                                <option value="Statement">Statement</option>
-                                <option value="Drag & drop text">Drag & drop text</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="main-header-right">
-                        <div class="dropdown main-header-notification">
-                            <a class="nav-link icon" href="">
-                                <i class="fe fe-bell header-icons"></i>
-                                <span class="badge badge-danger nav-link-badge">4</span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="header-navheading">
-                                    <p class="main-notification-text">You have 1 unread notification<span class="badge badge-pill badge-primary ml-3">View all</span></p>
-                                </div>
-                                <div class="main-notification-list">
-                                    <div class="media new">
-                                        <div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/5.jpg"></div>
-                                        <div class="media-body">
-                                            <p>Congratulate <strong>Olivia James</strong> for New template start</p><span>Oct 15 12:32pm</span>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="main-img-user"><img alt="avatar" src="../../assets/img/users/2.jpg"></div>
-                                        <div class="media-body">
-                                            <p><strong>Joshua Gray</strong> New Message Received</p><span>Oct 13 02:56am</span>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <div class="main-img-user online"><img alt="avatar" src="../../assets/img/users/3.jpg"></div>
-                                        <div class="media-body">
-                                            <p><strong>Elizabeth Lewis</strong> added new schedule realease</p><span>Oct 12 10:40pm</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dropdown-footer">
-                                    <a href="#">View All Notifications</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-header-notification">
-                            <a class="nav-link icon" href="chat.html">
-                                <i class="fe fe-message-square header-icons"></i>
-                                <span class="badge badge-success nav-link-badge">6</span>
-                            </a>
-                        </div>
-                        <div class="dropdown main-profile-menu">
-                            <a class="d-flex" href="">
-                                <span class="main-img-user" ><img alt="avatar" src="../../assets/img/users/1.jpg"></span>
-                            </a>
-                            <div class="dropdown-menu">
-                                <div class="header-navheading">
-                                    <h6 class="main-notification-title">Sonia Taylor</h6>
-                                    <p class="main-notification-text">Web Designer</p>
-                                </div>
-                                <a class="dropdown-item border-top" href="profile.html">
-                                    <i class="fe fe-user"></i> My Profile
-                                </a>
-                                <a class="dropdown-item" href="profile.html">
-                                    <i class="fe fe-edit"></i> Edit Profile
-                                </a>
-                                <a class="dropdown-item" href="profile.html">
-                                    <i class="fe fe-settings"></i> Account Settings
-                                </a>
-                                <a class="dropdown-item" href="profile.html">
-                                    <i class="fe fe-settings"></i> Support
-                                </a>
-                                <a class="dropdown-item" href="profile.html">
-                                    <i class="fe fe-compass"></i> Activity
-                                </a>
-                                <a class="dropdown-item" href="signin.html">
-                                    <i class="fe fe-power"></i> Sign Out
-                                </a>
-                            </div>
-                        </div>
-                        <button class="navbar-toggler navresponsive-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-                            aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- End Main Header-->
-
+            <!-- End Side menu -->
+            
             <!-- Main Content-->
             <div class="main-content quiz-content">
                 <h1>Question content.</h1>
             </div>
             <!-- End Main Content-->
+            </div>
 
             <!-- Main Footer-->
             <th:block th:replace="/layout/footer"></th:block>
