@@ -1,0 +1,42 @@
+databaseChangeLog:
+- changeSet:
+    id: GH1712-1
+    author: liquibase
+    preConditions:
+      not:
+        tableExists:
+          tableName: gh1712_tbl
+    changes:
+    - createTable:
+        columns:
+          - column:
+              constraints:
+                nullable: false
+                primaryKey: true
+                primaryKeyName: gh1712_pk
+              name: uuid
+              type: UUID
+        tableName: gh1712_tbl
+
+##  - changeSet:
+##      id: insertTableAddresses
+##      author: Soumitra Roy
+##      changes:
+##      - sqlFile:
+##          dbms: mysql
+##          encoding: utf8
+##          path: changelog/02-insert-data-addresses.sql
+##          relativeToChangelogFile: true
+##          splitStatements: true
+##          stripComments: true
+##  - changeSet:
+##      id: insertTableUsers
+##      author: Soumitra Roy
+##      changes:
+##      - sqlFile:
+##          dbms: mysql
+##          encoding: utf8
+##          path: changelog/02-insert-data-users.sql
+##          relativeToChangelogFile: true
+##          splitStatements: true
+##          stripComments: true

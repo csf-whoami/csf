@@ -47,7 +47,8 @@ spring:
           paths: /**/**
   liquibase:
     enabled: true
-    change-log: classpath:database/master.xml
+#    change-log: classpath:database/master.xml
+    changeLog: classpath:database/db.changelog-master.yaml
 ################################################ END DATABASE SETTING ################################################
 ## MULTIPART (MultipartProperties)
   # Enable multipart uploads
