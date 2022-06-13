@@ -18,6 +18,30 @@ databaseChangeLog:
               type: UUID
         tableName: gh1712_tbl
 
+## Change DB by structure.
+#    - createTable:
+#        columns:
+#          - column:
+#              name: id
+#              type: int
+#              autoIncrement: true 
+#              constraints:
+#                primaryKey: true
+#                nullable: false
+#          - column:  
+#              name:  firstname
+#              type:  varchar(50)
+#          - column:
+#              name:  surname
+#              type:  varchar(50)
+#              constraints:
+#                nullable:  false
+#          - column:
+#              name:  state
+#              type:  char(2)
+#        tableName: example_table
+
+## Change DB by sql file.
 ##  - changeSet:
 ##      id: insertTableAddresses
 ##      author: Soumitra Roy
