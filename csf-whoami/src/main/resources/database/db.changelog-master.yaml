@@ -64,3 +64,6 @@ databaseChangeLog:
 ##          relativeToChangelogFile: true
 ##          splitStatements: true
 ##          stripComments: true
+
+# References.
+# https://mohitgoyal.co/2019/03/26/check-database-state-and-conditionally-apply-changes-in-the-liquibase/
