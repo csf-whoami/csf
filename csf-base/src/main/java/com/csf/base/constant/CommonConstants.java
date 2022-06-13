@@ -48,13 +48,7 @@ public class CommonConstants {
 
     public static final Integer MAX_NUMBER_OF_RESULT = 9999;
 
-    public static final String TIMEZONE = "GMT+7";
-
     public static final String HOST_REGEX = "(http(s)?:\\/\\/)([a-z0-9\\w]+\\.*)+(:)*([0-9]*)*";
-
-    public static final Date MIN_DATE = new Date(Long.MIN_VALUE);
-
-    public static final Date MAX_DATE = new Date(Long.MAX_VALUE);
 
     public static final String DOT = ".";
 }

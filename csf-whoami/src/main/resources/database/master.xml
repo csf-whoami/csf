@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="changelog/W_TB_USER.sql"                 relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_PIN_CODE.sql"             relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_MENU.sql"                 relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_GROUP.sql"                relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_CHANNEL.sql"              relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_CHANNEL_QUESTION.sql"     relativeToChangelogFile="true"/>
+    <include file="changelog/W_TB_ACCOUNT.sql"              relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

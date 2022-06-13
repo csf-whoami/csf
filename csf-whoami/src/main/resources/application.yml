@@ -11,13 +11,18 @@ mybatis:
   mapper-locations: classpath:templates/csf/mappers/**/*.xml
 
 spring:
+################################################ BEGIN DATABASE SETTING ################################################
   datasource:
-    url: jdbc:mysql://db4free.net:3306/whoami?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
-    username: csfhomeo
-    password: Pax96dQ2UtNa
+#    url: jdbc:mysql://db4free.net:3306/whoami?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3336/whoami?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+#    username: csfhomeo
+#    password: Pax96dQ2UtNa
+    username: root
+    password: devops
     driverClassName: com.mysql.cj.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://db4free.net:3306/whoami
+#    jdbc-url: jdbc:mysql://db4free.net:3306/whoami
+    jdbc-url: jdbc:mysql://localhost:3336/whoami
   jpa:
     show-sql: true
     hibernate:
@@ -40,6 +45,10 @@ spring:
         content:
           enabled: true
           paths: /**/**
+  liquibase:
+    enabled: true
+    change-log: classpath:database/master.xml
+################################################ END DATABASE SETTING ################################################
 ## MULTIPART (MultipartProperties)
   # Enable multipart uploads
   servlet:

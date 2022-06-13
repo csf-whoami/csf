@@ -16,12 +16,21 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.csf.base.constant.ConstantsDateFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @MappedSuperclass
+@SuperBuilder(toBuilder = true)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 abstract public class BaseEntity implements Serializable {
 
@@ -33,18 +42,24 @@ abstract public class BaseEntity implements Serializable {
     private Long id;
 
     @Column(name = "CREATED_AT")
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConstantsDateFormat.DATE_TIME_FORMAT, timezone = ConstantsDateFormat.TIMEZONE)
+    @CreationTimestamp
     protected Date createdAt;
 
     @Column(name = "UPDATED_AT")
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConstantsDateFormat.DATE_TIME_FORMAT, timezone = ConstantsDateFormat.TIMEZONE)
+    @CreationTimestamp
     protected Date updatedAt;
 
     @Column(name = "UPDATED_BY")
     protected Long updatedBy;
 
     @Column(name = "DELETED_AT")
-    @Temporal(TemporalType.TIMESTAMP)
+//    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConstantsDateFormat.DATE_TIME_FORMAT, timezone = ConstantsDateFormat.TIMEZONE)
+    @CreationTimestamp
     protected Date deletedAt;
 
     /**

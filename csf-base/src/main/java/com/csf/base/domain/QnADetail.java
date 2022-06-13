@@ -2,7 +2,7 @@ package com.csf.base.domain;
 
 import java.util.Date;
 
-import com.csf.base.constant.CommonConstants;
+import com.csf.base.constant.ConstantsDateFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +29,6 @@ public class QnADetail {
 
     private String status;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone= CommonConstants.TIMEZONE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone= ConstantsDateFormat.TIMEZONE)
     private Date createdAt;
 }

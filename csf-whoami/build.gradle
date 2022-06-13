@@ -37,4 +37,6 @@ dependencies {
     // Change asap because end of 2009
     // https://mvnrepository.com/artifact/org.apache.sanselan/sanselan
     implementation 'org.apache.sanselan:sanselan:0.97-incubator'
+
+    implementation 'org.liquibase:liquibase-core:4.3.1'
 }
