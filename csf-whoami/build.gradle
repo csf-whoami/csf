@@ -12,7 +12,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux:2.4.8'
     compileOnly 'org.projectlombok:lombok:1.18.4'
     implementation 'org.springframework.boot:spring-boot-devtools:2.4.8'
-    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'mysql:mysql-connector-java:8.0.29'
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.4.8'
     // testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -45,4 +45,5 @@ dependencies {
     implementation 'org.apache.sanselan:sanselan:0.97-incubator'
 
 	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
 }
