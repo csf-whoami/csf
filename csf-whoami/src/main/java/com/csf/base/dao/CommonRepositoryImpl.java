@@ -17,8 +17,6 @@ import org.springframework.util.ReflectionUtils;
 import com.csf.base.constant.ConstantsRequest;
 import com.csf.base.core.ZValue;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.mappers.BaseMapper;
-
 
 @Component
 public class CommonRepositoryImpl implements CommonRepository, ApplicationContextAware {
@@ -87,54 +85,54 @@ public class CommonRepositoryImpl implements CommonRepository, ApplicationContex
 		return 0;
 	}
 
-	private BaseMapper getMapper(String currentMethod, String serviceClass) {
-		boolean checked = false;
-		String currentClass = this.getClass().getName();
-
-		for(StackTraceElement element : Thread.currentThread().getStackTrace()) {
-			if(currentClass.equals(element.getClassName())) {
-				String callMethod = element.getMethodName();
-				currentMethod = callMethod;
-			}else if(element.getClassName().endsWith(ConstantsRequest.SERVICE_NM)) {
-				String callerClass = element.getClassName();
-				String pattern = "^(?!.*?(?:" + ConstantsRequest.IGNORE_WRD + ")).*."
-						+ ConstantsRequest.SERVICE_NM.toLowerCase() + ".([A-Za-z]+)"
-						+ ConstantsRequest.SERVICE_NM + "$";
-				Pattern r = Pattern.compile(pattern);
-				Matcher m = r.matcher(callerClass);
-				if (m.find()) {
-					serviceClass = m.group(1);
-					checked = true;
-				}
-			}
-			if(checked) {
-				break;
-			}
-		}
-		String mapperNm = StringUtils.toFirstLower(serviceClass) + ConstantsRequest.MAPPER_NM;
-		return (BaseMapper)applicationContext.getBean(mapperNm);
-	}
+//	private BaseMapper getMapper(String currentMethod, String serviceClass) {
+//		boolean checked = false;
+//		String currentClass = this.getClass().getName();
+//
+//		for(StackTraceElement element : Thread.currentThread().getStackTrace()) {
+//			if(currentClass.equals(element.getClassName())) {
+//				String callMethod = element.getMethodName();
+//				currentMethod = callMethod;
+//			}else if(element.getClassName().endsWith(ConstantsRequest.SERVICE_NM)) {
+//				String callerClass = element.getClassName();
+//				String pattern = "^(?!.*?(?:" + ConstantsRequest.IGNORE_WRD + ")).*."
+//						+ ConstantsRequest.SERVICE_NM.toLowerCase() + ".([A-Za-z]+)"
+//						+ ConstantsRequest.SERVICE_NM + "$";
+//				Pattern r = Pattern.compile(pattern);
+//				Matcher m = r.matcher(callerClass);
+//				if (m.find()) {
+//					serviceClass = m.group(1);
+//					checked = true;
+//				}
+//			}
+//			if(checked) {
+//				break;
+//			}
+//		}
+//		String mapperNm = StringUtils.toFirstLower(serviceClass) + ConstantsRequest.MAPPER_NM;
+//		return (BaseMapper)applicationContext.getBean(mapperNm);
+//	}
 
 	private List<ZValue> sqlWithParam(String queryId, ZValue param){
 
 		String currentMethod = "";
 		String serviceClass = "";
-		BaseMapper mapper = getMapper(currentMethod, serviceClass);
-		if(mapper != null) {
-			if (queryId == null) {
-				queryId = getDefaultSqlNm(currentMethod, serviceClass);
-			}
-			String methodName = queryId;
-			Method method = ReflectionUtils.findMethod(mapper.getClass(), methodName, ZValue.class);
-			if(method != null) {
-				@SuppressWarnings("unchecked")
-				List<ZValue> result = (List<ZValue>)ReflectionUtils.invokeMethod(method, mapper, new Object[]{param});
-				if(CollectionUtils.isEmpty(result)){
-					return null;
-				}
-				return result;
-			}
-		}
+//		BaseMapper mapper = getMapper(currentMethod, serviceClass);
+//		if(mapper != null) {
+//			if (queryId == null) {
+//				queryId = getDefaultSqlNm(currentMethod, serviceClass);
+//			}
+//			String methodName = queryId;
+//			Method method = ReflectionUtils.findMethod(mapper.getClass(), methodName, ZValue.class);
+//			if(method != null) {
+//				@SuppressWarnings("unchecked")
+//				List<ZValue> result = (List<ZValue>)ReflectionUtils.invokeMethod(method, mapper, new Object[]{param});
+//				if(CollectionUtils.isEmpty(result)){
+//					return null;
+//				}
+//				return result;
+//			}
+//		}
 		return new ArrayList<>();
 	}
 

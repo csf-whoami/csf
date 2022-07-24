@@ -1,8 +1,8 @@
 package com.csf.database.repository;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.csf.database.models.Article;
 
