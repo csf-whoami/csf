@@ -22,7 +22,6 @@ import com.csf.base.utilities.ObjectUtil;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.adapter.ConvertGroupDTO;
 import com.csf.database.adapter.GroupAdapter;
-import com.csf.database.mappers.GroupMapper;
 import com.csf.database.models.AccountEntity;
 import com.csf.database.models.GroupEntity;
 import com.csf.database.models.PinCodeEntity;
@@ -48,27 +47,27 @@ public class GroupServiceImpl implements GroupService {
     private final ChannelRepository channelRepository;
     private final EmailService emailService;
     private final PinCodeRepository pinCodeRepository;
-    private final GroupMapper groupMapper;
 
     @Override
     public List<GroupInfo> findAllByUser(Long userId) {
-        List<GroupView> entities = groupMapper.findAllByUser(userId);
-        List<GroupInfo> groups = new ArrayList<GroupInfo>();
-        for (GroupView item : entities) {
-            groups.add(GroupAdapter.viewToDomain(item));
-        }
-        return groups;
+//        List<GroupView> entities = groupRepository.findAllByUser(userId);
+//        List<GroupInfo> groups = new ArrayList<GroupInfo>();
+//        for (GroupView item : entities) {
+//            groups.add(GroupAdapter.viewToDomain(item));
+//        }
+//        return groups;
+    	return null;
     }
 
     @Override
     public GroupInfo getGroupByGroupUrl(String groupUrl) {
         ZValue param = new ZValue();
-        param.put("groupUrl", groupUrl);
-        List<ZValue> group = groupMapper.findByGroupUrl(param);
+//        param.put("groupUrl", groupUrl);
+//        List<ZValue> group = groupMapper.findByGroupUrl(param);
 
-        if(CollectionUtils.isEmpty(group) || group.size() > 1) {
-            return null;
-        }
+//        if(CollectionUtils.isEmpty(group) || group.size() > 1) {
+//            return null;
+//        }
 //        return GroupAdapter.viewToDomain(group.get(0));
         return new GroupInfo();
     }
@@ -87,12 +86,13 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public List<GroupInfo> getGroupsByUsername(String username) {
-        List<GroupView> entities = groupMapper.findAllByUsername(username);
-        List<GroupInfo> groups = new ArrayList<GroupInfo>();
-        for (GroupView item : entities) {
-            groups.add(GroupAdapter.viewToDomain(item));
-        }
-        return groups;
+//        List<GroupView> entities = groupMapper.findAllByUsername(username);
+//        List<GroupInfo> groups = new ArrayList<GroupInfo>();
+//        for (GroupView item : entities) {
+//            groups.add(GroupAdapter.viewToDomain(item));
+//        }
+//        return groups;
+    	return null;
     }
 
     @Transactional

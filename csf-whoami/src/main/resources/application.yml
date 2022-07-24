@@ -4,12 +4,6 @@
 #spring.datasource.username=SYSTEM
 #spring.datasource.password=oracle
 
-# VO location
-mybatis:
-  type-aliases-package: com.csf.database.vo, com.csf.base.core
-# xml location
-  mapper-locations: classpath:templates/csf/mappers/**/*.xml
-
 spring:
 ################################################ BEGIN DATABASE SETTING ################################################
   datasource:
