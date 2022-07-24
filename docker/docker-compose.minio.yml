@@ -1,0 +1,33 @@
+version: '3.5'
+services:
+    mysql:
+      container_name: mysql-docker
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: Pax96dQ2UtNa
+        MYSQL_DATABASE: whoami
+        MYSQL_USER: csfhomeo
+        MYSQL_PASSWORD: Pax96dQ2UtNa
+
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+      ports:
+        - 3336:3306
+      restart: always
+      networks: 
+        - dbnet
+      
+    minio:
+      image: "minio/minio"
+      command: server /export
+      restart: always
+      environment:
+        MINIO_ACCESS_KEY: KBP6WXGPS387090EZMG8
+        MINIO_SECRET_KEY: DRjFXylyfMqn2zilAr33xORhaYz5r9e8r37XPz3A
+      ports:
+        - "9000:9000"
+      volumes:
+        - ./.minio-data:/export
+networks:
+  dbnet:
+    name: mysql_open
+    driver: bridge

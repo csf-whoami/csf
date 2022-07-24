@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+  whoami:
+    container_name: api-docker
+    image: api-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - APP_NAME_ARG=${APP_NAME_ENV}
+        - BUILD_PATH_ARG=${BUILD_PATH_ENV}
+        - WAR_NAME_ARG=${WAR_NAME_ENV}
+        - DB_NAME_ARG=${DB_NAME_ENV}
+        - DB_USERNAME_ARG=${DB_USERNAME_ENV}
+        - DB_PASSWORD_ARG=${DB_PASSWORD_ENV}
+        - DB_PORT_ARG=${DB_PORT_ENV}
+        - DB_DOMAIN_ARG=${DB_DOMAIN_ENV}
+        - TEMP_FOLDER_ARG=${TEMP_FOLDER_ENV}
+    restart: always
+    ports:
+      - 8866:8080
+      - 5005:5005
+    external_links:
+      - mysql-docker:mysql-docker
+    networks: 
+      - mysql_open
+      - ext # this network
+    
+
+networks:
+  ext: # this network
+    driver: bridge
+  mysql_open: # external network (mysql_open)
+    external: true

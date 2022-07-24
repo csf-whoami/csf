@@ -14,8 +14,8 @@ allprojects {
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
         // Swagger 2.
-        compile "io.springfox:springfox-swagger2:2.9.2"
-        compile "io.springfox:springfox-swagger-ui:2.9.2"
+        implementation "io.springfox:springfox-swagger2:2.9.2"
+        implementation "io.springfox:springfox-swagger-ui:2.9.2"
     }
 }
 
@@ -39,8 +39,8 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
 
     def defaultEncoding = 'UTF-8'
     tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
