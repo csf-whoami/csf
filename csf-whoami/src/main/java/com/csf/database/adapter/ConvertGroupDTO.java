@@ -14,8 +14,8 @@ public class ConvertGroupDTO {
 
         GroupInfo domain = new GroupInfo();
         domain.setId(String.valueOf(entity.getId()));
-        domain.setGroupName(entity.getGroupName());
-        domain.setGroupUrl(entity.getGroupUrl());
+//        domain.setGroupName(entity.getName());
+        domain.setGroupUrl(entity.getUrl());
         return domain;
     }
 
@@ -26,9 +26,9 @@ public class ConvertGroupDTO {
         GroupEntity entity = new GroupEntity();
         entity.setId(StringUtils.toLongOrNull(domain.getId()));
 
-        entity.setGroupName(domain.getGroupName());
-        entity.setGroupUrl(domain.getGroupUrl());
-        entity.setGroupType(domain.getGroupType());
+//        entity.setName(domain.getGroupName());
+        entity.setUrl(domain.getGroupUrl());
+        entity.setType(domain.getGroupType());
         entity.setIsPrivate(StringUtils.isNullOrEmpty(domain.getIsPrivate()) ? "Y" : domain.getIsPrivate());
         entity.setIsPublish(StringUtils.isNullOrEmpty(domain.getIsPublish()) ? "Y" : domain.getIsPublish());
         entity.setIsLock(StringUtils.isNullOrEmpty(domain.getIsLock()) ? "N" : domain.getIsLock());
@@ -48,7 +48,7 @@ public class ConvertGroupDTO {
             return null;
         }
         GroupEntity entity = new GroupEntity();
-        entity.setGroupUrl(domain.getGroupURL());
+        entity.setUrl(domain.getGroupURL());
         return entity;
     }
 }

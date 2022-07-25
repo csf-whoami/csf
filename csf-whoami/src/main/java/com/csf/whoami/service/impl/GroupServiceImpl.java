@@ -61,7 +61,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public GroupInfo getGroupByGroupUrl(String groupUrl) {
-        ZValue param = new ZValue();
+    	groupRepository.findByGroupUrl(groupUrl);
 //        param.put("groupUrl", groupUrl);
 //        List<ZValue> group = groupMapper.findByGroupUrl(param);
 
@@ -193,19 +193,20 @@ public class GroupServiceImpl implements GroupService {
      */
     @Override
     public GroupInfo addTempGroup(GroupInfo domain) throws Exception {
-        GroupEntity isExist = groupRepository.findByGroupUrlAndGroupType(domain.getGroupUrl(), domain.getGroupType());
-        if (isExist != null) {
-            throw new Exception("Exist group");
-        }
-        isExist = GroupAdapter.domainToModel(domain);
-        isExist.setIsLock("0");
-        isExist = groupRepository.save(isExist);
-        
-        if (isExist == null) {
-            throw new Exception("Can not create temp group.");
-        }
-
-        return GroupAdapter.modelToDomain(isExist);
+//        GroupEntity isExist = groupRepository.findByUrlAndType(domain.getGroupUrl(), domain.getGroupType());
+//        if (isExist != null) {
+//            throw new Exception("Exist group");
+//        }
+//        isExist = GroupAdapter.domainToModel(domain);
+//        isExist.setIsLock("0");
+//        isExist = groupRepository.save(isExist);
+//        
+//        if (isExist == null) {
+//            throw new Exception("Can not create temp group.");
+//        }
+//
+//        return GroupAdapter.modelToDomain(isExist);
+    	return null;
     }
 
     @Override
@@ -223,7 +224,8 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public Page<GroupInfo> groupList(SearchVO search, Pageable pageable) {
         ObjectUtil.removeEmptyField(search);
-        return groupRepository.groupList(search, pageable);
+//        return groupRepository.groupList(search, pageable);
+        return null;
     }
 
     /**

@@ -67,7 +67,7 @@ public class QuestionServiceImpl implements QuestionService {
         }
 
         info.setGroupId(StringUtils.fromLong(groupInfo.getId()));
-        info.setGroupName(groupInfo.getGroupName());
+//        info.setGroupName(groupInfo.getName());
         info.setChannelId(StringUtils.fromLong(channelInfo.getId()));
         info.setChannelName(channelInfo.getChannelName());
         return info;
@@ -199,14 +199,15 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public QuestionInfo findById(Long id) {
-        QuestionInfo info = questionRepository.findQuestionById(id);
-        if (info == null) {
-            throw new CustomException(ErrorException.DATA_INVALID.getMessage(), ErrorException.DATA_INVALID.getCode(), HttpStatus.BAD_REQUEST);
-        }
-        List<AnswerOption> options = questionOptionRepository.findAllByQuestionIdOrderByPriority(id).stream()
-                                                                                     .map(item -> QuestionOptionAdapter.modelToDomain(item))
-                                                                                     .collect(Collectors.toList());
-        info.setOptions(options);
-        return info;
+//        QuestionInfo info = questionRepository.findQuestionById(id);
+//        if (info == null) {
+//            throw new CustomException(ErrorException.DATA_INVALID.getMessage(), ErrorException.DATA_INVALID.getCode(), HttpStatus.BAD_REQUEST);
+//        }
+//        List<AnswerOption> options = questionOptionRepository.findAllByQuestionIdOrderByPriority(id).stream()
+//                                                                                     .map(item -> QuestionOptionAdapter.modelToDomain(item))
+//                                                                                     .collect(Collectors.toList());
+//        info.setOptions(options);
+//        return info;
+    	return null;
     }
 }

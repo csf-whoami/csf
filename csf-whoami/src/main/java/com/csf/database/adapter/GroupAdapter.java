@@ -26,8 +26,8 @@ public class GroupAdapter {
         }
         GroupInfo domain = new GroupInfo();
         domain.setId(String.valueOf(entity.getId()));
-        domain.setGroupName(entity.getGroupName());
-        domain.setGroupType(entity.getGroupType());
+//        domain.setGroupName(entity.getName());
+        domain.setGroupType(entity.getType());
         return domain;
     }
 
@@ -36,8 +36,8 @@ public class GroupAdapter {
             return null;
         }
         GroupEntity entity = initialEntity();
-        entity.setGroupName(domain.getGroupName());
-        entity.setGroupType(domain.getGroupType());
+//        entity.setName(domain.getGroupName());
+        entity.setType(domain.getGroupType());
         return entity;
     }
 

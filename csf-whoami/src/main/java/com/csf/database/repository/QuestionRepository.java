@@ -41,24 +41,24 @@ public interface QuestionRepository extends JpaRepository<TbQuestion, Long> {
 //    private String id;
 //    private String questionType;
 //    private String createdAt;
-    @Query(value = "SELECT new com.csf.base.domain.QuestionInfo(question.id, questionType.typeId, type.typeName,"
-            + " tbgroup.id, tbgroup.groupName,"
-            + " channel.id, channel.channelName,"
-            + " question.content, question.createdAt) "
-            + " FROM TbQuestion question "
-            + " INNER JOIN TbQuestionType questionType ON questionType.questionId = question.id "
-            + " INNER JOIN TbType type ON type.id = questionType.typeId "
-            + " INNER JOIN ChannelQuestionEntity channelQuestion ON channelQuestion.questionId = question.id"
-            + " INNER JOIN ChannelEntity channel ON channel.id = channelQuestion.channelId"
-            + " INNER JOIN GroupEntity tbgroup ON tbgroup.id = channel.groupId"
-            + " WHERE question.id = :id"
-            + " AND question.deletedAt IS NULL"
-            + " AND questionType.deletedAt IS NULL"
-            + " AND type.deletedAt IS NULL"
-            + " AND channelQuestion.deletedAt IS NULL"
-            + " AND channel.deletedAt IS NULL"
-            + " AND tbgroup.deletedAt IS NULL")
-    QuestionInfo findQuestionById(@Param("id")Long id);
+//    @Query(value = "SELECT new com.csf.base.domain.QuestionInfo(question.id, questionType.typeId, type.typeName,"
+//            + " tbgroup.id, tbgroup.groupName,"
+//            + " channel.id, channel.channelName,"
+//            + " question.content, question.createdAt) "
+//            + " FROM TbQuestion question "
+//            + " INNER JOIN TbQuestionType questionType ON questionType.questionId = question.id "
+//            + " INNER JOIN TbType type ON type.id = questionType.typeId "
+//            + " INNER JOIN ChannelQuestionEntity channelQuestion ON channelQuestion.questionId = question.id"
+//            + " INNER JOIN ChannelEntity channel ON channel.id = channelQuestion.channelId"
+//            + " INNER JOIN GroupEntity tbgroup ON tbgroup.id = channel.groupId"
+//            + " WHERE question.id = :id"
+//            + " AND question.deletedAt IS NULL"
+//            + " AND questionType.deletedAt IS NULL"
+//            + " AND type.deletedAt IS NULL"
+//            + " AND channelQuestion.deletedAt IS NULL"
+//            + " AND channel.deletedAt IS NULL"
+//            + " AND tbgroup.deletedAt IS NULL")
+//    QuestionInfo findQuestionById(@Param("id")Long id);
 
 //    List<TbQuestion> getQuestionsByGroupId(Integer questionNumber, Long groupId);
     List<TbQuestion> getQuestionsByGroupId(Long groupId);

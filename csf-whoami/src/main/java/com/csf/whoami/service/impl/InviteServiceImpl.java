@@ -185,7 +185,7 @@ public class InviteServiceImpl implements InviteService {
 
 		inviteDomain.setInviteId(String.valueOf(invite.getId()));
 		inviteDomain.setGroupId(String.valueOf(group.getId()));
-		inviteDomain.setGroupName(group.getGroupName());
+//		inviteDomain.setGroupName(group.getName());
 //		inviteDomain.setExprireDate(StringUtils.convertDateToString(invite.getExpireDate()));
 
 		return inviteDomain;
