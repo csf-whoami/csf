@@ -9,6 +9,10 @@ pluginManagement {
             }
         }
     }
+    plugins {
+        id 'org.springframework.boot' version "${springBootVersion}"
+        id 'org.liquibase.gradle' version "${liquibasePluginVersion}"
+    }
 }
 
 rootProject.name = 'csf'

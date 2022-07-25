@@ -5,26 +5,30 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
 
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    def defaultEncoding = 'UTF-8'
+    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+    compileJava.dependsOn(processResources)
+
     repositories {
         mavenCentral()
         jcenter()
     }
 
     dependencies{
-        compileOnly 'org.projectlombok:lombok:1.18.8'
-        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         // Swagger 2.
-        implementation "io.springfox:springfox-swagger2:2.9.2"
-        implementation "io.springfox:springfox-swagger-ui:2.9.2"
+        implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
+        implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
+        implementation "javax.validation:validation-api:${javaxValidationVersion}"
+        implementation "org.apache.commons:commons-lang3:${commonsLang3}"
     }
 }
 
 buildscript {
-    ext {
-        springBootVersion = '2.4.8'
-        springManagementVersion = '1.0.11.RELEASE'
-        springCloudVersion = 'Hoxton.RELEASE'
-    }
     repositories {
         mavenCentral()
         jcenter()
@@ -39,13 +43,6 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
-
-    def defaultEncoding = 'UTF-8'
-    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
-    compileJava.dependsOn(processResources)
-
     springBoot {
         buildInfo()
     }
@@ -59,4 +56,63 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
+}
+
+project(':csf-base') {
+
+	archivesBaseName = 'base'
+	apply plugin: 'java-library'
+
+	dependencies {
+	    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonCoreVersion}"
+	    implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonCoreVersion}"
+	    implementation "javassist:javassist:${javassistVersion}"
+	    implementation "javax.annotation:javax.annotation-api:${javaxAnnotationVersion}"
+	
+	    implementation "org.springframework:spring-webmvc:${springWebmvc}"
+	    implementation "org.springframework:spring-web:${springWeb}"
+	    compileOnly    "javax.servlet:javax.servlet-api:${javaxServlet}"
+	    implementation "org.springframework.security:spring-security-acl:${springSecurityAcl}"
+	    implementation "javax.ws.rs:javax.ws.rs-api:${javaxWS}"
+	
+	    implementation "commons-fileupload:commons-fileupload:${commonsFileupload}"
+	    implementation "commons-beanutils:commons-beanutils:${commonsBeanutils}"
+	    implementation "commons-io:commons-io:${commonsIO}"
+	}
+}
+
+project(':csf-whoami') {
+	apply plugin: 'war'
+	archivesBaseName = 'whoami'
+
+	dependencies {
+	    implementation project(":csf-base")
+	    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+	    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	    implementation "org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}"
+	    implementation "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+	    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
+		// Security config
+	    implementation "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+
+	    implementation "mysql:mysql-connector-java:${mysqlConnector}"
+	    implementation "io.jsonwebtoken:jjwt:${jsonwebtoken}"
+	
+	    // For thymeleaf
+	    implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
+	
+	    // https://mvnrepository.com/artifact/javax.mail/mail
+	    implementation "javax.mail:mail:${javaxMail}"
+	    // https://mvnrepository.com/artifact/org.apache.poi/poi
+	    implementation "org.apache.poi:poi:${apachePoi}"
+	
+	    // https://mvnrepository.com/artifact/net.coobird/thumbnailator
+	    implementation "net.coobird:thumbnailator:${coobird}"
+	
+	    implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+	    implementation "commons-collections:commons-collections:${commonsCollection}"
+	    implementation "org.apache.sanselan:sanselan:${sanselan}"
+
+		implementation "org.apache.directory.studio:org.apache.commons.io:${directoryStudio}"
+	}
 }

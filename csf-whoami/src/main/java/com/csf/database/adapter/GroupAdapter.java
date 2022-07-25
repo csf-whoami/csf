@@ -4,6 +4,7 @@
 package com.csf.database.adapter;
 
 import com.csf.base.domain.response.GroupInfo;
+import com.csf.base.utilities.StringUtils;
 import com.csf.database.models.GroupEntity;
 import com.csf.database.view.GroupView;
 
@@ -15,8 +16,8 @@ public class GroupAdapter {
         }
         GroupInfo domain = new GroupInfo();
         domain.setId(String.valueOf(view.getId()));
-        domain.setGroupName(view.getGroupName());
-        domain.setGroupType(view.getGroupType());
+        domain.setName(view.getGroupName());
+        domain.setTypeId(view.getGroupType());
         return domain;
     }
 
@@ -27,7 +28,7 @@ public class GroupAdapter {
         GroupInfo domain = new GroupInfo();
         domain.setId(String.valueOf(entity.getId()));
 //        domain.setGroupName(entity.getName());
-        domain.setGroupType(entity.getType());
+        domain.setTypeId(String.valueOf(entity.getTypeId()));
         return domain;
     }
 
@@ -37,7 +38,7 @@ public class GroupAdapter {
         }
         GroupEntity entity = initialEntity();
 //        entity.setName(domain.getGroupName());
-        entity.setType(domain.getGroupType());
+        entity.setTypeId(StringUtils.toLongOrNull(domain.getTypeId()));
         return entity;
     }
 

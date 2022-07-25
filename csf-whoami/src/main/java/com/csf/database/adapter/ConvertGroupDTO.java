@@ -28,12 +28,12 @@ public class ConvertGroupDTO {
 
 //        entity.setName(domain.getGroupName());
         entity.setUrl(domain.getGroupUrl());
-        entity.setType(domain.getGroupType());
+        entity.setTypeId(StringUtils.toLongOrNull(domain.getTypeId()));
         entity.setIsPrivate(StringUtils.isNullOrEmpty(domain.getIsPrivate()) ? "Y" : domain.getIsPrivate());
         entity.setIsPublish(StringUtils.isNullOrEmpty(domain.getIsPublish()) ? "Y" : domain.getIsPublish());
         entity.setIsLock(StringUtils.isNullOrEmpty(domain.getIsLock()) ? "N" : domain.getIsLock());
         entity.setIsClosed(StringUtils.isNullOrEmpty(domain.getIsClosed()) ? "N" : domain.getIsClosed());
-        entity.setGroupDescription(domain.getGroupDescription());
+        entity.setDescription(domain.getDescription());
         return entity;
     }
 

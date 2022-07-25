@@ -47,10 +47,12 @@ abstract public class BaseEntity implements Serializable {
     @CreationTimestamp
     protected Date createdAt;
 
+    @Column(name = "CREATED_BY")
+    protected Long createdBy;
+
     @Column(name = "UPDATED_AT")
 //    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConstantsDateFormat.DATE_TIME_FORMAT, timezone = ConstantsDateFormat.TIMEZONE)
-    @CreationTimestamp
     protected Date updatedAt;
 
     @Column(name = "UPDATED_BY")
@@ -59,8 +61,10 @@ abstract public class BaseEntity implements Serializable {
     @Column(name = "DELETED_AT")
 //    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = ConstantsDateFormat.DATE_TIME_FORMAT, timezone = ConstantsDateFormat.TIMEZONE)
-    @CreationTimestamp
     protected Date deletedAt;
+
+    @Column(name = "DELETED_BY")
+    protected Long deletedBy;
 
     /**
      * Preparing before insert.

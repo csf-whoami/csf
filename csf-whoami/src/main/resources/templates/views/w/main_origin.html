@@ -491,241 +491,10 @@ style="--column-bg:#4d394b; --active-item:#4c9689; --hover-item:#3e313c; --text-
 		  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/60485/monument.png");
 		}
 		  </style>
-		<style>
-			/*======== Chat Part ===========*/
-
-.chat {
-  display: grid;
-  grid-template-rows: 10vh 90vh;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-}
-
-/*========= Top Nav ============*/
-
-.chat .top {
-  font-family: "Roboto", sans-serif;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.chat .top .open-message {
-  padding: 0 10px;
-  color: var(--grey-3);
-  display: none;
-}
-
-@media screen and (max-width: 640px) {
-  .chat .top .open-message {
-    display: block;
-  }
-}
-
-.chat .top .open-message:hover {
-  color: var(--color-1);
-  transition: color ease 0.5s;
-}
-
-.chat .top .name {
-  font-size: 20px;
-  font-weight: 600;
-  color: grey;
-  margin-left: 10px;
-  width: 200px;
-  cursor: pointer;
-}
-
-.chat .top .name:hover {
-  color: var(--color-1);
-  transition: color ease 0.5s;
-}
-
-.chat .button-container {
-  text-align: right;
-  width: 75%;
-}
-
-.chat .button-container button {
-  border: none;
-  background: white;
-  font-size: 20px;
-  color: var(--grey-2);
-}
-
-.chat .button-container button:hover {
-  color: var(--color-1);
-  transition: color ease 0.5s;
-}
-
-/*======== Chat Message Container =====*/
-
-.chat .message-container {
-  padding: 5px;
-  overflow-y: scroll;
-  width: 100%;
-  height: 98%;
-  padding-right: 18px;
-  box-sizing: content-box;
-}
-
-.chat .divider {
-  width: 100%;
-  height: 30px;
-  line-height: 30px;
-  color: var(--grey-5);
-  font-family: var(--font-1);
-  text-align: center;
-  position: relative;
-  display: inline-block;
-}
-
-.chat .divider span {
-  background: white;
-  padding: 0px 10px;
-}
-
-.chat .divider:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 14px;
-  height: 1px;
-  width: 100%;
-  background: var(--grey-5);
-  z-index: -1;
-}
-
-.chat .comment {
-  min-height: 50px;
-  width: 100%;
-  float: left;
-  margin: 5px 0px;
-  text-align: left;
-}
-
-.chat .me {
-  float: right;
-  text-align: right;
-}
-
-.chat .comment img {
-  filter: grayscale(1);
-  height: 50px;
-  width: auto;
-  border-radius: 50%;
-  float: left;
-}
-
-.chat .me img {
-  float: right;
-}
-
-.chat .bubble {
-  display: inline-block;
-  background: var(--color-1);
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white;
-  font-family: var(--font-1);
-  max-width: 55%;
-  position: relative;
-  margin: 0px 15px;
-}
-
-.chat .me .bubble {
-  background: var(--grey-5);
-  text-align: left;
-}
-
-.chat .other .bubble:before {
-  content: "";
-  top: 0px;
-  left: -25px;
-  position: absolute;
-  background: transparent;
-  height: 0px;
-  width: 0px;
-  border-left: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-right: 20px solid var(--color-1);
-}
-
-.chat .me .bubble:after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  right: -25px;
-  background: transparent;
-  height: 0px;
-  width: 0px;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 20px solid var(--grey-5);
-}
-
-.chat .bubble img {
-  border-radius: 5px;
-  height: 200px;
-  width: auto;
-  filter: none;
-}
-
-.chat .bubble a {
-  color: white;
-}
-
-/*======== Typing part =========*/
-
-.chat .input-container {
-  display: grid;
-  grid-template-columns: 8vh auto 8vh;
-  padding: 10px 6px;
-  border-top: 1px solid #ccc;
-}
-
-.chat .attach {
-  border: none;
-  border-radius: 50%;
-  width: 100%;
-  height: 8vh;
-  max-height: 60px;
-  max-width: 60px;
-}
-
-.chat .textarea-container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* .chat textarea {
-  border: none;
-  outline: none;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  resize: none;
-  overflow-y: scroll;
-  width: 100%;
-  height: 8vh;
-  padding-right: 18px;
-  box-sizing: content-box;
-  margin-left: 10px;
-} */
-
-/* .chat .send {
-  border: none;
-  background: var(--color-1);
-  color: white;
-  font-size: 20px;
-  height: 8vh;
-  width: 8vh;
-  border-radius: 50%;
-  max-height: 60px;
-  max-width: 60px;
-} */
-		</style>
+	
+		<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-d8236034cc3508e70b0763f2575a8bb5850f9aea541206ce56704c013047d712.js"></script>
+		<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
+		<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
 	</head>
 
 	<body>
@@ -739,6 +508,36 @@ style="--column-bg:#4d394b; --active-item:#4c9689; --hover-item:#3e313c; --text-
 	      </li>
 	      <li class="teams__item">
 	        <button class="teams__button">
+	          SS
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
+	          CS
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
+	          PA
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
+	          GF
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
+	          OP
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
+	          HP
+	        </button>
+	      </li>
+	      <li class="teams__item">
+	        <button class="teams__button">
 	          DH
 	        </button>
 	      </li>
@@ -747,13 +546,16 @@ style="--column-bg:#4d394b; --active-item:#4c9689; --hover-item:#3e313c; --text-
 	  <div class="sidebar">
 	    <button class="team-menu">
 	      <div class="team-menu__info">
-	        <h1 class="team-menu__name">DA group name</h1>
+	        <h1 class="team-menu__name">Dumbledore's Army</h1>
 	        <div class="team-menu__status">
-	          <span class="team-menu__username">User display name</span>
+	          <span class="team-menu__username">ramenhog</span>
 	        </div>
 	      </div>
 	      <span class="team-menu__alarm ion-ios-bell-outline"></span>
 	    </button>
+	    <div class="threads">
+	      <span class="ion-chatbubble-working threads__icon"></span> All Threads
+	    </div>
 	    <div class="channels">
 	      <h2 class="channels__heading">
 	        <span>Channels <span class="channels__number">(16)</span>
@@ -778,102 +580,220 @@ style="--column-bg:#4d394b; --active-item:#4c9689; --hover-item:#3e313c; --text-
 	        </li>
 	      </ul>
 	    </div>
+	    <div class="dm">
+	      <h2 class="dm__heading">
+	        <span>Direct messages <span class="dm__number">(29)</span>
+	        </span>
+	        <button class="ion-ios-plus-outline dm__add"></button>
+	      </h2>
+	      <ul class="dm__list">
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--slackbot"><span>slackbot</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--online"><span>Harry Potter</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button"><span>Hermoine Granger</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--online dm__button--active"><span>Ron Weasley</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--online"><span>Neville Longbottom</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button"><span>Ginny Weasley</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--online"><span>Luna Lovegood</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button"><span>Cho Chang</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button"><span>Seamus Finnigan</span></button>
+	        </li>
+	        <li class="dm__item">
+	          <button class="dm__button dm__button--online"><span>Lavender Brown</span></button>
+	        </li>
+	      </ul>
+	    </div>
 	  </div>
 	  <div class="main">
-	    <!-- <header class="main__header">
+	    <header class="main__header">
 	      <h1 class="main__h1">Your preferences for Dumbledore's Army</h1>
 	      <button class="ion-android-close"></button>
-	    </header> -->
-	    <!-- BEGIN chat -->
-	    <div class="chat">
-        <div class="top">
-          <div class="name" id="open">Channel name</div>
-		</div>
-        <div class="message-container">
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              <img src="https://dummyimage.com/400x400/ddd/fff" alt="">
-            </div>
-          </div>
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              Let me know if this works
-            </div>
-          </div>
-          <div class="comment other">
-            <img src="https://placekitten.com/700/700?image=16" alt="">
-            <div class="bubble">
-              yes this is great
-            </div>
-          </div>
-          <div class="divider"><span>
-              Feb 8 12:01
-            </span></div>
-          <div class="comment other">
-            <img src="https://placekitten.com/700/700?image=12" alt="">
-            <div class="bubble">
-              Did you find a place for monday's metting?
-            </div>
-          </div>
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              I found a couple venues. The one on meeting street seems nice.
-            </div>
-          </div>
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              can you give me some guidelines to follow as I look for one?
-            </div>
-          </div>
-          <div class="comment other">
-            <img src="https://placekitten.com/1000/1000?image=12" alt="">
-            <div class="bubble">
-              Here's a link to a good one. It should be avalible.
-              <a href="#">venues.com</a>
-            </div>
-          </div>
-          <div class="divider">
-            <span>Today 8:58 PM</span>
-          </div>
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              Are we still holding the metting on monday?
-            </div>
-          </div>
-          <div class="comment other">
-            <img src="https://placekitten.com/1000/1000?image=12" alt="">
-            <div class="bubble">
-              Yeah, can you bring napkins?
-            </div>
-          </div>
-          <div class="comment other">
-            <img src="https://placekitten.com/700/700?image=16" alt="">
-            <div class="bubble">
-              I've got napkins covered 👍
-            </div>
-          </div>
-          <div class="comment me">
-            <img src="https://placekitten.com/300/300?image=10" alt="">
-            <div class="bubble">
-              How do you feel about terraforming?
-            </div>
-          </div>
-          <div class="comment other">
-            <img src="https://placekitten.com/1000/1000?image=12" alt="">
-            <div class="bubble">
-              I feel like thats's a bit off topic. 
-            </div>
-          </div>
-        </div>
-      </div>
-	    <!-- END chat -->
+	    </header>
+	    <div class="main__content">
+	      <div class="main__container">
+	        <h2 class="main__h2">Sidebar Theme</h2>
+	        <section class="main__section">
+	          <p>Customize the look of the <strong>Dumbledore's Army</strong> team. Only you will see this.</p>
+	          <div class="main__themes">
+	            <label for="aubergine" class="radio">
+	              <div class="radio__img radio__img--aubergine"></div>
+	              <div class="radio__wrapper">
+	                <input id="aubergine" type="radio" name="theme" class="radio__input">
+	                aubergine
+	              </div>
+	            </label>
+	            <label for="hoth" class="radio">
+	              <div class="radio__img radio__img--hoth"></div>
+	              <div class="radio__wrapper">
+	                <input id="hoth" type="radio" name="theme" class="radio__input">
+	                hoth
+	              </div>
+	            </label>
+	            <label for="monument" class="radio">
+	              <div class="radio__img radio__img--monument"></div>
+	              <div class="radio__wrapper">
+	                <input id="monument" type="radio" name="theme" class="radio__input">
+	                monument
+	              </div>
+	            </label>
+	            <label for="chocolate" class="radio">
+	              <div class="radio__img radio__img--chocolate"></div>
+	              <div class="radio__wrapper">
+	                <input id="chocolate" type="radio" name="theme" class="radio__input">
+	                choco mint
+	              </div>
+	            </label>
+	            <label for="ochin" class="radio">
+	              <div class="radio__img radio__img--ochin"></div>
+	              <div class="radio__wrapper">
+	                <input id="ochin" type="radio" name="theme" class="radio__input">
+	                ochin
+	              </div>
+	            </label>
+	            <label for="workhard" class="radio">
+	              <div class="radio__img radio__img--workhard"></div>
+	              <div class="radio__wrapper">
+	                <input id="workhard" type="radio" name="theme" class="radio__input">
+	              work hard
+	            
+	          </div>
+	        </label></div></section>
+	        <section class="main__section">
+	          <h3 class="main__h3">Accessible Themes</h3>
+	          <div class="main__themes">
+	            <label for="solanum" class="radio">
+	              <div class="radio__img radio__img--solanum"></div>
+	              <div class="radio__wrapper">
+	                <input id="solanum" type="radio" name="theme" class="radio__input">
+	                Protanopia &amp; Deuternopia
+	              </div>
+	            </label>
+	            <label for="brinjal" class="radio">
+	              <div class="radio__img radio__img--brinjal"></div>
+	              <div class="radio__wrapper">
+	                <input id="brinjal" type="radio" name="theme" class="radio__input">
+	              tritanopia
+	            
+	          </div>
+	        </label></div></section>
+	        <section class="main__section">
+	          <h3 class="main__h3">Custom Theme</h3>
+	          <div class="main__color-pickers">
+	            <fieldset class="main__field">
+	              <label for="column-bg" class="main__label">
+	                Column BG
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--column-bg">
+	                    <input id="column-bg" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="column-bg">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="menu-bg-hover" class="main__label">
+	                Menu BG Hover
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--menu-bg-hover">
+	                    <input id="menu-bg-hover" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="menu-bg-hover">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="active-item" class="main__label">
+	                Active Item
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--active-item">
+	                    <input id="active-item" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="active-item">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="active-item-text" class="main__label">
+	                Active Item Text
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--active-item-text">
+	                    <input id="active-item-text" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="active-item-text">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="hover-item" class="main__label">
+	                Hover Item
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--hover-item">
+	                    <input id="hover-item" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="hover-item">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="text-color" class="main__label">
+	                Text Color
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--text-color">
+	                    <input id="text-color" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="text-color">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="active-presence" class="main__label">
+	                Active Presence
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--active-presence">
+	                    <input id="active-presence" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="active-presence">
+	                </div>
+	              </label>
+	            </fieldset>
+	            <fieldset class="main__field">
+	              <label for="mention-badge" class="main__label">
+	                Mention Badge
+	                <div class="main__color-field">
+	                  <div class="main__input-wrapper main__input-wrapper--mention-badge">
+	                    <input id="mention-badge" type="color" class="main__colorpicker">
+	                  </div>
+	                  <input class="main__hexcode" maxlength="7" data-color="mention-badge">
+	                </div>
+	              </label>
+	            </fieldset>
+	          </div>
+	          <fieldset class="main__field--full">
+	            <label class="main__label">
+	              Copy and paste these values to share your custom theme with others:
+	              <input id="share-colors" name="share-colors" class="main__share-input">
+	            </label>
+	          </fieldset>
+	        </section>
+	      </div>
+	    </div>
 	  </div>
 	</div>
-	<script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
 	</body>
 </html>

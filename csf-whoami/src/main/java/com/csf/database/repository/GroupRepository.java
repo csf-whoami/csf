@@ -18,7 +18,7 @@ import com.csf.database.vo.GroupVO;
 @Repository
 public interface GroupRepository extends JpaRepository<GroupEntity, Long>, CommonRepository {
 
-	@Query(value = "SELECT group.id, group.displayNameVn, group.displayNameEn, group.type, group.ownerId, group.isPublish, group.isClosed, group.isPrivate,"
+	@Query(value = "SELECT group.id, group.displayNameVn, group.displayNameEn, group.typeId, group.ownerId, group.isPublish, group.isClosed, group.isPrivate,"
 				+ " group.isLock, group.activedAt"
 				+ " FROM GroupEntity group"
 				+ " WHERE group.deletedAt IS NOT NULL AND group.url LIKE %:url%")

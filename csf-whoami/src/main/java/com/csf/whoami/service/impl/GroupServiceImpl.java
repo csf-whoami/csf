@@ -291,7 +291,7 @@ public class GroupServiceImpl implements GroupService {
      */
     private PinCodeEntity generatePinCode() {
         PinCodeEntity pinCode = new PinCodeEntity();
-        pinCode.setGroupType("GROUP");
+        pinCode.setTypeId(1L);
         pinCode.setPinCode("123456"); // random value 6 number.
         return pinCode;
     }

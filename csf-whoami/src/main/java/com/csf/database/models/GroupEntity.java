@@ -27,10 +27,10 @@ public class GroupEntity extends BaseEntity {
     @Column(name = "DISPLAY_NAME_EN")
     private String displayNameEn;
 
-    @Column(name = "GROUP_TYPE")
-    private String type;
+    @Column(name = "TYPE_ID")
+    private Long typeId;
 
-    @Column(name = "GROUP_OWNER")
+    @Column(name = "OWNER_ID")
     private Long ownerId;
 
     @Column(name = "IS_PUBLISH")
@@ -46,7 +46,7 @@ public class GroupEntity extends BaseEntity {
     private String isLock;
 
     @Column(name = "DESCRIPTION")
-    private String groupDescription;
+    private String description;
 
     @Column(name = "URL")
     private String url;

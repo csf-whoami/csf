@@ -194,18 +194,10 @@
             								autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="display_name_vn" 	type="${defaultVarchar}">
-                <constraints nullable="false"/>
-            </column>
-            <column name="display_name_en" 	type="${defaultVarchar}">
-                <constraints nullable="false"/>
-            </column>
-            <column name="type_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="owner_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
+            <column name="display_name_vn" 	type="${defaultVarchar}" />
+            <column name="display_name_en" 	type="${defaultVarchar}" />
+            <column name="type_id" 			type="bigint" />
+            <column name="owner_id" 		type="bigint" />
             <column name="is_publish"		type="ENUM('Y', 'N')"
             								defaultValueDate="'N'" />
             <column name="is_closed"		type="ENUM('Y', 'N')"
@@ -266,17 +258,13 @@
             								autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="group_type" 		type="varchar(3)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="content_id" 		type="bigint">
-                <constraints nullable="false"/>
-            </column>
+            <column name="type_id" 			type="bigint" />
+            <column name="content_id" 		type="bigint" />
             <column name="pin_code" 		type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             <column name="start_date" 		type="date" />
-            <column name="end_date" type="date" />
+            <column name="end_date" 		type="date" />
             <column name="is_private"		type="ENUM('Y', 'N')"
             								defaultValueDate="'N'" />
             <column name="actived_at" 		type="${timestamp}" />
