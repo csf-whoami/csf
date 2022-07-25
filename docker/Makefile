@@ -2,6 +2,8 @@ up: build
 	@docker-compose up
 up-sql: build-sql
 	@docker-compose -f ./docker-compose.mysql.yml up -d
+up-minio: build-minio
+	@docker-compose -f ./docker-compose.mysql.yml up -d
 up-no-cache:
 	@docker-compose up -d --build --no-deps
 
@@ -14,6 +16,8 @@ build:
 	@docker-compose build
 build-sql:
 	@docker-compose -f ./docker-compose.mysql.yml build
+build-minio:
+	@docker-compose -f ./docker-compose.minio.yml build
 build-no-cache:
 	@docker-compose build --no-cache
 
@@ -23,4 +27,3 @@ clean:
 
 clean-cache:
 	@docker system prune
-
