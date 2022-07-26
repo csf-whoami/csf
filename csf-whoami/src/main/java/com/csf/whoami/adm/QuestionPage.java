@@ -20,11 +20,11 @@ import com.csf.base.domain.QuestionInfo;
 import com.csf.base.domain.QuestionManagementInfo;
 import com.csf.base.domain.SearchVO;
 import com.csf.base.domain.TypeInfo;
+import com.csf.base.domain.enumtype.EventTypeEnum;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.utilities.RequestUtils;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.type.EnumGroupType;
 import com.csf.whoami.adm.service.ChannelService;
 import com.csf.whoami.service.GroupService;
 import com.csf.whoami.service.QuestionService;
@@ -177,7 +177,7 @@ public class QuestionPage extends DashboardPage<QuestionInfo> {
     }
 
     private void loadQuestionType(ModelAndView model) {
-        List<TypeInfo> types = typeService.fetchTypesByGroup(EnumGroupType.QUESTION.getValue());
+        List<TypeInfo> types = typeService.fetchTypesByGroup(EventTypeEnum.CREATE_QUESTION.getValue());
         model.addObject(ConstantsParam.TYPES, types);
     }
 }

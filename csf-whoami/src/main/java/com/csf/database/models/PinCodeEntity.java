@@ -25,8 +25,8 @@ public class PinCodeEntity extends BaseEntity {
 
     private static final long serialVersionUID = -5366594102937921580L;
 
-    @Column(name = "TYPE_ID")
-    private Long typeId;
+    @Column(name = "TYPE_CODE")
+    private String typeCode;
 
     @Column(name = "CONTENT_ID")
     private Long contentId;

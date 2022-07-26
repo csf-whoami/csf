@@ -15,9 +15,11 @@ import lombok.Setter;
 @Getter @Setter
 public class TbQuestionType extends BaseEntity {
 
+	private static final long serialVersionUID = -2593598680275919248L;
+
 	@Column(name = "QUESTION_ID")
 	private Long questionId;
 
-	@Column(name = "TYPE_ID")
-	private Long typeId;
+	@Column(name = "TYPE_CODE")
+	private String typeCode;
 }

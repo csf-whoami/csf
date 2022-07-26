@@ -25,10 +25,10 @@ public class ChannelInfo implements BaseInfo {
 
     @JsonInclude(Include.NON_NULL)
     private String id;
-    private String channelName;
-    private String channelUrl;
+    private String name;
+    private String url;
     @JsonInclude(Include.NON_NULL)
-    private String channelDescription;
+    private String description;
     @JsonInclude(Include.NON_NULL)
     private String createDate;
     @JsonInclude(Include.NON_NULL)
@@ -40,15 +40,15 @@ public class ChannelInfo implements BaseInfo {
 
     public ChannelInfo(Long channelId, String channelName, YesNoEnum lockStatus, Date createDate) {
         this.id = String.valueOf(channelId);
-        this.channelName = channelName;
+        this.name = channelName;
         this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
         this.lockStatus = lockStatus.toString();
     }
 
     public ChannelInfo(Long channelId, String channelName, String channelUrl, YesNoEnum lockStatus, Date createDate) {
         this.id = String.valueOf(channelId);
-        this.channelName = channelName;
-        this.channelUrl = channelUrl;
+        this.name = channelName;
+        this.url = channelUrl;
         this.lockStatus = lockStatus.toString();
         this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
     }

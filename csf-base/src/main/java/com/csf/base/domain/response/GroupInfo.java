@@ -30,7 +30,7 @@ public class GroupInfo implements BaseInfo {
     private String groupUrl;
     @JsonInclude(Include.NON_NULL)
 //    @Length(min = 3, max = 20)
-    private String typeId;
+    private String typeCode;
     private String usable;
     private String isPrivate;
     private String isPublish;
@@ -43,10 +43,10 @@ public class GroupInfo implements BaseInfo {
 
 //    private Page<ChannelInfo> channels;
 
-    public GroupInfo(Long id, String groupName, String groupType, String isPrivate, String isPublish, String isLock, Date createDate) {
+    public GroupInfo(Long id, String groupName, String typeCode, String isPrivate, String isPublish, String isLock, Date createDate) {
         this.id = StringUtils.fromLong(id);
         this.name = groupName;
-        this.typeId = groupType;
+        this.typeCode = typeCode;
         this.isPrivate = isPrivate;
         this.isPublish = isPublish;
         this.isLock = isLock;

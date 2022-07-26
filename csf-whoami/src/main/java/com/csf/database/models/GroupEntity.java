@@ -27,8 +27,8 @@ public class GroupEntity extends BaseEntity {
     @Column(name = "DISPLAY_NAME_EN")
     private String displayNameEn;
 
-    @Column(name = "TYPE_ID")
-    private Long typeId;
+    @Column(name = "TYPE_CODE")
+    private String typeCode;
 
     @Column(name = "OWNER_ID")
     private Long ownerId;

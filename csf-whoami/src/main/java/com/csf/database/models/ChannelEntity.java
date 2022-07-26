@@ -8,24 +8,24 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "W_TB_CHANNEL")
+@Table(name = "W_CHANNELS")
 @Where(clause = "DELETED_AT IS NULL")
 @Getter @Setter
 public class ChannelEntity extends BaseEntity {
 
     private static final long serialVersionUID = 5123298365018087795L;
 
-    @Column(name = "CHANNEL_NAME")
-    private String channelName;
+    @Column(name = "NAME")
+    private String name;
 
-    @Column(name = "CHANNEL_URL")
-    private String channelUrl;
+    @Column(name = "URL")
+    private String url;
 
     @Column(name = "GROUP_ID")
     private Long groupId;
@@ -42,6 +42,6 @@ public class ChannelEntity extends BaseEntity {
     @Column(name = "IS_LOCK")
     private YesNoEnum isLock;
 
-    @Column(name = "CHANNEL_DESCRIPTION")
-    private String channelDescription;
+    @Column(name = "DESCRIPTION")
+    private String description;
 }

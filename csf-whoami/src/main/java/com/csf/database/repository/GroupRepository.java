@@ -1,24 +1,18 @@
 package com.csf.database.repository;
 
-import java.util.List;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.csf.base.dao.CommonRepository;
-import com.csf.base.domain.SearchVO;
-import com.csf.base.domain.response.GroupInfo;
 import com.csf.database.models.GroupEntity;
 import com.csf.database.vo.GroupVO;
 
 @Repository
 public interface GroupRepository extends JpaRepository<GroupEntity, Long>, CommonRepository {
 
-	@Query(value = "SELECT group.id, group.displayNameVn, group.displayNameEn, group.typeId, group.ownerId, group.isPublish, group.isClosed, group.isPrivate,"
+	@Query(value = "SELECT group.id, group.displayNameVn, group.displayNameEn, group.typeCode, group.ownerId, group.isPublish, group.isClosed, group.isPrivate,"
 				+ " group.isLock, group.activedAt"
 				+ " FROM GroupEntity group"
 				+ " WHERE group.deletedAt IS NOT NULL AND group.url LIKE %:url%")

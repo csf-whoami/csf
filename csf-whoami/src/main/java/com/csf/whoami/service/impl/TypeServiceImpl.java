@@ -25,7 +25,8 @@ public class TypeServiceImpl implements TypeService {
 
 	@Override
 	public List<TypeInfo> fetchTypesByGroup(String group) {
-		return typeRepository.findAllByGroup(group);
+		return typeRepository.findAllByGroup();
+//		return typeRepository.findAllByGroup(group);
 	}
 
 	@Override

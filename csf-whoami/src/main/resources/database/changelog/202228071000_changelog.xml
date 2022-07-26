@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="202227071000-6" author="system">
+    <changeSet id="202228071000" author="system">
     	<createTable tableName="w_menus">
             <column name="id" 				type="bigint"
             								autoIncrement="${autoIncrement}">

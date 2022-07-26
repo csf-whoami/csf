@@ -19,7 +19,7 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity, Long> {
      * @param id
      * @return
      */
-    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.channelName, channel.isLock, channel.createdAt)" +
+    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.name, channel.isLock, channel.createdAt)" +
             " FROM ChannelEntity channel" +
             " WHERE channel.groupId = :groupId")
     Page<ChannelInfo> findAllByGroupId(@Param("groupId") Long id, Pageable pageable);
@@ -31,7 +31,7 @@ public interface ChannelRepository extends JpaRepository<ChannelEntity, Long> {
      * @param pageable
      * @return
      */
-    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.channelName, channelUrl, channel.isLock, channel.createdAt)" +
+    @Query(value = "SELECT new com.csf.base.domain.response.ChannelInfo(channel.id, channel.name, url, channel.isLock, channel.createdAt)" +
             " FROM ChannelEntity channel" +
             " WHERE channel.groupId = :groupId"
             + " AND (:#{#search.keyword} IS NULL)")

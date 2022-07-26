@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import com.csf.base.domain.AnswerOption;
 import com.csf.base.domain.QuestionInfo;
 import com.csf.base.domain.QuestionManagementInfo;
 import com.csf.base.exception.CustomException;
@@ -69,7 +68,7 @@ public class QuestionServiceImpl implements QuestionService {
         info.setGroupId(StringUtils.fromLong(groupInfo.getId()));
 //        info.setGroupName(groupInfo.getName());
         info.setChannelId(StringUtils.fromLong(channelInfo.getId()));
-        info.setChannelName(channelInfo.getChannelName());
+        info.setChannelName(channelInfo.getName());
         return info;
     }
 
@@ -132,7 +131,7 @@ public class QuestionServiceImpl implements QuestionService {
 
         TbQuestionType questionType = new TbQuestionType();
         questionType.setQuestionId(question.getId());
-        questionType.setTypeId(StringUtils.toLongOrNull(data.getQuestionType()));
+        questionType.setTypeCode(data.getQuestionType());
         questionTypeRepository.save(questionType);
 
         // Save options.

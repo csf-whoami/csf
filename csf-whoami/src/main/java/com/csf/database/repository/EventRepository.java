@@ -13,5 +13,5 @@ public interface EventRepository extends JpaRepository<EventEntity, Long> {
 	@Query(value = "SELECT event"
 			+ " FROM EventEntity event"
 			+ " WHERE event.email = :email")
-	EventEntity fetchEventInfo(@Param("email")String email, @Param("pinCode")String pinCode, @Param("typeCode")String typeCode);
+	EventEntity fetchEventInfo(@Param("email")String email);
 }

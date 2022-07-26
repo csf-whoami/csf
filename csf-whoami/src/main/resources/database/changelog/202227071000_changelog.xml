@@ -42,7 +42,7 @@
             </column>
             <column name="address" 			type="${defaultVarchar}" />
             <column name="email" 			type="${defaultVarchar}" />
-            <column name="note" 			type="${defaultVarchar}" />
+            <column name="note" 			type="${defaultNote}" />
             <column name="created_at" 		type="${timestamp}"
             								defaultValueDate="${now}">
                 <constraints nullable="false"/>
@@ -63,7 +63,7 @@
             </column>
             <column name="code" 			type="${defaultVarchar}" />
             <column name="name" 			type="${defaultVarchar}" />
-            <column name="note" 			type="${defaultVarchar}" />
+            <column name="note" 			type="${defaultNote}" />
             <column name="is_active" 		type="ENUM('Y', 'N')"
             								defaultValueDate="'N'" />
             <column name="created_at" 		type="${timestamp}"

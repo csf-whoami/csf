@@ -13,13 +13,13 @@ import lombok.Setter;
 public class GroupView {
 
 	private Long id;
-    private String groupName;
-    private String groupType;
+    private String name;
+    private String typeCode;
     private String isPublish;
     private String isClosed;
     private String isPrivate;
     private String isLock;
-    private String groupDescription;
-    private String groupUrl;
+    private String description;
+    private String url;
     private Date activedAt;
 }

@@ -1,6 +1,6 @@
 package com.csf.database.adapter;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.utilities.DateTimeUtils;
 import com.csf.base.utilities.StringUtils;
@@ -16,9 +16,9 @@ public class ChannelAdapter {
         }
         ChannelInfo domain = new ChannelInfo();
         domain.setId(String.valueOf(entity.getId()));
-        domain.setChannelName(entity.getChannelName());
-        domain.setChannelUrl(entity.getChannelUrl());
-        domain.setChannelDescription(entity.getChannelDescription());
+        domain.setName(entity.getName());
+        domain.setUrl(entity.getUrl());
+        domain.setDescription(entity.getDescription());
         domain.setLockStatus(entity.getIsLock().toString());
         domain.setCreateDate(DateTimeUtils.convertDateToString(entity.getCreatedAt(), DateTimeUtils.YYYYMMDD));
         return domain;
@@ -30,9 +30,9 @@ public class ChannelAdapter {
         }
         ChannelEntity entity = initialEntity();
         entity.setId(StringUtils.toLongOrNull(domain.getId()));
-        entity.setChannelName(domain.getChannelName());
-        entity.setChannelUrl(domain.getChannelUrl());
-        entity.setChannelDescription(domain.getChannelDescription());
+        entity.setName(domain.getName());
+        entity.setUrl(domain.getUrl());
+        entity.setDescription(domain.getDescription());
         entity.setIsLock("Y".equalsIgnoreCase(domain.getLockStatus()) ? YesNoEnum.Y : YesNoEnum.N);
         entity.setIsClosed("Y".equalsIgnoreCase(domain.getClosedStatus()) ? YesNoEnum.Y : YesNoEnum.N);
         entity.setIsPrivate("Y".equalsIgnoreCase(domain.getPrivateStatus()) ? YesNoEnum.Y : YesNoEnum.N);

@@ -40,8 +40,8 @@ public class EventEntity extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date activedAt;
 
-    @Column(name = "TYPE_ID")
-    private Long typeId;
+    @Column(name = "TYPE_CODE")
+    private String typeCode;
 
     @Column(name = "EMAIL")
     private String email;

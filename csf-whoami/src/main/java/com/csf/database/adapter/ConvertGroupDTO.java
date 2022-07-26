@@ -28,7 +28,7 @@ public class ConvertGroupDTO {
 
 //        entity.setName(domain.getGroupName());
         entity.setUrl(domain.getGroupUrl());
-        entity.setTypeId(StringUtils.toLongOrNull(domain.getTypeId()));
+        entity.setTypeCode(domain.getTypeCode());
         entity.setIsPrivate(StringUtils.isNullOrEmpty(domain.getIsPrivate()) ? "Y" : domain.getIsPrivate());
         entity.setIsPublish(StringUtils.isNullOrEmpty(domain.getIsPublish()) ? "Y" : domain.getIsPublish());
         entity.setIsLock(StringUtils.isNullOrEmpty(domain.getIsLock()) ? "N" : domain.getIsLock());

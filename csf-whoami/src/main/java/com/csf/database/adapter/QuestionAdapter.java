@@ -1,7 +1,7 @@
 package com.csf.database.adapter;
 
 import com.csf.base.domain.QuestionInfo;
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 import com.csf.base.utilities.StringUtils;
 import com.csf.database.models.TbQuestion;
 

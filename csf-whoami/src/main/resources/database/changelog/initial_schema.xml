@@ -6,19 +6,20 @@
 
     <property name="autoIncrement" value="true"/>
     <property name="now" value="now(3)"/>
-    <property name="defaultVarchar" value="varchar(255)"/>
+    <property name="defaultVarchar" value="nvarchar(255)"/>
+    <property name="defaultNote" value="nvarchar(500)"/>
     <property name="timestamp" value="timestamp(3)"/>
 
 	<changeSet id="202226071200" author="system">
-        <createTable tableName="w_type">
+        <createTable tableName="w_types">
             <column name="code" 			type="varchar(10)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" 			type="varchar(126)">
+            <column name="name" 			type="nvarchar(126)">
                 <constraints nullable="false"/>
             </column>
             <column name="actived_at" 		type="${timestamp}" />
-            <column name="note" 			type="text" />
+            <column name="note" 			type="${defaultNote}" />
             <column name="created_at" 		type="${timestamp}"
             								defaultValueDate="${now}">
                 <constraints nullable="false"/>
@@ -53,7 +54,7 @@
             </column>
             <column name="email" 			type="${defaultVarchar}" />
             <column name="phone" 			type="varchar(20)" />
-            <column name="note" 			type="text" />
+            <column name="note" 			type="${defaultNote}" />
             <column name="created_at" 		type="${timestamp}"
             								defaultValueDate="${now}">
                 <constraints nullable="false"/>
@@ -68,7 +69,7 @@
                                  baseTableName="w_events"
                                  constraintName="fk_type_events"
                                  referencedColumnNames="code"
-                                 referencedTableName="w_type"/>
+                                 referencedTableName="w_types"/>
     </changeSet>
 
 	<changeSet id="202226071200-3" author="system">
@@ -94,5 +95,11 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
+    </changeSet>
+
+	<changeSet id="202226071435" author="system">
+		<loadData file="database/data/W_TYPES.csv"
+                  separator=";"
+                  tableName="w_types"/>
     </changeSet>
 </databaseChangeLog>

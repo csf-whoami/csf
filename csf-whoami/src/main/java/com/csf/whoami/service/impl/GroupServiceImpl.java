@@ -291,7 +291,7 @@ public class GroupServiceImpl implements GroupService {
      */
     private PinCodeEntity generatePinCode() {
         PinCodeEntity pinCode = new PinCodeEntity();
-        pinCode.setTypeId(1L);
+        pinCode.setTypeCode(EventTypeEnum.CREATE_GROUP.getCode());
         pinCode.setPinCode(genTempPinCode()); // random value 6 number.
         return pinCode;
     }
@@ -303,7 +303,8 @@ public class GroupServiceImpl implements GroupService {
 
 	@Override
 	public boolean initialAccount(ConfirmGroupInfo groupInfo) {
-		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail(), groupInfo.getPinCode(), EventTypeEnum.CREATE_GROUP.getCode());
+//		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail(), groupInfo.getPinCode(), EventTypeEnum.CREATE_GROUP.getCode());
+		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail());
 		if(event == null) {
 			return false;
 		}

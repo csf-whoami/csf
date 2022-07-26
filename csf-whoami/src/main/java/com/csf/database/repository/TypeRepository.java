@@ -8,13 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.csf.base.domain.TypeInfo;
-import com.csf.database.models.TbType;
+import com.csf.database.models.TypeEntity;
 
 @Repository
-public interface TypeRepository extends JpaRepository<TbType, String> {
+public interface TypeRepository extends JpaRepository<TypeEntity, String> {
 
-    @Query(value = "SELECT new com.csf.base.domain.TypeInfo(type.id, type.typeName)"
-            + " FROM TbType type"
-            + " WHERE type.groupName = :group")
-    List<TypeInfo> findAllByGroup(@Param("group") String group);
+    @Query(value = "SELECT new com.csf.base.domain.TypeInfo(type.id, type.name)"
+            + " FROM TypeEntity type")
+    List<TypeInfo> findAllByGroup();
+//    List<TypeInfo> findAllByGroup(@Param("group") String group);
 }
