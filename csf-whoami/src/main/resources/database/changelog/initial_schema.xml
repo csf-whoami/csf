@@ -43,8 +43,7 @@
             <column name="login_id" 		type="${defaultVarchar}" />
             <column name="password" 		type="${defaultVarchar}" />
             <column name="user_id" 			type="bigint" />
-            <column name="actived_at" 		type="${timestamp}"
-            								defaultValueDate="${now}" />
+            <column name="actived_at" 		type="${timestamp}" />
             <column name="started_at" 		type="date" />
             <column name="finished_at" 		type="date" />
             <column name="mac_address" 		type="${defaultVarchar}" />
