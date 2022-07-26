@@ -11,7 +11,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 
 public class YesNoEnumConverter implements UserType {
 
@@ -24,7 +24,7 @@ public class YesNoEnumConverter implements UserType {
         try {
             Method valueMethod = pgObject.getClass().getMethod("getValue");
             String value = (String)valueMethod.invoke(pgObject);
-            return YesNo.valueOf(value);
+            return YesNoEnum.valueOf(value);
         }
         catch (Exception e) {
             e.printStackTrace();

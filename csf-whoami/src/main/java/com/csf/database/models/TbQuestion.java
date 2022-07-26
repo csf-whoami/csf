@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -30,27 +30,27 @@ public class TbQuestion extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "SUPER_SIZE")
-    private YesNo isSuperSize = YesNo.N;
+    private YesNoEnum isSuperSize = YesNoEnum.N;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "RANDOM_ANSWER")
-    private YesNo randomAnswer = YesNo.N;
+    private YesNoEnum randomAnswer = YesNoEnum.N;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "LOCK_STATUS")
-    private YesNo isLock = YesNo.N;
+    private YesNoEnum isLock = YesNoEnum.N;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "PUBLISH_STATUS")
-    private YesNo isPublish = YesNo.Y;
+    private YesNoEnum isPublish = YesNoEnum.Y;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "PRIVATE_STATUS")
-    private YesNo isPrivate = YesNo.Y;
+    private YesNoEnum isPrivate = YesNoEnum.Y;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "MULTIPLE_CHOICE")
-    private YesNo isMultipleChoice = YesNo.N;
+    private YesNoEnum isMultipleChoice = YesNoEnum.N;
 
     @Column(name = "GROUP_ID")
     private Long groupId;

@@ -4,35 +4,31 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Where;
 
-import com.csf.base.domain.enumtype.YesNoEnum;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "W_PIN_CODE")
+@Table(name = "W_EVENTS")
 @Where(clause = "DELETED_AT IS NULL")
 @Getter @Setter
-public class PinCodeEntity extends BaseEntity {
+public class EventEntity extends BaseEntity {
 
     private static final long serialVersionUID = -5366594102937921580L;
 
-    @Column(name = "TYPE_ID")
-    private Long typeId;
+    @Column(name = "URL")
+    private String url;
 
-    @Column(name = "CONTENT_ID")
-    private Long contentId;
+    @Column(name = "CODE")
+    private String code;
 
-    @Column(name = "PIN_CODE")
-    private String pinCode;
+    @Column(name = "DESCRIPTION")
+    private String description;
 
     @Column(name = "START_DATE")
     private Date startDate;
@@ -40,11 +36,19 @@ public class PinCodeEntity extends BaseEntity {
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "IS_PRIVATE")
-    private YesNoEnum isPrivate;
-
     @Column(name = "ACTIVED_AT")
     @Temporal(TemporalType.TIMESTAMP)
     private Date activedAt;
+
+    @Column(name = "TYPE_ID")
+    private Long typeId;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "PHONE")
+    private String phone;
+
+    @Column(name = "NOTE")
+    private String note;
 }

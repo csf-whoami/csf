@@ -83,6 +83,7 @@ public class WorkFlowController {
         if(!validPIN) {
             model.setViewName(ConstantsURL.W_PIN_CONFIRM);
         } else {
+        	groupService.initialAccount(groupInfo);
             model.setViewName(ConstantsURL.REDIRECT + ConstantsURL.MAIN);
         }
         return model;

@@ -60,4 +60,6 @@ public interface GroupService {
     boolean sendEmailConfirm(ConfirmGroupInfo groupRequest);
 
     boolean checkPinCode(ConfirmGroupInfo groupInfo);
+
+	boolean initialAccount(ConfirmGroupInfo groupInfo);
 }

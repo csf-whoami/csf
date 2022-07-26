@@ -1,6 +1,5 @@
 package com.csf.whoami.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -8,10 +7,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 
-import com.csf.base.core.ZValue;
 import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.enumtype.EventTypeEnum;
 import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.domain.response.GroupInfo;
@@ -23,15 +21,16 @@ import com.csf.base.utilities.StringUtils;
 import com.csf.database.adapter.ConvertGroupDTO;
 import com.csf.database.adapter.GroupAdapter;
 import com.csf.database.models.AccountEntity;
+import com.csf.database.models.EventEntity;
 import com.csf.database.models.GroupEntity;
 import com.csf.database.models.PinCodeEntity;
 import com.csf.database.models.TbUserGroup;
 import com.csf.database.repository.AccountRepository;
 import com.csf.database.repository.ChannelRepository;
+import com.csf.database.repository.EventRepository;
 import com.csf.database.repository.GroupRepository;
 import com.csf.database.repository.PinCodeRepository;
 import com.csf.database.repository.UserGroupRepository;
-import com.csf.database.view.GroupView;
 import com.csf.whoami.service.EmailService;
 import com.csf.whoami.service.GroupService;
 
@@ -47,6 +46,7 @@ public class GroupServiceImpl implements GroupService {
     private final ChannelRepository channelRepository;
     private final EmailService emailService;
     private final PinCodeRepository pinCodeRepository;
+    private final EventRepository eventRepository;
 
     @Override
     public List<GroupInfo> findAllByUser(Long userId) {
@@ -292,7 +292,7 @@ public class GroupServiceImpl implements GroupService {
     private PinCodeEntity generatePinCode() {
         PinCodeEntity pinCode = new PinCodeEntity();
         pinCode.setTypeId(1L);
-        pinCode.setPinCode("123456"); // random value 6 number.
+        pinCode.setPinCode(genTempPinCode()); // random value 6 number.
         return pinCode;
     }
 
@@ -300,4 +300,20 @@ public class GroupServiceImpl implements GroupService {
     public boolean checkPinCode(ConfirmGroupInfo groupInfo) {
         return true;
     }
+
+	@Override
+	public boolean initialAccount(ConfirmGroupInfo groupInfo) {
+		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail(), groupInfo.getPinCode(), EventTypeEnum.CREATE_GROUP.getCode());
+		if(event == null) {
+			return false;
+		}
+		return true;
+	}
+
+	private String genTempPinCode() {
+		int min = 100000;
+	    int max = 999999;
+		int randomPinCode = (int)Math.floor(Math.random()*(max-min+1)+min);
+		return String.valueOf(randomPinCode);
+	}
 }

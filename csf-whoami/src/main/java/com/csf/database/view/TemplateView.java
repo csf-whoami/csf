@@ -2,7 +2,7 @@ package com.csf.database.view;
 
 import java.util.Date;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +17,6 @@ public class TemplateView {
     private Long id;
     private String name;
     private String code;
-    private YesNo isActive;
+    private YesNoEnum isActive;
     private Date activeDate;
 }

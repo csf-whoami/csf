@@ -32,15 +32,15 @@ public class ChannelEntity extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "IS_CLOSED")
-    private YesNo isClosed;
+    private YesNoEnum isClosed;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "IS_PRIVATE")
-    private YesNo isPrivate;
+    private YesNoEnum isPrivate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "IS_LOCK")
-    private YesNo isLock;
+    private YesNoEnum isLock;
 
     @Column(name = "CHANNEL_DESCRIPTION")
     private String channelDescription;

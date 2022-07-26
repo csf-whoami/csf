@@ -33,9 +33,9 @@ public class ChannelAdapter {
         entity.setChannelName(domain.getChannelName());
         entity.setChannelUrl(domain.getChannelUrl());
         entity.setChannelDescription(domain.getChannelDescription());
-        entity.setIsLock("Y".equalsIgnoreCase(domain.getLockStatus()) ? YesNo.Y : YesNo.N);
-        entity.setIsClosed("Y".equalsIgnoreCase(domain.getClosedStatus()) ? YesNo.Y : YesNo.N);
-        entity.setIsPrivate("Y".equalsIgnoreCase(domain.getPrivateStatus()) ? YesNo.Y : YesNo.N);
+        entity.setIsLock("Y".equalsIgnoreCase(domain.getLockStatus()) ? YesNoEnum.Y : YesNoEnum.N);
+        entity.setIsClosed("Y".equalsIgnoreCase(domain.getClosedStatus()) ? YesNoEnum.Y : YesNoEnum.N);
+        entity.setIsPrivate("Y".equalsIgnoreCase(domain.getPrivateStatus()) ? YesNoEnum.Y : YesNoEnum.N);
         entity.setGroupId(StringUtils.toLongOrNull(domain.getGroupId()));
         return entity;
     }

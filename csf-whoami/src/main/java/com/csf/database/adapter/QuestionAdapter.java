@@ -24,13 +24,13 @@ public class QuestionAdapter {
         entity.setId(StringUtils.toLongOrNull(domain.getId()));
         entity.setContent(domain.getContent());
 //        entity.setOwnerId(AuthenticationUtils.getCurrentAccountId());
-        entity.setIsSuperSize(YesNo.N);
-        entity.setRandomAnswer(YesNo.N);
-        entity.setIsLock(YesNo.N);
-        entity.setIsPublish(YesNo.Y);
+        entity.setIsSuperSize(YesNoEnum.N);
+        entity.setRandomAnswer(YesNoEnum.N);
+        entity.setIsLock(YesNoEnum.N);
+        entity.setIsPublish(YesNoEnum.Y);
 
-        entity.setIsPrivate(YesNo.Y);
-        entity.setIsMultipleChoice(YesNo.N);
+        entity.setIsPrivate(YesNoEnum.Y);
+        entity.setIsMultipleChoice(YesNoEnum.N);
 
         return entity;
     }
@@ -43,12 +43,12 @@ public class QuestionAdapter {
     public static void setDataToEntity(QuestionInfo data, TbQuestion question) {
         question.setContent(data.getContent());
 //        question.setOwnerId(AuthenticationUtils.getCurrentAccountId());
-        question.setIsSuperSize(YesNo.N);
-        question.setRandomAnswer(YesNo.N);
-        question.setIsLock(YesNo.N);
-        question.setIsPublish(YesNo.Y);
+        question.setIsSuperSize(YesNoEnum.N);
+        question.setRandomAnswer(YesNoEnum.N);
+        question.setIsLock(YesNoEnum.N);
+        question.setIsPublish(YesNoEnum.Y);
 
-        question.setIsPrivate(YesNo.Y);
-        question.setIsMultipleChoice(YesNo.N);
+        question.setIsPrivate(YesNoEnum.Y);
+        question.setIsMultipleChoice(YesNoEnum.N);
     }
 }

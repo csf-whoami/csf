@@ -2,7 +2,7 @@ package com.csf.base.domain.response;
 
 import java.util.Date;
 
-import com.csf.base.domain.YesNo;
+import com.csf.base.domain.enumtype.YesNoEnum;
 import com.csf.base.utilities.DateTimeUtils;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -38,14 +38,14 @@ public class ChannelInfo implements BaseInfo {
     private String groupId;
     private String groupName;
 
-    public ChannelInfo(Long channelId, String channelName, YesNo lockStatus, Date createDate) {
+    public ChannelInfo(Long channelId, String channelName, YesNoEnum lockStatus, Date createDate) {
         this.id = String.valueOf(channelId);
         this.channelName = channelName;
         this.createDate = DateTimeUtils.convertDateToString(createDate, DateTimeUtils.YYYYMMDD);
         this.lockStatus = lockStatus.toString();
     }
 
-    public ChannelInfo(Long channelId, String channelName, String channelUrl, YesNo lockStatus, Date createDate) {
+    public ChannelInfo(Long channelId, String channelName, String channelUrl, YesNoEnum lockStatus, Date createDate) {
         this.id = String.valueOf(channelId);
         this.channelName = channelName;
         this.channelUrl = channelUrl;
