@@ -167,6 +167,7 @@
             </column>
             <column name="display_name_vn" 	type="${defaultVarchar}" />
             <column name="display_name_en" 	type="${defaultVarchar}" />
+            <column name="code" 			type="varchar(10)" />
             <column name="type_code" 		type="varchar(10)" />
             <column name="owner_id" 		type="bigint" />
             <column name="is_publish"		type="ENUM('Y', 'N')"

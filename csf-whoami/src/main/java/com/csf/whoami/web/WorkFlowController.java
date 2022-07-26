@@ -66,7 +66,7 @@ public class WorkFlowController {
     public ModelAndView sendEmailAndConfirm(@ModelAttribute("formData") ConfirmGroupInfo groupInfo, ModelAndView model) {
         boolean sendEmailStatus = groupService.sendEmailConfirm(groupInfo);
         System.out.println("Send email: " + sendEmailStatus);
-        model.setViewName(ConstantsURL.REDIRECT + "pincode-confirm/" + groupInfo.getGroupId() + ".html");
+        model.setViewName(ConstantsURL.REDIRECT + "pincode-confirm/" + groupInfo.getCode() + ".html");
         return model;
     }
 

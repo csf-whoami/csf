@@ -18,6 +18,8 @@ public interface GroupRepository extends JpaRepository<GroupEntity, Long>, Commo
 				+ " WHERE group.deletedAt IS NOT NULL AND group.url LIKE %:url%")
 	GroupVO findByGroupUrl(@Param("url")String groupUrl);
 
+	GroupEntity findByCode(@Param("code")String code);
+
 //    @Query(value = "select group.* from H04DT_GROUPS group "
 //            + "inner join H05DT_USER_GROUP userGroup on group.GROUP_ID = userGroup.GROUP_ID "
 //            + "inner join H01DT_USERS users on users.USER_ID = userGroup.USER_ID "

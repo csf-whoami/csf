@@ -20,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public boolean sendEmailConfirmGroup(ConfirmGroupInfo info, String pincode) {
         Map<String, Object> params = new HashMap<>();
-        params.put("url", info.getGroupURL());
+        params.put("url", info.getUrl());
         params.put("pin", pincode);
         return templateService.sendMail(info.getEmail(), "mail-confirm-group", "Mail confirm group owner.", params);
     }

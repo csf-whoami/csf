@@ -270,11 +270,10 @@ public class GroupServiceImpl implements GroupService {
     @Transactional
     @Override
     public boolean sendEmailConfirm(ConfirmGroupInfo groupInfo) {
-        Long id = StringUtils.toLongOrNull(groupInfo.getGroupId());
-        if (id == null) {
+        if (groupInfo == null || groupInfo.getCode() == null) {
             return false;
         }
-        GroupEntity group = groupRepository.findById(id).orElse(null);
+        GroupEntity group = groupRepository.findByCode(groupInfo.getCode());
         if (group == null) {
             return false;
         }

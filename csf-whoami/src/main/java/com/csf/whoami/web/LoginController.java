@@ -54,9 +54,9 @@ public class LoginController {
 
         Map<String, String> errors = new HashMap<>();
         // Check business logic.
-        if (StringUtils.isNullOrEmpty(groupRequest.getGroupURL())) {
+        if (StringUtils.isNullOrEmpty(groupRequest.getUrl())) {
             errors.put(ConstantsParam.PARAM_GROUP, "Group name must be required.");
-        } else if (groupRequest.getGroupURL().length() > 64 || groupRequest.getGroupURL().length() < 8) {
+        } else if (groupRequest.getUrl().length() > 64 || groupRequest.getUrl().length() < 8) {
             errors.put(ConstantsParam.PARAM_GROUP, "Group name length range in 8 to 64.");
         }
         if (!errors.isEmpty()) {
@@ -64,7 +64,7 @@ public class LoginController {
             return model;
         }
 
-        GroupInfo group = groupService.getGroupByGroupUrl(groupRequest.getGroupURL());
+        GroupInfo group = groupService.getGroupByGroupUrl(groupRequest.getUrl());
         if (group != null) {
             // Move to group information.
             model.addObject(ConstantsParam.PARAM_GROUP, group);
