@@ -2,7 +2,7 @@ package com.csf.database.adapter;
 
 import com.csf.base.domain.RoleInfo;
 import com.csf.base.utilities.StringUtils;
-import com.csf.database.models.TbRole;
+import com.csf.database.models.RoleEntity;
 
 public class RoleAdapter {
 
@@ -13,11 +13,11 @@ public class RoleAdapter {
      * @param dto
      * @return
      */
-    public static TbRole dtoToModel(RoleInfo dto) {
+    public static RoleEntity dtoToModel(RoleInfo dto) {
         if (dto == null) {
             return null;
         }
-        TbRole model = new TbRole();
+        RoleEntity model = new RoleEntity();
         model.setId(StringUtils.toLongOrNull(dto.getRoleId()));
         model.setName(dto.getRoleName());
         return model;
@@ -29,7 +29,7 @@ public class RoleAdapter {
      * @param model
      * @return
      */
-    public static RoleInfo modelToDto(TbRole model) {
+    public static RoleInfo modelToDto(RoleEntity model) {
         if (model == null) {
             return null;
         }

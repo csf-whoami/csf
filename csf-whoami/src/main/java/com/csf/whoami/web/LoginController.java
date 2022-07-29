@@ -84,14 +84,14 @@ public class LoginController {
      */
     @PostMapping(value = ConstantsURL.REGISTER_GROUP)
     public ModelAndView registerTempGroup(@Valid @ModelAttribute(ConstantsParam.PARAM_GROUP) ConfirmGroupInfo groupRequest, ModelAndView model) {
-        Long id = groupService.registerTempGroup(groupRequest);
+        String id = groupService.registerTempGroup(groupRequest);
         Map<String, String> errors = new HashMap<>();
         if (id == null) {
             errors.put(ConstantsParam.PARAM_GROUP, "Can not register group.");
             model.addObject(ConstantsParam.ERRORS, errors);
             return model;
         }
-        model.addObject("id", id);
+        model.addObject("code", id);
         model.setViewName(ConstantsURL.PAGE_EMAIL_CONFIRM);
         return model;
     }

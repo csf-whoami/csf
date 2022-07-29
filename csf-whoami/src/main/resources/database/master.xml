@@ -7,4 +7,5 @@
     <include file="database/changelog/initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="database/changelog/202227071000_changelog.xml" relativeToChangelogFile="false"/>
     <!-- <include file="database/changelog/202228071000_changelog.xml" relativeToChangelogFile="false"/> -->
+    <include file="database/changelog/202229071500_changelog.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

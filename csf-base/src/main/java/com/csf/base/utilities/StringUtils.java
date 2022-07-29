@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1708,5 +1709,18 @@ public class StringUtils {
         strBuilder.append(input.substring(0,1).toLowerCase());
         strBuilder.append(input.substring(1));
         return strBuilder.toString();
+    }
+
+    public static String generateCode(int length, boolean isUpperCase) {
+	    int leftLimit = isUpperCase ? 65 : 97;
+	    int rightLimit = isUpperCase ? 90 : 122;
+	    Random random = new Random();
+	    StringBuilder buffer = new StringBuilder(length);
+	    for (int i = 0; i < length; i++) {
+	        int randomLimitedInt = leftLimit + (int) 
+	          (random.nextFloat() * (rightLimit - leftLimit + 1));
+	        buffer.append((char) randomLimitedInt);
+	    }
+	    return buffer.toString();
     }
 }

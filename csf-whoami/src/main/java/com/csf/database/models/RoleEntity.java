@@ -15,12 +15,14 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="W_TB_ROLE")
+@Table(name="W_ROLES")
 @Where(clause = "DELETED_AT IS NULL")
-public class TbRole extends BaseEntity {
+public class RoleEntity extends BaseEntity {
 
-	@Column(name = "ROLE_CODE")
+	private static final long serialVersionUID = 379157780539861343L;
+
+	@Column(name = "CODE")
     private String code;
-    @Column(name = "ROLE_NAME")
+    @Column(name = "NAME")
     private String name;
 }

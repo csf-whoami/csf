@@ -55,9 +55,9 @@ public class WorkFlowController {
 
     @PostMapping(value = "validate-group.html")
     public ModelAndView gotoValidateGroup(ModelAndView model, @ModelAttribute("formData") ConfirmGroupInfo groupInfo) {
-        Long tempId = groupService.registerTempGroup(groupInfo);
-        System.out.println("Group ID:" + tempId);
-        model.addObject("groupId", tempId);
+        String groupCode = groupService.registerTempGroup(groupInfo);
+        System.out.println("Group ID:" + groupCode);
+        model.addObject("code", groupCode);
         model.setViewName(ConstantsURL.W_GROUP_MAIL_CONFIRM);
         return model;
     }
@@ -70,9 +70,9 @@ public class WorkFlowController {
         return model;
     }
 
-    @GetMapping(value = "pincode-confirm/{id}.html")
-    public ModelAndView confirmPinCode(ModelAndView model, @PathVariable("id") String groupId) {
-        model.addObject("groupId", groupId);
+    @GetMapping(value = "pincode-confirm/{code}.html")
+    public ModelAndView confirmPinCode(ModelAndView model, @PathVariable("code") String code) {
+        model.addObject("code", code);
         model.setViewName(ConstantsURL.W_PIN_CONFIRM);
         return model;
     }

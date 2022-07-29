@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
             + " FROM AccountEntity acc "
             + " INNER JOIN UserEntity user ON user.id = acc.userId "
             + " INNER JOIN TbUserRole userRole ON acc.id = userRole.userId "
-            + " INNER JOIN TbRole role ON role.id = userRole.roleId "
+            + " INNER JOIN RoleEntity role ON role.id = userRole.roleId "
             + " WHERE (:#{#search.keyword} IS NULL OR user.email LIKE %:#{#search.keyword}%"
             + "                                    OR acc.username LIKE %:#{#search.keyword}%)"
             + " AND acc.deletedAt IS NULL "

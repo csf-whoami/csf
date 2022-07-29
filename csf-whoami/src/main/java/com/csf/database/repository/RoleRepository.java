@@ -7,16 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.csf.database.models.TbRole;
+import com.csf.database.models.RoleEntity;
 
 @Repository
-public interface RoleRepository extends JpaRepository<TbRole, Long> {
-    TbRole findByCode(String roleName);
+public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+    RoleEntity findByCode(String roleName);
 
     @Query(value = "SELECT role"
-            + " FROM TbRole role"
+            + " FROM RoleEntity role"
             + " INNER JOIN TbUserRole userRole ON role.id = userRole.roleId"
             + " INNER JOIN AccountEntity user ON user.id = userRole.userId"
             + " ORDER BY role.createdAt")
-    List<TbRole> findAllByUserId(@Param("userId")Long id);
+    List<RoleEntity> findAllByUserId(@Param("userId")Long id);
 }

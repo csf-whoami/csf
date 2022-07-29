@@ -33,7 +33,7 @@ public interface GroupService {
 
     Long registerGroup(GroupInfo groupDetail);
 
-    Long registerTempGroup(ConfirmGroupInfo groupRequest);
+    String registerTempGroup(ConfirmGroupInfo groupRequest);
 
     /**
      * List user's groups.

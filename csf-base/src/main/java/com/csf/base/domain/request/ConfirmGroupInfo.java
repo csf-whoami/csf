@@ -11,6 +11,7 @@ import lombok.Setter;
 public class ConfirmGroupInfo {
 
 	private String code;
+	private String type;
 	private String url;
 	private String email;
 	private String pinCode;

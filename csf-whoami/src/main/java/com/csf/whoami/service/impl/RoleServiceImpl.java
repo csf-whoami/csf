@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.csf.base.domain.RoleInfo;
 import com.csf.database.adapter.RoleAdapter;
-import com.csf.database.models.TbRole;
+import com.csf.database.models.RoleEntity;
 import com.csf.database.repository.RoleRepository;
 import com.csf.whoami.service.RoleService;
 
@@ -21,13 +21,13 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Long getRoleByName(String roleName) {
-        TbRole role = roleRepository.findByCode(roleName);
+        RoleEntity role = roleRepository.findByCode(roleName);
         return role.getId();
     }
 
     @Override
     public List<RoleInfo> getUserRole(Long id) {
-        List<TbRole> userRoles = roleRepository.findAllByUserId(id);
+        List<RoleEntity> userRoles = roleRepository.findAllByUserId(id);
         return userRoles.stream().map(item -> RoleAdapter.modelToDto(item)).collect(Collectors.toList());
     }
 
@@ -36,13 +36,13 @@ public class RoleServiceImpl implements RoleService {
         if (id == null) {
             return null;
         }
-        TbRole role = roleRepository.findById(id).orElse(null);
+        RoleEntity role = roleRepository.findById(id).orElse(null);
         return RoleAdapter.modelToDto(role);
     }
 
 	@Override
 	public List<RoleInfo> getSystemRoles() {
-		List<TbRole> roles = roleRepository.findAll();
+		List<RoleEntity> roles = roleRepository.findAll();
 		return roles.stream().map(item -> RoleAdapter.modelToDto(item)).collect(Collectors.toList());
 	}
 }

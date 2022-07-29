@@ -48,7 +48,11 @@ public class ConvertGroupDTO {
             return null;
         }
         GroupEntity entity = new GroupEntity();
-        entity.setUrl(domain.getUrl());
+        String url = domain.getUrl();
+        if(!StringUtils.isNullOrEmpty(url)) {
+        	entity.setUrl(url);
+            entity.setCode(StringUtils.generateCode(10, true));
+        }
         return entity;
     }
 }

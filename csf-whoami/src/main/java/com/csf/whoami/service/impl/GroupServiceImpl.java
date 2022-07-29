@@ -1,5 +1,6 @@
 package com.csf.whoami.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -8,9 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csf.base.domain.AccountDTO;
 import com.csf.base.domain.SearchVO;
+import com.csf.base.domain.enumtype.AccountTypeEnum;
 import com.csf.base.domain.enumtype.EventTypeEnum;
 import com.csf.base.domain.request.ConfirmGroupInfo;
+import com.csf.base.domain.response.AccountInfo;
 import com.csf.base.domain.response.ChannelInfo;
 import com.csf.base.domain.response.GroupInfo;
 import com.csf.base.exception.CustomException;
@@ -33,6 +37,7 @@ import com.csf.database.repository.PinCodeRepository;
 import com.csf.database.repository.UserGroupRepository;
 import com.csf.whoami.service.EmailService;
 import com.csf.whoami.service.GroupService;
+import com.csf.whoami.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -40,6 +45,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class GroupServiceImpl implements GroupService {
 
+	private final UserService userService;
     private final GroupRepository groupRepository;
     private final UserGroupRepository userGroupRepository;
     private final AccountRepository userRepository;
@@ -261,10 +267,10 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Long registerTempGroup(ConfirmGroupInfo groupRequest) {
+    public String registerTempGroup(ConfirmGroupInfo groupRequest) {
         GroupEntity group = ConvertGroupDTO.tempDomainToDb(groupRequest);
         GroupEntity result = groupRepository.save(group);
-        return result.getId();
+        return result.getCode();
     }
 
     @Transactional
@@ -303,10 +309,31 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	public boolean initialAccount(ConfirmGroupInfo groupInfo) {
 //		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail(), groupInfo.getPinCode(), EventTypeEnum.CREATE_GROUP.getCode());
-		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail());
-		if(event == null) {
+		EventEntity event = eventRepository.fetchEventInfo(groupInfo.getEmail(), groupInfo.getCode());
+		if(event == null || event.getActivedAt() != null) {
 			return false;
 		}
+		// Update group information
+		GroupEntity group = groupRepository.findByCode(groupInfo.getCode());
+		if(group == null) {
+			return false;
+		}
+		group.setActivedAt(new Date());
+		groupRepository.save(group);
+
+		// Create account
+		AccountDTO account = new AccountDTO();
+		account.setUsername(groupInfo.getEmail());
+		account.setPassword(StringUtils.generateCode(12, false));
+		account.setType(AccountTypeEnum.WHOAMI.getCode());
+		AccountInfo info = userService.signUp(account);
+		// Send email account info.
+		// generate login info.
+		
+		// Update event.
+		event.setActivedAt(new Date());
+		eventRepository.save(event);
+		
 		return true;
 	}
 
