@@ -1,0 +1,8 @@
+server:
+    servlet:
+        context-path: /data
+    port: ${DATA_PORT:8086}
+
+feign:
+    hystrix:
+        enabled: true

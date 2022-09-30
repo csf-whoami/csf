@@ -1,0 +1,12 @@
+spring:
+    application:
+        name: data-service
+    cloud:
+        config:
+            uri: http://${REGISTER_HOST:localhost}:${REGISTER_PORT:8888}
+            fail-fast: true
+            username: ${REGISTER_ID:whoami}
+            password: ${REGISTER_SECRECT:dyuglc8nza}
+    main:
+        allow-bean-definition-overriding: true
+        #i dont remember why but i think there is a bug with spring cloud and OAuth2ClientContext

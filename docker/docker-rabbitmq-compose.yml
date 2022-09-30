@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  rabbitmq:
+    container_name: pubsub_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+# Command docker:
+# docker run --rm -it --hostname demo-tutorial-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management

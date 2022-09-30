@@ -4,23 +4,21 @@ allprojects {
 
     apply plugin: 'java'
     apply plugin: 'eclipse'
-
-    repositories {
-        mavenCentral()
-        jcenter()
-    }
 }
 
 buildscript {
     ext {
-        springBootVersion = '2.4.8'
+        springBootVersion = '2.3.3.RELEASE'
         springManagementVersion = '1.0.11.RELEASE'
-        lombokVersion = '1.18.4'
-        springCloudVersion = 'Hoxton.RELEASE'
+        lombokVersion = '1.18.24'
+        // Hoxton cloud is not compatible with Spring Boot 2.4 after.
+        springCloudVersion = 'Hoxton.SR8'
+        //springCloudVersion = '2021.0.3'
     }
     repositories {
         mavenCentral()
         jcenter()
+        maven { url 'https://repo.spring.io/milestone' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -28,15 +26,13 @@ buildscript {
     }
 }
 
-configure(subprojects.findAll {it.name != 'csf-base'}) {
+configure(subprojects.findAll {it.name != 'csf-common'}) {
+
+	apply plugin: 'war'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    def defaultEncoding = 'UTF-8'
-    tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
+    tasks.withType(AbstractCompile).each { it.options.encoding = 'UTF-8' }
     compileJava.dependsOn(processResources)
 
     springBoot {
@@ -44,11 +40,15 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
     }
 
     dependencies{
+    	// Rebuild common in case build each project - to keep newly source code are updated.
+    	implementation project(':csf-common')
+    	implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-devtools'
+
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.springframework.boot:spring-boot-configuration-processor"
-        compileOnly "org.projectlombok:lombok:${lombokVersion}"
     }
+
     dependencyManagement {
         imports {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
@@ -56,9 +56,94 @@ configure(subprojects.findAll {it.name != 'csf-base'}) {
     }
 }
 
-project(':csf-security') {
-    dependencies {
-        compile('org.springframework.boot:spring-boot-starter-web')
-        compile('org.springframework.boot:spring-boot-devtools')
+subprojects {
+	apply plugin: 'java'
+
+    sourceCompatibility = 11
+	targetCompatibility = 11
+
+	repositories {
+    	mavenCentral()
+    	jcenter()
+		maven { url 'https://repo.spring.io/milestone' }
+	}
+
+  	dependencies{
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
     }
+}
+
+project(':csf-common') {
+}
+
+project(':csf-security') {
+	archivesBaseName = 'security'
+	dependencies {
+
+	    implementation 'org.springframework.boot:spring-boot-starter'
+	    //implementation 'org.springframework.boot:spring-boot-starter-security'
+	
+	    // Move config.
+	    implementation 'org.springframework.boot:spring-boot-starter-validation'
+	    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	    implementation 'org.springframework.boot:spring-boot-starter-web'
+	    implementation 'mysql:mysql-connector-java';
+	
+	    // Swagger 2.
+	    implementation "io.springfox:springfox-swagger2:2.9.2"
+	    implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	}
+}
+
+project(':csf-zuul') {
+
+	archivesBaseName = 'zuul'
+	configurations {
+		developmentOnly
+		runtimeClasspath {
+			extendsFrom developmentOnly
+		}
+	}
+	dependencies {
+		implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+		implementation 'org.springframework.cloud:spring-cloud-starter-netflix-zuul'
+		implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	}
+}
+
+project(':csf-account') {
+	archivesBaseName = 'account'
+
+	dependencies {
+	    //implementation 'org.springframework.boot:spring-boot-starter-security'
+	    implementation 'org.springframework.boot:spring-boot-starter-web'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	    //implementation 'org.liquibase:liquibase-core'
+
+	    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	    implementation 'org.springframework.kafka:spring-kafka'
+	    implementation 'mysql:mysql-connector-java';
+	}
+}
+
+project(':csf-cdn') {
+	archivesBaseName = 'cdn'
+
+	dependencies {
+	    implementation 'org.springframework.boot:spring-boot-starter-web'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+	    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+	    implementation 'org.springframework.kafka:spring-kafka'
+	}
 }

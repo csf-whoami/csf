@@ -10,6 +10,23 @@ spring:
         user:
             name: ${REGISTER_ID:whoami}
             password: ${REGISTER_SECRECT:dyuglc8nza} #the password which apps will use to access its configurations
-
+    datasource:
+        url: jdbc:mysql://${LOCAL_DB_DOMAIN:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:csf_db}?useSSL=${MYSQL_USE_SSL:true}
+        username: ${MYSQL_USERNAME:whoami}
+        password: ${MYSQL_PASSWORD:jy4w0zi790}
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                jdbc:
+                  lob:
+                    non_contextual_creation: true
+    kafka:
+        bootstrap-servers: localhost:9092
+        topic:
+          userCreated: USER_CREATED_TOPIC
 server:
     port: ${REGISTER_PORT:8888} #the port where the config-server will be acessible

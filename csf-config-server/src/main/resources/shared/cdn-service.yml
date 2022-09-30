@@ -6,3 +6,11 @@ server:
 feign:
     hystrix:
         enabled: true
+
+spring:
+    kafka:
+        bootstrap-servers: ${REGISTER_HOST:localhost}:${KAFKA_PORT:9092}
+        topic:
+            userCreated: USER_CREATED_TOPIC
+        consumer:
+            group-id: ms_mail_consumer

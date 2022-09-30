@@ -1,0 +1,15 @@
+spring:
+    data:
+        mongodb:
+            uri: ${MONGO_DATABASE_DOMAIN}
+    main:
+        allow-bean-definition-overriding: true
+
+server:
+    servlet:
+        context-path: /ios
+    port: ${IOS_PORT:8083}
+
+feign:
+    hystrix:
+        enabled: true

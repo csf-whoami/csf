@@ -1,0 +1,35 @@
+spring:
+    application:
+        name: account-service
+    cloud:
+        config:
+            uri: http://${REGISTER_HOST:localhost}:${REGISTER_PORT:8888}
+            fail-fast: true
+            username: ${REGISTER_ID:whoami}
+            password: ${REGISTER_SECRECT:dyuglc8nza}
+    main:
+        allow-bean-definition-overriding: true
+        #i dont remember why but i think there is a bug with spring cloud and
+    storage: ${RESOURCE_STORAGE_LOCATION:/Volumes/Workspace/storage}
+    datasource:
+        url: jdbc:mysql://${LOCAL_DB_DOMAIN:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:csf_db}?useSSL=${MYSQL_USE_SSL:true}
+        username: ${MYSQL_USERNAME:whoami}
+        password: ${MYSQL_PASSWORD:jy4w0zi790}
+
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                jdbc:
+                  lob:
+                    non_contextual_creation: true
+uaa-service:
+    uri:
+        home: http://${REGISTER_HOST:localhost}:${HOME_SERVICES_HOST:8080}/uaa
+        token: /oauth/token
+    auth:
+        client-id: ${AUTH_CLIENT_ID:whoami-client}
+        client-secret: ${AUTH_CLIENT_SECRET:{noop}whoami-secret}

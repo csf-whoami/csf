@@ -1,0 +1,32 @@
+spring:
+    application:
+        name: cdn-service
+    cloud:
+        config:
+            uri: http://${REGISTER_HOST:localhost}:${REGISTER_PORT:8888}
+            fail-fast: true
+            username: ${REGISTER_ID:whoami}
+            password: ${REGISTER_SECRECT:dyuglc8nza}
+    main:
+        allow-bean-definition-overriding: true #i dont remember why but i think there is a bug with spring cloud and OAuth2ClientContext
+    #Upload to Angular project temp image.
+    storage: ${RESOURCE_STORAGE_LOCATION:/Volumes/Workspace/storage}
+
+google:
+  mail-services:
+    service_account_email : ${GMAIL_APP_EMAIL:whoami@csf-whoami-247515.iam.gserviceaccount.com}
+    application_name : ${GMAIL_APP_NAME:Csf-whoami}
+    folder_id : ${GMAIL_APP_FOLDER:1EgRGKPKPoPv1ic6OA-EL4kerOx5j7JxJ}
+    service_account_key : ${GMAIL_SERVICE_KEY_FILE:Csf-whoami.p12}
+  drive-services:
+    address: ${GDRIVE_EMAIL:csf.whoami@gmail.com}
+    type: user
+    role: writer
+
+uaa-service:
+    uri:
+        home: http://${REGISTER_HOST:localhost}:${HOME_SERVICES_HOST:8080}/uaa
+        token: /oauth/token
+    auth:
+        client-id: ${AUTH_CLIENT_ID:whoami-client}
+        client-secret: ${AUTH_CLIENT_SECRET:{noop}whoami-secret}

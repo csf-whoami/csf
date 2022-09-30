@@ -1,0 +1,62 @@
+{"properties": [
+  {
+    "name": "spring.cloud.config.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.config.password'"
+  },
+  {
+    "name": "spring.cloud.config.uri",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.config.uri'"
+  },
+  {
+    "name": "spring.cloud.config.fail-fast",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.config.fail-fast'"
+  },
+  {
+    "name": "spring.cloud.config.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.config.username'"
+  },
+  {
+    "name": "spring.storage",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.storage'"
+  },
+  {
+    "name": "google.mail-services.service_account_email",
+    "type": "java.lang.String",
+    "description": "A description for 'google.mail-services.service_account_email'"
+  },
+  {
+    "name": "google.mail-services.application_name",
+    "type": "java.lang.String",
+    "description": "A description for 'google.mail-services.application_name'"
+  },
+  {
+    "name": "google.mail-services.folder_id",
+    "type": "java.lang.String",
+    "description": "A description for 'google.mail-services.folder_id'"
+  },
+  {
+    "name": "google.mail-services.service_account_key",
+    "type": "java.lang.String",
+    "description": "A description for 'google.mail-services.service_account_key'"
+  },
+  {
+    "name": "google.drive-services.address",
+    "type": "java.lang.String",
+    "description": "A description for 'google.drive-services.address'"
+  },
+  {
+    "name": "google.drive-services.type",
+    "type": "java.lang.String",
+    "description": "A description for 'google.drive-services.type'"
+  },
+  {
+    "name": "google.drive-services.role",
+    "type": "java.lang.String",
+    "description": "A description for 'google.drive-services.role'"
+  }
+]}
