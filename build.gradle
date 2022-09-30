@@ -43,7 +43,7 @@ configure(subprojects.findAll {it.name != 'csf-common'}) {
     	// Rebuild common in case build each project - to keep newly source code are updated.
     	implementation project(':csf-common')
     	implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-devtools'
+        // implementation 'org.springframework.boot:spring-boot-devtools'
 
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
         compileOnly "org.springframework.boot:spring-boot-configuration-processor"
