@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  # BEGIN Docker for MySQL
+  mysql:
+    #Setting for M1 chip.
+    platform: linux/x86_64
+    #fixbug: no matching manifest for linux/arm64/v8 in the manifest list entries
+    container_name: mysql-docker
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: jy4w0zi790
+      MYSQL_DATABASE: csf_db
+      MYSQL_USER: whoami
+      MYSQL_PASSWORD: jy4w0zi790
+    ports:
+      - 3306:3306
+    restart: always
+  # END Docker for MySQL

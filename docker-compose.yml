@@ -1,0 +1,24 @@
+version: '3'
+services:
+  # BEGIN Docker for DB
+  config-mysql:
+    extends:
+      file: docker/docker-mySQL.yml
+      service: mysql
+
+  config-postgres:
+    extends:
+      file: docker/docker-postgresql.yml
+      service: postgres
+  # END Docker for DB
+
+  # BEGIN Docker for Kafka
+  zookeeper-service:
+    extends:
+      file: docker/docker-kafka.yml
+      service: zookeeper
+  kafka-zoo-service:
+    extends:
+      file: docker/docker-kafka.yml
+      service: kafka
+  # END Docker for Kafka
