@@ -12,14 +12,19 @@ pluginManagement {
 }
 rootProject.name = 'csf'
 // Implementation.
-include 'csf-common'
-include 'csf-security'
-include 'csf-zuul'
-include 'csf-eureka'
+include ':csf-common',
+		':csf-zuul',
+		':csf-eureka',
+		':csf-config-server',
+		':csf-data',
+		':csf-cdn',
+		':csf-security',
+		// Demo project - waiting.
+		':csf-account',
+		':csf-base',
+		':csf-whoami'
 
-include 'csf-config-server'
-include 'csf-data'
-include 'csf-cdn'
-
-// Demo project - waiting.
-include 'csf-account'
+project(':csf-common').projectDir = new File('../whoami/csf-common')
+project(':csf-security').projectDir = new File('../whoami/csf-security')
+project(':csf-base').projectDir = new File('../whoami/csf-base')
+project(':csf-whoami').projectDir = new File('../whoami/csf-whoami')
