@@ -234,15 +234,6 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 지정된 length만큼의 문자열에 "..."을 뒤에 붙여 반환.
-     *
-     * @param s
-     *            java.lang.String
-     * @param size
-     *            int length
-     * @return java.lang.String
-     */
     public static String head(String s, int size) {
         if (s == null)
             return "";
@@ -254,34 +245,6 @@ public class StringUtils {
         return value;
     }
 
-    public static String convertHangul(String money) {
-        String[] han1 = { "", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구" };
-        String[] han2 = { "", "십", "백", "천" };
-        String[] han3 = { "", "만", "억", "조", "경" };
-        StringBuffer result = new StringBuffer();
-        int len = money.length();
-
-        for (int i = len - 1; i >= 0; i--) {
-            result.append(han1[parseInt(money.substring(len - i - 1, len - i))]);
-            if (parseInt(money.substring(len - i - 1, len - i)) > 0) {
-                result.append(han2[i % 4]);
-            }
-            if (i % 4 == 0) {
-                result.append(han3[i / 4]);
-            }
-        }
-        return result.toString();
-    }
-
-    /**
-     * 지정된 length만큼의 문자열에 "..."을 앞에 붙여 반환.
-     *
-     * @param s
-     *            java.lang.String
-     * @param size
-     *            int length
-     * @return java.lang.String
-     */
     public static String tail(String s, int size) {
         if (s == null)
             return "";
@@ -292,42 +255,14 @@ public class StringUtils {
             value = s;
         return value;
     }
-
-    /**
-     * 문자열을 15자 만큼만 보여주고 그 길이에 초과되는 문자열일 경우 "..."를 덧붙여 보여준다.
-     *
-     * @return String the translated string.
-     * @param input
-     *            String 변환할 문자열
-     */
     public static String fixLength(String input) {
         return fixLength(input, 15, "...");
     }
 
-    /**
-     * 문자열을 일정길이 만큼만 보여주고 그 길이에 초과되는 문자열일 경우 "..."를 덧붙여 보여준다.
-     *
-     * @return String the translated string.
-     * @param input
-     *            String 변환할 문자열
-     * @param limit
-     *            int 문자열의 제한 길이
-     */
     public static String fixLength(String input, int limit) {
         return fixLength(input, limit, "...");
     }
 
-    /**
-     * 문자열을 일정길이 만큼만 보여주고 그 길이에 초과되는 문자열일 경우 특정문자를 덧붙여 보여준다.
-     *
-     * @return String the translated string.
-     * @param input
-     *            String 변환할 문자열
-     * @param limit
-     *            int 문자열의 제한 길이
-     * @param postfix
-     *            String 덧붙일 문자열
-     */
     public static String fixLength(String input, int limit, String postfix) {
 
         String buffer = "";
@@ -342,18 +277,6 @@ public class StringUtils {
         return buffer;
     }
 
-    /**
-     * 문자열에서 특정 문자열을 치환한다. 예를 들어, 123456-7890123라는 문자열 str을 1234567890123 형식으로
-     * 바꾸고 싶다면, replaceStr( str, "-", "") 로 호출한다.
-     *
-     * @param source
-     *            String 변환할 문자열
-     * @param keyStr
-     *            String 치환 대상 문자열
-     * @param toStr
-     *            String 치환될 문자열
-     * @return String the translated string.
-     */
     public static String replaceStr(String source, String keyStr, String toStr) {
         if (source == null)
             return null;
@@ -373,17 +296,6 @@ public class StringUtils {
 
     }
 
-    /**
-     * 문자열에서 특정 문자열을 치환한다. 문자열 배열의 차례대로 치환하되 더 이상 배열 값이 없으면 space 1칸으로 치환한다.
-     *
-     * @param source
-     *            String 변환할 문자열
-     * @param keyStr
-     *            String 치환 대상 문자열
-     * @param toStr
-     *            String[] 치환될 문자열 배열
-     * @return String the translated string.
-     */
     public static String replaceStr(String source, String keyStr, String[] toStr) {
         if (source == null)
             return null;
@@ -408,15 +320,6 @@ public class StringUtils {
         return result.toString();
     }
 
-    /**
-     * 배열을 구분자를 넣어 String 으로 치환한다.
-     *
-     * @param ArrayList<String>
-     *            toStr 배열
-     * @param String
-     *            keyStr 구분자
-     * @return String the translated string.
-     */
     public static String ArrayReplaceString(ArrayList<String> toStr, String keyStr) {
 
         String private_String = "";
@@ -432,17 +335,6 @@ public class StringUtils {
         return private_String;
     }
 
-    /**
-     * 문자열을 특정 형식으로 출력한다. 단, source가 null이라면 빈 문자열(empty string)을 리턴한다. 형식: #은
-     * 문자열을 나타낸다. # 외의 문자는 그대로 출력된다. 예를 들어, 1234567890123라는 문자열 str을
-     * 123456-7890123 형식으로 바꾸고 싶다면, printStr( str, "######-#######") 로 호출한다.
-     *
-     * @param source
-     *            String 변환할 문자열
-     * @param format
-     *            String 형식
-     * @return the translated string.
-     */
     public static String printStr(String source, String format) {
         if (source == null)
             return "";
@@ -464,17 +356,6 @@ public class StringUtils {
         return buf.toString();
     }
 
-    /**
-     * 문자열에 0을 추가해서 리턴한다.
-     *
-     * @param source
-     *            String 변환할 문자열
-     * @param resultLen
-     *            결과 길이
-     * @param isFront
-     *            0이 앞에 붙는지 뒤에 붙는지
-     * @return the translated string.
-     */
     public static String fillZero(String source, int resultLen, boolean isFront) {
         if (source == null)
             return "";
@@ -495,19 +376,6 @@ public class StringUtils {
             return source + (new String(result));
     }
 
-    /**
-     * 문자열에 포함된 특정한 형태의 String을 다른 String으로 변환한다. 단, source가 null이라면 빈 문자열(empty
-     * string)을 리턴한다. 예를 들어, abc======라는 문자열에서 ===부분을 =로 바꾸고 싶다면
-     * printStr("abc======", "===", "=")와 같은 형식으로 사용한다.
-     *
-     * @param source
-     *            String 변환할 문자열
-     * @param from
-     *            String 형식
-     * @param to
-     *            String 형식
-     * @return the translated string.
-     */
     public static String replaceString(String source, String from, String to) {
         if (source == null || to == null || from == null)
             return "";
@@ -548,17 +416,6 @@ public class StringUtils {
 //        return source;
 //    }
 
-    /**
-     * Java에서 OutOfIndexException발생방지를위한 substring
-     *
-     * @param str
-     *            String
-     * @param startIndex
-     *            int
-     * @param endIndex
-     *            int
-     * @return String
-     */
     public static String substring(String str, int startIndex, int endIndex) {
         if (str == null)
             return "";
@@ -579,15 +436,6 @@ public class StringUtils {
 
     }
 
-    /**
-     * 대상문자열(strTarget)에서 지정문자열(strSearch)이 검색된 횟수를, 지정문자열이 없으면 0 을 반환한다.
-     *
-     * @param strTarget
-     *            String
-     * @param strSearch
-     *            String
-     * @return int
-     */
     public static int search(String strTarget, String strSearch) {
         int result = 0;
         String strCheck = new String(strTarget);
@@ -604,45 +452,6 @@ public class StringUtils {
         return result;
     }
 
-    /**
-     * Remove special white space from both ends of this string.
-     * <p>
-     * All characters that have codes less than or equal to
-     * <code>'&#92;u0020'</code> (the space character) are considered to be
-     * white space.
-     * <p>
-     * java.lang.String의 trim()과 차이점은 일반적인 white space만 짜르는 것이 아니라 위에서와 같은 특수한
-     * blank도 짤라 준다.<br>
-     *
-     * @param source
-     *            String
-     * @return String
-     */
-    public static String trim(String source) {
-        int position = 0;
-        char[] val = source.toCharArray();
-        int count = val.length;
-        int len = count;
-
-        while ((position < len) && ((val[position] <= ' ') || (val[position] == '　')))
-            position++;
-        while ((position < len) && ((val[len - 1] <= ' ') || (val[len - 1] == '　')))
-            len--;
-
-        return ((position > 0) || (len < count)) ? source.substring(position, len) : source;
-    }
-
-    /**
-     * 원하는 문자만큼 잘라서 리턴해준다.
-     *
-     * @param source
-     *            String
-     * @param postfix
-     *            String
-     * @param limit
-     *            int
-     * @return String
-     */
     public static String limitString(String source, String postfix, int limit) {
         String buffer = "";
         char[] charArray = source.toCharArray();
@@ -656,17 +465,6 @@ public class StringUtils {
         return buffer;
     }
 
-    /**
-     * 원하는 문자만큼 잘라서 리턴해준다.
-     *
-     * @param str
-     *            String
-     * @param szAddValue
-     *            String
-     * @param limit
-     *            int
-     * @return String
-     */
     public static String limitStringForKor(String str, String szAddValue, int limit) {
         if (limit < 4)
             return str;
@@ -691,13 +489,6 @@ public class StringUtils {
         return strBuf.toString();
     }
 
-    /**
-     * 문자열을 받아서 null이면 공백 문자열로 리턴
-     *
-     * @param str
-     *            String
-     * @return String
-     */
     public static String isNull(String str) {
         if ((str == null) || (str.trim().equals("")) || (str.trim().equals("null")))
             return "";
@@ -705,24 +496,10 @@ public class StringUtils {
             return str;
     }
 
-    /**
-     * 문자열을 받아서 null이면 공백 그렇지 않으면 앞뒤 공백을 제거한 문자열을 리턴
-     *
-     * @param str
-     *            String
-     * @return String
-     */
     public static String isNullToTrim(String str) {
         return isNull(str).trim();
     }
 
-    /**
-     * 문자열을 받아서 널이면 &nbsp;로 리턴
-     *
-     * @param p_null
-     *            String
-     * @return String
-     */
     public static String isNullToNbsp(String p_null) {
         String v_returnStr = p_null;
         if (p_null == null || p_null.trim().equals("") || p_null.trim().equals("null")) {
@@ -731,13 +508,6 @@ public class StringUtils {
         return v_returnStr;
     }
 
-    /**
-     * 문자열이 공백이거나 널이면 숫자로 문자"0"을 리턴
-     *
-     * @param p_str
-     *            String
-     * @return String
-     */
     public static String isNullToZero(String p_str) {
         if (p_str == null || p_str.trim().equals("") || p_str.trim().equals("null"))
             return "0";
@@ -745,15 +515,6 @@ public class StringUtils {
             return p_str;
     }
 
-    /**
-     * 문자열이 널이면 대체할 문자열을 리턴
-     *
-     * @param str
-     *            String
-     * @param NVLString
-     *            String
-     * @return String
-     */
     public static String nvl(String str, String NVLString) {
         if ((str == null) || (str.trim().equals("")) || (str.trim().equals("null")))
             return NVLString;
@@ -761,15 +522,6 @@ public class StringUtils {
             return str;
     }
 
-    /**
-     * 문자열이 널이면 대체할 정수를 리턴
-     *
-     * @param str
-     *            String
-     * @param NVLInt
-     *            int
-     * @return int
-     */
     public static int nvl(String str, int NVLInt) {
         if ((str == null) || (str.trim().equals("")) || (str.trim().equals("null")))
             return NVLInt;
@@ -777,15 +529,6 @@ public class StringUtils {
             return parseInt(str);
     }
 
-    /**
-     * 문자열이 널이면 대체할 double를 리턴
-     *
-     * @param str
-     *            String
-     * @param NVLDouble
-     *            double
-     * @return double
-     */
     public static double NVL(String str, double NVLDouble) {
         if ((str == null) || (str.trim().equals("")) || (str.trim().equals("null")))
             return NVLDouble;
@@ -793,13 +536,6 @@ public class StringUtils {
             return parseDouble(str);
     }
 
-    /**
-     * 문자열을 받아서 널이면 &nbsp;로 리턴
-     *
-     * @param s
-     *            String
-     * @return String
-     */
     public static String nullToNbsp(String s) {
         String v_returnStr = s;
         if (s == null || s.trim().equals("") || s.trim().equals("null")) {
@@ -808,13 +544,6 @@ public class StringUtils {
         return v_returnStr;
     }
 
-    /**
-     * 문자열이 공백이거나 널이면 숫자로 문자"0"을 리턴
-     *
-     * @param s
-     *            String
-     * @return String
-     */
     public static String nullToZero(String s) {
         if (s == null || s.trim().equals("") || s.trim().equals("null"))
             return "0";
@@ -822,13 +551,6 @@ public class StringUtils {
             return s;
     }
 
-    /**
-     * 문자열을 정수로 변환
-     *
-     * @param str
-     *            String
-     * @return int
-     */
     public static int parseInt(String str) {
 
         if (str == null || str.equals("")) {
@@ -842,13 +564,6 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 문자열을 정수로 변환
-     *
-     * @param str
-     *            String
-     * @return int
-     */
     public static int parseInt(String str, int initValue) {
 
         if (str == null || str.equals("")) {
@@ -862,13 +577,6 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 문자열을 long형으로 변환
-     *
-     * @param str
-     *            String
-     * @return long
-     */
     public static long parseLong(String str) {
 
         if (str == null || str.equals("")) {
@@ -882,13 +590,6 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 문자열을 float형으로 변환
-     *
-     * @param str
-     *            String
-     * @return float
-     */
     public static float parseFloat(String str) {
 
         if (str == null || str.equals("")) {
@@ -902,13 +603,6 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 문자열을 double형으로 변환
-     *
-     * @param str
-     *            String
-     * @return double
-     */
     public static double parseDouble(String str) {
 
         if (str == null || str.equals("")) {
@@ -922,19 +616,9 @@ public class StringUtils {
         }
     }
 
-    /**
-     * 대상문자열(strTarget)에서 구분문자열(strDelim)을 기준으로 문자열을 분리하여 각 분리된 문자열을 배열에 할당하여
-     * 반환한다.
-     *
-     * @param strTarget
-     *            분리 대상 문자열
-     * @param strDelim
-     *            구분시킬 문자열로서 결과 문자열에는 포함되지 않는다.
-     * @return 분리된 문자열을 순서대로 배열에 격납하여 반환한다.
-     */
     public static String[] split(String strTarget, String strDelim) {
-        // StringTokenizer는 구분자가 연속으로 중첩되어 있을 경우 공백 문자열을 반환하지 않음.
-        // 따라서 아래와 같이 작성함.
+        // StringTokenizerëŠ” êµ¬ë¶„ìž�ê°€ ì—°ì†�ìœ¼ë¡œ ì¤‘ì²©ë�˜ì–´ ìžˆì�„ ê²½ìš° ê³µë°± ë¬¸ìž�ì—´ì�„ ë°˜í™˜í•˜ì§€ ì•Šì�Œ.
+        // ë”°ë�¼ì„œ ì•„ëž˜ì™€ ê°™ì�´ ìž‘ì„±í•¨.
         int index = 0;
         String[] resultStrArray = new String[search(strTarget, strDelim) + 1];
         String strCheck = new String(strTarget);
@@ -958,20 +642,20 @@ public class StringUtils {
     }
 
     /**
-     * 대상문자열(strTarget)에서 구분문자열(strDelim)을 기준으로 문자열을 분리하여 각 분리된 문자열을 배열에 할당하여
-     * 반환한다.
+     * ëŒ€ìƒ�ë¬¸ìž�ì—´(strTarget)ì—�ì„œ êµ¬ë¶„ë¬¸ìž�ì—´(strDelim)ì�„ ê¸°ì¤€ìœ¼ë¡œ ë¬¸ìž�ì—´ì�„ ë¶„ë¦¬í•˜ì—¬ ê°� ë¶„ë¦¬ë�œ ë¬¸ìž�ì—´ì�„ ë°°ì—´ì—� í• ë‹¹í•˜ì—¬
+     * ë°˜í™˜í•œë‹¤.
      *
      * @param strTarget
-     *            분리 대상 문자열
+     *            ë¶„ë¦¬ ëŒ€ìƒ� ë¬¸ìž�ì—´
      * @param strDelim
-     *            구분시킬 문자열로서 결과 문자열에는 포함되지 않는다.
+     *            êµ¬ë¶„ì‹œí‚¬ ë¬¸ìž�ì—´ë¡œì„œ ê²°ê³¼ ë¬¸ìž�ì—´ì—�ëŠ” í�¬í•¨ë�˜ì§€ ì•ŠëŠ”ë‹¤.
      * @param bContainNull
-     *            구분되어진 문자열중 공백문자열의 포함여부. true : 포함, false : 포함하지 않음.
-     * @return 분리된 문자열을 순서대로 배열에 격납하여 반환한다.
+     *            êµ¬ë¶„ë�˜ì–´ì§„ ë¬¸ìž�ì—´ì¤‘ ê³µë°±ë¬¸ìž�ì—´ì�˜ í�¬í•¨ì—¬ë¶€. true : í�¬í•¨, false : í�¬í•¨í•˜ì§€ ì•Šì�Œ.
+     * @return ë¶„ë¦¬ë�œ ë¬¸ìž�ì—´ì�„ ìˆœì„œëŒ€ë¡œ ë°°ì—´ì—� ê²©ë‚©í•˜ì—¬ ë°˜í™˜í•œë‹¤.
      */
     public static String[] split(String strTarget, String strDelim, boolean bContainNull) {
-        // StringTokenizer는 구분자가 연속으로 중첩되어 있을 경우 공백 문자열을 반환하지 않음.
-        // 따라서 아래와 같이 작성함.
+        // StringTokenizerëŠ” êµ¬ë¶„ìž�ê°€ ì—°ì†�ìœ¼ë¡œ ì¤‘ì²©ë�˜ì–´ ìžˆì�„ ê²½ìš° ê³µë°± ë¬¸ìž�ì—´ì�„ ë°˜í™˜í•˜ì§€ ì•Šì�Œ.
+        // ë”°ë�¼ì„œ ì•„ëž˜ì™€ ê°™ì�´ ìž‘ì„±í•¨.
         int index = 0;
         String[] resultStrArray = new String[search(strTarget, strDelim) + 1];
         String strCheck = new String(strTarget);
@@ -1053,7 +737,7 @@ public class StringUtils {
     } // replace
 
     /**
-     * pattern과 일치하는 문자열을 뺀 문자열을 반환
+     * patternê³¼ ì�¼ì¹˜í•˜ëŠ” ë¬¸ìž�ì—´ì�„ ëº€ ë¬¸ìž�ì—´ì�„ ë°˜í™˜
      *
      * @param inString
      *            String to examine
@@ -1066,7 +750,7 @@ public class StringUtils {
     }
 
     /**
-     * chars와 일치하지 않는 문자열을 뺀 문자열을 반환
+     * charsì™€ ì�¼ì¹˜í•˜ì§€ ì•ŠëŠ” ë¬¸ìž�ì—´ì�„ ëº€ ë¬¸ìž�ì—´ì�„ ë°˜í™˜
      *
      * @param inString
      *            String to examine
@@ -1236,7 +920,7 @@ public class StringUtils {
     }
 
     /**
-     * 문자열의 길이가 len보다 적으면 문자열의 길이가 len이 될때 까지 공백을 추가 한다.
+     * ë¬¸ìž�ì—´ì�˜ ê¸¸ì�´ê°€ lenë³´ë‹¤ ì �ìœ¼ë©´ ë¬¸ìž�ì—´ì�˜ ê¸¸ì�´ê°€ lenì�´ ë� ë•Œ ê¹Œì§€ ê³µë°±ì�„ ì¶”ê°€ í•œë‹¤.
      *
      * @param p_str
      *            String
@@ -1260,7 +944,7 @@ public class StringUtils {
     }
 
     /**
-     * 문자열의 길이가 len보다 적으면 문자열의 길이가 len이 될때 까지 공백을 추가 한다.
+     * ë¬¸ìž�ì—´ì�˜ ê¸¸ì�´ê°€ lenë³´ë‹¤ ì �ìœ¼ë©´ ë¬¸ìž�ì—´ì�˜ ê¸¸ì�´ê°€ lenì�´ ë� ë•Œ ê¹Œì§€ ê³µë°±ì�„ ì¶”ê°€ í•œë‹¤.
      *
      * @param p_str
      *            String
@@ -1299,24 +983,24 @@ public class StringUtils {
     }
 
     /**
-     * 문자열을 boolean형 자료형으로 변환
+     * ë¬¸ìž�ì—´ì�„ booleaní˜• ìž�ë£Œí˜•ìœ¼ë¡œ ë³€í™˜
      *
      * @param s
      *            String
      * @return boolean
      */
-    public static boolean getBoolean(String s) {
-        boolean is = false;
-        try {
-            is = (new Boolean(s)).booleanValue();
-        } catch (Exception exception) {
-        }
+	public static boolean getBoolean(String s) {
+		boolean is = false;
+		try {
+			is = (new Boolean(s)).booleanValue();
+		} catch (Exception exception) {
+		}
 
-        return is;
-    }
+		return is;
+	}
 
     /**
-     * Object 자료형을 boolean형 자료형으로 변환
+     * Object ìž�ë£Œí˜•ì�„ booleaní˜• ìž�ë£Œí˜•ìœ¼ë¡œ ë³€í™˜
      *
      * @param o
      *            Object
@@ -1365,7 +1049,7 @@ public class StringUtils {
         ArrayList<Object> aryList = new ArrayList<Object>();
         // String[] ary =null;
         try {
-            // raw 의 byte
+            // raw ì�˜ byte
             byte[] rawBytes = raw.getBytes("MS949");
             int rawLength = rawBytes.length;
 
@@ -1373,17 +1057,17 @@ public class StringUtils {
 
                 int aryLength = (rawLength / len) + (rawLength % len != 0 ? 1 : 0);
 
-                int endCharIndex = 0; // 문자열이 끝나는 위치
+                int endCharIndex = 0; // ë¬¸ìž�ì—´ì�´ ë��ë‚˜ëŠ” ìœ„ì¹˜
                 String tmp;
                 for (int i = 0; i < aryLength; i++) {
 
                     if (i == (aryLength - 1)) {
 
                         tmp = raw.substring(endCharIndex);
-                        // else 부분에서 endCharIndex 가 작아져서 (이를테면 len 10 이고 else
-                        // 부분에서 잘려지는 길이가 9 일때)
-                        // 위에서 계산되어진 aryLength 길이보다 길이가 더 길어질 소지가 있습니다.
-                        // 이에 길이가 더 길 경우에는 for 한번더 돌도록 한다.
+                        // else ë¶€ë¶„ì—�ì„œ endCharIndex ê°€ ìž‘ì•„ì ¸ì„œ (ì�´ë¥¼í…Œë©´ len 10 ì�´ê³  else
+                        // ë¶€ë¶„ì—�ì„œ ìž˜ë ¤ì§€ëŠ” ê¸¸ì�´ê°€ 9 ì�¼ë•Œ)
+                        // ìœ„ì—�ì„œ ê³„ì‚°ë�˜ì–´ì§„ aryLength ê¸¸ì�´ë³´ë‹¤ ê¸¸ì�´ê°€ ë�” ê¸¸ì–´ì§ˆ ì†Œì§€ê°€ ìžˆìŠµë‹ˆë‹¤.
+                        // ì�´ì—� ê¸¸ì�´ê°€ ë�” ê¸¸ ê²½ìš°ì—�ëŠ” for í•œë²ˆë�” ë�Œë�„ë¡� í•œë‹¤.
                         if (tmp.getBytes("MS949").length > len) {
                             aryLength++;
                             i--;
@@ -1436,12 +1120,12 @@ public class StringUtils {
     }
 
     /**
-     * String에 포함된 모든 newline문자(\n)를 특정String으로 변환하여 줌
+     * Stringì—� í�¬í•¨ë�œ ëª¨ë“  newlineë¬¸ìž�(\n)ë¥¼ íŠ¹ì •Stringìœ¼ë¡œ ë³€í™˜í•˜ì—¬ ì¤Œ
      *
      * @param source
-     *            String 변환할 string
+     *            String ë³€í™˜í•  string
      * @param specialString
-     *            newline문자를 대체할 string
+     *            newlineë¬¸ìž�ë¥¼ ëŒ€ì²´í•  string
      * @return the translated string.
      */
     public static String translateNewline(String source, String specialString) {
@@ -1634,7 +1318,7 @@ public class StringUtils {
         if (value == null) {
             return "";
         }
-        /* loop error 발생으로 인한 수정 20180920 jsy
+        /* loop error ë°œìƒ�ìœ¼ë¡œ ì�¸í•œ ìˆ˜ì • 20180920 jsy
         value = value.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "").replaceAll("<!--.*-->", "").replaceAll("<(?:.|\\s)*?>", "");
         */
         Pattern TAGS = Pattern.compile("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>",Pattern.DOTALL);

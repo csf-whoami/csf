@@ -16,8 +16,7 @@ package com.csf.old.api;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
-import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csf.base.domain.response.AuthenticationInfo;
 import com.csf.base.domain.response.GroupInfo;
-import com.csf.base.exception.CustomException;
-import com.csf.base.exception.ErrorException;
-import com.csf.base.exception.HttpStatus;
-import com.csf.base.utilities.StringUtils;
 import com.csf.whoami.service.GroupService;
 
 import io.swagger.annotations.Api;
