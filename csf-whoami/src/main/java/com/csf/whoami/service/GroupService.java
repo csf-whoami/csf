@@ -2,6 +2,8 @@ package com.csf.whoami.service;
 
 import java.util.List;
 
+import com.csf.base.domain.mainpage.MenuGroupInfo;
+import com.csf.base.domain.response.ChannelInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,7 +23,7 @@ public interface GroupService {
 
     void addMemberToGroup(String groupId, String userId, String userId2) throws Exception;
 
-    GroupInfo getChannelByGroup(String groupId, String userId) throws Exception;
+    List<ChannelInfo> getChannelsByGroup(String groupId, String userId) throws Exception;
 
     GroupInfo addTempGroup(GroupInfo domain) throws Exception;
 
@@ -62,4 +64,6 @@ public interface GroupService {
     boolean checkPinCode(ConfirmGroupInfo groupInfo);
 
 	boolean initialAccount(ConfirmGroupInfo groupInfo);
+
+    List<MenuGroupInfo> getMemberGroupInfo(ConfirmGroupInfo groupInfo);
 }

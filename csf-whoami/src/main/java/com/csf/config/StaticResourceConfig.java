@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.csf.security.config;
+package com.csf.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

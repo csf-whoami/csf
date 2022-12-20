@@ -1,8 +1,10 @@
 package com.csf.whoami.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.csf.base.domain.mainpage.MenuGroupInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -155,8 +157,7 @@ public class GroupServiceImpl implements GroupService {
      * @author tuan
      */
     @Transactional
-    @Override
-    public GroupInfo getChannelByGroup(String groupId, String userId) throws Exception {
+    public List<ChannelInfo> getChannelsByGroup(String groupId, String userId) throws Exception {
         TbUserGroup checkUserGroup = userGroupRepository.findAllByUserIdAndGroupId(userId, groupId);
         if (checkUserGroup == null) {
             GroupEntity group = groupRepository.findById(Long.parseLong(groupId)).orElse(null);
@@ -190,7 +191,7 @@ public class GroupServiceImpl implements GroupService {
 ////                        StringUtils.convertDateToString(group.getCreatedDate()),
 ////                        StringUtils.convertObjectToString(group.getIsLock()))
 //                ).collect(Collectors.toList()));
-        return groupInfo;
+        return new ArrayList<>();
     }
 
     /**
@@ -337,7 +338,21 @@ public class GroupServiceImpl implements GroupService {
 		return true;
 	}
 
-	private String genTempPinCode() {
+    @Override
+    public List<MenuGroupInfo> getMemberGroupInfo(ConfirmGroupInfo groupInfo) {
+        GroupInfo info = getGroupByGroupUrl(groupInfo.getUrl());
+        AccountInfo acc = userService.getUserByUsername(groupInfo.getEmail());
+
+        try {
+            List<ChannelInfo> channels = getChannelsByGroup(info.getId(), String.valueOf(acc.getUserId()));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return new ArrayList<>();
+    }
+
+    private String genTempPinCode() {
 		int min = 100000;
 	    int max = 999999;
 		int randomPinCode = (int)Math.floor(Math.random()*(max-min+1)+min);

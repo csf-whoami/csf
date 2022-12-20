@@ -3,6 +3,10 @@ package com.csf.whoami.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.csf.base.domain.request.ConfirmGroupInfo;
+import com.csf.base.utilities.RequestUtils;
+import com.csf.whoami.adm.service.MenuService;
+import com.csf.whoami.service.GroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,10 +21,14 @@ import com.csf.base.domain.mainpage.MenuGroupInfo;
 
 import lombok.RequiredArgsConstructor;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping(value = ConstantsURL.HOME)
 @RequiredArgsConstructor
 public class IndexPage {
+
+    private final GroupService groupService;
 
     /**
      * Home page.
@@ -42,7 +50,13 @@ public class IndexPage {
      */
     @GetMapping(value = ConstantsURL.W_MAIN)
     public ModelAndView gotoMainPage(ModelAndView model) {
-        List<MenuGroupInfo> groups = dummyMenuGroups();
+        ConfirmGroupInfo groupInfo = null;
+        HttpSession session = RequestUtils.currentSession();
+        if(session != null){
+            groupInfo = (ConfirmGroupInfo) session.getAttribute("groupInfo");
+
+        }
+        List<MenuGroupInfo> groups = groupService.getMemberGroupInfo(groupInfo);
         model.addObject("groups", groups);
         List<MenuChannelInfo> channels = dummyMenuChannels();
         model.addObject("channels", channels);

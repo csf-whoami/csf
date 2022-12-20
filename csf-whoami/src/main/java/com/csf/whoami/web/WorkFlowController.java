@@ -3,6 +3,7 @@
  */
 package com.csf.whoami.web;
 
+import com.csf.base.utilities.RequestUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,8 @@ import com.csf.base.domain.request.ConfirmGroupInfo;
 import com.csf.whoami.service.GroupService;
 
 import lombok.RequiredArgsConstructor;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author mac
@@ -85,6 +88,10 @@ public class WorkFlowController {
         } else {
         	groupService.initialAccount(groupInfo);
             model.setViewName(ConstantsURL.REDIRECT + ConstantsURL.MAIN);
+            HttpSession currentSession = RequestUtils.currentSession();
+            if(currentSession != null){
+                currentSession.setAttribute("groupInfo", groupInfo);
+            }
         }
         return model;
     }

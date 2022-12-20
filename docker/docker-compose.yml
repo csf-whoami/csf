@@ -23,12 +23,23 @@ services:
     external_links:
       - mysql-docker:mysql-docker
     networks: 
-      - mysql_open
-      - ext # this network
-    
+      - csf
+  mysql:
+    container_name: mysql-docker
+    image: mysql:8.0.25
+    environment:
+      MYSQL_ROOT_PASSWORD: Pax96dQ2UtNa
+      MYSQL_DATABASE: whoami
+      MYSQL_USER: csfhomeo
+      MYSQL_PASSWORD: Pax96dQ2UtNa
+
+      command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8 --explicit_defaults_for_timestamp
+    ports:
+      - 3336:3306
+    restart: always
+    networks: 
+      - csf
 
 networks:
-  ext: # this network
+  csf: # this network
     driver: bridge
-  mysql_open: # external network (mysql_open)
-    external: true

@@ -1,13 +1,8 @@
-package com.csf.common.domain;
-
-import javax.validation.constraints.NotBlank;
+package com.csf.security.domain;
 
 public class SignUpRequestDomain {
 
-	@NotBlank
 	private String username;
-
-	@NotBlank
 	private String password;
 
 	/**
