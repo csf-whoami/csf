@@ -3,8 +3,8 @@
  */
 package com.csf.security.service;
 
+import com.csf.common.domain.LoginRequestDomain;
 import com.csf.common.domain.ResponseDataAPI;
-import com.csf.security.domain.LoginRequestDomain;
 
 /**
  * @author tuan

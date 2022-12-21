@@ -87,7 +87,7 @@ spring:
     test-connection: false
     link-cms: https://csf-whoami.edu.vn/
 ################################################ END SEND EMAIL CONFIG ################################################
-
+  storage: .
 server:
   port: ${W_PORT:8888}
   local-url: http://localhost:${W_PORT:8888}

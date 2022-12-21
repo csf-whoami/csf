@@ -1,5 +1,6 @@
 package com.csf.security.controller;
 
+import java.awt.PageAttributes.MediaType;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +8,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = { "/admin" }, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = { "/admin" }) //, produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public class AdminController {
 

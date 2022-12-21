@@ -78,6 +78,9 @@ project(':csf-base') {
 	    implementation "commons-fileupload:commons-fileupload:${commonsFileupload}"
 	    implementation "commons-beanutils:commons-beanutils:${commonsBeanutils}"
 	    implementation "commons-io:commons-io:${commonsIO}"
+
+		// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+		implementation 'org.apache.tomcat.embed:tomcat-embed-core:9.0.70'
 	}
 }
 
@@ -114,5 +117,38 @@ project(':csf-whoami') {
 	    implementation "org.apache.sanselan:sanselan:${sanselan}"
 
 		implementation "org.apache.directory.studio:org.apache.commons.io:${directoryStudio}"
+
+		implementation project(':csf-common')
+		implementation project(':csf-base')
+		implementation "javax.servlet:javax.servlet-api:${javaxServlet}"
 	}
 }
+
+/*
+project(':csf-security') {
+	archivesBaseName = 'security'
+	dependencies {
+
+		implementation project(':csf-common')
+
+	    implementation 'org.springframework.boot:spring-boot-starter'
+	    //implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	    // Move config.
+	    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+	    implementation "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+	    implementation "org.springframework.cloud:spring-cloud-starter-oauth2"
+	    implementation "org.springframework.cloud:spring-cloud-starter-config"
+	    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
+	    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+	    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	    implementation "mysql:mysql-connector-java";
+
+		implementation "org.springframework.security.oauth:spring-security-oauth2:2.0.9.RELEASE"		
+
+	    // Swagger 2.
+	    implementation "io.springfox:springfox-swagger2:2.9.2"
+	    implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	}
+}
+*/

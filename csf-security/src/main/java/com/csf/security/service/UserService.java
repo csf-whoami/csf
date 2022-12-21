@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.csf.common.domain.LoginRequestDomain;
 import com.csf.common.domain.ResponseDataAPI;
-import com.csf.security.domain.SignUpRequestDomain;
-import com.csf.security.domain.UserDomain;
+import com.csf.common.domain.SignUpRequestDomain;
+import com.csf.common.domain.UserDomain;
 import com.csf.security.entity.Oauth2UserEntity;
 import com.csf.security.entity.UserInfo;
 

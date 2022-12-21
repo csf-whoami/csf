@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.csf.security.domain;
+package com.csf.common.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

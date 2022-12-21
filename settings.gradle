@@ -19,3 +19,5 @@ rootProject.name = 'csf'
 
 include 'csf-base'
 include 'csf-whoami'
+//include 'csf-security'
+include 'csf-common'

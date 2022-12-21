@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.csf.common.domain.LoginRequestDomain;
 import com.csf.common.domain.ResponseDataAPI;
-import com.csf.security.domain.SignUpRequestDomain;
-import com.csf.security.domain.UserDomain;
+import com.csf.common.domain.SignUpRequestDomain;
+import com.csf.common.domain.UserDomain;
 import com.csf.security.entity.UserInfo;
 import com.csf.security.service.UserService;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.csf.security.constant;
+package com.csf.common.constant;
 
 /**
  * @author tuan

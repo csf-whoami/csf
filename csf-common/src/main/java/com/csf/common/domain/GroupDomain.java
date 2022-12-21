@@ -1,9 +1,7 @@
 /**
  * 
  */
-package com.csf.security.domain;
-
-import org.hibernate.validator.constraints.Length;
+package com.csf.common.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -19,12 +17,12 @@ public class GroupDomain {
 	@JsonProperty("group_id")
 	private String groupId;
 	@JsonProperty("group_name")
-	@Length(min = 3, max = 64)
+//	@Length(min = 3, max = 64)
 	private String groupName;
 	@JsonProperty("group_url")
-	@Length(min = 3, max = 64)
+//	@Length(min = 3, max = 64)
 	private String groupUrl;
-	@Length(min = 3, max = 20)
+//	@Length(min = 3, max = 20)
 	@JsonProperty("group_type")
 	private String groupType;
 

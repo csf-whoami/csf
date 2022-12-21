@@ -18,8 +18,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.csf.common.constant.AuthConstant;
+import com.csf.common.domain.LoginRequestDomain;
 import com.csf.common.domain.ResponseDataAPI;
-import com.csf.security.domain.LoginRequestDomain;
 import com.csf.security.service.CommonService;
 
 /**

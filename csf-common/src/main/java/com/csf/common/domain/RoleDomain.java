@@ -1,4 +1,4 @@
-package com.csf.security.domain;
+package com.csf.common.domain;
 
 public class RoleDomain {
 
