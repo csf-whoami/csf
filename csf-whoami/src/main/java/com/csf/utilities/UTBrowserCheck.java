@@ -144,8 +144,8 @@ public class UTBrowserCheck {
 		table.put("AGENT", agent);
 		table.put("MAKER", maker);
 		table.put("SERIAL", seri);
-		table.put("ISMOBILE", new Boolean(ismobile));
-		table.put("ISSMARTPHONE", new Boolean(isSmartPhone));
+		table.put("ISMOBILE", ismobile);
+		table.put("ISSMARTPHONE", isSmartPhone);
 
 //		log.debug("<< UTBrowserCheck.GetBrowserData >>  " +
 //						   "AGENT  : " + (String)table.get("AGENT") + "  " +

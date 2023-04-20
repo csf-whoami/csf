@@ -992,8 +992,9 @@ public class StringUtils {
 	public static boolean getBoolean(String s) {
 		boolean is = false;
 		try {
-			is = (new Boolean(s)).booleanValue();
+			is = Boolean.parseBoolean(s);
 		} catch (Exception exception) {
+            return false;
 		}
 
 		return is;

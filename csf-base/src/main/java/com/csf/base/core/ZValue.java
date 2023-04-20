@@ -35,9 +35,10 @@ public class ZValue extends ListOrderedMap implements Serializable {
 		String s1 = getString(s);
 		boolean flag = false;
 		try {
-			flag = (new Boolean(s1)).booleanValue();
+			flag = Boolean.parseBoolean (s1);
 		} catch (Exception exception) {
 			exception.printStackTrace();
+			return false;
 		}
 
 		return flag;

@@ -5,8 +5,8 @@ allprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 17
+    targetCompatibility = 17
 
     def defaultEncoding = 'UTF-8'
     tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
@@ -18,6 +18,7 @@ allprojects {
     }
 
     dependencies{
+        // Lombok
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         // Swagger 2.
@@ -39,7 +40,9 @@ buildscript {
     }
 }
 
-configure(subprojects.findAll {it.name != 'csf-base'}) {
+configure(subprojects.findAll {it.name != 'csf-base'
+                                && it.name != 'csf-common'
+                                && it.name != 'csf-database'}) {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
 
@@ -71,7 +74,8 @@ project(':csf-base') {
 	
 	    implementation "org.springframework:spring-webmvc:${springWebmvc}"
 	    implementation "org.springframework:spring-web:${springWeb}"
-	    compileOnly    "javax.servlet:javax.servlet-api:${javaxServlet}"
+//        implementation "javax.servlet:javax.servlet-api:
+        implementation "javax.servlet:javax.servlet-api:${javaxServlet}"
 	    implementation "org.springframework.security:spring-security-acl:${springSecurityAcl}"
 	    implementation "javax.ws.rs:javax.ws.rs-api:${javaxWS}"
 	
@@ -82,6 +86,15 @@ project(':csf-base') {
 		// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
 		implementation 'org.apache.tomcat.embed:tomcat-embed-core:9.0.70'
 	}
+}
+
+project(':csf-database') {
+
+    archivesBaseName = 'database'
+    apply plugin: 'java-library'
+
+    dependencies {
+    }
 }
 
 project(':csf-whoami') {
